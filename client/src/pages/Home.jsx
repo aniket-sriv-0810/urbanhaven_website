@@ -1,9 +1,45 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 const Home = () => {
+  const [hotel , setHotel] = useState([])
+  const fetchData = async() =>{
+    try {
+      const response = await axios.get("http://localhost:8000/" , {
+        withCredentials: true
+      })
+      console.log(response.data.allHotel);
+      setHotel(response.data.allHotel);
+
+    } catch (error) {
+      console.error('Error fetching data:', error);
+
+    }
+  }
+  useEffect(() =>{
+    fetchData();
+  } ,[]);
   return (
    <>
    <h1>This is a Home Page</h1>
+   <div>
+   { hotel.length > 0 ?
+    hotel.map((hotelItem) =>{
+      return(
+        <div key={hotelItem._id}>
+      <ul>
+      <img src={hotelItem.image} alt={ hotelItem.title} width="200px"/>
+      <h2>{hotelItem.title}</h2>
+      <li>{hotelItem.description}</li>
+      <li>Rs {hotelItem.price}</li>
+      <li> <p>{hotelItem.city} , {hotelItem.state} , {hotelItem.country} </p></li>
+      </ul>
+      </div>
+
+      )
+    })
+    :
+    <p>Hotels Loading...</p> }
+   </div>
    </>
   )
 }
