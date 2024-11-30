@@ -21,13 +21,13 @@ const Home = () => {
   return (
    <>
    <h1>This is a Home Page</h1>
-   <div>
+   <div className='flex flex-row flex-wrap justify-center gap-3'>
    { hotel.length > 0 ?
     hotel.map((hotelItem) =>{
       return(
-        <div key={hotelItem._id}>
-      <ul>
-      <img src={hotelItem.image} alt={ hotelItem.title} width="200px"/>
+        <div key={hotelItem._id} className='border-2 border-black rounded-lg w-max'>
+      <ul className='text-center' >
+      <img src={hotelItem.image} alt={ hotelItem.title} className='w-60 rounded-lg m-auto' />
       <h2>{hotelItem.title}</h2>
       <li>{hotelItem.description}</li>
       <li>Rs {hotelItem.price}</li>
