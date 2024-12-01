@@ -1,4 +1,5 @@
 
+import { response } from 'express';
 import Hotel from '../model/hotel.model.js';
 import { uploadOnCloudinary } from '../utils/cloudinary.js';
 
@@ -33,10 +34,61 @@ const showMyHotel = async(req , res ) => {
     return res.status(200).json({showHotel});
 };
 
+// Edit a particular hotel
+const editMyHotel =  (async (req , res) => {
+    let {id} = req.params;
+    const {title , description , price , city , state , country} = req.body;
+
+console.log("Req.file =>" , req.file);
+let cloudinaryResult = null;
+
+if (req.file) {
+  // Upload the file to Cloudinary
+  cloudinaryResult = await uploadOnCloudinary(req.file.path);
+}
+
+const updatedData = {
+  title,
+  description,
+  price,
+  city,
+  state,
+  country,
+};
+
+// Update image field if a new image is uploaded
+if (cloudinaryResult && cloudinaryResult.url) {
+  updatedData.image = cloudinaryResult.url;
+}
+
+const updatedHotel = await Hotel.findByIdAndUpdate(id, updatedData, {
+  new: true,
+  runValidators: true,
+});
+
+res.status(200).json({ updatedHotel });
+})
+
+// Delete a Particular Hotel
+const deleteMyHotel = async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log("Hotel ID to delete:", id); // Debugging
+    const deletedHotel = await Hotel.findByIdAndDelete(id);
+    if (!deletedHotel) {
+      return res.status(404).json({ msg: "Hotel not found" });
+    }
+    return res.status(200).json({ msg: "Deleted Successfully" });
+  } catch (error) {
+    console.error("Error deleting hotel:", error);
+    return res.status(500).json({ msg: "Internal Server Error" });
+  }
+};
+
 
 // Contact Form logic
 const contactLogic = (req,res) =>{
     return res.status(200).json({msg :"Contact Form from the Backend Server !"});
 }
 
-export { allHotel , newHotelCreation , contactLogic , showMyHotel } ;
+export { allHotel , newHotelCreation , contactLogic , showMyHotel , editMyHotel , deleteMyHotel } ;
