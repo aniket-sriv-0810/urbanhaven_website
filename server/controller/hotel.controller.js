@@ -1,5 +1,3 @@
-
-import { response } from 'express';
 import Hotel from '../model/hotel.model.js';
 import { uploadOnCloudinary } from '../utils/cloudinary.js';
 

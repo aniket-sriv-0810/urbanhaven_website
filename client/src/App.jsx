@@ -5,9 +5,9 @@ import Show from './pages/Show';
 import Edit from './pages/Edit';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import Delete from './pages/Delete';
 import Navbar from './components/Navbar.jsx/Navbar';
 import './App.css'
+import RegisterUser from './pages/RegisterUser';
 
 export default function App() {
   return (
@@ -15,12 +15,13 @@ export default function App() {
     <Navbar/>
     <Routes>
     <Route path="/" element={<Home/>}/>
+    <Route path="/new" element={<Create/>}/>
+    <Route path="/contact" element={<Contact/>}/>
+    <Route path="/about" element={<About/>}/>
     <Route path="/hotel/:id" element={<Show/>}/>
     <Route path="/hotel/:id/edit" element={<Edit/>}/>
-    <Route path="/hotel/:id/delete" element={<Delete/>}/>
-    <Route path="/new" element={<Create/>}/>
-    <Route path="/api/v1/about" element={<About/>}/>
-    <Route path="/contact" element={<Contact/>}/>
+    <Route path="/user/register" element={<RegisterUser/>}/>
+
     </Routes>
     </>
   )

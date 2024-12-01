@@ -3,9 +3,10 @@ dotenv.config();
 import {app} from './app.js';
 import mongoose from 'mongoose';
 
-
-
 const PORT = process.env.PORT || 3000;
+
+
+// Database configuration and Connection
 const connectDB = () =>{
     main()
     .then(() =>{

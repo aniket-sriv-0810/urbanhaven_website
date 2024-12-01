@@ -1,6 +1,6 @@
 import express from 'express';
-import { allHotel ,  contactLogic,  newHotelCreation , showMyHotel , editMyHotel , deleteMyHotel} from '../controller/hotel.controller.js';
 import { upload } from '../multer.js';
+import { allHotel ,  contactLogic,  newHotelCreation , showMyHotel , editMyHotel , deleteMyHotel} from '../controller/hotel.controller.js';
 const router =  express.Router();
 
 // Home Route Page
