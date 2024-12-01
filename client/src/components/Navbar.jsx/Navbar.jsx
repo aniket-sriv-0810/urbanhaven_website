@@ -10,7 +10,6 @@ const Navbar = () => {
     <li><NavLink to="/api/v1/new" >Create</NavLink></li>
     <li><NavLink to="/api/v1/contact" >Contact</NavLink></li>
     <li><NavLink to="/api/v1/about" >About</NavLink></li>
-    <li><NavLink to="/api/v1/hotel/:id" >Show</NavLink></li>
     <li><NavLink to="/api/v1/hotel/:id/edit" >Edit</NavLink></li>
     </ul>
     </div>

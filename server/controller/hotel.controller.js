@@ -1,6 +1,9 @@
 
 import Hotel from '../model/hotel.model.js';
 import { uploadOnCloudinary } from '../utils/cloudinary.js';
+
+
+
 // Home Page Logic - Display all the hotels
 const allHotel = async(req,res) =>{
     const allHotel = await Hotel.find({});
@@ -20,9 +23,20 @@ const newHotelCreation = async(req ,res) =>{
     return res.status(200).json({msg:"ok"});
 }
 
+// Show  a particular hotel
+const showMyHotel = async(req , res ) => {
+    let {id} = req.params;
+    if(!id)
+        console.log("Invalid Hotel !");
+    const showHotel = await Hotel.findById(id);
+    console.log("My Hotel => " ,showHotel);
+    return res.status(200).json({showHotel});
+};
+
+
 // Contact Form logic
 const contactLogic = (req,res) =>{
     return res.status(200).json({msg :"Contact Form from the Backend Server !"});
 }
 
-export { allHotel , newHotelCreation , contactLogic} ;
+export { allHotel , newHotelCreation , contactLogic , showMyHotel } ;

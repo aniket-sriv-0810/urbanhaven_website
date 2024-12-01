@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 const Home = () => {
   const [hotel , setHotel] = useState([])
   const fetchData = async() =>{
@@ -32,6 +33,9 @@ const Home = () => {
       <li>{hotelItem.description}</li>
       <li>Rs {hotelItem.price}</li>
       <li> <p>{hotelItem.city} , {hotelItem.state} , {hotelItem.country} </p></li>
+      <Link to={`/hotel/${hotelItem._id}`}>
+      <button className="border-gray-500 border-2">Show Hotel</button>
+    </Link>
       </ul>
       </div>
 

@@ -1,5 +1,5 @@
 import express from 'express';
-import { allHotel ,  contactLogic,  newHotelCreation } from '../controller/hotel.controller.js';
+import { allHotel ,  contactLogic,  newHotelCreation , showMyHotel} from '../controller/hotel.controller.js';
 import { upload } from '../multer.js';
 const router =  express.Router();
 
@@ -7,6 +7,10 @@ const router =  express.Router();
 router
     .route('/')
     .get(allHotel)
+
+router
+     .route('/api/v1/hotel/:id')
+     .get(showMyHotel)
 
 router
      .route('/api/v1/new')

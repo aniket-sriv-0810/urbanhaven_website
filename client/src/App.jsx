@@ -13,10 +13,10 @@ export default function App() {
     <Navbar/>
     <Routes>
     <Route path="/" element={<Home/>}/>
+    <Route path="/hotel/:id" element={<Show/>}/>
     <Route path="/api/v1/new" element={<Create/>}/>
     <Route path="/api/v1/about" element={<About/>}/>
     <Route path="/api/v1/contact" element={<Contact/>}/>
-    <Route path="/api/v1/hotel/:id" element={<Show/>}/>
     <Route path="/api/v1/hotel/:id/edit" element={<Edit/>}/>
     </Routes>
 
