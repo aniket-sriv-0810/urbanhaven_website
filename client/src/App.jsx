@@ -6,8 +6,9 @@ import Edit from './pages/Edit';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Navbar from './components/Navbar.jsx/Navbar';
-import './App.css'
 import RegisterUser from './pages/RegisterUser';
+import Login from './pages/Login';
+import './App.css'
 
 export default function App() {
   return (
@@ -21,6 +22,8 @@ export default function App() {
     <Route path="/hotel/:id" element={<Show/>}/>
     <Route path="/hotel/:id/edit" element={<Edit/>}/>
     <Route path="/user/register" element={<RegisterUser/>}/>
+    <Route path="/user/login" element={<Login/>}/>
+    <Route path="/user/logout" element={<Home/>}/>
 
     </Routes>
     </>

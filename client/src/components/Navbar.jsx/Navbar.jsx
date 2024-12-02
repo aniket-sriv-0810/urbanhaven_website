@@ -11,6 +11,16 @@ const Navbar = () => {
     <button className="border-black border-2 rounded-2xl p-2 w-32 bg-red-500">Sign Up</button>
     </Link>
     </li>
+    <li className='-mt-1'>
+     <Link to="/user/login">
+    <button className="border-black border-2 rounded-2xl p-2 w-32 bg-red-500">Log In</button>
+    </Link>
+    </li>
+    <li className='-mt-1'>
+     <Link to="/user/logout">
+    <button className="border-black border-2 rounded-2xl p-2 w-32 bg-green-600">Log Out</button>
+    </Link>
+    </li>
     <li><NavLink to="/" >Home</NavLink></li>
     <li><NavLink to="/new" >Create</NavLink></li>
     <li><NavLink to="/contact" >Contact</NavLink></li>

@@ -1,6 +1,7 @@
 import { User } from '../model/user.model.js';
 import mongoose from 'mongoose';
 import { uploadOnCloudinary } from '../utils/cloudinary.js';
+import passport from 'passport';
 
 
 //Register a new User Logic
@@ -17,5 +18,22 @@ const imageUrl = req.file ? await uploadOnCloudinary(req.file.path) : null;
 
 }
 
+// Login the Registered User
+const loginUser = async (req ,res) => {
+    passport.authenticate("local",{
+        failureRedirect: '/login',
+        failureFlash: true
+    })
+    console.log("User logged in !");
+    return res.status(200).json({loginUser});
+}
 
-export {createNewUser};
+const logOutUser = async (req , res) => {
+    req.logout((err) => {
+        if(err)
+            next(err);
+       return res.status(200).json({msg:"User logged out successfully !"});
+    })
+}
+
+export {createNewUser , loginUser , logOutUser};
