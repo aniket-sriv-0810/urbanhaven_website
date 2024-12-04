@@ -5,6 +5,7 @@ dotenv.config({
 import mongoose from "mongoose";
 import sampleData from "./sampleData.js";
 import Hotel from '../model/hotel.model.js';
+import { User } from '../model/user.model.js';
 
 // Database configuration
 main()
@@ -22,8 +23,9 @@ async function main(){
 // Storing sample dataset in database
 const initDB = async() => {
     await Hotel.deleteMany({});
+    await User.deleteMany({});
     await Hotel.insertMany(sampleData);
-    console.log("Data inserted successfully !");
+    console.log("Data saved successfully !");
 }
 
 initDB();

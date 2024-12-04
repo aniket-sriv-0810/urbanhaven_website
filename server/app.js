@@ -41,11 +41,11 @@ passport.deserializeUser(User.deserializeUser());
 // Routes
 import hotelRouter from './router/hotel.router.js';
 import userRouter from './router/user.router.js';
-import reviewRouter from './router/review.router.js';
+
 // For hotel Routes
 app.use('/' , hotelRouter);
 app.use('/api/v1/user' , userRouter);
-app.use('/api/v1/hotel' , reviewRouter);
+
 
 
 

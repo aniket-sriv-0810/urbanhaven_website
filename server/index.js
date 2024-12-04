@@ -18,8 +18,8 @@ const connectDB = () =>{
     .catch((err) => {
         console.error("Failed to Connect with Database ! " , err);
     })
-    async function main(){
-        await mongoose.connect(process.env.MONGODB_URI);
+     async function main(){
+      await  mongoose.connect(process.env.MONGODB_URI);
     }
 }
 

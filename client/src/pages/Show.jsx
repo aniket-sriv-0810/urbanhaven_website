@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios';
+import Review from '../components/Review/Review';
 const Show = () => {
 const {id} = useParams();
 const [showMyHotel , setShowMyHotel] = useState(null);
@@ -40,11 +41,12 @@ useEffect( () => {
   <li>{showMyHotel.description}</li>
   <li>Rs {showMyHotel.price}</li>
   <li><p>{showMyHotel.city} , {showMyHotel.state} , {showMyHotel.country} </p></li>
+  <br/>
+  <Review/><br/>
   <Link to="/">
   <button className="border-gray-500 border-2">Home</button>
   </Link>
   </div>
-
   </>
   )
 }

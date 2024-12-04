@@ -4,15 +4,19 @@ const Schema = mongoose.Schema;
 const reviewSchema = new Schema ({
     name:{
         type:Schema.Types.ObjectId,
-        ref:"User"
+        ref:"User",
+        required:[true,"Name is required !"]
     },
     review:{
         type:Number,
-        required:true
+        required:true,
+        min: [1, "Rating must be at least 1"],
+        max: [5, "Rating cannot exceed 5"],
     },
     comment:{
         type:String,
-        unique:true
+        trim:true,
+        maxlength:[200,"Can't exceed 200 characters"]
     }
 } ,
  {

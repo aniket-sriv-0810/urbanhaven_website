@@ -18,7 +18,7 @@ const Home = () => {
       const response = await axios.get("http://localhost:8000/" , {
         withCredentials: true
       })
-      console.log(response.data.allHotel);
+      console.log(response.data);
       setHotel(response.data.allHotel);
 
     } catch (error) {
