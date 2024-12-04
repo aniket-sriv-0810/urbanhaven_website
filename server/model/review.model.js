@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 const reviewSchema = new Schema ({
     name:{
-        type:Schema.Types.ObjectId,
-        ref:"User",
+        type:String,
+        trim:true,
         required:[true,"Name is required !"]
     },
-    review:{
+    rating:{
         type:Number,
         required:true,
         min: [1, "Rating must be at least 1"],

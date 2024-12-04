@@ -3,12 +3,13 @@ import axios from 'axios';
 import { Link  } from 'react-router-dom';
 
 const Home = () => {
+  const [loading , setLoading] = useState(true);
   const [hotel , setHotel] = useState([])
   const deleteHotel = async(id) => {
     try {
       let response = await axios.delete(`http://localhost:8000/api/v1/hotel/${id}/delete`);
-      console.log(response.data.msg);
-      window.location.reload();
+      console.log(response.data.message);
+      setHotel(hotel.filter((id) =>id !== hotel._id))
     } catch (error) {
       console.log("Error in deleting hotel" , error);
     }
@@ -19,10 +20,12 @@ const Home = () => {
         withCredentials: true
       })
       console.log(response.data);
-      setHotel(response.data.allHotel);
-
+      setHotel(response.data.data.allHotel);
+      setLoading(false);
+      
     } catch (error) {
       console.error('Error fetching data:', error);
+      setLoading(false);
 
     }
   }
@@ -33,7 +36,9 @@ const Home = () => {
    <>
    <h1>This is a Home Page</h1>
    <div className='flex flex-row flex-wrap justify-center gap-3'>
-   { hotel.length > 0 ?
+   { loading> 0 ?
+    <p>Hotels Loading...</p>
+    :
     hotel.map((hotelItem) =>{
       return(
         <div key={hotelItem._id} className='border-2 border-black rounded-lg w-max'>
@@ -55,8 +60,7 @@ const Home = () => {
 
       )
     })
-    :
-    <p>Hotels Loading...</p> }
+    }
    </div>
    </>
   )

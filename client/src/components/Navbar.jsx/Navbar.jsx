@@ -2,9 +2,11 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import mainLogo from '../../assets/logo_website.png';
 import './Navbar.css';
+
 const Navbar = () => {
   return (
     <>
+
     <div className='border-2 bg-black text-gray-200 h-14'>
     <ul className='flex flex-row justify-end flex-wrap gap-2'>
     <img src={mainLogo} alt="image" className='w-16 h-16 self-start '></img>

@@ -2,16 +2,20 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios';
 import Review from '../components/Review/Review';
-const Show = () => {
+
+const ShowHotel = () => {
 const {id} = useParams();
+const [reviews, setReviews] = useState();
 const [showMyHotel , setShowMyHotel] = useState(null);
 const [loading, setLoading] = useState(true); // Loading state
 
 const showMyHotelDetails = async() => {
   try {
     const response = await axios.get(`http://localhost:8000/api/v1/hotel/${id}`);
-    console.log(response.data.showHotel); // Log for debugging
-    setShowMyHotel(response.data.showHotel); // Set the hotel data
+    console.log("Review => " ,response.data.data.allReviews);
+    console.log(response.data.message); // Log for debugging
+    setReviews(response.data.data.allReviews);
+    setShowMyHotel(response.data.data.showHotel); // Set the hotel data
   } catch (error) {
     console.error("Error fetching hotel details:", error); // Handle errors gracefully
   } finally {
@@ -42,7 +46,23 @@ useEffect( () => {
   <li>Rs {showMyHotel.price}</li>
   <li><p>{showMyHotel.city} , {showMyHotel.state} , {showMyHotel.country} </p></li>
   <br/>
-  <Review/><br/>
+<br/><br/>
+<Review/>
+<div className='flex flex-row flex-wrap justify-center gap-3'>
+   
+{ reviews.map((reviewsItem) =>(
+
+        <div key={reviewsItem._id} className='border-2 border-black rounded-lg w-max'>
+      <ul className='text-center' >
+      <h2>By : {reviewsItem.name}</h2>
+      <li>{reviewsItem.rating} Stars</li>
+      <li>Commented : {reviewsItem.comment}</li>
+      </ul>
+      </div>
+)
+    )
+  }
+  </div>
   <Link to="/">
   <button className="border-gray-500 border-2">Home</button>
   </Link>
@@ -51,4 +71,4 @@ useEffect( () => {
   )
 }
 
-export default Show
+export default ShowHotel

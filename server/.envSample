@@ -1,0 +1,8 @@
+PORT=8000
+MONGODB_NAME=aniket08official
+MONGODB_DB_PASSWORD=xv8wqDuepE1oXfSY
+MONGODB_URI=mongodb+srv://aniket08official:xv8wqDuepE1oXfSY@urbanhaven.hniev.mongodb.net/urbanhaven?retryWrites=true&w=majority&appName=urbanhaven
+CLOUDINARY_CLOUD_NAME=dyubglpvo
+CLOUDINARY_API_KEY=986581932249793
+CLOUDINARY_API_SECRET=JwLNoAyx7FAYbR6eYEqMq_-h3w4
+EXPRESS_SESSION_SECRET=secretToken0810forSession

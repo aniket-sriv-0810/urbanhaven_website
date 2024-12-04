@@ -53,6 +53,7 @@ const userSchema = new Schema ({
 
 userSchema.pre("save", function (next) {
     this.email = this.email.toLowerCase();
+    this.username = this.username.toLowerCase();
     next();
 });
 

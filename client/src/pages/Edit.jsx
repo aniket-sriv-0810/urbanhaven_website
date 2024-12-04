@@ -23,8 +23,8 @@ const Edit = () => {
         const response = await axios.get(
           `http://localhost:8000/api/v1/hotel/${id}`
         );
-        setOrgImg(response.data.showHotel.image);
-        setHotelData(response.data.showHotel);
+        setOrgImg(response.data.data.showHotel.image);
+        setHotelData(response.data.data.showHotel);
       } catch (error) {
         console.error("Error fetching hotel data:", error);
       }

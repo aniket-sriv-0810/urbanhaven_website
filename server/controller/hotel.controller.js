@@ -3,7 +3,7 @@ import {asyncHandler} from '../utils/asyncHandler.js'
 import {ApiError} from '../utils/ApiError.js';
 import {ApiResponse} from '../utils/ApiResponse.js';
 import { uploadOnCloudinary } from '../utils/cloudinary.js';
-
+import mongoose from 'mongoose';
 
 
 // Home Page Logic - Display all the hotels
@@ -59,13 +59,13 @@ const showMyHotel = async(req , res ) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       throw new ApiError(400, "Invalid ID", "Failed to Show the Hotel!");
     }
-     const showHotel = await Hotel.findById(id);
+     const showHotel = await Hotel.findById(id).populate("review");
      if (!showHotel) {
       throw new ApiError(404, "Hotel not found", "Failed to Show the Hotel!");
     }
     
      console.log("My Hotel => " ,showHotel);
-     return res.status(200).json(new ApiResponse(200 , showHotel , "Here's my hotel !"));
+     return res.status(200).json(new ApiResponse(200 , {showHotel , allReviews : showHotel.review} , "Here's my hotel !"));
    }
    catch (error) {
    throw new ApiError(400 , error , "Failed to Show the Hotel !"); 
@@ -112,7 +112,7 @@ const editMyHotel =  asyncHandler(async (req , res) => {
   if(!updatedData){
     throw new ApiError(400,"Couldn't find updated hotel !" , "Something went wrong")
   }
-  res.status(200).json(new ApiResponse(200, updatedHotel , "Hotel Updated Successfully !"));
+  res.status(200).json(new ApiResponse(200, {updatedHotel} , "Hotel Updated Successfully !"));
     } 
     catch (error) {
     throw new ApiError (400 , error ,  "Error in updating the hotel details !");  

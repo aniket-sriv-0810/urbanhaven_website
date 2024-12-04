@@ -18,7 +18,7 @@ const createNewUser = asyncHandler(async(req , res) => {
  
      console.log("User Registered Successfully");
      return res.status(200).json(
-        new ApiResponse(200 , registerNewUser,  "Successfully registered the new User !")
+        new ApiResponse(200 , {registerNewUser},  "Successfully registered the new User !")
      );
    } 
    catch (error) {
@@ -41,7 +41,7 @@ const loginUser = asyncHandler(async (req, res, next) => {
          throw new ApiError(400, err, "Login failed");
        }
        console.log("User logged in:", user);
-       return res.status(200).json(new ApiResponse(200, user, "Logged in successfully"));
+       return res.status(200).json(new ApiResponse(200, {user}, "Logged in successfully"));
      });
    });
  });

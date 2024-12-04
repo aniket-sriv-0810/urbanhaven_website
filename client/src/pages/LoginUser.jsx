@@ -3,7 +3,7 @@ import React from 'react'
 import { useState  } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const LoginUser = () => {
     const navigate = useNavigate();
     const [loginUser , setLoginUser] = useState({
         username:"",
@@ -93,4 +93,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default LoginUser

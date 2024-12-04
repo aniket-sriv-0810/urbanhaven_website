@@ -49,10 +49,15 @@ const hotelSchema = new Schema({
     timestamps:true
 });
 
-hotelSchema.pre("remove", async function (next) {
-    await this.model("Review").deleteMany({ hotel: this._id });
+// Middleware to delete associated reviews
+hotelSchema.pre("findOneAndDelete", async function (next) {
+    const hotel = await this.model.findOne(this.getFilter()).populate("review");
+    if (hotel && hotel.review.length > 0) {
+      const reviewIds = hotel.review.map((r) => r._id);
+      await mongoose.model("Review").deleteMany({ _id: { $in: reviewIds } });
+    }
     next();
-});
+  });
 
 const Hotel = mongoose.model('Hotel' , hotelSchema);
 
