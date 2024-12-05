@@ -9,6 +9,7 @@ import passport from 'passport';
 //Register a new User Logic
 const createNewUser = asyncHandler(async(req , res) => {
    try {
+
      const {name , username , phone , email , password} = req.body;
  console.log("req.file =>" + req.file);
  const imageUrl = req.file ? await uploadOnCloudinary(req.file.path) : null;
@@ -17,9 +18,15 @@ const createNewUser = asyncHandler(async(req , res) => {
  
  
      console.log("User Registered Successfully");
-     return res.status(200).json(
-        new ApiResponse(200 , {registerNewUser},  "Successfully registered the new User !")
-     );
+     //Auto Login after registration
+     req.login(registerNewUser , (err) => {
+      if(err){
+         throw new ApiError(500, err, "Auto-login after registration failed!");
+   }
+      return res.status(200).json(
+         new ApiResponse(200 , {registerNewUser : { name : registerNewUser.name}},  "Successfully registered the new User !")
+      );
+   })
    } 
    catch (error) {
     throw new ApiError(400 ,  error , "Failed to register user !");
@@ -30,13 +37,23 @@ const createNewUser = asyncHandler(async(req , res) => {
 // Login the Registered User
 const loginUser = asyncHandler(async (req, res) => {
    try {
+      const {username} = req.body
       const {user} = req;
     console.log("body => " , req.body);
-
     console.log("Logged in successfully !");
-    return res.status(200).json(
-      new ApiResponse(200 , {user} , "Logged in successfully !")
-    )
+
+    const loggedInUser = await User.findOne({username})
+    if (!loggedInUser) {
+      throw new ApiError(401, null, "Invalid username or password!");
+    }
+    req.login(loggedInUser , (err) => {
+      if(err){
+         throw new ApiError(500, err, "Login failed!");
+   }
+      return res.status(200).json(
+         new ApiResponse(200 , {loggedInUser :{name : loggedInUser.name , username : loggedInUser.username}},  "Successfully logged in the User !")
+      );
+   })
     
    } catch (error) {
       throw new ApiError(400, error, "Failed to log in!");

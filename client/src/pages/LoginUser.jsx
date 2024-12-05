@@ -2,9 +2,10 @@ import axios from 'axios';
 import React from 'react'
 import { useState  } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import {useUser} from '../components/userContext/userContext';
 const LoginUser = () => {
     const navigate = useNavigate();
+    const {setUser} = useUser();
     const [loginUser , setLoginUser] = useState({
         username:"",
         password:""
@@ -25,12 +26,14 @@ const LoginUser = () => {
         try {
             let response = await axios.post('http://localhost:8000/api/v1/user/login' , dataSent , { withCredentials : true} );
             console.log(response.data.message);
+            console.log(response.data.data.user);
             
             if(response.status === 200){
                 setLoginUser({
                     username:"",
                     password:""
                 })
+                setUser(response.data.data.loggedInUser.name);
                 navigate('/');
             }
             else{

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Link  } from 'react-router-dom';
+import Header from '../components/Header/Header';
 
 const Home = () => {
   const [loading , setLoading] = useState(true);
@@ -35,6 +36,7 @@ const Home = () => {
   return (
    <>
    <h1>This is a Home Page</h1>
+   <Header/>
    <div className='flex flex-row flex-wrap justify-center gap-3'>
    { loading> 0 ?
     <p>Hotels Loading...</p>

@@ -2,10 +2,12 @@ import axios from 'axios';
 import React from 'react'
 import { useState  } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {useUser} from '../components/userContext/userContext';
 const RegisterUser = () => {
+  const {setUser} = useUser();
     const navigate = useNavigate();
     const [image , setImage] = useState(null);
-    const [user , setUser] = useState({
+    const [newUser , setNewUser] = useState({
         name:"",
         username:"",
         phone:"",
@@ -14,34 +16,37 @@ const RegisterUser = () => {
     });
 
     const handleInputChange = (e) =>{
-        setUser({...user , [e.target.name] : e.target.value})
+        setNewUser({...newUser , [e.target.name] : e.target.value})
     };
     const handleFileChange = (e) => {
         setImage(e.target.files[0])
     };
     const handleSubmitForm = async(e) => {
         e.preventDefault();
-        console.log(user);
+        console.log(newUser);
         const formData = new FormData();
-        formData.append("name" , user.name);
-        formData.append("username" , user.username);
-        formData.append("phone" , user.phone);
-        formData.append("email" , user.email);
-        formData.append("password" , user.password);
+        formData.append("name" , newUser.name);
+        formData.append("username" , newUser.username);
+        formData.append("phone" , newUser.phone);
+        formData.append("email" , newUser.email);
+        formData.append("password" , newUser.password);
         if(image){
             formData.append("image" , image);
         }
 
         try {
             let response = await axios.post('http://localhost:8000/api/v1/user/register' , formData );
+            console.log(response.data.data.user);
             if(response.status === 200){
-                setUser({
+                setNewUser({
                     name:"",
                     username:"",
                     phone:"",
                     email:"",
                     password:""
                 });
+                console.log(response.data);
+                setUser(response.data.data.registerNewUser.name);
                 setImage(null);
                 navigate('/');
             }
@@ -69,7 +74,7 @@ const RegisterUser = () => {
         name="name"
         className="border-gray-500 border-2"
         onChange={handleInputChange}
-        value={user.name}
+        value={newUser.name}
       ></input>
       <br />
       <input
@@ -79,7 +84,7 @@ const RegisterUser = () => {
         name="username"
         className="border-gray-500 border-2"
         onChange={handleInputChange}
-        value={user.username}
+        value={newUser.username}
       ></input>
       <br />
       <input
@@ -89,7 +94,7 @@ const RegisterUser = () => {
         name="phone"
         className="border-gray-500 border-2"
         onChange={handleInputChange}
-        value={user.phone}
+        value={newUser.phone}
       ></input>
       <br />
       <input
@@ -99,7 +104,7 @@ const RegisterUser = () => {
         name="email"
         className="border-gray-500 border-2"
         onChange={handleInputChange}
-        value={user.email}
+        value={newUser.email}
       ></input>
       <br />
       <input
@@ -109,7 +114,7 @@ const RegisterUser = () => {
         name="password"
         className="border-gray-500 border-2"
         onChange={handleInputChange}
-        value={user.password}
+        value={newUser.password}
       ></input>
       <br />
       <input type="file" name="image" onChange={handleFileChange} />
