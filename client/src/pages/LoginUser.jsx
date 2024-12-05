@@ -7,7 +7,6 @@ const LoginUser = () => {
     const navigate = useNavigate();
     const [loginUser , setLoginUser] = useState({
         username:"",
-        email:"",
         password:""
     });
 
@@ -18,26 +17,24 @@ const LoginUser = () => {
     const handleSubmitForm = async(e) => {
         e.preventDefault();
         console.log(loginUser);
-        const formData = new FormData();
-        formData.append("username" , loginUser.username);
-        formData.append("email" , loginUser.email);
-        formData.append("password" , loginUser.password);
+        const dataSent = {
+          username :loginUser.username,
+          password :loginUser.password
+        }
 
         try {
-            let response = await axios.post('http://localhost:8000/api/v1/user/login' , formData );
-            console.log(response.data.loginUser);
+            let response = await axios.post('http://localhost:8000/api/v1/user/login' , dataSent , { withCredentials : true} );
+            console.log(response.data.message);
             
             if(response.status === 200){
                 setLoginUser({
                     username:"",
-                    email:"",
                     password:""
                 })
                 navigate('/');
             }
             else{
                 console.error("User cannot be logged in" );
-                alert("User cannot be LoggedIN !")
             }
         } catch (error) {
             console.error("Failed to Log in the new user" , error);
@@ -64,15 +61,6 @@ const LoginUser = () => {
       ></input>
       <br />
       <br />
-      <input
-        type="email"
-        placeholder="enter email "
-        required
-        name="email"
-        className="border-gray-500 border-2"
-        onChange={handleInputChange}
-        value={loginUser.email}
-      ></input>
       <br />
       <input
         type="password"

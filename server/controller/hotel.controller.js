@@ -25,7 +25,7 @@ const newHotelCreation = asyncHandler(async(req ,res) =>{
       if (!req.file) {
         throw new ApiError(400, "Image file is required", "Failed to Register Hotel");
       }
-      
+
       const imagePath = req.file.path ;
       const image = await uploadOnCloudinary(imagePath);
       const newHotel = new Hotel(

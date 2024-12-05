@@ -1,5 +1,6 @@
 import express from 'express';
 import {validate} from '../middleware/validator.js';
+import {checkLogInUser} from '../middleware/auth.middleware.js';
 import { upload } from '../multer.js';
 import { createNewUser, loginUser , logOutUser} from '../controller/user.controller.js';
 import {userSchemaValidation} from '../test/user.validator.js'
@@ -14,7 +15,7 @@ router
 // Login a the registered user
 router
      .route('/login')
-     .post(loginUser);
+     .post(checkLogInUser,loginUser);
 
 // Logout a the registered user
 router

@@ -4,11 +4,11 @@ import {useNavigate} from 'react-router-dom';
 const Create = () => {
 
   const navigate = useNavigate();
+  const [image , setImage] = useState(null);
   const [newHotel, setNewHotel] = useState({
     title: "",
     description: "",
     price: "",
-    image:"https://media.istockphoto.com/id/104731717/photo/luxury-resort.jpg?s=612x612&w=0&k=20&c=cODMSPbYyrn1FHake1xYz9M8r15iOfGz9Aosy9Db7mI=",
     city: "",
     state: "",
     country: ""
@@ -25,12 +25,12 @@ const Create = () => {
 
   // Handle file input change
   const handleFileChange = (e) => {
-    setNewHotel({ ...newHotel, image: e.target.files[0] });
+    setImage( e.target.files[0] );
   };
 
   const handleSubmitForm = async(e) => {
     e.preventDefault();
-    console.log(newHotel);
+    console.log(newHotel , image);
     const formData = new FormData();
     formData.append("title", newHotel.title);
     formData.append("description", newHotel.description);
@@ -38,8 +38,8 @@ const Create = () => {
     formData.append("city", newHotel.city);
     formData.append("state", newHotel.state);
     formData.append("country", newHotel.country);
-    if (newHotel.image) {
-      formData.append("image", newHotel.image);
+    if (image) {
+      formData.append("image", image);
     }
     try {
       const response = await axios.post("http://localhost:8000/api/v1/new" ,formData);
@@ -48,17 +48,15 @@ const Create = () => {
           title: "",
           description: "",
           price: "",
-          image:null,
           city: "",
           state: "",
           country: ""
         });
+        setImage(null);
         navigate('/')
       }
       else{
         console.error("Error occurred");
-
-        navigate('/api/v1/new');
       }
       console.log(response.data);
     } 

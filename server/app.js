@@ -23,6 +23,10 @@ const expressSessionOption = {
     secret:process.env.EXPRESS_SESSION_SECRET,
     resave:false,
     saveUninitialized:true,
+    cookie:{
+        httpOnly: true,
+        maxAge :24*60*60*1000 // 1 day expiry time
+    }
 };
 
 app.use(cors(corsSessionOption));

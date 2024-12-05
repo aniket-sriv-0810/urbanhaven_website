@@ -4,12 +4,12 @@ import { useState  } from 'react';
 import { useNavigate } from 'react-router-dom';
 const RegisterUser = () => {
     const navigate = useNavigate();
+    const [image , setImage] = useState(null);
     const [user , setUser] = useState({
         name:"",
         username:"",
         phone:"",
         email:"",
-        image:null,
         password:""
     });
 
@@ -17,7 +17,7 @@ const RegisterUser = () => {
         setUser({...user , [e.target.name] : e.target.value})
     };
     const handleFileChange = (e) => {
-        setUser({...user , image: e.target.files[0]})
+        setImage(e.target.files[0])
     };
     const handleSubmitForm = async(e) => {
         e.preventDefault();
@@ -28,8 +28,8 @@ const RegisterUser = () => {
         formData.append("phone" , user.phone);
         formData.append("email" , user.email);
         formData.append("password" , user.password);
-        if(user.image){
-            formData.append("image" , user.image);
+        if(image){
+            formData.append("image" , image);
         }
 
         try {
@@ -40,9 +40,9 @@ const RegisterUser = () => {
                     username:"",
                     phone:"",
                     email:"",
-                    image:null,
                     password:""
-                })
+                });
+                setImage(null);
                 navigate('/');
             }
             else{

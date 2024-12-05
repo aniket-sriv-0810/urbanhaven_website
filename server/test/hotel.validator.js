@@ -7,9 +7,6 @@ import Joi from "joi";
     description: Joi.string().trim().required().messages({
         "string.empty": "Description is required.",
     }),
-    image: Joi.string().trim().required().messages({
-        "string.empty": "Image is required.",
-    }),
     price: Joi.number().min(0).required().messages({
         "number.min": "Price must be greater than or equal to 0.",
         "any.required": "Price is required.",

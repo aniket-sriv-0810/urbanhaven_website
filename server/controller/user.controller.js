@@ -28,30 +28,35 @@ const createNewUser = asyncHandler(async(req , res) => {
 })
 
 // Login the Registered User
-const loginUser = asyncHandler(async (req, res, next) => {
-   passport.authenticate('local', (err, user, info) => {
-     if (err) {
-       throw new ApiError(400, err, "Login failed");
-     }
-     if (!user) {
-       return res.status(401).json(new ApiResponse(401, null, "Invalid credentials"));
-     }
-     req.logIn(user, (err) => {
-       if (err) {
-         throw new ApiError(400, err, "Login failed");
-       }
-       console.log("User logged in:", user);
-       return res.status(200).json(new ApiResponse(200, {user}, "Logged in successfully"));
-     });
-   });
+const loginUser = asyncHandler(async (req, res) => {
+   try {
+      const {user} = req;
+    console.log("body => " , req.body);
+
+    console.log("Logged in successfully !");
+    return res.status(200).json(
+      new ApiResponse(200 , {user} , "Logged in successfully !")
+    )
+    
+   } catch (error) {
+      throw new ApiError(400, error, "Failed to log in!");
+   }
  });
 
 
 const logOutUser = asyncHandler(async (req , res , next) => {
    try {
      req.logout((err) => {
-         if(err)
-             next(err);
+         if(err){
+            throw new ApiError(400 , err , "Failed to logout !")
+            return next(err);
+         }
+         req.session.destroy((err) => {
+            if (err) {
+               console.error("Failed to destroy session:", err);
+               throw new ApiError(500, err, "Failed to log out!");
+             }
+         })
         return res.status(200).json(
             new ApiResponse(200, null,"Logged out successfully")
         );

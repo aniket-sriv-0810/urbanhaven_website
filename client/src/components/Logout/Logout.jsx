@@ -8,7 +8,7 @@ const Logout = () => {
   useEffect(() => {
     const logoutUser = async () => {
       try {
-        const response = await axios.post('http://localhost:8000/api/v1/user/logout');
+        const response = await axios.post('http://localhost:8000/api/v1/user/logout' , {withCredentials: true});
         console.log(response.data.message);  // Handle success message or user info
         navigate('/');  // Redirect to home page after successful logout
       } catch (error) {
