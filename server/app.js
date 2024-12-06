@@ -25,7 +25,8 @@ const expressSessionOption = {
     saveUninitialized:true,
     cookie:{
         httpOnly: true,
-        maxAge :24*60*60*1000 // 1 day expiry time
+        maxAge :24*60*60*1000 ,// 1 day expiry time,
+        secure : false
     }
 };
 

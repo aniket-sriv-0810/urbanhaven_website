@@ -10,7 +10,7 @@ import RegisterUser from './pages/RegisterUser';
 import LoginUser from './pages/LoginUser';
 import Logout from './components/Logout/Logout';
 import Review from './components/Review/Review';
-
+import  PrivateRoute  from './components/userContext/PrivateRoute';
 import './App.css'
 
 export default function App() {
@@ -19,12 +19,37 @@ export default function App() {
     <Navbar/>
     <Routes>
     <Route path="/" element={<Home/>}/>
-    <Route path="/new" element={<Create/>}/>
+    <Route path="/new" element={
+      <PrivateRoute>
+      <Create/>
+      </PrivateRoute>
+    }
+    />
     <Route path="/contact" element={<Contact/>}/>
     <Route path="/about" element={<About/>}/>
-    <Route path="/hotel/:id" element={<ShowHotel/>}/>
-    <Route path="/hotel/:id/edit" element={<Edit/>}/>
-    <Route path="/hotel/:id/review" element={<Review/>}/>
+    <Route path="/hotel/:id" element={
+      <PrivateRoute>
+      <ShowHotel/>
+      </PrivateRoute>
+    }
+    />
+    <Route path="/hotel/:id/edit" element={
+      <PrivateRoute>
+      <Edit/>
+      </PrivateRoute>
+    }
+      
+      />
+    <Route path="/hotel/:id/review" element={
+      <PrivateRoute>
+      <Review/>
+      </PrivateRoute>
+    }/>
+    <Route path="/hotel/:id/delete" element={
+      <PrivateRoute>
+      <Home/>
+      </PrivateRoute>
+    }/>
     <Route path="/user/register" element={<RegisterUser/>}/>
     <Route path="/user/login" element={<LoginUser/>}/>
     <Route path="/user/logout" element={<Logout/>}/>

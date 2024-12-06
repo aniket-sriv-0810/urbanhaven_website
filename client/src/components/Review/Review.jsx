@@ -26,7 +26,9 @@ const Review = () => {
     try {
       const response = await axios.post(
         `http://localhost:8000/api/v1/hotel/${id}/review`,
-        dataSent
+        dataSent ,{
+          withCredentials:true,
+        }
       );
       console.log(response.data.message);
       if (response.status === 200) {

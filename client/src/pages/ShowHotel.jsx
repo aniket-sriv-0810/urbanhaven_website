@@ -11,7 +11,9 @@ const [loading, setLoading] = useState(true); // Loading state
 
 const showMyHotelDetails = async() => {
   try {
-    const response = await axios.get(`http://localhost:8000/api/v1/hotel/${id}`);
+    const response = await axios.get(`http://localhost:8000/api/v1/hotel/${id}` ,{
+      withCredentials: true,
+    });
     console.log("Review => " ,response.data.data.allReviews);
     console.log(response.data.message); // Log for debugging
     setReviews(response.data.data.allReviews);

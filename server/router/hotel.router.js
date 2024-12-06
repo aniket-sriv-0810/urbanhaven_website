@@ -1,4 +1,5 @@
 import express from 'express';
+import { isLoggedIn } from '../middleware/authentication.js';
 import { validate } from '../middleware/validator.js';
 import { upload } from '../multer.js';
 import { createReview } from '../controller/review.controller.js';
@@ -15,7 +16,7 @@ router
 // Register a New Hotel Route
 router
     .route('/api/v1/new')
-    .post( upload.single('image') ,validate(hotelSchemaValidation) ,newHotelCreation )
+    .post( isLoggedIn , upload.single('image') ,validate(hotelSchemaValidation) ,newHotelCreation )
 
 // Contact Information  Route
 router
@@ -25,23 +26,23 @@ router
 // Show a Particular Hotel Route
 router
      .route('/api/v1/hotel/:id')
-     .get(showMyHotel)
+     .get(  isLoggedIn ,showMyHotel)
 
 // Edit a Particular Hotel Route
 router
      .route('/api/v1/hotel/:id/edit')
-     .put(upload.single('image'),validate(hotelSchemaValidation),editMyHotel)
+     .put(isLoggedIn ,upload.single('image'),validate(hotelSchemaValidation),editMyHotel)
 
 // Delete a Particular Hotel Route
 router
      .route('/api/v1/hotel/:id/delete')
-     .delete(deleteMyHotel)
+     .delete( isLoggedIn ,deleteMyHotel)
 
 
  // Create a new Review
 router
      .route('/api/v1/hotel/:id/review')
-     .post(validate(reviewSchemaValidation),createReview)
+     .post( isLoggedIn ,validate(reviewSchemaValidation),createReview)
 
 
 

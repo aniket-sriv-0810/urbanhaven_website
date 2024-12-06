@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React from 'react'
 import { useState  } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , useLocation} from 'react-router-dom';
 import {useUser} from '../components/userContext/userContext';
 const LoginUser = () => {
     const navigate = useNavigate();
+    const location = useLocation(); //captures the current location
     const {setUser} = useUser();
     const [loginUser , setLoginUser] = useState({
         username:"",
@@ -26,7 +27,7 @@ const LoginUser = () => {
         try {
             let response = await axios.post('http://localhost:8000/api/v1/user/login' , dataSent , { withCredentials : true} );
             console.log(response.data.message);
-            console.log(response.data.data.user);
+            console.log(response.data.user);
             
             if(response.status === 200){
                 setLoginUser({
@@ -34,7 +35,8 @@ const LoginUser = () => {
                     password:""
                 })
                 setUser(response.data.data.loggedInUser.name);
-                navigate('/');
+                const redirectPath = location.state?.from?.pathname || "/";
+                navigate(redirectPath);
             }
             else{
                 console.error("User cannot be logged in" );
