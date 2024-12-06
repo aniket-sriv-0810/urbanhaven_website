@@ -1,3 +1,4 @@
+ 
  const isLoggedIn = (req, res, next) => {
     if (req.isAuthenticated()) {
         return next(); // User is authenticated, allow access to the route.

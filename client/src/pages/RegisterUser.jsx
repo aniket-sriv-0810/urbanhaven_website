@@ -36,7 +36,7 @@ const RegisterUser = () => {
 
         try {
             let response = await axios.post('http://localhost:8000/api/v1/user/register' , formData );
-            console.log(response.data.data.user);
+            console.log(response.data.user);
             if(response.status === 200){
                 setNewUser({
                     name:"",

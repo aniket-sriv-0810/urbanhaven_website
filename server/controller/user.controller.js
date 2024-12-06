@@ -84,4 +84,19 @@ const logOutUser = asyncHandler(async (req , res , next) => {
    }
 });
 
-export {createNewUser , loginUser , logOutUser};
+// Checks the authentication of the user - login or not
+const checkAuthentication = asyncHandler( async ( req , res ) => {
+   if(req.isAuthenticated()){
+      console.log("User is authenticated !");
+      return res.status(200).json(
+         new ApiResponse(200 , {isAuthenticated : true , user : {name : req.user.name}})
+      )
+   }
+   else{
+console.log("user not authenticated yet !");
+
+      res.status(200).json(new ApiResponse(200 , {isAuthenticated : false}))
+   }
+} )
+
+export {createNewUser , loginUser , logOutUser , checkAuthentication};
