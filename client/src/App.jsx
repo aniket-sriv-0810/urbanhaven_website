@@ -11,11 +11,13 @@ import LoginUser from './pages/LoginUser';
 import Logout from './components/Logout/Logout';
 import Review from './components/Review/Review';
 import  PrivateRoute  from './components/userContext/PrivateRoute';
+
 import './App.css'
 
 export default function App() {
   return (
     <>
+
     <Navbar/>
     <Routes>
     <Route path="/" element={<Home/>}/>
@@ -55,6 +57,8 @@ export default function App() {
     <Route path="/user/logout" element={<Logout/>}/>
 
     </Routes>
+
+
     </>
   )
 }

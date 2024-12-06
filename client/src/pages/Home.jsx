@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Link  } from 'react-router-dom';
 import Header from '../components/Header/Header';
-
+import {  Bounce, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Home = () => {
   const [loading , setLoading] = useState(true);
   const [hotel , setHotel] = useState([])
@@ -10,6 +11,16 @@ const Home = () => {
     try {
       let response = await axios.delete(`http://localhost:8000/api/v1/hotel/${id}/delete`);
       console.log(response.data.message);
+      toast.success('Deleted Hotel Successfully !', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
       setHotel(hotel.filter((id) =>id !== hotel._id))
     } catch (error) {
       console.log("Error in deleting hotel" , error);
@@ -20,6 +31,16 @@ const Home = () => {
       const response = await axios.get("http://localhost:8000/" , {
         withCredentials: true
       })
+      toast.info(' List of all hotels !', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
       console.log(response.data);
       setHotel(response.data.data.allHotel);
       setLoading(false);
@@ -64,6 +85,19 @@ const Home = () => {
     })
     }
    </div>
+   <ToastContainer
+   position="top-right"
+   autoClose={2000}
+   hideProgressBar={false}
+   newestOnTop={false}
+   closeOnClick
+   rtl={false}
+   pauseOnFocusLoss
+   draggable
+   pauseOnHover={false}
+   theme="light"
+   transition={Bounce}
+   />
    </>
   )
 }

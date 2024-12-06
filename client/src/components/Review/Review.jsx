@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const Review = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [review, setReview] = useState({
     name: "",
@@ -31,6 +32,7 @@ const Review = () => {
         }
       );
       console.log(response.data.message);
+      
       if (response.status === 200) {
         setReview({
           name: "",
@@ -38,7 +40,7 @@ const Review = () => {
           comment: "",
         });
       }
-      
+      navigate(`/hotel/${id}`);
     } catch (error) {
       console.error("Failed to create review", error);
     }

@@ -3,6 +3,8 @@ import React from 'react'
 import { useState  } from 'react';
 import { useNavigate , useLocation} from 'react-router-dom';
 import {useUser} from '../components/userContext/userContext';
+import {  Bounce, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const LoginUser = () => {
     const navigate = useNavigate();
     const location = useLocation(); //captures the current location
@@ -11,6 +13,9 @@ const LoginUser = () => {
         username:"",
         password:""
     });
+
+   
+
 
     const handleInputChange = (e) =>{
         setLoginUser({...loginUser , [e.target.name] : e.target.value})
@@ -36,7 +41,19 @@ const LoginUser = () => {
                 })
                 setUser(response.data.data.loggedInUser.name);
                 const redirectPath = location.state?.from?.pathname || "/";
-                navigate(redirectPath);
+      toast.success('Logged in Successfully !', {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+      setTimeout(() => {
+        navigate(redirectPath);
+    }, 3000); // Delay navigation
             }
             else{
                 console.error("User cannot be logged in" );
@@ -82,6 +99,19 @@ const LoginUser = () => {
         Login User
       </button>
     </form>
+    <ToastContainer
+    position="top-right"
+    autoClose={2000}
+    hideProgressBar={false}
+    newestOnTop={false}
+    closeOnClick
+    rtl={false}
+    pauseOnFocusLoss
+    draggable
+    pauseOnHover={false}
+    theme="light"
+    transition={Bounce}
+    />
     </>
   )
 }
