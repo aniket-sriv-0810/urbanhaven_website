@@ -42,7 +42,9 @@ const Create = () => {
       formData.append("image", image);
     }
     try {
-      const response = await axios.post("http://localhost:8000/api/v1/new" ,formData);
+      const response = await axios.post("http://localhost:8000/api/v1/admin/new-hotel" ,formData, {
+        withCredentials:true
+      });
       if(response.status === 200){
         setNewHotel({
           title: "",
@@ -53,7 +55,7 @@ const Create = () => {
           country: ""
         });
         setImage(null);
-        navigate('/')
+        navigate('/admin')
       }
       else{
         console.error("Error occurred");

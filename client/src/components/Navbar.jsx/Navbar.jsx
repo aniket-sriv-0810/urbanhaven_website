@@ -43,7 +43,6 @@ const Navbar = () => {
     <ul className='flex flex-row justify-end flex-wrap gap-2'>
     <img src={mainLogo} alt="image" className='w-16 h-16 self-start '></img>
     <li><NavLink to="/" >Home</NavLink></li>
-    <li><NavLink to="/new" >Create</NavLink></li>
     <li><NavLink to="/contact" >Contact</NavLink></li>
     <li><NavLink to="/api/v1/about" >About</NavLink></li>
 

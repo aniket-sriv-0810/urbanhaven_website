@@ -15,6 +15,7 @@ import AdminDashboard from './layout/AdminDashboard';
 import AdminUser from './layout/AdminUser';
 import './App.css'
 import AdminHotel from './layout/AdminHotel';
+import Delete from './pages/Delete';
 
 export default function App() {
   return (
@@ -23,12 +24,6 @@ export default function App() {
     <Navbar/>
     <Routes>
     <Route path="/" element={<Home/>}/>
-    <Route path="/new" element={
-      <PrivateRoute>
-      <Create/>
-      </PrivateRoute>
-    }
-    />
     <Route path="/contact" element={<Contact/>}/>
     <Route path="/about" element={<About/>}/>
     <Route path="/hotel/:id" element={
@@ -37,23 +32,13 @@ export default function App() {
       </PrivateRoute>
     }
     />
-    <Route path="/hotel/:id/edit" element={
-      <PrivateRoute>
-      <Edit/>
-      </PrivateRoute>
-    }
-      
-      />
+
     <Route path="/hotel/:id/review" element={
       <PrivateRoute>
       <Review/>
       </PrivateRoute>
     }/>
-    <Route path="/hotel/:id/delete" element={
-      <PrivateRoute>
-      <Home/>
-      </PrivateRoute>
-    }/>
+
     <Route path="/user/register" element={<RegisterUser/>}/>
     <Route path="/user/login" element={<LoginUser/>}/>
     <Route path="/user/logout" element={<Logout/>}/>
@@ -64,6 +49,9 @@ export default function App() {
     }>
     <Route path="users" element={<AdminUser/>}/>
     <Route path="hotels" element={<AdminHotel/>}/>
+    <Route path="new-hotel" element={ <Create/>}/>
+    <Route path="hotel-details/:id/edit" element={ <Edit/>}/>
+    <Route path="hotel/:id/delete" element={ <Delete/>}/>
     </Route>
 
     </Routes>

@@ -1,7 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AdminHotel = () => {
+  
+  const navigate = useNavigate();
     const [hotelDetails, setHotelDetails] = useState();
     
   const fetchData = async () => {
@@ -37,6 +40,8 @@ const AdminHotel = () => {
            <th className="border border-gray-300 px-4 py-2">City</th>
            <th className="border border-gray-300 px-4 py-2">State</th>
            <th className="border border-gray-300 px-4 py-2">Country</th>
+           <th className="border border-gray-300 px-4 py-2">Edit Details</th>
+           <th className="border border-gray-300 px-4 py-2">Delete Hotel</th>
          </tr>
        </thead>
        <tbody>
@@ -49,12 +54,20 @@ const AdminHotel = () => {
                  className="w-16 h-16 rounded-full mx-auto object-cover border border-gray-300"
                />
              </td>
-             <td className="border border-gray-300 px-4 py-2">{hotelInfo.title}</td>
-             <td className="border border-gray-300 px-4 py-2">{hotelInfo.description}</td>
-             <td className="border border-gray-300 px-4 py-2">Rs {hotelInfo.price}</td>
-             <td className="border border-gray-300 px-4 py-2">{hotelInfo.city}</td>
-             <td className="border border-gray-300 px-4 py-2">{hotelInfo.state}</td>
-             <td className="border border-gray-300 px-4 py-2">{hotelInfo.country}</td>
+             <td className="border border-gray-300 px-4 py-2 text-center">{hotelInfo.title}</td>
+             <td className="border border-gray-300 px-4 py-2 text-center">{hotelInfo.description}</td>
+             <td className="border border-gray-300 px-4 py-2 text-center">Rs {hotelInfo.price}</td>
+             <td className="border border-gray-300 px-4 py-2 text-center">{hotelInfo.city}</td>
+             <td className="border border-gray-300 px-4 py-2 text-center">{hotelInfo.state}</td>
+             <td className="border border-gray-300 px-4 py-2 text-center">{hotelInfo.country}</td>
+             <td className="border border-gray-300 px-4 py-2 text-center"> <button
+             onClick={() => navigate(`/admin/hotel-details/${hotelInfo._id}/edit`)}
+             className="bg-green-500 px-4 py-2 rounded-lg text-white "
+           >Edit</button> </td>
+             <td className="border border-gray-300 px-4 py-2 text-center"> <button
+             onClick={() => navigate(`/admin/hotel/${hotelInfo._id}/delete`)}
+             className="bg-red-600 px-4 py-2 rounded-lg text-white "
+           >Delete</button> </td>
            </tr>
          ))}
        </tbody>

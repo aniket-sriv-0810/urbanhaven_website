@@ -7,25 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const Home = () => {
   const [loading , setLoading] = useState(true);
   const [hotel , setHotel] = useState([])
-  const deleteHotel = async(id) => {
-    try {
-      let response = await axios.delete(`http://localhost:8000/api/v1/hotel/${id}/delete`);
-      console.log(response.data.message);
-      toast.success('Deleted Hotel Successfully !', {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        });
-      setHotel(hotel.filter((id) =>id !== hotel._id))
-    } catch (error) {
-      console.log("Error in deleting hotel" , error);
-    }
-  }
+ 
   const fetchData = async() =>{
     try {
       const response = await axios.get("http://localhost:8000/" , {
@@ -74,10 +56,7 @@ const Home = () => {
       <Link to={`/hotel/${hotelItem._id}`}>
       <button className="border-gray-500 border-2">Show Hotel</button><br/><br/>
     </Link>
-      <Link to={`/hotel/${hotelItem._id}/edit`}>
-      <button className="border-gray-500 border-2">Edit Hotel</button>
-    </Link><br/><br/>
-    <button className="border-gray-500 border-2" onClick={()=>{deleteHotel(hotelItem._id)}}>Delete Hotel</button>
+  
       </ul>
       </div>
 

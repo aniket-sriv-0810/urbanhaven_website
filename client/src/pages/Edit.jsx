@@ -63,13 +63,15 @@ const Edit = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8000/api/v1/hotel/${id}/edit`,
-        formData,
+        `http://localhost:8000/api/v1/admin/hotel-details/${id}/edit`,
+        formData,{
+          withCredentials:true,
+        },
         { headers: { "Content-Type": "multipart/form-data" }  }
       );
 
       console.log("Hotel updated:", response.data.updatedHotel);
-      navigate('/')
+      navigate('/admin/hotels')
     } catch (error) {
       console.error("Error updating hotel:", error);
     }
