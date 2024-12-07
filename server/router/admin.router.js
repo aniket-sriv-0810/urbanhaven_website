@@ -1,13 +1,18 @@
 import express from 'express';
+import { adminHotelData, adminUserData } from '../controller/admin.controller.js';
+import { isLoggedIn } from '../middleware/authentication.js';
 const router = express.Router();
 
-// admin dashboard Route
-router
-     .route('/dashboard')
 
 // All Registered Users detailed  Route!
 router
      .route('/users')
+     .get( isLoggedIn,adminUserData)
+
+// All Registered Users detailed  Route!
+router
+     .route('/hotels')
+     .get( isLoggedIn,adminHotelData)
 
 // All Contact Queries detailed Route !
 router

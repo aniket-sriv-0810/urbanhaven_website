@@ -50,7 +50,7 @@ import adminRouter from './router/admin.router.js';
 // For hotel Routes
 app.use('/' , hotelRouter);
 app.use('/api/v1/user' , userRouter);
-app.use('/api/v1/secure/admin', adminRouter);
+app.use('/api/v1/admin', adminRouter);
 
 
 

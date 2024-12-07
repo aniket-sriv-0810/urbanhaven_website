@@ -11,8 +11,10 @@ import LoginUser from './pages/LoginUser';
 import Logout from './components/Logout/Logout';
 import Review from './components/Review/Review';
 import  PrivateRoute  from './components/userContext/PrivateRoute';
-
+import AdminDashboard from './layout/AdminDashboard';
+import AdminUser from './layout/AdminUser';
 import './App.css'
+import AdminHotel from './layout/AdminHotel';
 
 export default function App() {
   return (
@@ -55,6 +57,14 @@ export default function App() {
     <Route path="/user/register" element={<RegisterUser/>}/>
     <Route path="/user/login" element={<LoginUser/>}/>
     <Route path="/user/logout" element={<Logout/>}/>
+    <Route path="/admin" element={
+      <PrivateRoute>
+      <AdminDashboard/>
+      </PrivateRoute>
+    }>
+    <Route path="users" element={<AdminUser/>}/>
+    <Route path="hotels" element={<AdminHotel/>}/>
+    </Route>
 
     </Routes>
 
