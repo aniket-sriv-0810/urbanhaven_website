@@ -1,0 +1,33 @@
+driver-popover {
+    background-color: rgb(160, 100, 26);
+}
+
+.driver-popover-arrow {
+    font-size: large;
+}
+
+.driver-popover-title {
+    color:green;
+}
+.driver-popover-description {
+    color:purple
+}
+.driver-popover-close-btn {
+    color: red !important;
+
+}
+.driver-popover-footer {
+    color:blue
+}
+.driver-popover-progress-text {
+    color:maroon
+}
+
+.driver-popover-prev-btn {
+    background-color: chocolate !important;
+    color:white !important;
+}
+.driver-popover-next-btn {
+background-color: rgb(136, 0, 255) !important;
+color:white !important;
+}
