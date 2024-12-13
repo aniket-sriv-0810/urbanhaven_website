@@ -2,7 +2,7 @@ import express from 'express';
 import {validate} from '../middleware/validator.js';
 import {checkLogInUser} from '../middleware/auth.middleware.js';
 import { upload } from '../multer.js';
-import { createNewUser, loginUser , logOutUser , checkAuthentication} from '../controller/user.controller.js';
+import { createNewUser, loginUser , logOutUser , checkAuthentication, userAccountDetails} from '../controller/user.controller.js';
 import {userSchemaValidation} from '../test/user.validator.js'
 
 const router = express.Router();
@@ -27,5 +27,7 @@ router
      .route('/auth')
      .get(checkAuthentication)
 
-     
+router
+     .route('/:id/account')
+     .get(userAccountDetails)
 export default router;

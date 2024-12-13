@@ -1,13 +1,16 @@
 import React from 'react'
 import axios from 'axios';
 import { NavLink, useNavigate } from 'react-router-dom'
-import mainLogo from '../../assets/logo_website.png';
+import { IoHomeSharp , IoBusiness} from "react-icons/io5";
+import { IoMdContact } from "react-icons/io";
 import './Navbar.css';
 import { useUser } from '../userContext/userContext';
 const Navbar = () => {
 
   const { user, setUser } = useUser();
   const navigate = useNavigate();
+
+
 
   const handleLogout = async () => {
     try {
@@ -20,34 +23,35 @@ const Navbar = () => {
   };
   return (
     <>
-    <header className="p-4 bg-blue-600 text-white flex justify-between items-center">
-    <h1>{user ? `Welcome, ${user}` : "Guest"}</h1>
+    <header className="p-4 bg-orange-500 text-white flex justify-between items-center">
+    <h1 className='text-black text-xl font-semibold' >{user ? `Welcome, ${user.toUpperCase()} to UrbanHaven !` : "Welcome to UrbanHaven !"}</h1>
     <div>
+    <ul className='flex flex-row justify-end flex-wrap gap-2'>
+    <li><NavLink to="/" ><IoHomeSharp className='text-2xl text-black font-bold'/></NavLink></li>
+    <li><NavLink to="/contact" ><IoMdContact className='text-2xl text-black font-bold' /></NavLink></li>
+    <li><NavLink to="/api/v1/about" ><IoBusiness className='text-2xl text-black font-bold' />
+    </NavLink></li>
+  
+
       {user ? (
-        <button onClick={handleLogout} className="bg-red-500 px-4 py-2 rounded">
+        <button onClick={handleLogout} className="bg-red-500 px-4 py-2 rounded-2xl">
           Logout
         </button>
       ) : (
         <>
-          <button onClick={() => navigate("/user/login")} className="bg-green-500 px-4 py-2 rounded">
+          <button onClick={() => navigate("/user/login")} className="bg-green-500 px-4 py-2 rounded-2xl ml-4">
             Login
           </button>
-          <button onClick={() => navigate("/user/register")} className="bg-blue-500 px-4 py-2 rounded">
+          <button onClick={() => navigate("/user/register")} className="bg-blue-500 px-4 py-2 rounded-2xl ml-4">
             Sign Up
           </button>
         </>
       )}
-    </div>
-  </header>
-    <div className='border-2 bg-black text-gray-200 h-14'>
-    <ul className='flex flex-row justify-end flex-wrap gap-2'>
-    <img src={mainLogo} alt="image" className='w-16 h-16 self-start '></img>
-    <li><NavLink to="/" >Home</NavLink></li>
-    <li><NavLink to="/contact" >Contact</NavLink></li>
-    <li><NavLink to="/api/v1/about" >About</NavLink></li>
-
+      
     </ul>
     </div>
+  </header>
+
     </>
   )
 }

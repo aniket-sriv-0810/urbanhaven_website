@@ -99,4 +99,30 @@ console.log("user not authenticated yet !");
    }
 } )
 
-export {createNewUser , loginUser , logOutUser , checkAuthentication};
+const userAccountDetails = asyncHandler(async( req , res) => {
+try {
+      const {id} = req.params;
+      console.log("Id=", id);
+      
+      if(!id)
+         throw new ApiError(400, null , "user id is invalid !");
+   
+      const userInfo = await User.findById(id);
+      if(!userInfo)
+         throw new ApiError(400 , null , "user doesn't exist")
+      console.log("User Info =>" , userInfo);
+   
+      return res.status(200).json(
+         new ApiResponse(200, {userInfo} , "User detailed !")
+      )
+}
+ catch (error) {
+   console.error("User data fetch error", error);
+
+}
+
+});
+
+
+
+export {createNewUser , loginUser , logOutUser , checkAuthentication , userAccountDetails};

@@ -16,6 +16,7 @@ import AdminUser from './layout/AdminUser';
 import './App.css'
 import AdminHotel from './layout/AdminHotel';
 import Delete from './pages/Delete';
+import UserAccount from './pages/UserAccount';
 
 export default function App() {
   return (
@@ -38,10 +39,15 @@ export default function App() {
       <Review/>
       </PrivateRoute>
     }/>
-
+    <Route path="/user/:id/account" element={
+      <PrivateRoute>
+      <UserAccount/>
+      </PrivateRoute>
+    }/>
     <Route path="/user/register" element={<RegisterUser/>}/>
     <Route path="/user/login" element={<LoginUser/>}/>
     <Route path="/user/logout" element={<Logout/>}/>
+
     <Route path="/admin" element={
       <PrivateRoute>
       <AdminDashboard/>
