@@ -37,23 +37,22 @@ const Home = () => {
   } ,[]);
   return (
    <>
-   <h1>This is a Home Page</h1>
  
-   <div className='flex flex-row flex-wrap justify-center gap-3'>
+   <div className='flex flex-row flex-wrap justify-center gap-9 mt-5 '>
    { loading> 0 ?
     <p>Hotels Loading...</p>
     :
     hotel.map((hotelItem) =>{
       return(
-        <div key={hotelItem._id} className='border-2 border-black rounded-lg w-max'>
+        <div key={hotelItem._id} className='border-2 border-black rounded-2xl w-80 bg-red-100  hover:bg-purple-300'>
       <ul className='text-center' >
-      <img src={hotelItem.image} alt={ hotelItem.title} className='w-60 rounded-lg m-auto' />
-      <h2>{hotelItem.title}</h2>
+      <img src={hotelItem.image} alt={ hotelItem.title} className='w-max rounded-2xl m-auto' />
+      <h2 className='text-xl pt-3 font-medium'>{hotelItem.title}</h2>
       <li>{hotelItem.description}</li>
-      <li>Rs {hotelItem.price}</li>
+      <li className='text-xl text-center pt-3 font-medium'>Rs {hotelItem.price.toLocaleString('INR')} <span className='text-gray-500 font-normal text-sm'> /-per night</span></li>
       <li> <p>{hotelItem.city} , {hotelItem.state} , {hotelItem.country} </p></li>
       <Link to={`/hotel/${hotelItem._id}`}>
-      <button className="border-gray-500 border-2">Show Hotel</button><br/><br/>
+      <button className="bg-green-600 text-white px-4 py-2 rounded-2xl ml-4 w-40">Show Hotel</button><br/><br/>
     </Link>
   
       </ul>

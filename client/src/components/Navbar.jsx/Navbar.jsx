@@ -3,6 +3,7 @@ import axios from 'axios';
 import { NavLink, useNavigate } from 'react-router-dom'
 import { IoHomeSharp , IoBusiness} from "react-icons/io5";
 import { IoMdContact } from "react-icons/io";
+
 import './Navbar.css';
 import { useUser } from '../userContext/userContext';
 const Navbar = () => {
@@ -23,7 +24,7 @@ const Navbar = () => {
   };
   return (
     <>
-    <header className="p-4 bg-orange-500 text-white flex justify-between items-center">
+    <header className="p-4 bg-green-200 text-white flex justify-between items-center">
     <h1 className='text-black text-xl font-semibold' >{user ? `Welcome, ${user.toUpperCase()} to UrbanHaven !` : "Welcome to UrbanHaven !"}</h1>
     <div>
     <ul className='flex flex-row justify-end flex-wrap gap-2'>
