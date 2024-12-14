@@ -30,14 +30,14 @@ const Navbar = () => {
     <>
     <header className="p-4 bg-green-200 text-white flex justify-between items-center">
     <h1 className='text-black text-xl font-semibold' >{user ? `Welcome, ${user.name.toUpperCase()} to UrbanHaven !` : "Welcome to UrbanHaven !"}</h1>
-    <p className='text-purple-700'>id:{user._id}</p>
+    <p className='text-purple-700'>id:{user ?user._id : "Not Logged in yet"}</p>
     <div>
     <ul className='flex flex-row justify-end flex-wrap gap-2'>
     <li><NavLink to="/" ><IoHomeSharp className='text-2xl text-black font-bold'/></NavLink></li>
     <li><NavLink to="/contact" ><FaMapMarkerAlt  className='text-2xl text-black font-bold'/></NavLink></li>
     <li><NavLink to="/api/v1/about" ><IoBusiness className='text-2xl text-black font-bold' />
     </NavLink></li>
-    <li><NavLink to={ `/user/${user._id}/account`} ><FaUserCircle className='text-2xl text-black font-bold' /></NavLink></li>
+    <li><NavLink to={ user ?`/user/${user._id}/account` : '/user/login'} ><FaUserCircle className='text-2xl text-black font-bold' /></NavLink></li>
   
 
       {user ? (

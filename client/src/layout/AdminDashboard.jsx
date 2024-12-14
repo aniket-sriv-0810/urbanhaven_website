@@ -69,7 +69,7 @@ const AdminDashboard = () => {
         id="welcome-message"
         className="text-3xl text-black text-center font-bold"
       >
-        Hello Admin @{user ? ` ${user.toUpperCase()} !` : "!"}
+        Hello Admin @{user ? ` ${user.name.toUpperCase()} !` : "!"}
       </h1>
       <br />
       <br />
