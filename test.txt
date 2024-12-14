@@ -1,0 +1,2 @@
+   /* <h1 className='text-black text-xl font-semibold' >{user ? `Welcome, ${user.toUpperCase()} to UrbanHaven !` : "Welcome to UrbanHaven !"}</h1>
+    */

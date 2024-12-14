@@ -3,6 +3,7 @@ import { ApiError } from '../utils/ApiError.js';
 import { ApiResponse } from '../utils/ApiResponse.js';
 import {asyncHandler} from '../utils/asyncHandler.js';
 import { uploadOnCloudinary } from '../utils/cloudinary.js';
+import mongoose from 'mongoose';
 import passport from 'passport';
 
 
@@ -38,7 +39,6 @@ const createNewUser = asyncHandler(async(req , res) => {
 const loginUser = asyncHandler(async (req, res) => {
    try {
       const {username} = req.body
-      const {user} = req;
     console.log("body => " , req.body);
     console.log("Logged in successfully !");
 
@@ -50,8 +50,9 @@ const loginUser = asyncHandler(async (req, res) => {
       if(err){
          throw new ApiError(500, err, "Login failed!");
    }
+
       return res.status(200).json(
-         new ApiResponse(200 , {loggedInUser :{name : loggedInUser.name , username : loggedInUser.username}},  "Successfully logged in the User !")
+         new ApiResponse(200 , {loggedInUser :{_id: loggedInUser._id,name : loggedInUser.name , username : loggedInUser.username, email: loggedInUser.email, }},  "Successfully logged in the User !")
       );
    })
     
@@ -86,26 +87,41 @@ const logOutUser = asyncHandler(async (req , res , next) => {
 
 // Checks the authentication of the user - login or not
 const checkAuthentication = asyncHandler( async ( req , res ) => {
-   if(req.isAuthenticated()){
-      console.log("User is authenticated !");
-      return res.status(200).json(
-         new ApiResponse(200 , {isAuthenticated : true , user : {name : req.user.name}})
-      )
-   }
-   else{
-console.log("user not authenticated yet !");
-
-      res.status(200).json(new ApiResponse(200 , {isAuthenticated : false}))
-   }
+ 
+  try {
+    if(req.isAuthenticated()){
+      console.log("user is authenticated and data" , req.user);
+      
+       console.log("User is authenticated !");
+       return res.status(200).json(
+          new ApiResponse(200 , {isAuthenticated : true , user: {
+            _id: req.user._id,
+            name: req.user.name,
+            email: req.user.email,
+            username: req.user.username,
+          },
+         })
+       )
+    }
+    else{
+    console.log("user not authenticated yet !");
+ 
+       res.status(200).json(new ApiResponse(200 , {isAuthenticated : false}))
+    }
+  } catch (error) {
+   console.log("Error in User Authentication !", error);
+   
+  }
 } )
 
 const userAccountDetails = asyncHandler(async( req , res) => {
 try {
       const {id} = req.params;
       console.log("Id=", id);
-      
-      if(!id)
-         throw new ApiError(400, null , "user id is invalid !");
+      if (!mongoose.Types.ObjectId.isValid(id)) {
+         throw new ApiError(400, null, "User ID is invalid!");
+       }
+     
    
       const userInfo = await User.findById(id);
       if(!userInfo)

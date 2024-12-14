@@ -31,6 +31,7 @@ export const UserProvider = ({ children }) => {
     };
 
     if (!user) {
+      console.log("User api changed =>" , user);
       // Fetch only if user is not already in localStorage
       fetchAuthStatus();
     }
@@ -39,6 +40,10 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     // Sync user state with localStorage whenever it changes
     if (user) {
+      console.log("User api changed =>" , user._id);
+      console.log("User api changed =>" , user.name);
+      console.log("User api changed =>" , user.username);
+      
       localStorage.setItem("user", JSON.stringify(user));
     } else {
       localStorage.removeItem("user");
