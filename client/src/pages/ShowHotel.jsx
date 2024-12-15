@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios';
 import Review from '../components/Review/Review';
+import BookingCalendar from '../components/Calender/BookingCalender';
 
 const ShowHotel = () => {
 const {id} = useParams();
@@ -49,6 +50,7 @@ useEffect( () => {
   <li><p>{showMyHotel.city} , {showMyHotel.state} , {showMyHotel.country} </p></li>
   <br/>
 <br/><br/>
+<BookingCalendar/>
 <Review/>
 <div className='flex flex-row flex-wrap justify-center gap-3'>
    
