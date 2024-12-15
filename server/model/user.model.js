@@ -7,25 +7,31 @@ const userSchema = new Schema ({
     name :{
         type:String,
         trim:true,
-        required:[true,"Name is required"],
+        required: function () {
+            return !this.googleId; // Only required if not using Google
+        },
     },
     username:{
         type:String,
         trim:true,
-        required:[true, "Username is required"],
+        required: function () {
+            return !this.googleId; // Only required if not using Google
+        },
         unique:[true, "Username is must be unique !"],
     },
     phone :{
         type:Number,
         unique:[true, "Phone is must be unique !"],
-        required:[true, "Phone is required"],
+        required: function () {
+            return !this.googleId; // Required only if not using Google login
+        },
         validate: {
             validator: function (v) {
-                return /^[0-9]{10}$/.test(v); // Validate for a 10-digit phone number
+                if (!v && this.googleId) return true; // Skip validation if using Google login
+                return /^[0-9]{10}$/.test(v); // Validate for a 10-digit phone number otherwise
             },
-            message: "Phone number must be 10 digits",
-        },
     },
+},
     email:{
         type:String,
         trim:true,
@@ -41,6 +47,9 @@ const userSchema = new Schema ({
     image:{
         type:String,
         default:"https://e7.pngegg.com/pngimages/81/570/png-clipart-profile-logo-computer-icons-user-user-blue-heroes-thumbnail.png",
+    },
+    googleId: {
+     type : String
     },
     role: {
         type: String,

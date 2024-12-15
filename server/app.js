@@ -2,9 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
-import passport from 'passport';
-import localStrategy from 'passport-local';
-import { User } from './model/user.model.js';
+import passport from './middleware/passport.middleware.js';
 
 
 
@@ -39,22 +37,7 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(new localStrategy(User.authenticate()));
-// Serialize only the user ID into the session
-passport.serializeUser((user, done) => {
-    done(null, user._id); // Store only the user ID in the session
-  });
-  
-  // Deserialize the user ID into the full user object
-  passport.deserializeUser(async (id, done) => {
-    try {
-      const user = await User.findById(id).select("_id name email username");
-      done(null, user);
-    } catch (error) {
-      done(error, null);
-    }
-  });
-  
+
 
 // Routes
 import hotelRouter from './router/hotel.router.js';

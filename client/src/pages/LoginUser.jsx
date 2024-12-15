@@ -4,7 +4,9 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useUser } from "../components/userContext/userContext";
 import { Bounce, ToastContainer, toast } from "react-toastify";
+import googlBtn from '../assets/google.png';
 import "react-toastify/dist/ReactToastify.css";
+
 const LoginUser = () => {
   const navigate = useNavigate();
   const location = useLocation(); //captures the current location
@@ -65,6 +67,16 @@ const LoginUser = () => {
     }
   };
 
+  const handleGoogleLogin = async () => {
+    try {
+      // Redirect to Google OAuth
+      window.location.href = "http://localhost:8000/api/v1/user/auth/google";
+    } catch (error) {
+      console.error("Google login failed:", error);
+    }
+  };
+  
+
   return (
     <>
       <h1>This is a User Login Page</h1>
@@ -100,6 +112,8 @@ const LoginUser = () => {
           Login User
         </button>
       </form>
+      <button onClick={handleGoogleLogin}  className="flex items-center justify-center w-full max-w-sm px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+      > <img src={googlBtn} alt="Google Btn" className="w-5 h-5 mr-2"/>Continue with Google</button>
       <ToastContainer
         position="top-right"
         autoClose={2000}

@@ -90,6 +90,7 @@ const checkAuthentication = asyncHandler( async ( req , res ) => {
  
   try {
     if(req.isAuthenticated()){
+
       console.log("user is authenticated and data" , req.user);
       
        console.log("User is authenticated !");

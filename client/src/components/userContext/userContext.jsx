@@ -30,11 +30,13 @@ export const UserProvider = ({ children }) => {
       }
     };
 
-    if (!user) {
+
       console.log("User api changed =>" , user);
       // Fetch only if user is not already in localStorage
-      fetchAuthStatus();
-    }
+      if(!user){
+        fetchAuthStatus();
+      }
+
   }, []);
 
   useEffect(() => {

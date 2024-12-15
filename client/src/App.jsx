@@ -19,8 +19,17 @@ import Delete from './pages/Delete';
 import UserAccount from './pages/UserAccount';
 import UserAccountEdit from './pages/UserAccountEdit';
 import DeleteUser from './pages/DeleteUser';
-
+import { useUser } from './components/userContext/userContext';
+import { useEffect } from 'react';
 export default function App() {
+  const { setUser } = useUser();
+
+  useEffect(() => {
+    const savedUser = localStorage.getItem("user");
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+  }, [setUser]);
   return (
     <>
 
