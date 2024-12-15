@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -40,7 +40,8 @@ const Review = () => {
           comment: "",
         });
       }
-      navigate(`/hotel/${id}`);
+    navigate(`/hotel/${id}`)
+     
     } catch (error) {
       console.error("Failed to create review", error);
     }
