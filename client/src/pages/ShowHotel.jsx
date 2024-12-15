@@ -42,12 +42,14 @@ useEffect( () => {
   return (
   <>
   <h1>This is a Show Page</h1>
-  <div>
-  <img src={showMyHotel.image} alt={ showMyHotel.title} className='w-60 rounded-lg m-2' />
-  <li>{showMyHotel.title}</li>
+  <div className='flex flex-col border-2 border-black w-max m-auto text-center '>
+  <ul className='text-center '>
+  <img src={showMyHotel.image} alt={ showMyHotel.title} className='w-[70%] rounded-2xl mt-4 m-auto p-2 border-3 border-black' />
+  <li className='font-semibold text-2xl uppercase'>{showMyHotel.title}</li>
   <li>{showMyHotel.description}</li>
   <li>Rs {showMyHotel.price}</li>
   <li><p>{showMyHotel.city} , {showMyHotel.state} , {showMyHotel.country} </p></li>
+  </ul>
   <br/>
 <br/><br/>
 <BookingCalendar/>
