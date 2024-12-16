@@ -49,7 +49,7 @@ const Home = () => {
       <img src={hotelItem.image} alt={ hotelItem.title} className='w-max rounded-2xl m-auto' />
       <h2 className='text-xl pt-3 font-medium'>{hotelItem.title}</h2>
       <li>{hotelItem.description}</li>
-      <li className='text-xl text-center pt-3 font-medium'>Rs {hotelItem.price.toLocaleString('INR')} <span className='text-gray-500 font-normal text-sm'> /-per night</span></li>
+      <li className='text-xl text-center pt-3 font-medium'>Rs {hotelItem.price.toLocaleString('INR')} <span className='text-gray-500 font-normal text-sm'> /-per night <br></br>+ Rs {(0.18*(hotelItem.price)).toLocaleString('INR')} taxes</span> </li>
       <li> <p>{hotelItem.city} , {hotelItem.state} , {hotelItem.country} </p></li>
       <Link to={`/hotel/${hotelItem._id}`}>
       <button className="bg-green-600 text-white px-4 py-2 rounded-2xl ml-4 w-40">Show Hotel</button><br/><br/>
