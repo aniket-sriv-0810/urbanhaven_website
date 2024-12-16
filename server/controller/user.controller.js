@@ -52,7 +52,7 @@ const loginUser = asyncHandler(async (req, res) => {
    }
 
       return res.status(200).json(
-         new ApiResponse(200 , {loggedInUser :{_id: loggedInUser._id,name : loggedInUser.name , username : loggedInUser.username, email: loggedInUser.email, }},  "Successfully logged in the User !")
+         new ApiResponse(200 , {loggedInUser :{_id: loggedInUser._id,name : loggedInUser.name , username : loggedInUser.username, email: loggedInUser.email, image: loggedInUser.image }},  "Successfully logged in the User !")
       );
    })
     
@@ -100,6 +100,7 @@ const checkAuthentication = asyncHandler( async ( req , res ) => {
             name: req.user.name,
             email: req.user.email,
             username: req.user.username,
+            image : req.user.image,
           },
          })
        )

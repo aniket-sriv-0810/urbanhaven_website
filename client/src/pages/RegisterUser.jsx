@@ -3,6 +3,7 @@ import React from 'react'
 import { useState  } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {useUser} from '../components/userContext/userContext';
+import './user/RegisterUser.css'
 const RegisterUser = () => {
   const {setUser} = useUser();
     const navigate = useNavigate();
@@ -63,6 +64,7 @@ const RegisterUser = () => {
  
   return (
     <>
+   
     <h1>This is a User Registration Page</h1>
     <form
       className="border-gray-500 border-2 w-max m-auto p-5 rounded-lg"

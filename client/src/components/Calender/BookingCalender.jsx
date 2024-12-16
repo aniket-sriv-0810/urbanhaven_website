@@ -2,82 +2,113 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { differenceInDays } from 'date-fns';
+
 const BookingCalender = ({ handleBooking }) => {
   const [checkInDate, setCheckInDate] = useState(null);
   const [checkOutDate, setCheckOutDate] = useState(null);
-  const [checkInMessage, setCheckInMessage] = useState('Select your check-in date');
-  const [checkOutMessage, setCheckOutMessage] = useState('Select your check-out date');
-  const price = 1500;
-  // Function to calculate the number of nights
-  const calculateNights = () => {
-    if (checkInDate && checkOutDate) {
-      return differenceInDays(checkOutDate, checkInDate); // Calculate difference in days
+  const [rooms, setRooms] = useState(1);
+  const [guests, setGuests] = useState([{ adults: 1, infants: 0 }]);
+
+  const calculateNights = () =>
+    checkInDate && checkOutDate
+      ? differenceInDays(checkOutDate, checkInDate)
+      : 0;
+
+  const validateGuests = () =>
+    guests.every(
+      (room) =>
+        room.adults <= 3 && room.adults > 0 && room.infants >= 0 && room.infants <= 2
+    );
+
+  const handleAddRoom = () => {
+    if (rooms < 4) {
+      setRooms((prev) => prev + 1);
+      setGuests((prev) => [...prev, { adults: 1, infants: 0 }]);
     }
-    return 0;
   };
 
   const handleSubmit = () => {
-    if (checkInDate && checkOutDate) {
-      const nights = calculateNights();
-      handleBooking(checkInDate, checkOutDate, nights); // Pass nights along with dates
-    } else {
+    if (!checkInDate || !checkOutDate) {
       alert('Please select both check-in and check-out dates.');
+      return;
     }
+    if (!validateGuests()) {
+      alert('Each room must have up to 3 adults and 2 infants only.');
+      return;
+    }
+    handleBooking({
+      checkInDate,
+      checkOutDate,
+      rooms,
+      guests,
+      nights: calculateNights(),
+    });
   };
 
   return (
     <div className="p-6">
       <h2 className="text-xl font-bold">Book Your Stay</h2>
-      <div className="mt-4">
-        <label className="block">Check-In Date:</label>
+      <div>
+        <label>Check-In Date:</label>
         <DatePicker
           selected={checkInDate}
-          onChange={(date) => {
-            setCheckInDate(date);
-            setCheckInMessage(date ? '' : 'Select your check-in date');
-          }}
-          placeholderText={checkInMessage}
-          selectsStart
-          startDate={checkInDate}
-          endDate={checkOutDate}
+          onChange={setCheckInDate}
           minDate={new Date()}
-          className="border p-2"
+          placeholderText="Select check-in date"
         />
       </div>
-      <div className="mt-4">
-        <label className="block">Check-Out Date:</label>
+      <div>
+        <label>Check-Out Date:</label>
         <DatePicker
           selected={checkOutDate}
-          onChange={(date) => {
-            setCheckOutDate(date);
-            setCheckOutMessage(date ? '' : 'Select your check-out date');
-          }}
-          placeholderText={checkOutMessage}
-          selectsEnd
-          startDate={checkInDate}
-          endDate={checkOutDate}
+          onChange={setCheckOutDate}
           minDate={checkInDate || new Date()}
-          className="border p-2"
+          placeholderText="Select check-out date"
         />
       </div>
-      <div className="mt-4">
-        {checkInDate && checkOutDate && (
-          <p className="text-green-600">
-            You have selected <strong>{calculateNights()}</strong> night(s).
-            <br/>
-            Your Total = Rs {price*calculateNights()};
-          </p>
-        )}
+      <div>
+        <label>Rooms:</label>
+        <button onClick={handleAddRoom} disabled={rooms >= 4}>
+          Add Room
+        </button>
+        <p>Total Rooms: {rooms}</p>
       </div>
-      <button
-        onClick={handleSubmit}
-        className="mt-6 bg-blue-500 text-white p-2 rounded"
-      >
-        Search Hotels
-      </button>
+      {guests.map((room, index) => (
+        <div key={index}>
+          <p>Room {index + 1}</p>
+          <label>Adults:</label>
+          <input
+            type="number"
+            value={room.adults}
+            min="1"
+            max="3"
+            onChange={(e) =>
+              setGuests((prev) =>
+                prev.map((r, i) =>
+                  i === index ? { ...r, adults: parseInt(e.target.value) } : r
+                )
+              )
+            }
+          />
+          <label>Infants:</label>
+          <input
+            type="number"
+            value={room.infants}
+            min="0"
+            max="2"
+            onChange={(e) =>
+              setGuests((prev) =>
+                prev.map((r, i) =>
+                  i === index ? { ...r, infants: parseInt(e.target.value) } : r
+                )
+              )
+            }
+          />
+        </div>
+      ))}
+      <button onClick={handleSubmit}>Book Now</button>
     </div>
   );
 };
-
 
 export default BookingCalender;

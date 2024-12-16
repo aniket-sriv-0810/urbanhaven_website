@@ -37,7 +37,7 @@ const Navbar = () => {
     <li><NavLink to="/contact" ><FaMapMarkerAlt  className='text-2xl text-black font-bold'/></NavLink></li>
     <li><NavLink to="/api/v1/about" ><IoBusiness className='text-2xl text-black font-bold' />
     </NavLink></li>
-    <li><NavLink to={ user ?`/user/${user._id}/account` : '/user/login'} ><FaUserCircle className='text-2xl text-black font-bold' /></NavLink></li>
+    <li><NavLink to={ user ?`/user/${user._id}/account` : '/user/login'} >{user ? <img src={user.image} alt={user.name} className='w-10 -mt-2 rounded-full'/>  : <FaUserCircle className='text-2xl text-black font-bold' />}</NavLink></li>
   
 
       {user ? (
