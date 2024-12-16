@@ -24,7 +24,8 @@ const expressSessionOption = {
     cookie:{
         httpOnly: true,
         maxAge :24*60*60*1000 ,// 1 day expiry time,
-        secure : false
+        secure : false,
+        samSite:'none',
     }
 };
 

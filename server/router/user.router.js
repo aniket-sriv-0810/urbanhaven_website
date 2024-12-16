@@ -29,24 +29,6 @@ router
      .route('/auth')
      .get(checkAuthentication)
 
-// Google Authentication Route
-router
-     .route('/auth/google')
-     .get(passport.authenticate('google',{scope :['profile' ,'email']}));
-
-// Google Callback Route
-
-router
-     .route('/auth/google/callback')
-     .get(passport.authenticate('google', { failureRedirect: '/login' }),
-     (req, res) => {
-          const user = req.user; // Google user info populated by passport
-     // If the user is authenticated, handle them here
-            // Optionally, you can store the user in session or perform any actions
-            
-            // Redirect to the frontend after login
-            return res.redirect(`http://localhost:5173/?user=${encodeURIComponent(JSON.stringify(user))}`);
-     })
 // User Account Details
 router
      .route('/:id/account')

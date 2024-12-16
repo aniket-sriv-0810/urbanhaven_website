@@ -7,10 +7,10 @@ import { UserProvider} from './components/userContext/userContext.jsx'
 
 createRoot(document.getElementById('root')).render(
 
-  <UserProvider>
   <BrowserRouter>
+  <UserProvider>
     <App />
+    </UserProvider>
 </BrowserRouter>
-</UserProvider>
 
 )

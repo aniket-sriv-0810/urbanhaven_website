@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
-
 // Create context
 const UserContext = createContext();
 
@@ -11,33 +10,32 @@ export const UserProvider = ({ children }) => {
     return storedUser ? JSON.parse(storedUser) : null;
   });
 
-  useEffect(() => {
-    const fetchAuthStatus = async () => {
-      try {
-        // Fetch authentication status from the server
-        const response = await axios.get("http://localhost:8000/api/v1/user/auth", {
-          withCredentials: true,
-        });
+  const fetchAuthStatus = async () => {
+    try {
+      // Fetch authentication status from the server
+      const response = await axios.get("http://localhost:8000/api/v1/user/auth", {
+        withCredentials: true,
+      });
 
-        if (response.data.isAuthenticated) {
-          setUser(response.data.user);
-        } else {
-          setUser(null);
-        }
-      } catch (error) {
-        console.error("Error fetching authentication status:", error);
-        setUser(null); // Handle errors by clearing user data
+      if (response.data.isAuthenticated) {
+        setUser(response.data.user);
+      } else {
+        setUser(null);
       }
-    };
+    } catch (error) {
+      console.error("Error fetching authentication status:", error);
+      setUser(null); // Handle errors by clearing user data
+    }
+  };
 
 
-      console.log("User api changed =>" , user);
-      // Fetch only if user is not already in localStorage
-      if(!user){
+  useEffect(() => {
+      // Fetch only if user is not already in local state
+      if (!user) {
         fetchAuthStatus();
       }
 
-  }, []);
+  }, [ user]);
 
   useEffect(() => {
     // Sync user state with localStorage whenever it changes
