@@ -28,6 +28,11 @@ const hotelSchema = new Schema({
         trim:true,
         required:[true , "City is required !"],
     },
+    pincode:{
+        type:Number,
+        min:[6," Enter Valid Pincode"],
+        required:[true,"Pincode is required !"],
+    },
     state:{
         type:String,
         trim:true,
@@ -38,16 +43,36 @@ const hotelSchema = new Schema({
         trim:true,
         required:[true , "Country is required !"],
     },
+    location: {
+        type: {
+            type: String,
+            enum: ["Point"], // GeoJSON format
+            required: true,
+        },
+        coordinates: {
+            type: [Number], // [longitude, latitude]
+            required: true,
+        },
+    },
     review:[
     {
         type:Schema.Types.ObjectId,
         ref:"Review"
+    },
+],
+    userOwner:[
+    {
+        type: Schema.Types.ObjectId,
+        ref:"User"
     }
 ]
 },
 {
     timestamps:true
 });
+
+// Index for GeoJSON location for geospatial queries
+hotelSchema.index({ location: "2dsphere" });
 
 // Middleware to delete associated reviews
 hotelSchema.pre("findOneAndDelete", async function (next) {
