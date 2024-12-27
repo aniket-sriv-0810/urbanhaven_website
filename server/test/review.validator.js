@@ -1,17 +1,18 @@
 import Joi from "joi";
 
 const reviewSchemaValidation = Joi.object({
-    name: Joi.string().required().messages({
-        "string.empty": "User ID is required for review.",
+    name: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required().messages({
+        "string.pattern.base": "Invalid User ID format.",
+        "any.required": "User details are required.",
     }),
     rating: Joi.number().min(1).max(5).required().messages({
-        "number.min": "Review rating must be at least 1.",
-        "number.max": "Review rating cannot exceed 5.",
-        "any.required": "Review rating is required.",
+        "number.min": "Rating must be at least 1.",
+        "number.max": "Rating cannot exceed 5.",
+        "any.required": "Rating is required.",
     }),
-    comment: Joi.string().trim().optional().messages({
-        "string.empty": "Comment cannot be empty.",
+    comment: Joi.string().trim().max(200).optional().messages({
+        "string.max": "Comment cannot exceed 200 characters.",
     }),
 });
 
-export {reviewSchemaValidation} ;
+export { reviewSchemaValidation };
