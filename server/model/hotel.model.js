@@ -47,11 +47,17 @@ const hotelSchema = new Schema({
         type: {
             type: String,
             enum: ["Point"], // GeoJSON format
-            required: true,
+            required: [true, "Location Point is required !"],
         },
         coordinates: {
             type: [Number], // [longitude, latitude]
-            required: true,
+        validate: {
+            validator: function (v) {
+                return v.length === 2; // Ensure exactly two elements
+            },
+            message: "Coordinates must contain longitude and latitude!",
+        },
+        required: [true, "Location Coordinates are required!"],
         },
     },
     review:[
@@ -63,7 +69,8 @@ const hotelSchema = new Schema({
     userOwner:[
     {
         type: Schema.Types.ObjectId,
-        ref:"User"
+        ref:"User",
+        required: [true,"Owner details are required !"]
     }
 ]
 },

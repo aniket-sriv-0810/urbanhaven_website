@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 const reviewSchema = new Schema ({
     name:{
-        type:String,
-        trim:true,
-        required:[true,"Name is required !"]
+        type:Schema.Types.ObjectId,
+        ref:"User",
+        required:[true,"User details are required !"]
     },
     rating:{
         type:Number,
