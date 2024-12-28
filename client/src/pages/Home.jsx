@@ -81,7 +81,7 @@ const Home = () => {
             const priceDisplay = `${currencySymbols[selectedCurrency]} ${convertedPrice}`;
             const taxDisplay = `${currencySymbols[selectedCurrency]} ${convertedTax}`;
       return(
-        <div key={hotelItem._id} className='border-2 border-black rounded-2xl w-80 bg-red-100  hover:bg-purple-300'>
+        <div key={hotelItem._id} className='border-2 border-black rounded-2xl w-80 h-max bg-red-100  hover:bg-purple-300'>
       <ul className='text-center' >
       <div className="relative">
       <div className='absolute top-2 left-2 z-20'>
@@ -105,10 +105,14 @@ const Home = () => {
         + {taxDisplay} taxes
       </span>
     </li>
+    <div className='flex flex-row justify-around mt-3'>
       <Link to={`/hotel/${hotelItem._id}`}>
-      <button className="bg-green-600 text-white px-4 py-2 rounded-2xl ml-4 w-40">Show Hotel</button><br/><br/>
+      <button className="bg-green-600 text-white px-4 py-2 rounded-2xl ml-4 w-28">View</button><br/><br/>
     </Link>
-  
+      <Link to={`/hotel/${hotelItem._id}`}>
+      <button className="bg-red-600 text-white px-4 py-2 rounded-2xl ml-4 w-28">Book Now</button><br/><br/>
+    </Link>
+    </div>
       </ul>
       </div>
 
