@@ -2,9 +2,10 @@ import express from 'express';
 import { validate } from '../middleware/validator.js';
 import { upload } from '../multer.js';
 import { hotelSchemaValidation } from '../test/hotel.validator.js';
-import { adminHotelData, adminUserData } from '../controller/admin.controller.js';
+import { adminHotelData, adminUserData , adminBookingData } from '../controller/admin.controller.js';
 import {newHotelCreation ,  editMyHotel ,  deleteMyHotel} from '../controller/hotel.controller.js';
 import { isLoggedIn } from '../middleware/authentication.js';
+
 const router = express.Router();
 
 
@@ -17,6 +18,11 @@ router
 router
      .route('/hotels')
      .get( isLoggedIn,adminHotelData)
+
+// All Booking Details Route!
+router
+     .route('/bookings')
+     .get( isLoggedIn,adminBookingData)
 
 // All Contact Queries detailed Route !
 router
@@ -37,4 +43,6 @@ router
 router
      .route('/hotel/:id/delete')
      .delete( isLoggedIn ,deleteMyHotel)
+
+
 export default router;
