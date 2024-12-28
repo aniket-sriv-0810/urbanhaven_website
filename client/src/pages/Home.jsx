@@ -4,6 +4,7 @@ import { Link  } from 'react-router-dom';
 import Banner from '../assets/banner.png';
 import {  Bounce, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import LikeBtn from '../components/LikeBtn/LikeBtn';
 const Home = () => {
   const [loading , setLoading] = useState(true);
   const [hotel , setHotel] = useState([])
@@ -47,7 +48,12 @@ const Home = () => {
       return(
         <div key={hotelItem._id} className='border-2 border-black rounded-2xl w-80 bg-red-100  hover:bg-purple-300'>
       <ul className='text-center' >
-      <img src={hotelItem.image} alt={ hotelItem.title} className='w-max rounded-2xl m-auto' />
+      <div className="relative">
+      <p className="absolute top-2 right-2 z-20">
+        <LikeBtn />
+      </p>
+      <img src={hotelItem.image} alt={hotelItem.title} className="z-0 rounded-2xl" />
+    </div>
       <h2 className='text-xl pt-3 font-medium'>{hotelItem.title}</h2>
       <li>{hotelItem.description}</li>
       <li> <p>{hotelItem.city} , {hotelItem.state} , {hotelItem.country} </p></li>
