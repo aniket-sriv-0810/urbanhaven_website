@@ -5,6 +5,7 @@ import Banner from '../assets/banner.png';
 import {  Bounce, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LikeBtn from '../components/LikeBtn/LikeBtn';
+import ShareBtn from "../components/ShareBtn/ShareBtn";
 const Home = () => {
   const [loading , setLoading] = useState(true);
   const [hotel , setHotel] = useState([])
@@ -49,7 +50,12 @@ const Home = () => {
         <div key={hotelItem._id} className='border-2 border-black rounded-2xl w-80 bg-red-100  hover:bg-purple-300'>
       <ul className='text-center' >
       <div className="relative">
-      <p className="absolute top-2 right-2 z-20">
+      <p className='absolute top-2 left-2 z-20'>
+      <ShareBtn 
+      hotelName={hotelItem.title} 
+      hotelLink={`https://localhost:5173/hotel/${hotelItem.id}`} />
+      </p>
+      <p className="absolute  right-2 z-20">
         <LikeBtn />
       </p>
       <img src={hotelItem.image} alt={hotelItem.title} className="z-0 rounded-2xl" />

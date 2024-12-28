@@ -10,7 +10,7 @@ const LikeBtn = () => {
   return (
    <>
    <p onClick={checkLike}>
-{ isLiked ? <FaHeart className='text-red-600 w-7 h-10'/> :    <FaRegHeart  className="w-7 h-10"/>}
+{ isLiked ? <FaHeart className='text-red-600 w-7 h-10 '/> :    <FaRegHeart  className="w-7 h-10"/>}
 </p>
    </>
   )
