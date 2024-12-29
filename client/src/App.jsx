@@ -21,6 +21,8 @@ import UserAccountEdit from './pages/UserAccountEdit';
 import DeleteUser from './pages/DeleteUser';
 import { useUser } from './components/userContext/userContext';
 import { useEffect } from 'react';
+import Booking from './pages/Booking';
+import AdminBooking from './layout/AdminBooking';
 export default function App() {
   const { setUser } = useUser();
 
@@ -50,6 +52,11 @@ export default function App() {
       <Review/>
       </PrivateRoute>
     }/>
+    <Route path="/hotel/:id/booking" element={
+      <PrivateRoute>
+      <Booking/>
+      </PrivateRoute>
+    }/>
 
     <Route path="/user/:id/account" element={
       <PrivateRoute>
@@ -70,6 +77,7 @@ export default function App() {
     }>
     <Route path="users" element={<AdminUser/>}/>
     <Route path="hotels" element={<AdminHotel/>}/>
+    <Route path="bookings" element={<AdminBooking/>}/>
     <Route path="new-hotel" element={ <Create/>}/>
     <Route path="hotel-details/:id/edit" element={ <Edit/>}/>
     <Route path="hotel/:id/delete" element={ <Delete/>}/>
