@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import axios from 'axios';
 import Review from '../components/Review/Review';
 import BookingCalendar from '../components/Calender/BookingCalender';
+import MapLocation from '../components/MapLocation/MapLocation';
 
 const ShowHotel = () => {
 const {id} = useParams();
@@ -53,9 +54,11 @@ useEffect( () => {
   <br/>
 <br/><br/>
 <BookingCalendar/>
-<Review/>
+<MapLocation hotel={showMyHotel} />
+
+<br></br>
 <div className='flex flex-row flex-wrap justify-center gap-3'>
-   
+<Review/>
 { reviews.map((reviewsItem) =>(
 
         <div key={reviewsItem._id} className='border-2 border-black rounded-lg w-max'>

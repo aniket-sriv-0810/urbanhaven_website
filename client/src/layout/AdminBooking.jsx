@@ -20,7 +20,7 @@ const AdminBooking = () => {
     } finally {
       setTimeout(() => {
         setLoading(false); // Stop loading after 2 seconds
-      }, 3000); // 3 seconds delay
+      }, 2000); // 2 seconds delay
     }
   };
 

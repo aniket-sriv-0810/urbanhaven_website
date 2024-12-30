@@ -95,7 +95,6 @@ const Home = () => {
       <img src={hotelItem.image} alt={hotelItem.title} className="z-0 rounded-2xl" />
     </div>
       <h2 className='text-xl pt-3 font-medium'>{hotelItem.title}</h2>
-      <li>{hotelItem.description}</li>
       <li> <p>{hotelItem.city} , {hotelItem.state} , {hotelItem.country} </p></li>
       <li className="text-xl text-center pt-3 font-medium">
       {/* Display price and tax with correct currency */}
