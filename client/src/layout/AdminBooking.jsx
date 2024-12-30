@@ -40,29 +40,51 @@ const AdminBooking = () => {
         />
       ) : adminBookingData && adminBookingData.length > 0 ? (
         <table className="min-w-full table-auto border-collapse border border-gray-300 shadow-md rounded-lg">
-          <thead className="bg-gray-200 text-center">
-            <tr>
-              <th className="border border-gray-300 px-4 py-2">Booked By</th>
-              <th className="border border-gray-300 px-4 py-2">Hotel Details</th>
-              <th className="border border-gray-300 px-4 py-2">Check-in-Date</th>
-              <th className="border border-gray-300 px-4 py-2">Check-out-Date</th>
-              <th className="border border-gray-300 px-4 py-2">Payment Mode</th>
-              <th className="border border-gray-300 px-4 py-2">Payment Status</th>
+        <thead className="bg-gray-200 text-center">
+          <tr>
+            <th colSpan="3" className="border border-gray-300 px-4 py-2">Booked By</th>
+            <th colSpan="3" className="border border-gray-300 px-4 py-2">Hotel Details</th>
+            <th rowSpan="2" className="border border-gray-300 px-4 py-2">Check-in Date</th>
+            <th rowSpan="2" className="border border-gray-300 px-4 py-2">Check-out Date</th>
+            <th rowSpan="2" className="border border-gray-300 px-4 py-2">Payment Mode</th>
+            <th rowSpan="2" className="border border-gray-300 px-4 py-2">Payment Status</th>
+          </tr>
+          <tr>
+            <th className="border border-gray-300 px-4 py-2">Name</th>
+            <th className="border border-gray-300 px-4 py-2">Phone</th>
+            <th className="border border-gray-300 px-4 py-2">Email</th>
+            <th className="border border-gray-300 px-4 py-2">Image</th>
+            <th className="border border-gray-300 px-4 py-2">Title</th>
+            <th className="border border-gray-300 px-4 py-2">City</th>
+          </tr>
+        </thead>
+        <tbody>
+          {adminBookingData.map((bookingInfo) => (
+            <tr key={bookingInfo._id} className="hover:bg-gray-100">
+              {/* Booked By */}
+              <td className="border border-gray-300 px-4 py-2 text-center">{bookingInfo.userDetails?.name || "N/A"}</td>
+              <td className="border border-gray-300 px-4 py-2 text-center">{bookingInfo.userDetails?.phone || "N/A"}</td>
+              <td className="border border-gray-300 px-4 py-2 text-center">{bookingInfo.userDetails?.email || "N/A"}</td>
+              {/* Hotel Details */}
+              <td className="border border-gray-300 px-4 py-2 text-center">
+                <img
+                  src={bookingInfo.hotelDetails?.image}
+                  alt={bookingInfo.hotelDetails?.title || "Hotel Image"}
+                  className="w-16 h-16 object-cover m-auto"
+                />
+              </td>
+              <td className="border border-gray-300 px-4 py-2 text-center">{bookingInfo.hotelDetails?.title || "N/A"}</td>
+              <td className="border border-gray-300 px-4 py-2 text-center">{bookingInfo.hotelDetails?.city || "N/A"}</td>
+              {/* Other Details */}
+              <td className="border border-gray-300 px-4 py-2 text-center">{new Date(bookingInfo.checkInDate).toLocaleDateString()}</td>
+              <td className="border border-gray-300 px-4 py-2 text-center">{new Date(bookingInfo.checkOutDate).toLocaleDateString()}</td>
+              <td className="border border-gray-300 px-4 py-2 text-center">{bookingInfo.paymentDetails}</td>
+              <td className="border border-gray-300 px-4 py-2 text-center">{bookingInfo.status}</td>
             </tr>
-          </thead>
-          <tbody>
-            {adminBookingData.map((bookingInfo) => (
-              <tr key={bookingInfo._id} className="hover:bg-gray-100">
-                <td className="border border-gray-300 px-4 py-2 text-center">{bookingInfo.userDetails}</td>
-                <td className="border border-gray-300 px-4 py-2 text-center">{bookingInfo.hotelDetails}</td>
-                <td className="border border-gray-300 px-4 py-2 text-center">{bookingInfo.checkInDate}</td>
-                <td className="border border-gray-300 px-4 py-2 text-center">{bookingInfo.checkOutDate}</td>
-                <td className="border border-gray-300 px-4 py-2 text-center">{bookingInfo.paymentDetails}</td>
-                <td className="border border-gray-300 px-4 py-2 text-center">{bookingInfo.status}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+          ))}
+        </tbody>
+      </table>
+      
       ) : (
         <p>No Booking Found!</p>
       )}

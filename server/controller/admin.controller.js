@@ -33,7 +33,9 @@ const adminHotelData = asyncHandler(async ( req , res ) => {
 
 const adminBookingData = asyncHandler(async ( req , res ) => {
     try {
-        const bookingDetails = await Booking.find({});
+        const bookingDetails = await Booking.find({})
+        .populate('userDetails', 'name email phone') // Fetch specific fields from User
+        .populate('hotelDetails', 'title city image'); // Fetch specific fields from Hotel;
         console.log("Fetching booking details...");
         return res.status(200).json(
             new ApiResponse(200 , {bookingDetails}, "All Booking Status fetched !")

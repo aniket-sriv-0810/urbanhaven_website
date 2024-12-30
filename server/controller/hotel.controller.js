@@ -1,4 +1,5 @@
 import Hotel from '../model/hotel.model.js';
+import {User} from '../model/user.model.js';
 import {asyncHandler} from '../utils/asyncHandler.js'
 import {ApiError} from '../utils/ApiError.js';
 import {ApiResponse} from '../utils/ApiResponse.js';
@@ -21,7 +22,8 @@ const allHotel = async(req,res) =>{
 // Register a new Hotel Logic
 const newHotelCreation = asyncHandler(async(req ,res) =>{
     try {
-      const {title , description , price , city , state , country } = req.body;
+      const {title , description , price , city ,pincode , state , country } = req.body;
+
       if (!req.file) {
         throw new ApiError(400, "Image file is required", "Failed to Register Hotel");
       }
@@ -36,7 +38,7 @@ const newHotelCreation = asyncHandler(async(req ,res) =>{
           city ,
           state ,
           country ,
-          image:image.url ||  "https://media.istockphoto.com/id/104731717/photo/luxury-resort.jpg?s=612x612&w=0&k=20&c=cODMSPbYyrn1FHake1xYz9M8r15iOfGz9Aosy9Db7mI="
+          image:image.url ||  "https://media.istockphoto.com/id/104731717/photo/luxury-resort.jpg?s=612x612&w=0&k=20&c=cODMSPbYyrn1FHake1xYz9M8r15iOfGz9Aosy9Db7mI=",
       }
     )
       await newHotel.save();
