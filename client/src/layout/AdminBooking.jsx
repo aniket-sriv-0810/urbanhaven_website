@@ -79,7 +79,19 @@ const AdminBooking = () => {
               <td className="border border-gray-300 px-4 py-2 text-center">{new Date(bookingInfo.checkInDate).toLocaleDateString()}</td>
               <td className="border border-gray-300 px-4 py-2 text-center">{new Date(bookingInfo.checkOutDate).toLocaleDateString()}</td>
               <td className="border border-gray-300 px-4 py-2 text-center">{bookingInfo.paymentDetails}</td>
-              <td className="border border-gray-300 px-4 py-2 text-center">{bookingInfo.status}</td>
+              <td
+          className={`border border-gray-300 px-4 py-2 text-center font-bold ${
+            bookingInfo.status === "Confirmed"
+              ? "bg-green-500 text-white"
+              : bookingInfo.status === "Pending"
+              ? "bg-yellow-500 text-white "
+              : bookingInfo.status === "Cancelled"
+              ? "bg-red-500 text-white"
+              : "bg-gray-200 text-black"
+          }`}
+        >
+          {bookingInfo.status}
+        </td>
             </tr>
           ))}
         </tbody>
