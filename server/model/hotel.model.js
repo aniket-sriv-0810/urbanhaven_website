@@ -31,7 +31,7 @@ const hotelSchema = new Schema({
     pincode:{
         type:Number,
         min:[6," Enter Valid Pincode"],
-        required:[true,"Pincode is required !"],
+        
     },
     state:{
         type:String,
@@ -47,7 +47,7 @@ const hotelSchema = new Schema({
         type: {
             type: String,
             enum: ["Point"], // GeoJSON format
-            required: [true, "Location Point is required !"],
+            
         },
         coordinates: {
             type: [Number], // [longitude, latitude]
@@ -57,7 +57,7 @@ const hotelSchema = new Schema({
             },
             message: "Coordinates must contain longitude and latitude!",
         },
-        required: [true, "Location Coordinates are required!"],
+       
         },
     },
     review:[
@@ -66,11 +66,10 @@ const hotelSchema = new Schema({
         ref:"Review"
     },
 ],
-    userOwner:[
+    hotelOwner:[
     {
         type: Schema.Types.ObjectId,
-        ref:"User",
-        required: [true,"Owner details are required !"]
+        ref:"Owner",
     },
 ],
 
