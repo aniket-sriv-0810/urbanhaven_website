@@ -23,11 +23,9 @@ const bookingHotel = asyncHandler( async (req , res ) => {
             if (!hotelDetails) {
                 throw new ApiError(400, "Hotel not found!");
             }
-            
             if (!req.user) {
                 throw new ApiError(401, "User not logged in!");
             }
-            
         const { checkInDate , checkOutDate ,room , adultCount , infantCount, paymentDetails , status} = req.body;
 
         const newBooking = new Booking({

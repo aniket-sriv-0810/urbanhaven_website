@@ -28,6 +28,8 @@ const Create = () => {
     setImage( e.target.files[0] );
   };
 
+
+
   const handleSubmitForm = async(e) => {
     e.preventDefault();
     console.log(newHotel , image);
@@ -41,6 +43,7 @@ const Create = () => {
     if (image) {
       formData.append("image", image);
     }
+
     try {
       const response = await axios.post("http://localhost:8000/api/v1/admin/new-hotel" ,formData, {
         withCredentials:true
@@ -60,8 +63,8 @@ const Create = () => {
       else{
         console.error("Error occurred");
       }
-      console.log(response.data);
-    } 
+      console.log("Final Response sent => ", response.data);
+    }
     catch (error) {
       console.error("Hotel Creation error: " + error);
     }
@@ -137,9 +140,11 @@ const Create = () => {
         ></input>
         <br />
         <br /> <br />
-        <button type="submit" className="border-gray-500 border-2">
+        <br />
+        <button type="submit" className=" w-max p-3 bg-green-600 text-white rounded-xl">
           Register
         </button>
+        
       </form>
     </>
   );

@@ -25,14 +25,13 @@ const hotelSchemaValidation = Joi.object({
         "string.empty": "Country is required.",
         "any.required": "Country is required.",
     }),
-  
-    image: Joi.string().uri().optional().default("https://media.istockphoto.com/id/104731717/photo/luxury-resort.jpg?s=612x612&w=0&k=20&c=cODMSPbYyrn1FHake1xYz9M8r15iOfGz9Aosy9Db7mI=").messages({
+    image: Joi.string().uri().optional().messages({
         "string.uri": "Image must be a valid URI.",
     }),
     review: Joi.array()
         .items(Joi.string().regex(/^[0-9a-fA-F]{24}$/)) // Matches MongoDB ObjectId format
         .optional(),
-    
+
 });
 
 export { hotelSchemaValidation };

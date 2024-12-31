@@ -1,6 +1,6 @@
 import express from 'express';
 import { validate } from '../middleware/validator.js';
-import { upload } from '../multer.js';
+import {  upload } from '../multer.js';
 import { hotelSchemaValidation } from '../test/hotel.validator.js';
 import { adminHotelData, adminUserData , adminBookingData } from '../controller/admin.controller.js';
 import {newHotelCreation ,  editMyHotel ,  deleteMyHotel} from '../controller/hotel.controller.js';
@@ -36,7 +36,7 @@ router
 // Edit the Hotel details in the website Route
 router
      .route('/hotel-details/:id/edit')
-     .put(isLoggedIn ,upload.single('image'),validate(hotelSchemaValidation),editMyHotel)
+     .put(isLoggedIn ,upload.single('image') ,validate(hotelSchemaValidation),editMyHotel)
 
 
 // Delete a Particular Hotel Route

@@ -1,5 +1,4 @@
 import Hotel from '../model/hotel.model.js';
-import {User} from '../model/user.model.js';
 import {asyncHandler} from '../utils/asyncHandler.js'
 import {ApiError} from '../utils/ApiError.js';
 import {ApiResponse} from '../utils/ApiResponse.js';
@@ -20,37 +19,44 @@ const allHotel = async(req,res) =>{
 };
 
 // Register a new Hotel Logic
-const newHotelCreation = asyncHandler(async(req ,res) =>{
-    try {
-      const {title , description , price , city ,pincode , state , country  } = req.body;
+const newHotelCreation = asyncHandler(async (req, res) => {
+  try {
+    const {
+      title,
+      description,
+      price,
+      city,
+      state,
+      country,
+    } = req.body;
 
-      if (!req.file) {
-        throw new ApiError(400, "Image file is required", "Failed to Register Hotel");
-      }
+    // Validate files existence
+  if(!req.file){
+    throw new ApiError(400 , "Image file not found !");
+  }
+  const imagePath = req.file.path ;
+  const image = await uploadOnCloudinary(imagePath);
 
-      const imagePath = req.file.path ;
-      const image = await uploadOnCloudinary(imagePath);
-      const newHotel = new Hotel(
-        {
-          title ,
-          description ,
-          price ,
-          city ,
-          state ,
-          country ,
-          image:image.url ||  "https://media.istockphoto.com/id/104731717/photo/luxury-resort.jpg?s=612x612&w=0&k=20&c=cODMSPbYyrn1FHake1xYz9M8r15iOfGz9Aosy9Db7mI=",
-         
-      }
-    )
-      await newHotel.save();
-      console.log("new hotel saved !");
-      return res.status(200).json(new ApiResponse ( 200 , "Hotel Successfully Registered !"));
-    } 
-    catch (error) {
-      throw new ApiError(400 , error , " Failed to Register a new Hotel !");
-    }
+
+    // Create a new hotel
+    const newHotel = new Hotel({
+      title,
+      description,
+      price,
+      city,
+      state,
+      country,
+      image:image.url, // Save Cloudinary URL
+    });
+    await newHotel.save();
+
+    console.log("New hotel saved!");
+    return res.status(200).json(new ApiResponse(200, "Hotel Successfully Registered!"));
+  } catch (error) {
+    console.error("Error in newHotelCreation:", error);
+    throw new ApiError(400, error.message, "Failed to Register a new Hotel!");
+  }
 });
-
 // Show  a particular hotel
 const showMyHotel = async(req , res ) => {
    try {

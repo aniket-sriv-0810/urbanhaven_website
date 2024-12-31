@@ -20,18 +20,12 @@ const hotelSchema = new Schema({
     },
     image:{
         type:String, //cloudinary url
-        default: "https://media.istockphoto.com/id/104731717/photo/luxury-resort.jpg?s=612x612&w=0&k=20&c=cODMSPbYyrn1FHake1xYz9M8r15iOfGz9Aosy9Db7mI=",
         required:[true,"Image is required !"]
     },
     city:{
         type:String,
         trim:true,
         required:[true , "City is required !"],
-    },
-    pincode:{
-        type:Number,
-        min:[6," Enter Valid Pincode"],
-        
     },
     state:{
         type:String,
@@ -43,35 +37,13 @@ const hotelSchema = new Schema({
         trim:true,
         required:[true , "Country is required !"],
     },
-    location: {
-        type: {
-            type: String,
-            enum: ["Point"], // GeoJSON format
-            
-        },
-        coordinates: {
-            type: [Number], // [longitude, latitude]
-        validate: {
-            validator: function (v) {
-                return v.length === 2; // Ensure exactly two elements
-            },
-            message: "Coordinates must contain longitude and latitude!",
-        },
-       
-        },
-    },
     review:[
     {
         type:Schema.Types.ObjectId,
         ref:"Review"
     },
 ],
-    hotelOwner:[
-    {
-        type: Schema.Types.ObjectId,
-        ref:"Owner",
-    },
-],
+
 
 },
 {
