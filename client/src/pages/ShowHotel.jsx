@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios';
 import Review from '../components/Review/Review';
-import BookingCalendar from '../components/Calender/BookingCalender';
 import MapLocation from '../components/MapLocation/MapLocation';
+import Amenities from '../components/Amenities/Ammenties';
 
 const ShowHotel = () => {
 const {id} = useParams();
@@ -43,7 +43,7 @@ useEffect( () => {
   return (
   <>
   <h1>This is a Show Page</h1>
-  <div className='flex flex-col border-2 border-black w-max m-auto text-center '>
+  <div className='flex flex-col border-2 border-black w-max m-auto '>
   <ul className='text-center '>
   <img src={showMyHotel.image} alt={ showMyHotel.title} className='w-[70%] rounded-2xl mt-4 m-auto p-2 border-3 border-black' />
   <li className='font-semibold text-2xl uppercase'>{showMyHotel.title}</li>
@@ -53,7 +53,8 @@ useEffect( () => {
   </ul>
   <br/>
 <br/><br/>
-<BookingCalendar/>
+
+<Amenities/>
 <MapLocation hotel={showMyHotel} />
 
 <br></br>
