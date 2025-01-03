@@ -8,7 +8,7 @@ const Review = () => {
   const { id } = useParams();
   const {user} = useUser();
   const [review, setReview] = useState({
-    rating: "",
+    rating: "5",
     comment: "",
   });
 
@@ -50,6 +50,7 @@ const Review = () => {
   };
 
   return (
+    <>
     <div>
       <h1>Submit Your Review</h1>
       <form
@@ -79,7 +80,7 @@ const Review = () => {
         />
         
         <br />
-        <br />
+        <br />        
         <fieldset className="starability-slot">
           <legend>Rating:</legend>
           {[1, 2, 3, 4, 5].map((rate) => (
@@ -111,7 +112,11 @@ const Review = () => {
           Submit
         </button>
       </form>
+  
     </div>
+    <br/>
+   </>
+    
   );
 };
 

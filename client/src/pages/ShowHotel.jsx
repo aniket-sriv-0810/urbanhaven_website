@@ -60,18 +60,71 @@ useEffect( () => {
 <br></br>
 <div className='flex flex-row flex-wrap justify-center gap-3'>
 <Review/>
-{ reviews.map((reviewsItem) =>(
 
-        <div key={reviewsItem._id} className='border-2 border-black rounded-lg w-max'>
-      <ul className='text-center' >
-      <h2>By : {reviewsItem.name}</h2>
-      <li>{reviewsItem.rating} Stars</li>
-      <li>Commented : {reviewsItem.comment}</li>
-      </ul>
+{ reviews ? reviews.map((reviewsItem) => (
+  <div key={reviewsItem._id} className="border-2 border-black rounded-lg w-max p-4 my-2">
+    <div className="flex items-center space-x-4">
+      <img
+        src={reviewsItem.userDetails.image}
+        alt={`${reviewsItem.userDetails.name}'s profile`}
+        className="w-12 h-12 rounded-full"
+      />
+      <div>
+        <h2 className="text-lg font-semibold">
+          By: {reviewsItem.userDetails.name}
+        </h2>
+        <p className="text-gray-600">@{reviewsItem.userDetails.username}</p>
       </div>
-)
-    )
-  }
+    </div>
+    <ul className="mt-2 text-center">
+    <div className="mt-2">
+    <fieldset className="starability-slot">
+      <legend>Rating:</legend>
+      <input
+        type="radio"
+        id={`no-rate-${reviewsItem._id}`}
+        className="input-no-rate"
+        name={`rating-${reviewsItem._id}`}
+        value="0"
+        checked={reviewsItem.rating === 0}
+        disabled
+        aria-label="No rating."
+      />
+      {[1, 2, 3, 4, 5].map((rate) => (
+        <React.Fragment key={rate}>
+          <input
+            type="radio"
+            id={`rate-${rate}-${reviewsItem._id}`}
+            name={`rating-${reviewsItem._id}`}
+            value={rate}
+            checked={reviewsItem.rating === rate}
+            disabled
+          />
+          <label
+            htmlFor={`rate-${rate}-${reviewsItem._id}`}
+            title={
+              rate === 1
+                ? "Terrible"
+                : rate === 2
+                ? "Not good"
+                : rate === 3
+                ? "Average"
+                : rate === 4
+                ? "Very good"
+                : "Amazing"
+            }
+          >
+            {rate} star{rate > 1 && "s"}
+          </label>
+        </React.Fragment>
+      ))}
+    </fieldset>
+  </div>
+      <li className="text-gray-800">Commented: {reviewsItem.comment}</li>
+    </ul>
+  </div>
+)) : null}
+
   </div>
   <Link to="/">
   <button className="border-gray-500 border-2">Home</button>

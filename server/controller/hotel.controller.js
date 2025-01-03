@@ -68,7 +68,13 @@ const showMyHotel = async(req , res ) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       throw new ApiError(400, "Invalid ID", "Failed to Show the Hotel!");
     }
-     const showHotel = await Hotel.findById(id).populate("review");
+     const showHotel = await Hotel.findById(id) .populate({
+      path: "review", // Populate the reviews array
+      populate: {
+        path: "userDetails", // Populate the userDetails inside each review
+        select: "name username image", // Only include specific fields from User model
+      },
+    });
      if (!showHotel) {
       throw new ApiError(404, "Hotel not found", "Failed to Show the Hotel!");
     }
