@@ -75,12 +75,20 @@ const showMyHotel = async(req , res ) => {
         select: "name username image", // Only include specific fields from User model
       },
     });
+
+    const totalReviews = showHotel.review.length; // Count the reviews
+
+     // Calculate the average rating
+     const totalRatings = showHotel.review.reduce((acc, review) => acc + review.rating, 0);
+     const avgRating = showHotel.review.length > 0 ? (totalRatings / showHotel.review.length).toFixed(2) : 0;
+ 
      if (!showHotel) {
       throw new ApiError(404, "Hotel not found", "Failed to Show the Hotel!");
     }
     
      console.log("My Hotel => " ,showHotel);
-     return res.status(200).json(new ApiResponse(200 , {showHotel , allReviews : showHotel.review} , "Here's my hotel !"));
+     console.log("Review Count => " ,totalReviews);
+     return res.status(200).json(new ApiResponse(200 , {showHotel , allReviews : showHotel.review , totalReviews , avgRating} , "Here's my hotel !"));
    }
    catch (error) {
    throw new ApiError(400 , error , "Failed to Show the Hotel !"); 
