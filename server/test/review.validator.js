@@ -1,10 +1,7 @@
 import Joi from "joi";
 
 const reviewSchemaValidation = Joi.object({
-    name: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required().messages({
-        "string.pattern.base": "Invalid User ID format.",
-        "any.required": "User details are required.",
-    }),
+
     rating: Joi.number().min(1).max(5).required().messages({
         "number.min": "Rating must be at least 1.",
         "number.max": "Rating cannot exceed 5.",

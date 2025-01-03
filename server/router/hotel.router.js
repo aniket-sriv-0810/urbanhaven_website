@@ -28,7 +28,7 @@ router
  // Create a new Review
 router
      .route('/api/v1/hotel/:id/review')
-     .post( isLoggedIn ,validate(reviewSchemaValidation),createReview)
+     .post( isLoggedIn ,createReview)
 
 // Booking  a particular hotel route
 router
