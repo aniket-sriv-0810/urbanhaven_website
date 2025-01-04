@@ -31,7 +31,7 @@ const Navbar = () => {
   return (
     <>
     <header className=" bg-yellow-200  h-20 text-white flex justify-between items-center">
-    <h1 className='text-black  ml-10 text-xl font-semibold' >{user ? `Welcome, ${user.name.toUpperCase()} to UrbanHaven !` : "Welcome to UrbanHaven !"}</h1>
+    <h1 className='text-black  ml-10 text-xl font-semibold' >{user ? `Welcome, ${user.name} to UrbanHaven !` : "Welcome to UrbanHaven !"}</h1>
     <NavLink to="/" ><img src={WebsiteLogo} className='w-28 ' /></NavLink>
     <div className=' mr-5 mt-2'>
     <ul className='flex flex-row justify-end flex-wrap gap-2'>

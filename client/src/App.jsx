@@ -54,7 +54,7 @@ export default function App() {
 
   return (
     <>
-      <Navbar />
+     
       {isLoading ? (
         // Display loading animation while isLoading is true
         <div className="loading-page flex justify-center items-center h-screen bg-gray-100">
@@ -67,8 +67,10 @@ export default function App() {
     />
         </div>
       ) : (
+        
         // Render the actual app content
         <Routes>
+        
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />

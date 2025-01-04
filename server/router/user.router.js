@@ -12,7 +12,7 @@ const router = express.Router();
 // Register a New user Route
 router
      .route('/register')
-     .post(upload.single('image') , validate(userSchemaValidation),createNewUser);
+     .post(upload.single('image') ,createNewUser);
 
 // Login a the registered user
 router

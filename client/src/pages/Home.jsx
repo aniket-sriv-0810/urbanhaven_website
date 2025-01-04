@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import LikeBtn from '../components/LikeBtn/LikeBtn';
 import ShareBtn from "../components/ShareBtn/ShareBtn";
 import CurrencyExchange from '../components/CurrencyExchange/CurrencyExchange';
-
+import Navbar from '../components/Navbar.jsx/Navbar';
 
 const currencySymbols = {
   INR: '₹',
@@ -53,6 +53,7 @@ const Home = () => {
   } ,[]);
   return (
    <>
+   <Navbar />
  <img src={Banner} alt="banner" className='w-full rounded-xl' />
  <div className="flex justify-center mt-5">
  <CurrencyExchange
@@ -81,7 +82,9 @@ const Home = () => {
             const priceDisplay = `${currencySymbols[selectedCurrency]} ${convertedPrice}`;
             const taxDisplay = `${currencySymbols[selectedCurrency]} ${convertedTax}`;
       return(
+        
         <div key={hotelItem._id} className='border-2 border-black rounded-2xl w-80 h-max bg-red-100  hover:bg-purple-300'>
+        x
       <ul className='text-center' >
       <div className="relative">
       <div className='absolute top-2 left-2 z-20'>

@@ -8,10 +8,6 @@ const userSchemaValidation = Joi.object({
         "string.empty": "Username is required.",
         "any.required": "Username is required.",
     }),
-    gender: Joi.string().valid("male", "female", "others").required().messages({
-        "any.only": "Gender must be one of 'male', 'female', or 'others'.",
-        "any.required": "Gender is required.",
-    }),
     phone: Joi.string()
         .pattern(/^[0-9]{10}$/)
         .optional()

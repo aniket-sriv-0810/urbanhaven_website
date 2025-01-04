@@ -4,6 +4,9 @@ import { useState  } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {useUser} from '../components/userContext/userContext';
 import './user/RegisterUser.css'
+import userVideo from '../assets/Sign Up form.mp4';
+import icon from '../assets/icon.png';
+import './RegisterUser.css'
 const RegisterUser = () => {
   const {setUser} = useUser();
     const navigate = useNavigate();
@@ -48,6 +51,8 @@ const RegisterUser = () => {
                 });
                 console.log(response.data);
                 setUser(response.data.data.registerNewUser.name);
+                console.log("setUser = ", response.data.data.registerNewUser.name);
+                
                 setImage(null);
                 navigate('/');
             }
@@ -64,12 +69,16 @@ const RegisterUser = () => {
  
   return (
     <>
-   
-    <h1>This is a User Registration Page</h1>
-    <form
-      className="border-gray-500 border-2 w-max m-auto p-5 rounded-lg"
-      onSubmit={handleSubmitForm}
-    >
+   <div className="bg-[url('/assets/auth.png')] bg-cover bg-bottom flex flex-row justify-evenly items-center flex-wrap bg-purple-200 min-h-screen ">
+   <img src={icon} alt="icon" className='w-max '/>
+
+   <div className='flex flex-col border-2 border-white rounded-xl p-6'>
+   <h1 className='text-white text-center font-bold text-xl'>Enter Your Credentials</h1>
+   <form
+   className=" w-max  p-5 rounded-lg flex flex-col "
+   onSubmit={handleSubmitForm}
+   >
+  
       <input
         type="text"
         placeholder="enter name"
@@ -127,7 +136,9 @@ const RegisterUser = () => {
         Register User
       </button>
     </form>
+    </div>
 
+    </div>
     </>
   )
 }

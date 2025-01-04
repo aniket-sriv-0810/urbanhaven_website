@@ -19,11 +19,6 @@ const userSchema = new Schema ({
         },
         unique:[true, "Username is must be unique !"],
     },
-    gender: {
-        type: String,
-        enum: ["male", "female", "others"],
-        required: [true , "Gender is required !"],
-    },
     phone :{
         type:Number,
         unique:[true, "Phone is must be unique !"],
