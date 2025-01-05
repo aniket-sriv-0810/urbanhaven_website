@@ -8,7 +8,7 @@ import LikeBtn from '../components/LikeBtn/LikeBtn';
 import ShareBtn from "../components/ShareBtn/ShareBtn";
 import CurrencyExchange from '../components/CurrencyExchange/CurrencyExchange';
 import Navbar from '../components/Navbar.jsx/Navbar';
-
+import NavCheck from '../components/userContext/NavCheck';
 const currencySymbols = {
   INR: '₹',
   USD: '$',
@@ -55,6 +55,7 @@ const Home = () => {
    <>
    <Navbar />
  <img src={Banner} alt="banner" className='w-full rounded-xl' />
+ <NavCheck/>
  <div className="flex justify-center mt-5">
  <CurrencyExchange
    setCurrencyRates={setConversionRate}
