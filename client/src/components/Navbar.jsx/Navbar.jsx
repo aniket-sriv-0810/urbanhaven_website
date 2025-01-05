@@ -1,17 +1,23 @@
-import React from 'react'
+import React ,{useState} from 'react'
 import axios from 'axios';
 import { NavLink, useNavigate } from 'react-router-dom'
 import { IoHomeSharp , IoBusiness} from "react-icons/io5";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import { MdAdminPanelSettings } from "react-icons/md";
+import { FaBars, FaTimes } from "react-icons/fa";
 import './Navbar.css';
 import { useUser } from '../userContext/userContext';
 import WebsiteLogo from '../../assets/webiste_full_logo.png';
 const Navbar = () => {
 
   const { user, setUser } = useUser();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
 
 
@@ -30,11 +36,16 @@ const Navbar = () => {
 // console.log("user data: " , user);
   return (
     <>
-    <header className=" bg-yellow-200  h-20 text-white flex justify-between items-center">
-    <h1 className='text-black  ml-10 text-xl font-semibold' >{user ? `Welcome, ${user.name} to UrbanHaven !` : "Welcome to UrbanHaven !"}</h1>
-    <NavLink to="/" ><img src={WebsiteLogo} className='w-28 ' /></NavLink>
-    <div className=' mr-5 mt-2'>
-    <ul className='flex flex-row justify-end flex-wrap gap-2'>
+    <nav className="bg-blue-600 text-white shadow-md">
+    <div className="container mx-auto flex justify-between items-center p-4">
+    
+        {/* Logo and Welcome Message */}
+        <div className="flex items-center space-x-4">
+        <NavLink to="/" ><img src={WebsiteLogo} className='w-28 ' /></NavLink>
+        <h1 className='text-black  text-xl font-semibold' >{user ? `Welcome, ${user.name} to UrbanHaven !` : "Welcome to UrbanHaven !"}</h1>
+        </div>
+
+    <ul className="hidden md:flex space-x-8 text-lg">
     <li><NavLink to="/admin" ><MdAdminPanelSettings className='text-2xl text-black font-bold' /></NavLink></li>
     <li><NavLink to="/" ><IoHomeSharp className='text-2xl text-black font-bold'/></NavLink></li>
     <li><NavLink to="/contact" ><FaMapMarkerAlt  className='text-2xl text-black font-bold'/></NavLink></li>
@@ -57,13 +68,30 @@ const Navbar = () => {
           </button>
         </>
       )}
-      
     </ul>
+     {/* Hamburger Icon */}
+     <button
+     className="md:hidden focus:outline-none"
+     onClick={toggleMenu}
+   >
+     {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+   </button>
+    
+     {/* Mobile Menu */}
+     {isMenuOpen && (
+      <ul className="md:hidden bg-blue-700 space-y-4 text-center p-4 text-lg">
+      <li><NavLink to="/admin" ><MdAdminPanelSettings className='text-2xl text-black font-bold' /></NavLink></li>
+      <li><NavLink to="/" ><IoHomeSharp className='text-2xl text-black font-bold'/></NavLink></li>
+      <li><NavLink to="/contact" ><FaMapMarkerAlt  className='text-2xl text-black font-bold'/></NavLink></li>
+      <li><NavLink to="/api/v1/about" ><IoBusiness className='text-2xl text-black font-bold' />
+      </NavLink></li>
+      </ul>
+    )}
     </div>
-  </header>
-
+  
+  </nav>
     </>
   )
 }
 
-export default Navbar
+export default Navbar;
