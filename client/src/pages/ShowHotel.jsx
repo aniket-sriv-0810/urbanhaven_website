@@ -67,11 +67,13 @@ useEffect( () => {
 { reviews ? reviews.map((reviewsItem) => (
   <div key={reviewsItem._id} className="border-2 border-black rounded-lg  p-4 my-2 ">
     <div className="flex  justify-center items-center space-x-4">
-      <img
-        src={reviewsItem.userDetails.image}
+    {/*  
+    <img
+        src={reviewsItem.userDetails.image ? reviewsItem.userDetails.image : null }
         alt={`${reviewsItem.userDetails.name}'s profile`}
         className="w-12 h-12 rounded-full"
       />
+      */}
       <div>
         <h2 className="text-lg font-semibold">
           By: {reviewsItem.userDetails.name}

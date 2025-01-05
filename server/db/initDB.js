@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 import sampleData from "./sampleData.js";
 import Hotel from '../model/hotel.model.js';
 import { User } from '../model/user.model.js';
+import Review from '../model/review.model.js';
 
 // Database configuration
 main()
@@ -22,10 +23,11 @@ async function main(){
 
 // Storing sample dataset in database
 const initDB = async() => {
-    await Hotel.deleteMany({});
-    await User.deleteMany({});
-    await Hotel.insertMany(sampleData);
-    console.log("Data saved successfully !");
+    // await Hotel.deleteMany({});
+    // await User.deleteMany({});
+    await Review.deleteMany({});
+    // await Hotel.insertMany(sampleData);
+    console.log("Data deleted successfully !");
 }
 
 initDB();

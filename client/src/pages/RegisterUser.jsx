@@ -51,8 +51,8 @@ const RegisterUser = () => {
                     password:""
                 });
                 console.log(response.data);
-                setUser(response.data.data.registerNewUser.name);
-                console.log("setUser = ", response.data.data.registerNewUser.name);
+                setUser(response.data.data.registerNewUser); 
+                console.log("setUser = ", response.data.data.registerNewUser);
                 
                 setImage(null);
                 navigate('/');

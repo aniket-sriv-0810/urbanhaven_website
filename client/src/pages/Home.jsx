@@ -84,7 +84,7 @@ const Home = () => {
       return(
         
         <div key={hotelItem._id} className='border-2 border-black rounded-2xl w-80 h-max bg-red-100  hover:bg-purple-300'>
-        x
+      
       <ul className='text-center' >
       <div className="relative">
       <div className='absolute top-2 left-2 z-20'>

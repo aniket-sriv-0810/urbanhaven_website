@@ -24,8 +24,10 @@ const createNewUser = asyncHandler(async(req , res) => {
       if(err){
          throw new ApiError(500, err, "Auto-login after registration failed!");
    }
+   console.log("Auto Login Successfully !");
+   
       return res.status(200).json(
-         new ApiResponse(200 , {registerNewUser : { name : registerNewUser.name}},  "Successfully registered the new User !")
+         new ApiResponse(200 , {registerNewUser },  "Successfully registered the new User !")
       );
    })
    } 
