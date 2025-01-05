@@ -4,7 +4,6 @@ import { useState  } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import {useUser} from '../components/userContext/userContext';
 
-import './RegisterUser.module.css'
 const RegisterUser = () => {
   const {setUser} = useUser();
     const navigate = useNavigate();
