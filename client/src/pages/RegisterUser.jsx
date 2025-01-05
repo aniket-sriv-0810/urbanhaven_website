@@ -87,14 +87,14 @@ const RegisterUser = () => {
         }
     }
 
-    const inputStyling= "border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-[#5454544f] placeholder:text-center"
+    const inputStyling= "border border-gray-300 rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-[#5454544f] placeholder:text-center placeholder:capitalize placeholder:text-white"
  
   return (
     <>
    <div className="bg-[url('/assets/bg.jpg')] bg-cover  flex flex-col justify-center items-center flex-wrap bg-purple-200 min-h-screen gap-5">
   
     <h1 className='text-white text-3xl font-semibold '>Create Your Account</h1>
-   <div className='flex flex-col border-2 border-white rounded-xl p-3 bg-[#282729]'>
+   <div className='flex flex-col border-2 border-white rounded-xl p-3 bg-[#212125]'>
    <h1 className='text-white text-center font-bold text-2xl  mt-3'>Enter Your Credentials</h1>
    <form
    className=" p-10 w-[25rem] rounded-lg flex flex-col gap-y-4 -mt-3 "
@@ -153,10 +153,11 @@ const RegisterUser = () => {
         onChange={handleInputChange}
         value={newUser.password}
       ></input>
-     <div className='flex justify-evenly mt-5'> <input type="checkbox" required className="form-checkbox h-5 w-5  border-gray-300 rounded "
+     <div className='flex justify-evenly mt-5'> <input type="checkbox"  id="check" required className="form-checkbox h-5 w-5  border-gray-300 rounded accent-green-600 "
         />
-         <span className='text-white -mt-1'>I agree to all the terms & conditions</span></div>
-     <div className='flex justify-center mt-3 text-md text-gray-400'>Already have an account ? &nbsp;<NavLink to="/user/login"><span className='text-blue-500'>Login</span></NavLink></div>
+         <label htmlFor="check" className='text-white -mt-1' >I agree to all the terms & conditions</label>
+         </div>
+     <div className='flex justify-center mt-3 text-md text-gray-400'>Already have an account ? &nbsp;<NavLink to="/user/login"><span className='text-cyan-300'>Login</span></NavLink></div>
       <button type="submit" className="border-gray-500 border-2 mt-6 bg-green-600 px-2 py-2 text-white rounded-xl">
         Create Account
       </button>
