@@ -28,14 +28,14 @@ const Navbar = () => {
 
   return (
     <nav className="bg-[#146a6b] text-white shadow-md">
-      <div className="container mx-auto flex justify-between items-center px-4 py-3  lg:px-6">
+      <div className="container mx-auto flex justify-between items-center px-6 py-3  lg:px-6">
         {/* Logo and Welcome Message */}
         <div className="flex items-center space-x-4">
           <NavLink to="/">
             <img
               src={WebsiteLogo}
               alt="UrbanHaven"
-              className="w-28 sm:w-20 lg:w-36"
+              className="w-20 sm:w-20 lg:w-24"
             />
           </NavLink>
           <h1 className="text-xs sm:text-sm lg:text-base text-white font-semibold truncate">
@@ -104,39 +104,39 @@ const Navbar = () => {
         </ul>
 
         {/* Hamburger Icon */}
-        <button className="md:hidden text-white focus:outline-none" onClick={toggleMenu}>
+        <button className="md:hidden text-white focus:outline-none mr-2" onClick={toggleMenu}>
           {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
         </button>
       </div>
 
     {/* Mobile Menu */}
 {isMenuOpen && (
-  <ul className="md:hidden bg-[#414141] text-white space-y-4 p-4 text-center">
-    <li className="flex items-center justify-center space-x-2">
+  <ul className="md:hidden bg-[#414141] text-white space-y-4 p-4 ">
+    <li className="flex items-center justify-center space-x-2 py-2">
       <MdAdminPanelSettings className="text-xl" />
       <NavLink to="/admin" onClick={toggleMenu} className="hover:underline">
         Admin Panel
       </NavLink>
     </li>
-    <li className="flex items-center justify-center space-x-2">
+    <li className="flex items-center justify-center space-x-2 py-2">
       <IoHomeSharp className="text-xl" />
       <NavLink to="/" onClick={toggleMenu} className="hover:underline">
-        Home
+        Home Page
       </NavLink>
     </li>
-    <li className="flex items-center justify-center space-x-2">
+    <li className="flex items-center justify-center space-x-2 py-2">
       <FaMapMarkerAlt className="text-xl" />
       <NavLink to="/contact" onClick={toggleMenu} className="hover:underline">
         Contact Us
       </NavLink>
     </li>
-    <li className="flex items-center justify-center space-x-2">
+    <li className="flex items-center justify-center space-x-2 py-2">
       <IoBusiness className="text-xl" />
       <NavLink to="/api/v1/about" onClick={toggleMenu} className="hover:underline">
         About Us
       </NavLink>
     </li>
-    <li className="flex items-center justify-center space-x-2">
+    <li className="flex items-center justify-center space-x-2 py-2">
       {user ? (
         <>
           <img
@@ -161,7 +161,7 @@ const Navbar = () => {
       {user ? (
         <button
           onClick={handleLogout}
-          className="bg-red-500 px-4 py-2 rounded-lg w-full flex items-center justify-center space-x-2"
+          className="bg-red-500 px-4 py-2 mt-2 rounded-lg w-full flex items-center justify-center space-x-2"
         >
           <FaTimes className="text-xl" />
           <span>Logout</span>
@@ -170,7 +170,7 @@ const Navbar = () => {
         <>
           <button
             onClick={() => navigate('/user/login')}
-            className="bg-green-500 px-4 py-2 rounded-lg w-full flex items-center justify-center space-x-2"
+            className="bg-green-500 px-4 py-2 mt-2 rounded-lg w-full flex items-center justify-center space-x-2"
           >
             <FaUserCircle className="text-xl" />
             <span>Login</span>

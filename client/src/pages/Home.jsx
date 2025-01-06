@@ -54,8 +54,6 @@ const Home = () => {
   return (
    <>
    <Navbar />
- <img src={Banner} alt="banner" className='w-full rounded-xl' />
- <NavCheck/>
  <div className="flex justify-center mt-5">
  <CurrencyExchange
    setCurrencyRates={setConversionRate}
