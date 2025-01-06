@@ -8,7 +8,8 @@ import LikeBtn from '../components/LikeBtn/LikeBtn';
 import ShareBtn from "../components/ShareBtn/ShareBtn";
 import CurrencyExchange from '../components/CurrencyExchange/CurrencyExchange';
 import Navbar from '../components/Navbar.jsx/Navbar';
-import NavCheck from '../components/userContext/NavCheck';
+import Counter from '../components/Counter/Counter';
+import Footer from '../components/Footer/Footer';
 const currencySymbols = {
   INR: '₹',
   USD: '$',
@@ -65,6 +66,7 @@ const Home = () => {
      {currencySymbols[selectedCurrency]} {1000 * conversionRate}
    </p>
  </div>
+ <input type='text' placeholder='Search hotels by city' className='bg-gray-400 placeholder:text-black border-2 border-white rounded-lg placeholder:text-center'/>
 </div>
 
    <div className='flex flex-row flex-wrap justify-center gap-9 mt-5 '>
@@ -121,6 +123,20 @@ const Home = () => {
     })
     }
    </div>
+   <div className="flex justify-center items-center">
+  <img 
+    src={Banner} 
+    alt="Banner" 
+    className="w-full h-auto max-w-screen-lg rounded-2xl my-10" 
+  />
+</div>
+
+   <div className="bg-gray-50 flex justify-evenly">
+      <Counter start={0} end={1000} duration={3000} value={"Hotels Listed"} />
+      <Counter start={0} end={6000} duration={3000} value={"Users Registered"} />
+      <Counter start={0} end={500} duration={3000} value={"Cities Available"} />
+      <Counter start={0} end={2000} duration={3000} value={"Average Customer Feedback"} />
+    </div>
    <ToastContainer
    position="top-right"
    autoClose={2000}
@@ -134,8 +150,10 @@ const Home = () => {
    theme="light"
    transition={Bounce}
    />
+   <Footer/>
    </>
   )
+
 }
 
 export default Home
