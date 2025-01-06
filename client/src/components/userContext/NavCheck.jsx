@@ -28,52 +28,60 @@ const Navbar = () => {
 
   return (
     <nav className="bg-blue-600 text-white shadow-md">
-      <div className="container mx-auto flex justify-between items-center p-4">
+      <div className="container mx-auto flex justify-between items-center px-4 py-3 lg:px-6">
         {/* Logo and Welcome Message */}
         <div className="flex items-center space-x-4">
           <NavLink to="/">
-            <img src={WebsiteLogo} alt="UrbanHaven" className="w-28" />
+            <img
+              src={WebsiteLogo}
+              alt="UrbanHaven"
+              className="w-28 sm:w-20 lg:w-36"
+            />
           </NavLink>
-          <h1 className="text-black text-lg md:text-xl font-semibold">
+          <h1 className="text-xs sm:text-sm lg:text-base text-white font-semibold truncate">
             {user ? `Welcome, ${user.name} to UrbanHaven!` : 'Welcome to UrbanHaven!'}
           </h1>
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-8 items-center text-lg">
+        <ul className="hidden md:flex space-x-6 items-center">
           <li>
             <NavLink to="/admin">
-              <MdAdminPanelSettings className="text-2xl text-black" />
+              <MdAdminPanelSettings className="text-2xl text-white" />
             </NavLink>
           </li>
           <li>
             <NavLink to="/">
-              <IoHomeSharp className="text-2xl text-black" />
+              <IoHomeSharp className="text-2xl text-white" />
             </NavLink>
           </li>
           <li>
             <NavLink to="/contact">
-              <FaMapMarkerAlt className="text-2xl text-black" />
+              <FaMapMarkerAlt className="text-2xl text-white" />
             </NavLink>
           </li>
           <li>
             <NavLink to="/api/v1/about">
-              <IoBusiness className="text-2xl text-black" />
+              <IoBusiness className="text-2xl text-white" />
             </NavLink>
           </li>
           <li>
             <NavLink to={user ? `/user/${user._id}/account` : '/user/login'}>
               {user ? (
-                <img src={user.image} alt={user.name} className="w-10 h-10 rounded-full" />
+                <img
+                  src={user.image}
+                  alt={user.name}
+                  className="w-10 h-10 rounded-full border-2 border-white"
+                />
               ) : (
-                <FaUserCircle className="text-2xl text-black" />
+                <FaUserCircle className="text-2xl text-white" />
               )}
             </NavLink>
           </li>
           {user ? (
             <button
               onClick={handleLogout}
-              className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+              className="bg-red-500 px-4 py-2 rounded-lg hover:bg-red-600"
             >
               Logout
             </button>
@@ -81,13 +89,13 @@ const Navbar = () => {
             <>
               <button
                 onClick={() => navigate('/user/login')}
-                className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 ml-4"
+                className="bg-green-500 px-4 py-2 rounded-lg hover:bg-green-600"
               >
                 Login
               </button>
               <button
                 onClick={() => navigate('/user/register')}
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 ml-4"
+                className="bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-700"
               >
                 Sign Up
               </button>
@@ -101,63 +109,85 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <ul className="md:hidden bg-blue-700 text-white space-y-4 p-4 text-center">
-          <li>
-            <NavLink to="/admin" onClick={toggleMenu}>
-              <MdAdminPanelSettings className="text-2xl" />
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/" onClick={toggleMenu}>
-              <IoHomeSharp className="text-2xl" />
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/contact" onClick={toggleMenu}>
-              <FaMapMarkerAlt className="text-2xl" />
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/api/v1/about" onClick={toggleMenu}>
-              <IoBusiness className="text-2xl" />
-            </NavLink>
-          </li>
-          {user && (
-            <li>
-              <NavLink to={`/user/${user._id}/account`} onClick={toggleMenu}>
-                <img src={user.image} alt={user.name} className="w-10 h-10 mx-auto rounded-full" />
-              </NavLink>
-            </li>
-          )}
-          <li>
-            {user ? (
-              <button
-                onClick={handleLogout}
-                className="bg-red-500 text-white px-4 py-2 rounded-lg w-full"
-              >
-                Logout
-              </button>
-            ) : (
-              <>
-                <button
-                  onClick={() => navigate('/user/login')}
-                  className="bg-green-500 text-white px-4 py-2 rounded-lg w-full"
-                >
-                  Login
-                </button>
-                <button
-                  onClick={() => navigate('/user/register')}
-                  className="bg-blue-500 text-white px-4 py-2 rounded-lg w-full mt-2"
-                >
-                  Sign Up
-                </button>
-              </>
-            )}
-          </li>
-        </ul>
+    {/* Mobile Menu */}
+{isMenuOpen && (
+  <ul className="md:hidden bg-blue-700 text-white space-y-4 p-4 text-center">
+    <li className="flex items-center justify-center space-x-2">
+      <MdAdminPanelSettings className="text-xl" />
+      <NavLink to="/admin" onClick={toggleMenu} className="hover:underline">
+        Admin Panel
+      </NavLink>
+    </li>
+    <li className="flex items-center justify-center space-x-2">
+      <IoHomeSharp className="text-xl" />
+      <NavLink to="/" onClick={toggleMenu} className="hover:underline">
+        Home
+      </NavLink>
+    </li>
+    <li className="flex items-center justify-center space-x-2">
+      <FaMapMarkerAlt className="text-xl" />
+      <NavLink to="/contact" onClick={toggleMenu} className="hover:underline">
+        Contact Us
+      </NavLink>
+    </li>
+    <li className="flex items-center justify-center space-x-2">
+      <IoBusiness className="text-xl" />
+      <NavLink to="/api/v1/about" onClick={toggleMenu} className="hover:underline">
+        About Us
+      </NavLink>
+    </li>
+    <li className="flex items-center justify-center space-x-2">
+      {user ? (
+        <>
+          <img
+            src={user.image}
+            alt={user.name}
+            className="w-8 h-8 rounded-full border-2 border-white"
+          />
+          <NavLink to={`/user/${user._id}/account`} onClick={toggleMenu} className="hover:underline">
+            My Account
+          </NavLink>
+        </>
+      ) : (
+        <>
+          <FaUserCircle className="text-xl" />
+          <NavLink to="/user/login" onClick={toggleMenu} className="hover:underline">
+            Login
+          </NavLink>
+        </>
       )}
+    </li>
+    <li>
+      {user ? (
+        <button
+          onClick={handleLogout}
+          className="bg-red-500 px-4 py-2 rounded-lg w-full flex items-center justify-center space-x-2"
+        >
+          <FaTimes className="text-xl" />
+          <span>Logout</span>
+        </button>
+      ) : (
+        <>
+          <button
+            onClick={() => navigate('/user/login')}
+            className="bg-green-500 px-4 py-2 rounded-lg w-full flex items-center justify-center space-x-2"
+          >
+            <FaUserCircle className="text-xl" />
+            <span>Login</span>
+          </button>
+          <button
+            onClick={() => navigate('/user/register')}
+            className="bg-blue-500 px-4 py-2 rounded-lg w-full mt-2 flex items-center justify-center space-x-2"
+          >
+            <FaUserCircle className="text-xl" />
+            <span>Sign Up</span>
+          </button>
+        </>
+      )}
+    </li>
+  </ul>
+)}
+
     </nav>
   );
 };
