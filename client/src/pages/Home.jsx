@@ -84,7 +84,7 @@ const Home = () => {
             const taxDisplay = `${currencySymbols[selectedCurrency]} ${convertedTax}`;
       return(
         
-        <div key={hotelItem._id} className='border-2 border-black rounded-2xl w-80 h-max bg-red-100  hover:bg-purple-300'>
+        <div key={hotelItem._id} className='border-2 border-black rounded-2xl w-80 h-max  hover:bg-purple-300'>
       
       <ul className='text-center' >
       <div className="relative">
@@ -96,7 +96,7 @@ const Home = () => {
       <div className="absolute  right-2 z-20">
         <LikeBtn />
       </div>
-      <img src={hotelItem.image} alt={hotelItem.title} className="z-0 rounded-2xl" />
+      <img src={hotelItem.image} alt={hotelItem.title} className="z-0 rounded-t-2xl" />
     </div>
       <h2 className='text-xl pt-3 font-medium'>{hotelItem.title}</h2>
       <li> <p>{hotelItem.city} , {hotelItem.state} , {hotelItem.country} </p></li>

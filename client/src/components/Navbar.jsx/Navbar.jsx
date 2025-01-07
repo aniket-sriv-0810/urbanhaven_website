@@ -27,8 +27,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-[#146a6b] text-white shadow-md">
-      <div className="container mx-auto flex justify-between items-center px-6 py-3  lg:px-6">
+    <nav className="bg-[#15455f] text-white shadow-md">
+      <div className="container mx-auto flex justify-between items-center px-6 py-3  lg:px-8">
         {/* Logo and Welcome Message */}
         <div className="flex items-center space-x-4">
           <NavLink to="/">
@@ -36,37 +36,38 @@ const Navbar = () => {
               src={WebsiteLogo}
               alt="UrbanHaven"
               className="w-20 sm:w-20 lg:w-24"
+              title='urbanhaven'
             />
           </NavLink>
-          <h1 className="text-xs sm:text-sm lg:text-base text-white font-semibold truncate">
+          <h1 className="text-xs sm:text-sm lg:text-xl  text-white font-semibold truncate">
             {user ? `Welcome, ${user.name} to UrbanHaven!` : 'Welcome to UrbanHaven!'}
           </h1>
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden  md:flex space-x-6 items-center">
-          <li className='mx-2'>
+        <ul className="hidden  md:flex gap-10 items-center">
+          <li >
             <NavLink to="/admin">
               <MdAdminPanelSettings className="text-2xl text-white" title='admin panel' />
             </NavLink>
           </li>
-          <li>
+          <li >
             <NavLink to="/">
-              <IoHomeSharp className="text-2xl text-white" />
+              <IoHomeSharp className="text-2xl text-white" title='home' />
             </NavLink>
           </li>
           <li>
             <NavLink to="/contact">
-              <FaMapMarkerAlt className="text-2xl text-white" />
+              <FaMapMarkerAlt className="text-2xl text-white" title='contact us' />
             </NavLink>
           </li>
           <li>
             <NavLink to="/api/v1/about">
-              <IoBusiness className="text-2xl text-white" />
+              <IoBusiness className="text-2xl text-white" title='about us' />
             </NavLink>
           </li>
           <li>
-            <NavLink to={user ? `/user/${user._id}/account` : '/user/login'}>
+            <NavLink to={user ? `/user/${user._id}/account` : '/user/login'} title='my account'>
               {user ? (
                 <img
                   src={user.image}
