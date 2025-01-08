@@ -24,6 +24,7 @@ import Booking from './pages/Booking';
 import AdminBooking from './layout/AdminBooking';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import './App.css';
+import ConfirmationPage from './pages/ConfirmationPage';
 
 export default function App() {
   const { setUser } = useUser();
@@ -70,7 +71,6 @@ export default function App() {
         
         // Render the actual app content
         <Routes>
-        
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
@@ -95,6 +95,14 @@ export default function App() {
             element={
               <PrivateRoute>
                 <Booking />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/hotel/:id/confirmed"
+            element={
+              <PrivateRoute>
+                <ConfirmationPage/>
               </PrivateRoute>
             }
           />

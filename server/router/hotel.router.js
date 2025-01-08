@@ -6,6 +6,7 @@ import { allHotel ,  contactLogic,    showMyHotel  } from '../controller/hotel.c
 import { bookingHotel } from '../controller/booking.controller.js';
 import { reviewSchemaValidation } from '../test/review.validator.js';
 import {bookingSchemaValidation } from '../test/booking.validator.js';
+import { adminBookingData } from '../controller/admin.controller.js';
 
 
 const router =  express.Router();
@@ -35,5 +36,9 @@ router
       .route('/api/v1/hotel/:id/booking')
       .post(isLoggedIn ,  bookingHotel)
 
+// Confirmation page
+router
+      .route('/api/v1/hotel/:id/confirmed')
+      .get(isLoggedIn , adminBookingData)
 
 export default router ;
