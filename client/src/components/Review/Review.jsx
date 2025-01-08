@@ -51,13 +51,15 @@ const Review = () => {
 
   return (
     <>
-    <div>
-      <h1>Submit Your Review</h1>
+
+      <h1 className="text-center font-semibold text-xl m-6">Kindly provide your Feedback</h1>
+      <div className="">
       <form
-        className="border-gray-500 border-2 w-max m-auto p-5 rounded-lg"
+        className="border-black border-2 rounded-xl w-80 py-4 m-auto flex flex-col gap-3 justify-center items-center bg-gray-100 shadow-lg shadow-slate-600"
         onSubmit={handleSubmitForm}
       >
-      <img src={user? user.image : null} alt="User image" className="w-10 h-10 m-auto rounded-full my-3"/>
+      <div className="flex flex-col justify-center items-center">
+      <img src={user? user.image : null} alt="User image" className="m-auto  my-3 w-12 h-12 rounded-full shadow-md shadow-black"/>
 
         <input
           type="text"
@@ -68,7 +70,7 @@ const Review = () => {
           onChange={handleInputChange}
           disabled
         />
-        <br/>
+
         <input
           type="text"
           required
@@ -78,11 +80,10 @@ const Review = () => {
           onChange={handleInputChange}
           disabled
         />
-        
-        <br />
-        <br />        
-        <fieldset className="starability-slot">
-          <legend>Rating:</legend>
+        </div>
+       
+        <fieldset className="starability-slot ">
+         
           {[1, 2, 3, 4, 5].map((rate) => (
             <React.Fragment key={rate}>
               <input
@@ -102,18 +103,16 @@ const Review = () => {
           placeholder="Enter Comment"
           required
           name="comment"
-          className="border-gray-500 border-2"
+          className="border-2 border-black -mt-12 p-2 rounded-xl bg-slate-300 placeholder:text-black text-center"
           value={review.comment}
           onChange={handleInputChange}
         />
-        <br />
-        <br />
-        <button type="submit" className="border-gray-500 border-2 px-3 py-2 bg-green-500 text-white rounded-full">
+        <button type="submit" className=" px-3 py-2 w-[70%] my-3 bg-green-600 text-white rounded-full">
           Submit
         </button>
       </form>
-  
-    </div>
+      </div>
+    
     <br/>
    </>
     

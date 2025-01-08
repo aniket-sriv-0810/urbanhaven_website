@@ -5,7 +5,7 @@ import { IoHomeSharp, IoBusiness } from 'react-icons/io5';
 import { FaMapMarkerAlt, FaUserCircle, FaBars, FaTimes } from 'react-icons/fa';
 import { MdAdminPanelSettings } from 'react-icons/md';
 import { useUser } from '../userContext/userContext';
-import WebsiteLogo from '../../assets/webiste_full_logo.png';
+import WebsiteLogo from '../../assets/main-logo.png';
 
 const Navbar = () => {
   const { user, setUser } = useUser();
