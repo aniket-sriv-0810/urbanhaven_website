@@ -99,11 +99,9 @@ export default function App() {
             }
           />
           <Route
-            path="/hotel/:id/confirmed"
+            path="/booking/:bookingId"
             element={
-              <PrivateRoute>
                 <ConfirmationPage/>
-              </PrivateRoute>
             }
           />
           <Route

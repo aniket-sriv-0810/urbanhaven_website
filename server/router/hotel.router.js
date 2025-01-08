@@ -3,10 +3,10 @@ import { isLoggedIn } from '../middleware/authentication.js';
 import { validate } from '../middleware/validator.js';
 import { createReview } from '../controller/review.controller.js';
 import { allHotel ,  contactLogic,    showMyHotel  } from '../controller/hotel.controller.js';
-import { bookingHotel } from '../controller/booking.controller.js';
+import { bookingHotel, confirmationDetails } from '../controller/booking.controller.js';
 import { reviewSchemaValidation } from '../test/review.validator.js';
 import {bookingSchemaValidation } from '../test/booking.validator.js';
-import { adminBookingData } from '../controller/admin.controller.js';
+
 
 
 const router =  express.Router();
@@ -38,7 +38,7 @@ router
 
 // Confirmation page
 router
-      .route('/api/v1/hotel/:id/confirmed')
-      .get(isLoggedIn , adminBookingData)
+      .route('/api/v1/booking/:id')
+      .get(isLoggedIn, confirmationDetails)
 
 export default router ;

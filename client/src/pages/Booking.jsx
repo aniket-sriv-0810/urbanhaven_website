@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useUser } from '../components/userContext/userContext';
 const Booking = () => {
   const {user} = useUser();
+  const navigate = useNavigate();
  const [bookingData , setBookingData] = useState({
     checkInDate:"",
     checkOutDate:"",
@@ -58,9 +59,14 @@ const submitForm = async(e) => {
     status:""
         })
       }
+    
       else{
         console.error("Unable to book hotel !");
       }
+      const bookingId = response.data.data.newBooking._id;
+
+      // Redirect to confirmation page
+      navigate(`/booking/${bookingId}`);
   } catch (error) {
     console.error("Failed to book hotel room ", error);
   }

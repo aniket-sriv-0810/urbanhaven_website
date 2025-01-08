@@ -1,5 +1,6 @@
 import Booking from '../model/booking.model.js';
 import Hotel from '../model/hotel.model.js';
+import { User } from '../model/user.model.js';
 import { asyncHandler } from '../utils/asyncHandler.js';
 import { ApiError } from '../utils/ApiError.js';
 import { ApiResponse } from '../utils/ApiResponse.js';
@@ -45,4 +46,18 @@ const bookingHotel = asyncHandler( async (req , res ) => {
     }
 });
 
-export {bookingHotel}
+const confirmationDetails = asyncHandler( async ( req , res) => {
+    try {
+        const {id} = req.params;
+        const booking = await Booking.findById(id)
+        .populate('userDetails', 'name email phone') // Fetch specific fields from User
+        .populate('hotelDetails', 'title city image'); // Fetch specific fields from Hotel;
+        console.log("Fetching booking details...");
+        return res.status(200).json(
+            new ApiResponse(200 , {booking}, "All Booking Status fetched !")
+        )
+    } catch (error) {
+        throw new ApiError(400 , error , "Fetching booking details failed !")
+    }
+})
+export {bookingHotel , confirmationDetails}
