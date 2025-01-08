@@ -112,7 +112,7 @@ const Home = () => {
       <Link to={`/hotel/${hotelItem._id}`}>
       <button className="bg-green-600 text-white px-4 py-2 rounded-2xl ml-4 w-28">View</button><br/><br/>
     </Link>
-      <Link to={`/hotel/${hotelItem._id}`}>
+      <Link to={`/hotel/${hotelItem._id}/booking`}>
       <button className="bg-red-600 text-white px-4 py-2 rounded-2xl ml-4 w-28">Book Now</button><br/><br/>
     </Link>
     </div>

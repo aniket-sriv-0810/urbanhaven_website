@@ -44,6 +44,7 @@ export const UserProvider = ({ children }) => {
       console.log("User api changed =>" , user.name);
       console.log("User api changed =>" , user.username);
       console.log("User api changed =>" , user.image);
+      console.log("User api changed =>" , user.phone);
       
       localStorage.setItem("user", JSON.stringify(user));
     } else {
