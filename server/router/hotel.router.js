@@ -33,7 +33,7 @@ router
 // Booking  a particular hotel route
 router
       .route('/api/v1/hotel/:id/booking')
-      .post(isLoggedIn , validate(bookingSchemaValidation) , bookingHotel)
+      .post(isLoggedIn ,  bookingHotel)
 
 
 export default router ;

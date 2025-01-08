@@ -9,7 +9,7 @@ const Booking = () => {
     checkOutDate:"",
     room:"",
     adultCount:"",
-    infantCount:"",
+    infantCount:0,
     paymentDetails:"",
     status:""
  })
@@ -23,6 +23,9 @@ const inputChange = (e) => {
 const submitForm = async(e) => {
   e.preventDefault();
   console.log(bookingData);
+  console.log("user =>" , user);
+  console.log("user id  => " , user._id);
+  
   const dataSent = {
     user: user._id,
     checkInDate: bookingData.checkInDate,
@@ -33,6 +36,8 @@ const submitForm = async(e) => {
     paymentDetails : bookingData.paymentDetails,
     status : bookingData.status
   }
+  console.log(dataSent);
+  
 
   try {
     const response = await axios.post(`http://localhost:8000/api/v1/hotel/${id}/booking` , 
@@ -67,7 +72,8 @@ const submitForm = async(e) => {
     <p>Phone :{user.phone}</p>
     <p>{user.username}</p>
     <p>{user._id}</p>
-    <form onSubmit={submitForm} className='flex flex-col w-max border-2 border-red-500'>
+    <div className='flex justify-center items-center'>
+    <form onSubmit={submitForm} className='flex flex-col justify-center items-start w-max border-2 border-red-500 p-3'>
     <input onChange={inputChange} type="text" value={user.name} name="name" required />
     <input onChange={inputChange} type="number" value={user.phone} name="number" required />
     <input onChange={inputChange} type="email" value={user.email} name="email" required />
@@ -80,6 +86,7 @@ const submitForm = async(e) => {
     <input onChange={inputChange} type="text" value={bookingData.status} name="status" required />
     <button type='submit'>Book Now</button>
     </form>
+    </div>
     </>
   )
 }

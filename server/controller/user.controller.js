@@ -54,7 +54,7 @@ const loginUser = asyncHandler(async (req, res) => {
    }
 
       return res.status(200).json(
-         new ApiResponse(200 , {loggedInUser :{_id: loggedInUser._id,name : loggedInUser.name , username : loggedInUser.username, email: loggedInUser.email, image: loggedInUser.image }},  "Successfully logged in the User !")
+         new ApiResponse(200 , {loggedInUser },  "Successfully logged in the User !")
       );
    })
     
@@ -94,16 +94,10 @@ const checkAuthentication = asyncHandler( async ( req , res ) => {
     if(req.isAuthenticated()){
 
       console.log("user is authenticated and data" , req.user);
-      
+      const user = req.user;
        console.log("User is authenticated !");
        return res.status(200).json(
-          new ApiResponse(200 , {isAuthenticated : true , user: {
-            _id: req.user._id,
-            name: req.user.name,
-            email: req.user.email,
-            username: req.user.username,
-            image : req.user.image,
-          },
+          new ApiResponse(200 , {isAuthenticated : true , user,
          })
        )
     }
