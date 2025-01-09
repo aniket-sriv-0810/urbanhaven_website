@@ -101,7 +101,9 @@ export default function App() {
           <Route
             path="/booking/:bookingId"
             element={
+              <PrivateRoute>
                 <ConfirmationPage/>
+                </PrivateRoute>
             }
           />
           <Route
