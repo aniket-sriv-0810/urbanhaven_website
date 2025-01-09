@@ -1,21 +1,20 @@
 import axios from 'axios';
-import React, { useRef } from 'react'
-import { useState  } from 'react';
+import React, { useRef, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import {useUser} from '../components/userContext/userContext';
+import { useUser } from '../components/userContext/userContext';
 
 const RegisterUser = () => {
-  const {setUser} = useUser();
-    const navigate = useNavigate();
-    const [image , setImage] = useState(null);
-    const [newUser , setNewUser] = useState({
-        name:"",
-        username:"",
-        phone:"",
-        email:"",
-        password:""
-    });
-      // Ref to access all input elements in the form
+  const { setUser } = useUser();
+  const navigate = useNavigate();
+  const [image, setImage] = useState(null);
+  const [newUser, setNewUser] = useState({
+    name: '',
+    username: '',
+    phone: '',
+    email: '',
+    password: '',
+  });
+
   const inputRefs = {
     name: useRef(),
     username: useRef(),
@@ -24,148 +23,146 @@ const RegisterUser = () => {
     password: useRef(),
   };
 
-    const handleInputChange = (e) =>{
-      const { name, value } = e.target;
-        setNewUser({...newUser , [name] : value})
-        // Apply styles dynamically for all inputs
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewUser({ ...newUser, [name]: value });
+
     if (inputRefs[name].current) {
       if (value) {
-        inputRefs[name].current.style.color = 'white';  // Green text color for filled input
-        inputRefs[name].current.style.backgroundColor = '#5454544f';  // Light green background
+        inputRefs[name].current.style.color = 'white';
+        inputRefs[name].current.style.textAlign = 'center';
+        inputRefs[name].current.style.backgroundColor = '#5454544f';
       } else {
-        inputRefs[name].current.style.color = 'white';  // Red text color for empty input
-        inputRefs[name].current.style.backgroundColor = '#5454544f';  // Light red background
+        inputRefs[name].current.style.color = 'white';
+        inputRefs[name].current.style.backgroundColor = '#5454544f';
       }
     }
   };
 
-    const handleFileChange = (e) => {
-        setImage(e.target.files[0])
-    };
-    // Manipulating input value style directly using DOM
-    
-  
-    const handleSubmitForm = async(e) => {
-        e.preventDefault();
-        console.log(newUser);
-        const formData = new FormData();
-        formData.append("name" , newUser.name);
-        formData.append("username" , newUser.username);
-        formData.append("phone" , newUser.phone);
-        formData.append("email" , newUser.email);
-        formData.append("password" , newUser.password);
-        if(image){
-            formData.append("image" , image);
-        }
+  const handleFileChange = (e) => {
+    setImage(e.target.files[0]);
+  };
 
-        try {
-            let response = await axios.post('http://localhost:8000/api/v1/user/register' , formData );
-            console.log(response.data.user);
-            if(response.status === 200){
-                setNewUser({
-                    name:"",
-                    username:"",
-                    phone:"",
-                    email:"",
-                    password:""
-                });
-                console.log(response.data);
-                setUser(response.data.data.registerNewUser); 
-                console.log("setUser = ", response.data.data.registerNewUser);
-                
-                setImage(null);
-                navigate('/');
-            }
-            else{
-                console.error("User cannot be registered" );
-                alert("User cannot be registered !")
-            }
-        } catch (error) {
-            console.error("Failed to register the new user" , error);
-            
-        }
+  const handleSubmitForm = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('name', newUser.name);
+    formData.append('username', newUser.username);
+    formData.append('phone', newUser.phone);
+    formData.append('email', newUser.email);
+    formData.append('password', newUser.password);
+    if (image) {
+      formData.append('image', image);
     }
 
-    const inputStyling= "border border-gray-300 rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-[#5454544f] placeholder:text-center placeholder:capitalize placeholder:text-white"
- 
+    try {
+      const response = await axios.post('http://localhost:8000/api/v1/user/register', formData);
+      if (response.status === 200) {
+        setNewUser({
+          name: '',
+          username: '',
+          phone: '',
+          email: '',
+          password: '',
+        });
+        setUser(response.data.data.registerNewUser);
+        setImage(null);
+        navigate('/');
+      } else {
+        alert('User cannot be registered!');
+      }
+    } catch (error) {
+      console.error('Failed to register the new user', error);
+    }
+  };
+
+  const inputStyling =
+    '  border border-gray-300 rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-[#5454544f] placeholder:text-center placeholder:capitalize placeholder:text-white ';
+
   return (
-    <>
-   <div className="bg-[url('/assets/bg.jpg')] bg-cover  flex flex-col justify-center items-center flex-wrap bg-purple-200 min-h-screen gap-5">
-  
-    <h1 className='text-white text-3xl font-semibold '>Create Your Account</h1>
-   <div className='flex flex-col border-2 border-white rounded-xl p-3 bg-[#212125]'>
-   <h1 className='text-white text-center font-bold text-2xl  mt-3'>Enter Your Credentials</h1>
-   <form
-   className=" p-10 w-[25rem] rounded-lg flex flex-col gap-y-4 -mt-3 "
-   onSubmit={handleSubmitForm}
-   >
-      <input
-        type="text"
-        placeholder="enter your name"
-        required
-        ref={inputRefs.name}
-        name="name"
-        className={inputStyling}
-        onChange={handleInputChange}
-        value={newUser.name}
-      ></input>
-
-      <input
-        type="text"
-        placeholder="enter your username"
-        required
-        name="username"
-        ref={inputRefs.username}
-        className={inputStyling}
-        onChange={handleInputChange}
-        value={newUser.username}
-      ></input>
-      <input
-        type="number"
-        placeholder="enter phone number "
-        required
-        ref={inputRefs.phone}
-        name="phone"
-        className={inputStyling}
-        onChange={handleInputChange}
-        value={newUser.phone}
-      ></input>
-  
-      <input
-        type="email"
-        placeholder="enter your email "
-        required
-        name="email"
-        ref={inputRefs.email}
-        className={inputStyling}
-        onChange={handleInputChange}
-        value={newUser.email}
-      ></input>
-
-      <input
-        type="password"
-        placeholder="enter strong password "
-        required
-        name="password"
-        ref={inputRefs.password}
-        className={inputStyling}
-        onChange={handleInputChange}
-        value={newUser.password}
-      ></input>
-     <div className='flex justify-evenly mt-5'> <input type="checkbox"  id="check" required className="form-checkbox h-5 w-5  border-gray-300 rounded accent-green-600 "
-        />
-         <label htmlFor="check" className='text-white -mt-1' >I agree to all the terms & conditions</label>
-         </div>
-     <div className='flex justify-center mt-3 text-md text-gray-400'>Already have an account ? &nbsp;<NavLink to="/user/login"><span className='text-cyan-300'>Login</span></NavLink></div>
-      <button type="submit" className="border-gray-500 border-2 mt-6 bg-green-600 px-2 py-2 text-white rounded-xl">
-        Create Account
-      </button>
-    </form>
+    <div className="bg-[url('/assets/bg.jpg')] bg-cover flex flex-col justify-center items-center bg-purple-200 min-h-screen px-4 md:px-8">
+      <h1 className="text-white text-3xl font-semibold text-center mb-5 mt-2">Create Your Account</h1>
+      <div className="flex flex-col border-2 border-white rounded-xl p-7 mb-3 bg-[#212125]  max-w-md md:w-[60%] ">
+        <h2 className="text-white text-center font-bold text-xl mb-5 break-all">Enter Your Credentials</h2>
+        <form className="flex flex-col gap-y-4 lg:p-5" onSubmit={handleSubmitForm}>
+          <input
+            type="text"
+            placeholder="Enter your name"
+            required
+            ref={inputRefs.name}
+            name="name"
+            className={inputStyling}
+            onChange={handleInputChange}
+            value={newUser.name}
+          />
+          <input
+            type="text"
+            placeholder="Enter your username"
+            required
+            ref={inputRefs.username}
+            name="username"
+            className={inputStyling}
+            onChange={handleInputChange}
+            value={newUser.username}
+          />
+          <input
+            type="number"
+            placeholder="Enter phone number"
+            required
+            ref={inputRefs.phone}
+            name="phone"
+            className={inputStyling}
+            onChange={handleInputChange}
+            value={newUser.phone}
+          />
+          <input
+            type="email"
+            placeholder="Enter your email"
+            required
+            ref={inputRefs.email}
+            name="email"
+            className={inputStyling}
+            onChange={handleInputChange}
+            value={newUser.email}
+          />
+          <input
+            type="password"
+            placeholder="Enter strong password"
+            required
+            ref={inputRefs.password}
+            name="password"
+            className={inputStyling}
+            onChange={handleInputChange}
+            value={newUser.password}
+          />
+          <div className="flex items-center  gap-3">
+            <input
+              type="checkbox"
+              id="check"
+              required
+              className="form-checkbox h-5 w-5  border-gray-700 accent-green-600"
+            />
+            <label htmlFor="check" className="sm :text-base md:text-base lg:text-sm xl:text-base 2xl:text-base text-gray-300 text-sm  ">
+              I agree to all the <span className='text-blue-400'> <NavLink to='/conditions'>terms and conditions</NavLink></span>
+            </label>
+          </div>
+          <div className="text-center text-gray-400 mt-2">
+            Already have an account?{' '}
+            <NavLink to="/user/login" className="text-sky-500">
+              Login
+            </NavLink>
+          </div>
+          <button
+            type="submit"
+            className="w-full border-gray-500 border-2 bg-green-600 px-4 py-2 text-white rounded-xl mt-4 2xl:p-3"
+          >
+            Create Account
+          </button>
+        </form>
+      </div>
     </div>
+  );
+};
 
-    </div>
-    </>
-  )
-}
-
-export default RegisterUser
+export default RegisterUser;
