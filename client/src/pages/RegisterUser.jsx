@@ -6,7 +6,6 @@ import { useUser } from '../components/userContext/userContext';
 const RegisterUser = () => {
   const { setUser } = useUser();
   const navigate = useNavigate();
-  const [image, setImage] = useState(null);
   const [newUser, setNewUser] = useState({
     name: '',
     username: '',
@@ -39,25 +38,23 @@ const RegisterUser = () => {
     }
   };
 
-  const handleFileChange = (e) => {
-    setImage(e.target.files[0]);
-  };
 
   const handleSubmitForm = async (e) => {
     e.preventDefault();
-
-    const formData = new FormData();
-    formData.append('name', newUser.name);
-    formData.append('username', newUser.username);
-    formData.append('phone', newUser.phone);
-    formData.append('email', newUser.email);
-    formData.append('password', newUser.password);
-    if (image) {
-      formData.append('image', image);
+    const dataSent ={
+      name : newUser.name,
+      username : newUser.username,
+      phone : newUser.phone,
+      email : newUser.email,
+      password : newUser.password,
     }
+console.log("data sent by Frontend : => ", dataSent );
 
     try {
-      const response = await axios.post('http://localhost:8000/api/v1/user/register', formData);
+      const response = await axios.post('http://localhost:8000/api/v1/user/register', 
+        dataSent,
+        {withCredentials:true}
+      );
       if (response.status === 200) {
         setNewUser({
           name: '',
@@ -67,10 +64,10 @@ const RegisterUser = () => {
           password: '',
         });
         setUser(response.data.data.registerNewUser);
-        setImage(null);
         navigate('/');
       } else {
-        alert('User cannot be registered!');
+       console.error("Failed to crate your account !");
+       
       }
     } catch (error) {
       console.error('Failed to register the new user', error);
