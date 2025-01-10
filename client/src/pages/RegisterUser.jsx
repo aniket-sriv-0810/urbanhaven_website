@@ -152,18 +152,18 @@ console.log("data sent by Frontend : => ", dataSent );
                title="kindly agree to our terms and conditions"
             />
             <label htmlFor="check" className="sm :text-base md:text-base lg:text-sm xl:text-base 2xl:text-base text-gray-300 text-sm  "  >
-              I agree to all the <span className='text-blue-400' title="view our terms and conditions"> <NavLink to='/conditions'>terms and conditions</NavLink></span>
+              I agree to all the <span className='text-blue-400 hover:underline' title="view our terms and conditions"> <NavLink to='/conditions'>terms and conditions</NavLink></span>
             </label>
           </div>
           <div className="text-center text-gray-400 mt-2">
             Already have an account?{' '}
-            <NavLink to="/user/login" className="text-sky-500">
+            <NavLink to="/user/login" className="text-sky-500 hover:underline">
               Login
             </NavLink>
           </div>
           <button
             type="submit"
-            className="w-full border-gray-500 border-2 bg-green-600 px-4 py-2 text-white rounded-xl mt-4 2xl:p-3"
+            className="w-full border-gray-500 font-semibold border-2 bg-teal-600 px-4 py-2 text-white rounded-xl mt-4 2xl:p-3 hover:bg-green-600"
           >
             Create Account
           </button>
