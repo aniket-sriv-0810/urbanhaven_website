@@ -25,6 +25,7 @@ import AdminBooking from './layout/AdminBooking';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import './App.css';
 import ConfirmationPage from './pages/ConfirmationPage';
+import AuthLoader from './pages/AuthLoader';
 
 export default function App() {
   const { setUser } = useUser();
@@ -38,7 +39,7 @@ export default function App() {
       setIsLoading(true);
       const timer = setTimeout(() => {
         setIsLoading(false);
-      }, 3000);
+      }, 1500);
 
       return () => clearTimeout(timer); // Cleanup the timer on unmount
     } else {
@@ -117,6 +118,7 @@ export default function App() {
           <Route path="/user/:id/account/edit" element={<UserAccountEdit />} />
           <Route path="/user/:id/account/delete" element={<DeleteUser />} />
           <Route path="/user/register" element={<RegisterUser />} />
+          <Route path="/user/register/authentication" element={<AuthLoader />} />
           <Route path="/user/login" element={<LoginUser />} />
           <Route path="/user/logout" element={<Logout />} />
           <Route

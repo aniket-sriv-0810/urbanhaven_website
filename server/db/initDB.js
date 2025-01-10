@@ -24,8 +24,8 @@ async function main(){
 // Storing sample dataset in database
 const initDB = async() => {
     // await Hotel.deleteMany({});
-    // await User.deleteMany({});
-    await Review.deleteMany({});
+    await User.deleteMany({});
+    // await Review.deleteMany({});
     // await Hotel.insertMany(sampleData);
     console.log("Data deleted successfully !");
 }

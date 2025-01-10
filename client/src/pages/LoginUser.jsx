@@ -60,19 +60,7 @@ const LoginUser = () => {
         setUser(response.data.data.loggedInUser);
         localStorage.setItem("user", JSON.stringify(loginData))
         const redirectPath = location.state?.from?.pathname || "/";
-        toast.success("Logged in Successfully !", {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          progress: undefined,
-          theme: "light"
-        });
-        setTimeout(() => {
-          navigate(redirectPath);
-        }, 3000); // Delay navigation
+        navigate('/user/register/authentication')
       } else {
         console.error("User cannot be logged in");
       }

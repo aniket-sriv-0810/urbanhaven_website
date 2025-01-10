@@ -21,6 +21,8 @@ const RegisterUser = () => {
     email: useRef(),
     password: useRef(),
   };
+ let validStyle=null
+ let invalidStyle=null
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -64,18 +66,21 @@ console.log("data sent by Frontend : => ", dataSent );
           password: '',
         });
         setUser(response.data.data.registerNewUser);
-        navigate('/');
+        
+        navigate('/user/register/authentication');
       } else {
-       console.error("Failed to crate your account !");
-       
+        console.error("Failed to crate your account !");
+        
+        
       }
     } catch (error) {
       console.error('Failed to register the new user', error);
+     
     }
   };
 
   const inputStyling =
-    '  border border-gray-300 rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-[#5454544f] placeholder:text-center placeholder:capitalize placeholder:text-white ';
+    `  border border-gray-300 rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-[#5454544f] placeholder:text-center placeholder:capitalize placeholder:text-white valid:border-green-400 valid:border-2`;
 
   return (
     <div className="bg-[url('/assets/bg.jpg')] bg-cover flex flex-col justify-center items-center bg-purple-200 min-h-screen px-4 md:px-8">
@@ -89,9 +94,10 @@ console.log("data sent by Frontend : => ", dataSent );
             required
             ref={inputRefs.name}
             name="name"
-            className={inputStyling}
+            className={`${inputStyling}`}
             onChange={handleInputChange}
             value={newUser.name}
+             title="please enter your username"
           />
           <input
             type="text"
@@ -99,9 +105,10 @@ console.log("data sent by Frontend : => ", dataSent );
             required
             ref={inputRefs.username}
             name="username"
-            className={inputStyling}
+            className={inputStyling }
             onChange={handleInputChange}
             value={newUser.username}
+            title="please enter your name"
           />
           <input
             type="number"
@@ -112,6 +119,7 @@ console.log("data sent by Frontend : => ", dataSent );
             className={inputStyling}
             onChange={handleInputChange}
             value={newUser.phone}
+             title="please enter your phone number"
           />
           <input
             type="email"
@@ -122,6 +130,7 @@ console.log("data sent by Frontend : => ", dataSent );
             className={inputStyling}
             onChange={handleInputChange}
             value={newUser.email}
+             title="please enter your email id"
           />
           <input
             type="password"
@@ -132,16 +141,18 @@ console.log("data sent by Frontend : => ", dataSent );
             className={inputStyling}
             onChange={handleInputChange}
             value={newUser.password}
+             title="please enter your password"
           />
           <div className="flex items-center  gap-3">
             <input
               type="checkbox"
               id="check"
               required
-              className="form-checkbox h-5 w-5  border-gray-700 accent-green-600"
+              className="form-checkbox h-5 w-5   border-gray-700 accent-green-600"
+               title="kindly agree to our terms and conditions"
             />
-            <label htmlFor="check" className="sm :text-base md:text-base lg:text-sm xl:text-base 2xl:text-base text-gray-300 text-sm  ">
-              I agree to all the <span className='text-blue-400'> <NavLink to='/conditions'>terms and conditions</NavLink></span>
+            <label htmlFor="check" className="sm :text-base md:text-base lg:text-sm xl:text-base 2xl:text-base text-gray-300 text-sm  "  >
+              I agree to all the <span className='text-blue-400' title="view our terms and conditions"> <NavLink to='/conditions'>terms and conditions</NavLink></span>
             </label>
           </div>
           <div className="text-center text-gray-400 mt-2">
