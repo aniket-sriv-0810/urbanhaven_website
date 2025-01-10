@@ -163,7 +163,7 @@ console.log("data sent by Frontend : => ", dataSent );
           </div>
           <button
             type="submit"
-            className="w-full border-gray-500 font-semibold border-2 bg-teal-600 px-4 py-2 text-white rounded-xl mt-4 2xl:p-3 hover:bg-green-600"
+            className="w-full border-gray-500 font-semibold border-2 bg-green-600 px-4 py-2 text-white rounded-xl mt-4 2xl:p-3 hover:bg-green-700"
           >
             Create Account
           </button>

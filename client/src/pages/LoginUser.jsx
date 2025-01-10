@@ -54,8 +54,7 @@ const LoginUser = () => {
         setLoginUser({ username: "", password: "" });
         setUser(loginData);
         localStorage.setItem("user", JSON.stringify(loginData));
-        const redirectPath = location.state?.from?.pathname || "/";
-        navigate(redirectPath);
+       navigate('/user/login/confirmed')
       } else {
         console.error("User cannot be logged in");
         toast.error("Failed to log in. Please check your credentials.");
@@ -114,7 +113,7 @@ const LoginUser = () => {
 
             <button
               type="submit"
-              className="w-full border-gray-500 border-2  font-semibold bg-teal-600 px-4 py-2 text-white rounded-xl mt-4 hover:bg-green-600 "
+              className="w-full border-gray-500 border-2  font-semibold bg-green-600 px-4 py-2 text-white rounded-xl mt-4 hover:bg-green-700 "
             >
               Verify Now
             </button>

@@ -26,6 +26,7 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import './App.css';
 import ConfirmationPage from './pages/ConfirmationPage';
 import AuthLoader from './pages/AuthLoader';
+import LoginLoader from './pages/LoginLoader';
 
 export default function App() {
   const { setUser } = useUser();
@@ -119,6 +120,7 @@ export default function App() {
           <Route path="/user/:id/account/delete" element={<DeleteUser />} />
           <Route path="/user/register" element={<RegisterUser />} />
           <Route path="/user/register/authentication" element={<AuthLoader />} />
+          <Route path="/user/login/confirmed" element={<LoginLoader />} />
           <Route path="/user/login" element={<LoginUser />} />
           <Route path="/user/logout" element={<Logout />} />
           <Route

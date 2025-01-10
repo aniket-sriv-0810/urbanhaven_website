@@ -8,7 +8,8 @@ const LoginLoader = () => {
         setIsLoading(true);
         const timer = setTimeout( () => {
             setIsLoading(false);
-            navigate('/');
+            const redirectPath = location.state?.from?.pathname || "/";
+            navigate(redirectPath);
         }, 4000)
         return () => {
             clearTimeout(timer)
@@ -24,7 +25,7 @@ const LoginLoader = () => {
         autoplay
         className=''
         />
-        <span className='text-center text-2xl font-bold text-green-500 relative -top-[30%] sm:text-4xl lg:-top-[20%] lg:text-5xl'>Registered Successfully</span>
+        <span className='text-center text-2xl font-bold text-green-500 relative -top-[30%] sm:text-4xl lg:-top-[20%] lg:text-5xl'>Logged in Successfully</span>
   </div>
   </>
   : null
