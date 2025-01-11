@@ -30,7 +30,7 @@ const Navbar = () => {
     <nav className="bg-[#15455f] text-white shadow-md ">
       <div className="container flex justify-center items-center px-6 sm:justify-between  lg:px-8">
         {/* Logo and Welcome Message */}
-        <div className="flex  items-center space-x-4">
+        <div className="flex  items-center space-x-5">
           <NavLink to="/">
             <img
               src={WebsiteLogo}

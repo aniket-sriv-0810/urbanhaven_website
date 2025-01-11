@@ -9,7 +9,7 @@ const LoginLoader = () => {
         const timer = setTimeout( () => {
             setIsLoading(false);
             navigate('/');
-        },3000)
+        },4000)
         return () => {
             clearTimeout(timer)
         }

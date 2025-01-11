@@ -10,7 +10,7 @@ const LoginLoader = () => {
             setIsLoading(false);
             const redirectPath = location.state?.from?.pathname || "/";
             navigate(redirectPath);
-        }, 3000)
+        }, 4000)
         return () => {
             clearTimeout(timer)
         }
