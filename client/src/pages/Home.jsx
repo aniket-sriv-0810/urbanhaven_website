@@ -64,7 +64,7 @@ const Home = () => {
  />
 
  </div>
- <h1 className='text-center font-semibold text-xl text-black p-4'>List of our all Top Hotels</h1>
+ <h1 className='text-center font-semibold text-xl sm:text-3xl text-black p-4'>List of our all Top Hotels</h1>
  <div className="flex flex-wrap justify-evenly gap-8 mt-5 px-4">
   {loading > 0 ? (
     <p className="text-lg text-gray-600">Hotels Loading...</p>

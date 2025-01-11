@@ -27,6 +27,7 @@ import './App.css';
 import ConfirmationPage from './pages/ConfirmationPage';
 import AuthLoader from './pages/AuthLoader';
 import LoginLoader from './pages/LoginLoader';
+import PageNotFound from './pages/PageNotFound';
 
 export default function App() {
   const { setUser } = useUser();
@@ -138,6 +139,7 @@ export default function App() {
             <Route path="hotel-details/:id/edit" element={<Edit />} />
             <Route path="hotel/:id/delete" element={<Delete />} />
           </Route>
+          <Route path="*" element={<PageNotFound/>}/>
         </Routes>
       )}
     </>
