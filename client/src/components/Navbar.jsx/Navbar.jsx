@@ -27,7 +27,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-[#15455f] text-white shadow-md ">
+    <nav className="bg-[#2d2e30] text-white shadow-md ">
       <div className="container flex justify-center items-center px-6 sm:justify-between  lg:px-8">
         {/* Logo and Welcome Message */}
         <div className="flex  items-center space-x-5">
