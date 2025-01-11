@@ -10,6 +10,7 @@ import CurrencyExchange from '../components/CurrencyExchange/CurrencyExchange';
 import Navbar from '../components/Navbar.jsx/Navbar';
 import Counter from '../components/Counter/Counter';
 import Footer from '../components/Footer/Footer';
+import Header from '../components/Header/Header';
 const currencySymbols = {
   INR: '₹',
   USD: '$',
@@ -29,16 +30,7 @@ const Home = () => {
       const response = await axios.get("http://localhost:8000/" , {
         withCredentials: true
       })
-      toast.info(' List of all hotels !', {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        });
+      
       console.log(response.data);
       setHotel(response.data.data.allHotel);
       setLoading(false);
@@ -55,6 +47,7 @@ const Home = () => {
   return (
    <>
    <Navbar />
+   <Header/>
  <div className="flex justify-center mt-5">
  <CurrencyExchange
    setCurrencyRates={setConversionRate}
@@ -137,19 +130,7 @@ const Home = () => {
       <Counter start={0} end={500} duration={3000} value={"Cities Available"} />
       <Counter start={0} end={2000} duration={3000} value={"Average Customer Feedback"} />
     </div>
-   <ToastContainer
-   position="top-right"
-   autoClose={2000}
-   hideProgressBar={false}
-   newestOnTop={false}
-   closeOnClick
-   rtl={false}
-   pauseOnFocusLoss
-   draggable
-   pauseOnHover={false}
-   theme="light"
-   transition={Bounce}
-   />
+  
    <Footer/>
    </>
   )

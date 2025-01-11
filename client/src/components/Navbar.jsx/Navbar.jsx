@@ -27,25 +27,25 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-[#15455f] text-white shadow-md">
-      <div className="container mx-auto flex justify-between items-center px-6 py-3  lg:px-8">
+    <nav className="bg-[#15455f] text-white shadow-md ">
+      <div className="container flex justify-center items-center px-6 sm:justify-between  lg:px-8">
         {/* Logo and Welcome Message */}
-        <div className="flex items-center space-x-4">
+        <div className="flex  items-center space-x-4">
           <NavLink to="/">
             <img
               src={WebsiteLogo}
               alt="UrbanHaven"
-              className="w-20 sm:w-20 lg:w-24"
+              className="w-16 sm:w-20 lg:w-24"
               title='urbanhaven'
             />
           </NavLink>
-          <h1 className="text-xs sm:text-sm lg:text-xl  text-white font-semibold truncate">
-            {user ? `Welcome, ${user.name} to UrbanHaven!` : 'Welcome to UrbanHaven!'}
+          <h1 className="hidden sm:text-lg sm:block  text-white font-semibold truncate">
+            {user ? `Welcome, ${user.name} to UrbanHaven !` : 'Welcome to UrbanHaven !'}
           </h1>
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden  md:flex gap-10 items-center">
+        <ul className="hidden  lg:flex absolute right-7 gap-10  items-center ">
           <li >
             <NavLink to="/admin">
               <MdAdminPanelSettings className="text-2xl text-white" title='admin panel' />
@@ -105,14 +105,14 @@ const Navbar = () => {
         </ul>
 
         {/* Hamburger Icon */}
-        <button className="md:hidden text-white focus:outline-none mr-2" onClick={toggleMenu}>
+        <button className="absolute right-3 lg:hidden text-white focus:outline-none mr-2" onClick={toggleMenu}>
           {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
         </button>
       </div>
 
     {/* Mobile Menu */}
 {isMenuOpen && (
-  <ul className="md:hidden bg-[#414141] text-white space-y-4 p-4 ">
+  <ul className="lg:hidden bg-[#414141] text-white space-y-4 p-4 ">
     <li className="flex items-center justify-center space-x-2 py-2">
       <MdAdminPanelSettings className="text-xl" />
       <NavLink to="/admin" onClick={toggleMenu} className="hover:underline">
