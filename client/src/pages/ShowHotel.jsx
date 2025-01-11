@@ -6,6 +6,7 @@ import MapLocation from '../components/MapLocation/MapLocation';
 import Amenities from '../components/Amenities/Ammenties';
 import Logo from '../assets/webiste_full_logo.png';
 import Footer from '../components/Footer/Footer';
+import Policies from '../components/Policies/Policies';
 const ShowHotel = () => {
 const {id} = useParams();
 const [reviews, setReviews] = useState();
@@ -46,14 +47,24 @@ useEffect( () => {
   }
   return (
   <>
-  <h1 className='text-center text-xl font-bold'>View your Hotel</h1>
-  <div className=''>
+  <div className="container mx-auto px-4">
+  <h1 className="text-center text-2xl font-bold mt-6">View Your Hotel</h1>
+  <div className="mt-6">
+    <img
+      src={showMyHotel.image}
+      alt={showMyHotel.title}
+      className="w-full max-w-screen-lg h-auto rounded-xl mx-auto shadow-lg object-cover"
+    />
+    <h2 className="text-3xl font-semibold text-center mt-4">{showMyHotel.title}</h2>
+    <p className="text-center text-gray-600 mt-2">
+      {avgRating} ⭐ ({reviewCount} reviews)
+    </p>
+  </div>
   <ul className=''>
-  <img src={showMyHotel.image} alt={ showMyHotel.title} className='w-[90%] h-[35rem] rounded-2xl mt-4 m-auto p-2 border-3 shadow-md shadow-black' />
-  <li className='font-semibold text-3xl uppercase mt-5 text-center '>{showMyHotel.title}<span className='flex justify-end space-x-3 mr-6 text-xl font-normal capitalize'><p className=' w-max  rounded-xl '>{avgRating} ⭐</p> <p>({reviewCount} reviews)</p></span></li><br/>
   <div className='ml-20 text-lg'>
   <li><p className='text-xl font-semibold'>About our place :</p> <span className='text-gray-700'>{showMyHotel.description} </span></li>
   <li>Rs {showMyHotel.price}</li>
+  <li> <Policies/></li>
   <li><p>Amenities Provided : </p><Amenities/></li>
   <li><p>{showMyHotel.city} , {showMyHotel.state} , {showMyHotel.country} </p></li>
   </div>
