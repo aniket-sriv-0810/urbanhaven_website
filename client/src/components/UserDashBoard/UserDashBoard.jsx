@@ -1,20 +1,21 @@
-import React from 'react'
+import React from "react";
 
-const UserDashBoard = () => {
-
+const UserDashBoard = ({ closeMenu }) => {
   return (
-   <>
-   <div className='w-max' >
-   <ul className='w-max  py-16'>
-   <li className='py-5  text-center w-full bg-purple-500 rounded-xl mt-3 text-white'>Details</li>
-   <li className='py-5  text-center w-full bg-purple-500 rounded-xl mt-3 text-white'>Wishlist</li>
-   <li className='py-5  text-center w-full bg-purple-500 rounded-xl mt-3 text-white'>My Bookings</li>
-   <li className='py-5  text-center w-full bg-purple-500 rounded-xl mt-3 text-white'>logout</li>
-   <li className='py-5  text-center w-full bg-purple-500 rounded-xl mt-3 text-white'>Delete Account</li>
-   </ul>
-   </div>
-   </>
-  )
-}
+    <div className="w-full h-full">
+      <ul className="space-y-5 ">
+        {["Details", "Wishlist", "My Bookings", "Logout", "Delete Account"].map((item, index) => (
+          <li
+            key={index}
+            className="text-center bg-purple-500 hover:bg-purple-600 text-white py-4 rounded-lg shadow-md cursor-pointer"
+            onClick={closeMenu} // Close the drawer when an item is clicked
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
-export default UserDashBoard
+export default UserDashBoard;

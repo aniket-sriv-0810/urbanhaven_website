@@ -33,9 +33,9 @@ const ConfirmationPage = () => {
     <div className="p-6 bg-gray-100 min-h-screen">
       <h1 className="text-3xl font-semibold text-center">Booking Confirmation</h1>
       <div className="mt-8 bg-white shadow-md p-4 rounded-lg max-w-xl mx-auto">
-        <h2 className="text-xl font-semibold mb-4">{bookingDetails.userDetails.name}</h2>
-        <h2 className="text-xl font-semibold mb-4">{bookingDetails.userDetails.phone}</h2>
-        <h2 className="text-xl font-semibold mb-4">{bookingDetails.userDetails.email}</h2>
+        <h2 className="text-xl font-semibold mb-4">{bookingDetails.userDetails}</h2>
+        <h2 className="text-xl font-semibold mb-4">{bookingDetails.userDetails}</h2>
+        <h2 className="text-xl font-semibold mb-4">{bookingDetails.userDetails}</h2>
         <p className="text-gray-600"> {bookingDetails.hotelDetails.title}</p>
         <p className="text-gray-600"> {bookingDetails.hotelDetails.city}</p>
         

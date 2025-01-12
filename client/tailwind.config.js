@@ -8,6 +8,7 @@ export default {
     extend: {
       backgroundImage: {
         'signup-bg': "url('/assets/bg.jpg')",
+        'booking-bg': "url('/assets/booking-bg.jpg')",
       },
     },
   },

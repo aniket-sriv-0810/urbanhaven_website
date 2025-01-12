@@ -73,13 +73,11 @@ const submitForm = async(e) => {
 }
   return (
     <>
-    <h1>Booking Form</h1>
-    <p>{user.name}</p>
-    <p>Phone :{user.phone}</p>
-    <p>{user.username}</p>
-    <p>{user._id}</p>
-    <div className='flex justify-center items-center'>
-    <form onSubmit={submitForm} className='flex flex-col justify-center items-start w-max border-2 border-red-500 p-3'>
+    <div className="bg-[url('/assets/booking-bg.jpg')] bg-cover flex flex-col justify-center items-center bg-purple-200 min-h-screen px-4 md:px-8">
+    <h1 className="text-white text-3xl font-semibold text-center mb-5 mt-2">Confirm Your Booking</h1>
+    <div className="flex flex-col border-2 border-white rounded-xl p-7 mb-3 bg-[#212125]  max-w-md md:w-[60%] ">
+    <h2 className="text-white text-center font-bold text-xl mb-5 break-all">Enter Your Details</h2>
+    <form className="flex flex-col gap-y-4 lg:p-5" onSubmit={submitForm}>
     <input onChange={inputChange} type="text" value={user.name} name="name" required />
     <input onChange={inputChange} type="number" value={user.phone} name="number" required />
     <input onChange={inputChange} type="email" value={user.email} name="email" required />
@@ -92,6 +90,7 @@ const submitForm = async(e) => {
     <input onChange={inputChange} type="text" value={bookingData.status} name="status" required />
     <button type='submit'>Book Now</button>
     </form>
+    </div>
     </div>
     </>
   )

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, NavLink, useParams } from 'react-router-dom'
 import axios from 'axios';
 import Review from '../components/Review/Review';
 import MapLocation from '../components/MapLocation/MapLocation';
@@ -47,7 +47,7 @@ useEffect( () => {
   }
   return (
   <>
-  <div className="container mx-auto px-4">
+  <div className="container px-4">
   <h1 className="text-center text-2xl font-bold mt-6">View Your Hotel</h1>
   <div className="mt-6">
     <img
@@ -64,13 +64,17 @@ useEffect( () => {
   <div className='ml-20 text-lg'>
   <li><p className='text-xl font-semibold'>About our place :</p> <span className='text-gray-700'>{showMyHotel.description} </span></li>
   <li>Rs {showMyHotel.price}</li>
-  <li> <Policies/></li>
   <li><p>Amenities Provided : </p><Amenities/></li>
   <li><p>{showMyHotel.city} , {showMyHotel.state} , {showMyHotel.country} </p></li>
   </div>
   <div className='w-[90%] ml-20 border-3  shadow-md shadow-slate-600'><MapLocation hotel={showMyHotel} /></div>
   </ul>
-
+  <Policies/>
+  <div className='flex justify-center items-center'>
+  <Link to={`/hotel/${id}/booking`}>
+  <button className="  m-5 bg-red-500 p-3 text-white w-60 rounded-2xl font-bold hover:bg-red-600">Book Now</button>
+  </Link>
+  </div>
 <div className=' gap-3 mt-5'>
 <Review/>
 <div className='flex gap-5 space-x-6 flex-wrap'>
@@ -150,11 +154,15 @@ useEffect( () => {
 
 </div>
   </div>
-  <div className='flex justify-center items-center'>
+  <div className='flex flex-col justify-center items-center space-y-7'>
   <Link to="/">
-  <button className="  m-5 bg-purple-600 p-3 text-white w-40 rounded-2xl font-bold ">Home</button>
+  <button className="   bg-purple-600 p-3 text-white w-60 rounded-2xl font-bold ">Home</button>
+  </Link>
+  <Link to={`/hotel/${id}/booking`}>
+  <button className=" mb-5 bg-red-500 p-3 text-white w-60 rounded-2xl font-bold hover:bg-red-600">Book Now</button>
   </Link>
   </div>
+  
   </div>
   <Footer/>
   </>
