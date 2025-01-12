@@ -7,6 +7,7 @@ import Amenities from '../components/Amenities/Ammenties';
 import Logo from '../assets/webiste_full_logo.png';
 import Footer from '../components/Footer/Footer';
 import Policies from '../components/Policies/Policies';
+import ImageGallery from '../components/ImageGallery/ImageGallery';
 const ShowHotel = () => {
 const {id} = useParams();
 const [reviews, setReviews] = useState();
@@ -60,6 +61,9 @@ useEffect( () => {
       {avgRating} ⭐ ({reviewCount} reviews)
     </p>
   </div>
+  <div className='flex justify-center items-center'>
+  <ImageGallery />
+  </div>
   <ul className=''>
   <div className='ml-20 text-lg'>
   <li><p className='text-xl font-semibold'>About our place :</p> <span className='text-gray-700'>{showMyHotel.description} </span></li>
@@ -77,8 +81,9 @@ useEffect( () => {
   </div>
 <div className=' gap-3 mt-5'>
 <Review/>
+
 <div className='flex gap-5 space-x-6 flex-wrap'>
-{reviews ? reviews.map((reviewsItem) => (
+{reviews  && reviews.length >0 ? reviews.map((reviewsItem) => (
   <div 
     key={reviewsItem._id} 
     className="w-80 max-w-full h-auto shadow-md shadow-black rounded-br-3xl rounded-tr-3xl border-4 p-4 my-2 mx-3 break-words whitespace-pre-wrap"
@@ -162,8 +167,7 @@ useEffect( () => {
   <button className=" mb-5 bg-red-500 p-3 text-white w-60 rounded-2xl font-bold hover:bg-red-600">Book Now</button>
   </Link>
   </div>
-  
-  </div>
+</div>
   <Footer/>
   </>
   )
