@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaArrowLeft, FaArrowRight, FaTimes } from "react-icons/fa";
-
+import './ImageGallery.module.css';
 const ImageGallery = () => {
   const images = [
     { id: 1, src: "https://www.jaypeehotels.com/blog/wp-content/uploads/2024/09/Blog-6-scaled.jpg", alt: "Dining Area" },

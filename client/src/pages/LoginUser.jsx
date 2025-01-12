@@ -1,13 +1,13 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
-import { useNavigate, useLocation, NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { useUser } from "../components/userContext/userContext";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const LoginUser = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+
   const { setUser } = useUser();
   const [loginUser, setLoginUser] = useState({
     username: "",

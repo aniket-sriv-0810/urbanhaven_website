@@ -42,7 +42,7 @@ const Review = () => {
           comment: "",
         });
       }
-    navigate(`/hotel/${id}`)
+    navigate(`/review/done`)
      
     } catch (error) {
       console.error("Failed to create review", error);

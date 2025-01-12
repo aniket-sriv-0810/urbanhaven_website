@@ -6,7 +6,6 @@ import ShowHotel from './pages/ShowHotel';
 import Edit from './pages/Edit';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import Navbar from './components/Navbar.jsx/Navbar';
 import RegisterUser from './pages/RegisterUser';
 import LoginUser from './pages/LoginUser';
 import Logout from './components/Logout/Logout';
@@ -28,6 +27,8 @@ import ConfirmationPage from './pages/ConfirmationPage';
 import AuthLoader from './pages/AuthLoader';
 import LoginLoader from './pages/LoginLoader';
 import PageNotFound from './pages/PageNotFound';
+import ContactUsLoader from './pages/ContactUsLoader';
+import ReviewLoader from './pages/ReviewLoader';
 
 export default function App() {
   const { setUser } = useUser();
@@ -139,6 +140,8 @@ export default function App() {
             <Route path="hotel-details/:id/edit" element={<Edit />} />
             <Route path="hotel/:id/delete" element={<Delete />} />
           </Route>
+          <Route path="/contact/confirmed" element={<ContactUsLoader/>}/>
+          <Route path="/review/done" element={<ReviewLoader/>}/>
           <Route path="*" element={<PageNotFound/>}/>
         </Routes>
       )}

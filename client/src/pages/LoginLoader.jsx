@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate  ,useLocation} from 'react-router-dom';
 const LoginLoader = () => {
     const [isLoading , setIsLoading] = useState(false);
     const navigate = useNavigate();
+      const location = useLocation();
     useEffect(()=>{
         setIsLoading(true);
         const timer = setTimeout( () => {
