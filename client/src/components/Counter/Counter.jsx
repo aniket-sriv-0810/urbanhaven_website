@@ -48,9 +48,9 @@ const Counter = ({ start = 0, end, duration = 2000, value, color }) => {
   return (
     <div
       ref={ref}
-      className="flex flex-col justify-center items-center shadow-md rounded-lg p-6 transition-transform transform hover:scale-105 w-56 sm:w-64"
+      className={`flex flex-col justify-center items-center shadow-md rounded-lg p-6 transition-transform transform hover:scale-105 hover:bg-gray-100  w-56 sm:w-64`}
     >
-      <h1 className={`text-4xl font-bold text-${color}-500`}>{count}+</h1>
+      <h1 className={`text-4xl font-bold text-${color}-500 `}>{count}+</h1>
       <p className="text-base text-gray-700 font-medium">{value}</p>
     </div>
   );
