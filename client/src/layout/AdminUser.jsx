@@ -23,9 +23,10 @@ const AdminUser = () => {
   }, []);
 
   return (
-    <div className="admin-user-container">
-      <h1 className="text-2xl font-bold text-center mb-6">User Details</h1>
-      {userDetails ? (
+    <div className="admin-user-container px-4 py-8">
+    <h1 className="text-2xl font-bold text-center mb-6">User Details</h1>
+    {userDetails ? (
+      <div className="overflow-x-auto">
         <table className="min-w-full table-auto border-collapse border border-gray-300 shadow-md rounded-lg">
           <thead className="bg-gray-200 text-center">
             <tr>
@@ -54,10 +55,12 @@ const AdminUser = () => {
             ))}
           </tbody>
         </table>
-      ) : (
-        <p className="text-center text-red-500 mt-6">No User Found!</p>
-      )}
-    </div>
+      </div>
+    ) : (
+      <p className="text-center text-red-500 mt-6">No User Found!</p>
+    )}
+  </div>
+  
   );
 };
 

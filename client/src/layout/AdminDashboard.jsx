@@ -1,9 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { useUser } from "../components/userContext/userContext";
 import { Outlet, useNavigate } from "react-router-dom";
-import {driver} from 'driver.js';
+import { driver } from "driver.js";
 import "driver.js/dist/driver.css";
-import './AdminDriver.css';
+import "./AdminDriver.css";
+
 const AdminDashboard = () => {
   const { user } = useUser();
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const AdminDashboard = () => {
             title: "Users Details",
             description: "Click here to view and manage user details.",
             side: "top",
-            backgroundColor: "purple"
+            backgroundColor: "purple",
           },
         },
         {
@@ -64,56 +65,50 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div>
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center px-6 py-8">
       <h1
         id="welcome-message"
-        className="text-3xl text-black text-center font-bold"
+        className="text-3xl md:text-4xl lg:text-5xl text-gray-800 text-center font-bold mb-6"
       >
-        Hello Admin @{user ? ` ${user.name.toUpperCase()} !` : "!"}
+        Hello Admin{user ? ` ${user.name.toUpperCase()}!` : "!"}
       </h1>
-      <br />
-      <br />
-      <div className="flex gap-5 mx-4 mb-10 justify-center">
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-4xl">
         <button
           id="users-btn"
           onClick={() => navigate("users")}
-          className="bg-green-500 px-4 py-2 text-white border-gray-900 rounded-lg"
+          className="bg-green-500 hover:bg-green-600 text-white py-3 px-5 rounded-lg shadow-md transition-transform transform hover:scale-105"
         >
           Users Details
         </button>
         <button
           id="hotels-btn"
           onClick={() => navigate("hotels")}
-          className="bg-orange-500 px-4 py-2 rounded-lg text-white"
+          className="bg-orange-500 hover:bg-orange-600 text-white py-3 px-5 rounded-lg shadow-md transition-transform transform hover:scale-105"
         >
           Hotels Details
         </button>
         <button
           id="new-hotel-btn"
           onClick={() => navigate("new-hotel")}
-          className="bg-purple-600 px-4 py-2 rounded-lg text-white"
+          className="bg-blue-500 hover:bg-blue-600 text-white py-3 px-5 rounded-lg shadow-md transition-transform transform hover:scale-105"
         >
-          Create New Hotel
+          Add New Hotel
         </button>
         <button
           id="contacts-btn"
-          disabled
-          onClick={() => navigate("contacts")}
-          className="bg-gray-500 px-4 py-2 rounded-lg text-white"
+          className="bg-red-500 text-white py-3 px-5 rounded-lg shadow-md opacity-50 cursor-not-allowed"
         >
-          Contacts Details
+          Contact Us
         </button>
       </div>
 
-      {/* Tour Start Button */}
-      <div className="flex justify-center mb-4">
-        <button
-          onClick={startTour}
-          className="bg-blue-500 px-4 py-2 rounded-lg text-white"
-        >
-          Start Dashboard Tour
-        </button>
-      </div>
+      <button
+        onClick={startTour}
+        className="mt-6 py-2 px-4 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
+      >
+        Start Tour
+      </button>
 
       <Outlet />
     </div>
