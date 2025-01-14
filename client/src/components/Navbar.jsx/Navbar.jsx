@@ -86,7 +86,7 @@ const Navbar = () => {
                 <img
                   src={user.image}
                   alt={user.name}
-                  className="w-10 h-10 rounded-full border-2 border-white"
+                  className="w-10 h-10 rounded-full border-2 border-black"
                 />
               ) : (
                 <FaUserCircle className="text-2xl text-white" />
@@ -168,7 +168,7 @@ const Navbar = () => {
           <img
             src={user.image}
             alt={user.name}
-            className="w-8 h-8 rounded-full border-2 border-white"
+            className="w-8 h-8 rounded-full border-2 border-black"
           />
           <NavLink to={`/user/${user._id}/account`} onClick={toggleMenu} className="hover:underline">
             My Profile
