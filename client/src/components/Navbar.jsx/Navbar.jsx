@@ -6,7 +6,9 @@ import { FaMapMarkerAlt, FaUserCircle, FaBars, FaTimes } from 'react-icons/fa';
 import { MdAdminPanelSettings } from 'react-icons/md';
 import { useUser } from '../userContext/userContext';
 import WebsiteLogo from '../../assets/main-logo.png';
-
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css'; // Optional for default styling
+import { MdOutlineLogout } from "react-icons/md";
 const Navbar = () => {
   const { user, setUser } = useUser();
   const navigate = useNavigate();
@@ -31,14 +33,15 @@ const Navbar = () => {
       <div className="container flex justify-center items-center px-6 sm:justify-between  lg:px-8">
         {/* Logo and Welcome Message */}
         <div className="flex  items-center space-x-5">
+        <Tippy content="Admin Panel" className='bg-red-400'>
           <NavLink to="/">
             <img
               src={WebsiteLogo}
               alt="UrbanHaven"
               className="w-16 sm:w-20 lg:w-24"
-              title='urbanhaven'
             />
           </NavLink>
+          </Tippy>
           <h1 className="hidden sm:text-lg sm:block  text-white font-semibold truncate">
             {user ? `Welcome, ${user.name} to UrbanHaven !` : 'Welcome to UrbanHaven !'}
           </h1>
@@ -46,28 +49,37 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden  lg:flex absolute right-7 gap-10  items-center ">
-          <li className={`${ user ? user.role =="admin" ? "admin" :"hidden" : null }`} >
-            <NavLink to="/admin">
-              <MdAdminPanelSettings className="text-2xl text-white" title='admin panel' />
-            </NavLink>
-          </li>
+        <li className={`${user ? (user.role === "admin" ? "admin" : "hidden") : ""}`}>
+        <Tippy content="Admin Panel" >
+          <NavLink to="/admin">
+            <MdAdminPanelSettings className="text-2xl text-white" />
+          </NavLink>
+        </Tippy>
+      </li>
           <li >
+          <Tippy content="Home">
             <NavLink to="/">
-              <IoHomeSharp className="text-2xl text-white" title='home' />
+              <IoHomeSharp className="text-2xl text-white" />
             </NavLink>
+            </Tippy>
           </li>
           <li>
+          <Tippy content="Contact Us">
             <NavLink to="/contact">
               <FaMapMarkerAlt className="text-2xl text-white" title='contact us' />
             </NavLink>
+            </Tippy>
           </li>
           <li>
+          <Tippy content="About Us" >
             <NavLink to="/api/v1/about">
               <IoBusiness className="text-2xl text-white" title='about us' />
             </NavLink>
+            </Tippy>
           </li>
           <li>
-            <NavLink to={user ? `/user/${user._id}/account` : '/user/login'} title='my account'>
+          <Tippy content="Viw Profile">
+            <NavLink to={user ? `/user/${user._id}/account` : '/user/login'} >
               {user ? (
                 <img
                   src={user.image}
@@ -78,14 +90,19 @@ const Navbar = () => {
                 <FaUserCircle className="text-2xl text-white" />
               )}
             </NavLink>
+            </Tippy>
           </li>
           {user ? (
+            
             <button
-              onClick={handleLogout}
-              className="bg-red-500 px-4 py-2 rounded-lg hover:bg-red-600"
+            onClick={handleLogout}
+            className="bg-red-500 px-4 py-3 rounded-lg hover:bg-red-600 text-sm "
             >
-              Logout
+            <span className='flex gap-2'>
+            Logout <MdOutlineLogout className="text-white w-5 h-5"/>
+            </span>
             </button>
+            
           ) : (
             <>
               <button
@@ -162,11 +179,12 @@ const Navbar = () => {
     <li>
       {user ? (
         <button
-          onClick={handleLogout}
-          className="bg-red-500 px-4 py-2 mt-2 rounded-lg w-full flex items-center justify-center space-x-2"
+        onClick={handleLogout}
+        className="bg-red-500 px-4 py-3 m-auto rounded-lg  w-60 flex items-center justify-center space-x-2 hover:bg-red-600 text-sm "
         >
-          <FaTimes className="text-xl" />
-          <span>Logout</span>
+        <span className='flex gap-2'>
+        Logout <MdOutlineLogout className="text-white w-5 h-5"/>
+        </span>
         </button>
       ) : (
         <>
