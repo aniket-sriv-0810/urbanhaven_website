@@ -13,7 +13,6 @@ const RegisterUser = () => {
     email: '',
     password: '',
   });
-  const [isError , setIsError] = useState(false);
   const [formErrors, setFormErrors] = useState({
     name: '',
     username: '',

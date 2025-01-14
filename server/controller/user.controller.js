@@ -76,31 +76,57 @@ const createNewUser = asyncHandler(async (req, res) => {
 // Login the Registered User
 const loginUser = asyncHandler(async (req, res) => {
   try {
-    const { username } = req.body;
-    console.log("body => ", req.body);
-    console.log("Logged in successfully !");
-
-    const loggedInUser = await User.findOne({ username });
-    if (!loggedInUser) {
-      throw new ApiError(401, null, "Invalid username or password!");
-    }
-    req.login(loggedInUser, (err) => {
+    const { username , password } = req.body;
+  
+  
+      if (!username || !password) {
+        return res.status(400).json({
+          status: 400,
+          message: "Validation Error",
+          details: ["Username and Password are required !"],
+        });
+      }
+    const loggedInUser = await User.findOne({username});
+    // Use passport.authenticate for proper validation
+    passport.authenticate('local', (err, user, info) => {
       if (err) {
-        throw new ApiError(500, err, "Login failed!");
+        return res.status(500).json({
+          status: 500,
+          message: "Unexpected server error occurred!",
+          details: [err.message],
+        });
+      }
+      if (!user) {
+        return res.status(401).json({
+          status: 401,
+          message: "Invalid Credentials!",
+          details: [info?.message || "Authentication failed."],
+        });
       }
 
-      return res
-        .status(200)
-        .json(
-          new ApiResponse(
-            200,
-            { loggedInUser },
-            "Successfully logged in the User !"
-          )
-        );
-    });
+      req.login(user, (err) => {
+        if (err) {
+          return res.status(500).json({
+            status: 500,
+            message: "Login failed",
+            details: ["Unexpected server error occurred!"],
+          });
+        }
+        console.log("Body : ", req.body);
+        
+        return res.status(200).json({
+          status: 200,
+          data: { loggedInUser },
+          message: "Successfully logged in the User!",
+        });
+      });
+    })(req, res); // Execute passport.authenticate
   } catch (error) {
-    throw new ApiError(400, error, "Failed to log in!");
+    res.status(500).json({
+      status: 500,
+      message: "Failed to log in",
+      details: [error.message || "An unexpected error occurred!"],
+    });
   }
 });
 

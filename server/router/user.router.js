@@ -7,6 +7,7 @@ import {userSchemaValidation} from '../test/user.validator.js'
 import passport from 'passport';
 import { ApiResponse } from '../utils/ApiResponse.js';
 import { allHotel } from '../controller/hotel.controller.js';
+import { loginUserValidation } from '../test/login.validator.js';
 const router = express.Router();
 
 // Register a New user Route
@@ -17,7 +18,7 @@ router
 // Login a the registered user
 router
      .route('/login')
-     .post(checkLogInUser,loginUser);
+     .post( validate(loginUserValidation) ,loginUser);
 
 // Logout a the registered user
 router
