@@ -9,6 +9,8 @@ import WebsiteLogo from '../../assets/main-logo.png';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // Optional for default styling
 import { MdOutlineLogout } from "react-icons/md";
+import { RiShieldUserLine } from "react-icons/ri";
+import { PiUserCirclePlusBold } from "react-icons/pi";
 const Navbar = () => {
   const { user, setUser } = useUser();
   const navigate = useNavigate();
@@ -107,16 +109,21 @@ const Navbar = () => {
             <>
               <button
                 onClick={() => navigate('/user/login')}
-                className="bg-green-500 px-4 py-2 rounded-lg hover:bg-green-600"
-              >
-                Login
-              </button>
-              <button
+                className="bg-green-500 px-4 py-3 rounded-lg hover:bg-green-600"
+                >
+                <span className='flex gap-2'>
+                Login  <RiShieldUserLine className="text-white w-5 h-5 mt-1"/>
+                </span>
+                </button>
+                <button
                 onClick={() => navigate('/user/register')}
-                className="bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-700"
-              >
-                Sign Up
-              </button>
+                className="bg-blue-500 px-4 py-3 rounded-lg hover:bg-blue-600"
+                >
+                <span className='flex gap-2'>
+                Sign up <PiUserCirclePlusBold className="text-white w-5 h-5 mt-1"/>
+                </span>
+                </button>
+                
             </>
           )}
         </ul>
@@ -188,20 +195,23 @@ const Navbar = () => {
         </button>
       ) : (
         <>
-          <button
-            onClick={() => navigate('/user/login')}
-            className="bg-green-500 px-4 py-2 mt-2 rounded-lg w-full flex items-center justify-center space-x-2"
-          >
-            <FaUserCircle className="text-xl" />
-            <span>Login</span>
-          </button>
-          <button
-            onClick={() => navigate('/user/register')}
-            className="bg-blue-500 px-4 py-2 rounded-lg w-full mt-2 flex items-center justify-center space-x-2"
-          >
-            <FaUserCircle className="text-xl" />
-            <span>Sign Up</span>
-          </button>
+       
+        <button
+        onClick={() => navigate('/user/login')}
+        className="bg-green-500 px-4 py-3 m-auto rounded-lg  w-60 flex items-center justify-center space-x-2 hover:bg-green-600  "
+        >
+        <span className='flex gap-2'>
+                Login  <RiShieldUserLine className="text-white w-5 h-5 mt-1"/>
+                </span>
+        </button>
+        <button
+        onClick={() => navigate('/user/register')}
+        className="bg-blue-500 px-4 py-3 m-auto rounded-lg  w-60 flex items-center justify-center space-x-2 hover:bg-blue-600 mt-5 "
+        >
+        <span className='flex gap-2'>
+                Sign up  <PiUserCirclePlusBold className="text-white w-5 h-5 mt-1 "/>
+                </span>
+        </button>
         </>
       )}
     </li>
