@@ -46,7 +46,7 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden  lg:flex absolute right-7 gap-10  items-center ">
-          <li >
+          <li className={`${ user ? user.role =="admin" ? "admin" :"hidden" : null }`} >
             <NavLink to="/admin">
               <MdAdminPanelSettings className="text-2xl text-white" title='admin panel' />
             </NavLink>
@@ -113,12 +113,13 @@ const Navbar = () => {
     {/* Mobile Menu */}
 {isMenuOpen && (
   <ul className="lg:hidden bg-[#414141] text-white space-y-4 p-4 ">
-    <li className="flex items-center justify-center space-x-2 py-2">
-      <MdAdminPanelSettings className="text-xl" />
-      <NavLink to="/admin" onClick={toggleMenu} className="hover:underline">
-        Admin Panel
-      </NavLink>
-    </li>
+  <li className={`flex items-center justify-center space-x-2 py-2 ${ user ? user.role =="admin" ? "admin" :"hidden" : null }`}>
+  <MdAdminPanelSettings className="text-xl" />
+  <NavLink to="/admin" onClick={toggleMenu} className="hover:underline">
+    Admin Panel
+  </NavLink>
+</li>
+
     <li className="flex items-center justify-center space-x-2 py-2">
       <IoHomeSharp className="text-xl" />
       <NavLink to="/" onClick={toggleMenu} className="hover:underline">

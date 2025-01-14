@@ -7,36 +7,30 @@ const userSchema = new Schema ({
     name :{
         type:String,
         trim:true,
-        required: function () {
-            return !this.googleId; // Only required if not using Google
-        },
+        required:[ true,"Name is required !" ],
     },
     username:{
         type:String,
         trim:true,
-        required: function () {
-            return !this.googleId; // Only required if not using Google
-        },
-        unique:[true, "Username is must be unique !"],
+        unique:[true, "Username already exists !"],
+        required:[true , "Username is required !"  ],
     },
     phone :{
-        type:Number,
-        unique:[true, "Phone is must be unique !"],
-        required: function () {
-            return !this.googleId; // Required only if not using Google login
-        },
+        type:String,
+        unique:[true, "Phone number already exits !"],
+        required:[true , "Phone is required !"],
         validate: {
             validator: function (v) {
-                if (!v && this.googleId) return true; // Skip validation if using Google login
                 return /^[0-9]{10}$/.test(v); // Validate for a 10-digit phone number otherwise
             },
+            message: "Phone number must be a 10-digit number.",
     },
 },
     email:{
         type:String,
         trim:true,
-        unique:[true, "Email is must be unique !"],
-        required:[true, "Email is required"],
+        unique:[true, "Email ID already exits !"],
+        required:[true, "Email is required !"],
         validate: {
             validator: function (v) {
                 return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); // Simple email validation
@@ -47,9 +41,6 @@ const userSchema = new Schema ({
     image:{
         type:String,
         default:"https://e7.pngegg.com/pngimages/81/570/png-clipart-profile-logo-computer-icons-user-user-blue-heroes-thumbnail.png",
-    },
-    googleId: {
-     type : String
     },
     role: {
         type: String,
