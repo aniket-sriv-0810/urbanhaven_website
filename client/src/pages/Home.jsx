@@ -75,7 +75,9 @@ const Home = () => {
 
   return (
     <>
-      <Navbar />
+    <div className="bg-[url('/assets/home.jpg')]  bg-contain h-80  bg-no-repeat md:bg-cover md:w-[100%] md:h-[45rem] ">
+    <Navbar />
+    </div>
       <Header />
       <div className="flex justify-center items-center">
         <input

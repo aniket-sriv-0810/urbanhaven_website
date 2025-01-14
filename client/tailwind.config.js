@@ -9,6 +9,8 @@ export default {
       backgroundImage: {
         'signup-bg': "url('/assets/bg.jpg')",
         'booking-bg': "url('/assets/booking-bg.jpg')",
+        'bg-newHotel' : "url('/assets/bg-newHotel.jpg')",
+        'home-bg' : "url('/assets/home.jpg')",
       },
     },
   },
