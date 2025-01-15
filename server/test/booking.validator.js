@@ -31,6 +31,10 @@ const bookingSchemaValidation = Joi.object({
         "number.min": "Infant count cannot be negative.",
         "number.max": "A maximum of four infants can be booked.",
     }),
+    totalAmount: Joi.number().min(0).messages({
+        "number.min": "Payable Amount cannot be negative.",
+         "any.required": "Payment Amount is required."
+    }),
     paymentDetails: Joi.string().trim().required().messages({
         "string.empty": "Payment details are required.",
         "any.required": "Payment details are required.",

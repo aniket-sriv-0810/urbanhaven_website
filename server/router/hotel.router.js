@@ -24,7 +24,7 @@ router
 // Show a Particular Hotel Route
 router
      .route('/api/v1/hotel/:id')
-     .get(  isLoggedIn ,showMyHotel)
+     .get( isLoggedIn, showMyHotel)
 
  // Create a new Review
 router

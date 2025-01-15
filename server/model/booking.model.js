@@ -30,7 +30,7 @@ const bookingSchema = new Schema(
         adultCount:{
             type:Number,
             min:[1,"At least one adult is required !"],
-            max:[4,"Maximum  four adult can be booked !"],
+            max:[6,"Maximum  four adult can be booked !"],
             required:[true, "Adult count is required !"],
         },
         infantCount:{
@@ -39,6 +39,11 @@ const bookingSchema = new Schema(
             max:[4,"Maximum  four infant can be booked !"],
             required:[true, "Infant count is required !"],
             default:0,
+        },
+        totalAmount:{
+            type:Number,
+            min:[0, "Amount should be positive !"],
+            required:[true , "Amount is required !"],
         },
         paymentDetails:{
             type:String,
