@@ -19,7 +19,7 @@ import UserAccount from './pages/UserAccount';
 import UserAccountEdit from './pages/UserAccountEdit';
 import DeleteUser from './pages/DeleteUser';
 import { useUser } from './components/userContext/userContext';
-import Booking from './pages/Booking';
+import Booking from './pages/booking/Booking';
 import AdminBooking from './layout/AdminBooking';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import './App.css';

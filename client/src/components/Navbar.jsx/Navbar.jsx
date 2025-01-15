@@ -98,7 +98,7 @@ const Navbar = () => {
             
             <button
             onClick={handleLogout}
-            className="bg-transparent px-4 py-3 rounded-lg hover:shadow-md hover:shadow-gray-800  hover:bg-red-400 hover:bg-opacity-60 text-sm "
+            className="bg-transparent px-4 py-3 rounded-lg hover:shadow-md hover:shadow-gray-800  hover:bg-red-600 hover:bg-opacity-60 text-sm "
             >
             <span className='flex gap-2'>
             log out <MdOutlineLogout className="text-white w-5 h-5"/>
@@ -117,7 +117,7 @@ const Navbar = () => {
                 </button>
                 <button
                 onClick={() => navigate('/user/register')}
-                className="bg-transparent px-3 py-3 rounded-lg hover:shadow-md hover:shadow-gray-800 hover:bg-blue-500 hover:bg-opacity-0"
+                className="bg-transparent px-3 py-3 rounded-lg hover:shadow-md hover:shadow-gray-800 hover:bg-blue-500 hover:bg-opacity-60"
                 >
                 <span className='flex gap-2'>
                 Sign up <PiUserCirclePlusBold className="text-white w-5 h-5 mt-1"/>
