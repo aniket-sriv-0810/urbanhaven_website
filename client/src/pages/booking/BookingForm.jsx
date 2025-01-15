@@ -1,6 +1,6 @@
 import React from "react";
 import DatePicker from "react-datepicker";
-
+import "react-datepicker/dist/react-datepicker.css";
 const BookingForm = ({ bookingData, setBookingData, handleNext }) => {
   const handleDateChange = (date, fieldName) => {
     setBookingData({ ...bookingData, [fieldName]: date });

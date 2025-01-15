@@ -1,6 +1,6 @@
 import React from "react";
 
-const BookingPayment = ({ bookingData, totalCost, handlePrevious }) => {
+const BookingPayment = ({ setBookingData, bookingData, totalCost, handlePrevious }) => {
   const handlePayment = () => {
     console.log("Payment successful!");
   };
