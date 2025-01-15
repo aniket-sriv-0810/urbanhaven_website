@@ -1,18 +1,20 @@
 import React, { useState } from "react";
-
 import BookingForm from "./BookingForm";
 import BookingDetails from "./BookingDetails";
 import BookingPayment from "./BookingPayment";
 
 const Booking = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [bookingData, setBookingData] = useState({
+  const [hotelData , setHotelData] = useState({});
+  const [bookingData , setBookingData] = useState({
     checkInDate: null,
     checkOutDate: null,
-    room: 1,
-    adultCount: 1,
-    infantCount: 0,
-    paymentMethod: "",
+    room:1,
+    adultCount:1,
+    infantCount:0,
+    totalAmount:0,
+    paymentDetails:"",
+    status:"Pending",
   });
   const [totalCost, setTotalCost] = useState(0);
 
@@ -31,8 +33,9 @@ const Booking = () => {
       {currentPage === 2 && (
         <BookingDetails
           bookingData={bookingData}
-          totalCost={totalCost}
-          setTotalCost={setTotalCost}
+          setBookingData={setBookingData}
+          hotelData={hotelData}
+          setHotelData={setHotelData}
           handleNext={handleNext}
           handlePrevious={handlePrevious}
         />
