@@ -29,6 +29,7 @@ import LoginLoader from './pages/LoginLoader';
 import PageNotFound from './pages/PageNotFound';
 import ContactUsLoader from './pages/ContactUsLoader';
 import ReviewLoader from './pages/ReviewLoader';
+import TermsAndConditions from './pages/TermsAndConditions';
 
 export default function App() {
   const { setUser } = useUser();
@@ -140,6 +141,7 @@ export default function App() {
             <Route path="hotel-details/:id/edit" element={<Edit />} />
             <Route path="hotel/:id/delete" element={<Delete />} />
           </Route>
+          <Route path="/terms-and-conditions" element={<TermsAndConditions/>}/>
           <Route path="/contact/confirmed" element={<ContactUsLoader/>}/>
           <Route path="/review/done" element={<ReviewLoader/>}/>
           <Route path="*" element={<PageNotFound/>}/>
