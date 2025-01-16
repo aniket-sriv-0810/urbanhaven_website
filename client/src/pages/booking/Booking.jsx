@@ -16,7 +16,6 @@ const Booking = () => {
     paymentDetails:"",
     status:"Pending",
   });
-  const [totalCost, setTotalCost] = useState(0);
 
   const handleNext = () => setCurrentPage((prev) => prev + 1);
   const handlePrevious = () => setCurrentPage((prev) => prev - 1);
@@ -43,7 +42,8 @@ const Booking = () => {
       {currentPage === 3 && (
         <BookingPayment
           bookingData={bookingData}
-          totalCost={totalCost}
+          setBookingData={setBookingData}
+          hotelData={hotelData}
           handlePrevious={handlePrevious}
         />
       )}

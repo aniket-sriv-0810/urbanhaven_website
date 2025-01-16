@@ -27,16 +27,16 @@ const bookingHotel = asyncHandler( async (req , res ) => {
             if (!req.user) {
                 throw new ApiError(401, "User not logged in!");
             }
-        const { checkInDate , checkOutDate ,room , adultCount , infantCount, paymentDetails , status} = req.body;
+        const { checkInDate , checkOutDate ,room , adultCount ,totalAmount, infantCount, paymentDetails , status} = req.body;
 
         const newBooking = new Booking({
             userDetails: req.user._id,  // Assuming the user is logged in and stored in req.user
     hotelDetails: hotelDetails._id, 
-    checkInDate, checkOutDate , room ,adultCount , infantCount,
+    checkInDate, checkOutDate , room ,adultCount , infantCount, totalAmount,
             paymentDetails, status 
         })
         await newBooking.save();
-        console.log("Booking Confirmed Successfully !");
+        console.log("Booking Confirmed Successfully !" , newBooking);
         return res.status(200).json( 
             new ApiResponse(200, {newBooking} , "Booking Confirmed Successfully !")
         )
