@@ -22,7 +22,7 @@ const Booking = () => {
   const handlePrevious = () => setCurrentPage((prev) => prev - 1);
   
   const styling =
-    " border border-gray-300 rounded-xl p-3 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-[#5454544f] placeholder:text-center placeholder:capitalize placeholder:text-white valid:border-green-400 valid:border-2";
+    " border border-gray-300 rounded-xl p-3 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-[#5454544f] placeholder:text-center placeholder:capitalize placeholder:text-white valid:border-green-400 valid:border-2 text-center";
   return (
     <div className="bg-[url('/assets/booking-bg.jpg')] bg-cover flex flex-col justify-center items-center bg-purple-200 min-h-screen px-4 md:px-8">
     <h1 className="text-white text-2xl font-semibold text-center mb-5 mt-2 sm:text-3xl">

@@ -71,15 +71,34 @@ const {id} = useParams();
     <div className="flex flex-col text-white justify-center items-center ">
 
      {value = "Hotel Details"}
-        <ul className={`${styling}`} >
-        <li>{hotelData.title}</li>
-        <li>{hotelData._id}</li>
-        <li>{hotelData.price}</li>
-        <li>{hotelData.city}</li>
-        </ul>
+
+        <input
+        type="text"
+        required
+        name="title"
+        className={`${styling}`}
+        value={hotelData.title}
+        disabled
+      />
+        <input
+        type="text"
+        required
+        name="city"
+        className={`${styling}`}
+        value={hotelData.city}
+        disabled
+      />
+        <input
+        type="text"
+        required
+        name="title"
+        className={`${styling}`}
+        value={hotelData.title}
+        disabled
+      />
       <h2>Confirm Booking</h2>
       <p className={`${styling}`}>Rooms: {bookingData.room}</p>
-      <p className={`${styling}`}>Total Cost: ₹{bookingData.totalAmount || "Calculating..."}</p>
+      <p className={`${styling}`}>Total Cost: ₹{ (bookingData.totalAmount).toLocaleString("INR") || "Calculating..."}</p>
       <button onClick={handlePrevious}>Back</button>
       <button onClick={handleNext}>Confirm</button>
     </div>

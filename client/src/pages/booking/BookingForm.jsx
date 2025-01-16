@@ -24,13 +24,30 @@ const BookingForm = ({ bookingData, setBookingData, handleNext , value , styling
   return (
     <div className='flex flex-col text-white justify-center items-center '>
     {value = "User Details"}
-    <ul className={`${styling}`}>
-    <li>{user.name}</li>
-    <li>{user._id}</li>
-    <li>{user.phone}</li>
-    <li>{user.email}</li>
-    </ul>
-
+    <input
+    type="text"
+    required
+    name="name"
+    className={`${styling}`}
+    value={user.name}
+    disabled
+  />
+    <input
+    type="number"
+    required
+    name="phone"
+    className={`${styling}`}
+    value={user.phone}
+    disabled
+  />
+    <input
+    type="email"
+    required
+    name="email"
+    className={`${styling}`}
+    value={user.email}
+    disabled
+  />
       <h2>Booking Form</h2>
       <DatePicker
                     selected={bookingData.checkInDate}
@@ -51,6 +68,16 @@ const BookingForm = ({ bookingData, setBookingData, handleNext , value , styling
       <div>
         <button onClick={() => handleDecrement("room")}>-</button>
         <span>Rooms: {bookingData.room}</span>
+        <button onClick={() => handleIncrement("room")}>+</button>
+      </div>
+      <div>
+        <button onClick={() => handleDecrement("room")}>-</button>
+        <span>Adults: {bookingData.adultCount}</span>
+        <button onClick={() => handleIncrement("room")}>+</button>
+      </div>
+      <div>
+        <button onClick={() => handleDecrement("room")}>-</button>
+        <span>Infants: {bookingData.infantCount}</span>
         <button onClick={() => handleIncrement("room")}>+</button>
       </div>
       <button onClick={handleNext}>Next</button>
