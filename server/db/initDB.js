@@ -7,7 +7,7 @@ import sampleData from "./sampleData.js";
 import Hotel from '../model/hotel.model.js';
 import { User } from '../model/user.model.js';
 import Review from '../model/review.model.js';
-
+import Booking from '../model/booking.model.js';
 // Database configuration
 main()
 .then(() =>{
@@ -24,7 +24,8 @@ async function main(){
 // Storing sample dataset in database
 const initDB = async() => {
     // await Hotel.deleteMany({});
-    await User.deleteMany({});
+    // await User.deleteMany({});
+    await Booking.deleteMany({});
     // await Review.deleteMany({});
     // await Hotel.insertMany(sampleData);
     console.log("Data deleted successfully !");
