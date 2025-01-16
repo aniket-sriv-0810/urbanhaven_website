@@ -9,6 +9,8 @@ const BookingDetails = ({
   setHotelData,
   handleNext,
   handlePrevious,
+  value,
+  styling
 }) => {
 const {id} = useParams();
 
@@ -66,18 +68,18 @@ const {id} = useParams();
 
 
   return (
-    <div className="flex flex-col text-white justify-center items-center bg-pink-500">
+    <div className="flex flex-col text-white justify-center items-center ">
 
-     <h1>Hotel Details</h1>
-        <ul>
+     {value = "Hotel Details"}
+        <ul className={`${styling}`} >
         <li>{hotelData.title}</li>
         <li>{hotelData._id}</li>
         <li>{hotelData.price}</li>
         <li>{hotelData.city}</li>
         </ul>
       <h2>Confirm Booking</h2>
-      <p>Rooms: {bookingData.room}</p>
-      <p>Total Cost: ₹{bookingData.totalAmount || "Calculating..."}</p>
+      <p className={`${styling}`}>Rooms: {bookingData.room}</p>
+      <p className={`${styling}`}>Total Cost: ₹{bookingData.totalAmount || "Calculating..."}</p>
       <button onClick={handlePrevious}>Back</button>
       <button onClick={handleNext}>Confirm</button>
     </div>

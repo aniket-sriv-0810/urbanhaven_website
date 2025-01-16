@@ -2,7 +2,7 @@ import React from "react";
 import { useUser } from "../../components/userContext/userContext";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-const BookingPayment = ({ setBookingData,  hotelData ,bookingData,  handlePrevious }) => {
+const BookingPayment = ({ setBookingData,  hotelData ,bookingData,  handlePrevious , value , styling}) => {
   const {id} = useParams();
   const {user} = useUser();
   const handlePayment = async() => {
@@ -30,8 +30,8 @@ const BookingPayment = ({ setBookingData,  hotelData ,bookingData,  handlePrevio
   }
   return (
     <div>
-      <h2>Payment</h2>
-      <p>Total: {bookingData.totalAmount}</p>
+     {value ="Payment Details"}
+      <p className={`${styling}`}>Total: {bookingData.totalAmount}</p>
       <select
       value={bookingData.paymentDetails || "Default"} // Ensure a default value
       required
@@ -41,6 +41,7 @@ const BookingPayment = ({ setBookingData,  hotelData ,bookingData,  handlePrevio
           paymentDetails: e.target.value, // Update the paymentDetails field
         }))
       }
+      className={`${styling}`}
     >
       <option value="no-value">Select Payment Method</option>
       <option value="card">Card</option>
