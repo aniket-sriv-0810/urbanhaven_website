@@ -15,6 +15,9 @@ import Navbar from "../components/Navbar.jsx/Navbar";
 import Counter from "../components/Counter/Counter";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
+import ScrollComponent from "../components/ScollComponent/ScrollComponent";
+import FAQs from "../components/FAQs/FAQs";
+import Blogs from "../components/Blogs/Blogs";
 
 const currencySymbols = {
   INR: "₹",
@@ -147,9 +150,9 @@ const Home = () => {
                   {hotelItem.title}
                 </h2>
                 <p className="flex text-gray-600 mt-2 text-sm sm:text-base">
-                 <FaMapMarkerAlt className="-mx-1 mt-1 text-gray-600 " /> <span className="px-2"> {hotelItem.city}, {hotelItem.state}, {hotelItem.country}</span>
+                 <FaMapMarkerAlt className="-mx-1 mt-1 text-gray-500 " /> <span className="px-2"> {hotelItem.city}, {hotelItem.state}, {hotelItem.country}</span>
                 </p>
-                <p className="text-lg font-semibold text-gray-800 mt-4">
+                <p className="text-lg font-semibold text-slate-700 mt-4">
                   {priceDisplay}
                   <span className="text-sm text-gray-400 font-normal">
                     /- per night <br />+ {taxDisplay} taxes
@@ -192,6 +195,7 @@ const Home = () => {
         ))}
       </div>
 
+      <ScrollComponent/>
       <div className="flex justify-center items-center px-4">
         <img
           src={Banner}
@@ -199,14 +203,14 @@ const Home = () => {
           className="w-full h-auto max-w-screen-lg rounded-2xl shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl my-10"
         />
       </div>
-
+      <FAQs/>
       <div className="bg-gray-50 flex flex-col justify-evenly items-center sm:flex-row gap-6 py-10">
         <Counter start={0} end={1000} duration={2000} value="Hotels Listed" color="black" />
         <Counter start={0} end={6000} duration={2000} value="Users Registered" color="green" />
         <Counter start={0} end={500} duration={2000} value="Cities Available" color="sky" />
         <Counter start={0} end={2000} duration={2000} value="Customer Feedbacks" color="red" />
       </div>
-
+        <Blogs/>
       <Footer />
     </>
   );

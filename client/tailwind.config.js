@@ -11,6 +11,7 @@ export default {
         'booking-bg': "url('/assets/booking-bg.jpg')",
         'bg-newHotel' : "url('/assets/bg-newHotel.jpg')",
         'home-bg' : "url('/assets/home.jpg')",
+        'home-banner' : "url('/assets/home-banner.jpg')",
       },
     },
   },
