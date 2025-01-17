@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import Banner from "../assets/banner.png";
 import { FaSearchLocation } from "react-icons/fa";
 import { Bounce, ToastContainer, toast } from "react-toastify";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { FaHotel } from "react-icons/fa6";
+import { TbListDetails } from "react-icons/tb";
 import "react-toastify/dist/ReactToastify.css";
 import LikeBtn from "../components/LikeBtn/LikeBtn";
 import ShareBtn from "../components/ShareBtn/ShareBtn";
@@ -103,9 +106,10 @@ const Home = () => {
           setSelectedCurrency={setSelectedCurrency}
         />
       </div>
-      <h1 className="text-center font-semibold text-xl sm:text-3xl text-black p-4">
-        List of our all Top Hotels
-      </h1>
+      <h1 className="text-center font-bold text-2xl sm:text-4xl text-gray-800 p-6 sm:p-8  rounded-lg ">
+  Our Top Hotels
+</h1>
+
       <div className="flex flex-wrap justify-evenly gap-8 mt-5 px-4">
         {loading ? (
           <p className="text-lg text-gray-600">Hotels Loading...</p>
@@ -119,52 +123,53 @@ const Home = () => {
 
             return (
               <div
-                key={hotelItem._id}
-                className="bg-white border border-gray-300 shadow-md shadow-gray-500 rounded-xl w-full sm:w-96 md:w-80 hover:shadow-2xl transition-transform transform hover:-translate-y-2"
-              >
-                <div className="relative">
-                  <div className="absolute top-3 left-3 z-20">
-                    <ShareBtn
-                      hotelName={hotelItem.title}
-                      hotelLink={`https://localhost:5173/hotel/${hotelItem.id}`}
-                    />
-                  </div>
-                  <div className="absolute  right-3 z-20">
-                    <LikeBtn />
-                  </div>
-                  <img
-                    src={hotelItem.image}
-                    alt={hotelItem.title}
-                    className="rounded-t-xl h-48 w-full "
+              key={hotelItem._id}
+              className="bg-white border border-gray-200 shadow-lg rounded-2xl w-full sm:w-96 md:w-80 hover:shadow-lg transition-transform transform hover:-translate-y-3 hover:scale-105 hover:shadow-gray-600"
+            >
+              <div className="relative">
+                <div className="absolute top-3 left-3 z-20 hover:cursor-pointer">
+                  <ShareBtn
+                    hotelName={hotelItem.title}
+                    hotelLink={`https://localhost:5173/hotel/${hotelItem.id}`}
                   />
                 </div>
-                <div className="p-4">
-                  <h2 className="text-2xl font-semibold text-gray-800 truncate">
-                    {hotelItem.title}
-                  </h2>
-                  <p className="text-gray-500 mt-1">
-                    {hotelItem.city}, {hotelItem.state}, {hotelItem.country}
-                  </p>
-                  <p className="text-lg font-medium mt-3 text-gray-900">
-                    {priceDisplay}
-                    <span className="text-sm text-gray-500 font-light">
-                      /- per night <br />+ {taxDisplay} taxes
-                    </span>
-                  </p>
-                  <div className="flex justify-between mt-4">
-                    <Link to={`/hotel/${hotelItem._id}`}>
-                      <button className="bg-green-600 text-white px-6 py-2 rounded-xl hover:bg-green-700 transition">
-                        View
-                      </button>
-                    </Link>
-                    <Link to={`/hotel/${hotelItem._id}/booking`}>
-                      <button className="bg-red-600 text-white px-6 py-2 rounded-xl hover:bg-red-700 transition">
-                        Book Now
-                      </button>
-                    </Link>
-                  </div>
+                <div className="absolute top-1 right-3 z-20 text-white hover:cursor-pointer">
+                  <LikeBtn />
+                </div>
+                <img
+                  src={hotelItem.image}
+                  alt={hotelItem.title}
+                  className="rounded-t-2xl h-56 w-full object-cover"
+                />
+              </div>
+              <div className="p-5">
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 truncate">
+                  {hotelItem.title}
+                </h2>
+                <p className="flex text-gray-600 mt-2 text-sm sm:text-base">
+                 <FaMapMarkerAlt className="-mx-1 mt-1 text-gray-600 " /> <span className="px-2"> {hotelItem.city}, {hotelItem.state}, {hotelItem.country}</span>
+                </p>
+                <p className="text-lg font-semibold text-gray-800 mt-4">
+                  {priceDisplay}
+                  <span className="text-sm text-gray-400 font-normal">
+                    /- per night <br />+ {taxDisplay} taxes
+                  </span>
+                </p>
+                <div className="flex justify-between mt-5">
+                  <Link to={`/hotel/${hotelItem._id}`}>
+                    <button className="flex bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-transform transform hover:scale-105 shadow-md hover:shadow-md hover:shadow-slate-700">
+                      View <TbListDetails className="ml-2 mt-1" />
+                    </button>
+                  </Link>
+                  <Link to={`/hotel/${hotelItem._id}/booking`}>
+                    <button className="bg-red-500 text-white flex  px-4 py-2 rounded-lg hover:bg-red-600 transition-transform transform hover:scale-105 shadow-md hover:shadow-md hover:shadow-slate-700">
+                      Book Now <FaHotel className="ml-2 mt-1" />
+                    </button>
+                  </Link>
                 </div>
               </div>
+            </div>
+            
             );
           })
         )}
