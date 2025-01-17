@@ -58,9 +58,9 @@ const Review = () => {
         className="border-black border-2 rounded-xl w-80 py-4 m-auto flex flex-col gap-3 justify-center items-center bg-gray-100 shadow-lg shadow-slate-600"
         onSubmit={handleSubmitForm}
       >
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex justify-center items-center">
       <img src={user? user.image : null} alt="User image" className="m-auto  my-3 w-12 h-12 rounded-full shadow-md shadow-black"/>
-
+    <div className="flex flex-col">
         <input
           type="text"
           required
@@ -81,6 +81,7 @@ const Review = () => {
           disabled
         />
         </div>
+        </div>
        
         <fieldset className="starability-slot ">
          
@@ -98,8 +99,7 @@ const Review = () => {
           ))}
         </fieldset>
         <br />
-        <input
-          type="text"
+        <textarea
           placeholder="Enter Comment"
           required
           name="comment"

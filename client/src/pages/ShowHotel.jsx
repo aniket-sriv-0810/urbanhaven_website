@@ -50,11 +50,11 @@ useEffect( () => {
   <>
   <div className="container px-4">
   <h1 className="text-center text-2xl font-bold mt-6">View Your Hotel</h1>
-  <div className="mt-6">
+  <div className="mt-6 ">
     <img
       src={showMyHotel.image}
       alt={showMyHotel.title}
-      className="w-full max-w-screen-lg h-auto rounded-xl mx-auto shadow-lg object-cover"
+      className="  md:w-[60%] rounded-xl m-auto shadow-lg shadow-gray-700 object-contain"
     />
     <h2 className="text-3xl font-semibold text-center mt-4">{showMyHotel.title}</h2>
     <p className="text-center text-gray-600 mt-2">
@@ -88,7 +88,7 @@ useEffect( () => {
     key={reviewsItem._id} 
     className="w-80 max-w-full h-auto shadow-md shadow-black rounded-br-3xl rounded-tr-3xl border-4 p-4 my-2 mx-3 break-words whitespace-pre-wrap"
   >
-    <div className="flex justify-center items-start gap-3">
+    <div className="flex  justify-center items-start gap-3">
       <img
         src={reviewsItem.userDetails.image ? reviewsItem.userDetails.image : null}
         alt={`${reviewsItem.userDetails.name}'s profile`}
