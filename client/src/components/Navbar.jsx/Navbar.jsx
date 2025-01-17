@@ -3,6 +3,9 @@ import axios from 'axios';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { IoHomeSharp, IoBusiness } from 'react-icons/io5';
 import { FaMapMarkerAlt, FaUserCircle, FaBars, FaTimes } from 'react-icons/fa';
+import { FaPaperPlane } from "react-icons/fa";
+import { FaBuildingWheat } from "react-icons/fa6";
+import { RiQuestionAnswerFill } from "react-icons/ri";
 import { MdAdminPanelSettings } from 'react-icons/md';
 import { useUser } from '../userContext/userContext';
 import WebsiteLogo from '../../assets/main-logo.png';
@@ -35,7 +38,7 @@ const Navbar = () => {
       <div className="container flex justify-center items-center px-6 sm:justify-between  lg:px-8">
         {/* Logo and Welcome Message */}
         <div className="flex  items-center space-x-5">
-        <Tippy content="Admin Panel" className='bg-red-400'>
+        <Tippy content="Urbanhaven" className='bg-red-400'>
           <NavLink to="/">
             <img
               src={WebsiteLogo}
@@ -44,7 +47,7 @@ const Navbar = () => {
             />
           </NavLink>
           </Tippy>
-          <h1 className="hidden sm:text-lg sm:block  text-white font-semibold truncate">
+          <h1 className="hidden sm:text-lg sm:block lg:hidden xl:block text-white font-semibold truncate">
             {user ? `Welcome, ${user.name} to UrbanHaven !` : 'Welcome to UrbanHaven !'}
           </h1>
         </div>
@@ -123,30 +126,29 @@ const Navbar = () => {
                 Sign up <PiUserCirclePlusBold className="text-white w-5 h-5 mt-1"/>
                 </span>
                 </button>
-                
             </>
           )}
         </ul>
 
         {/* Hamburger Icon */}
-        <button className="absolute right-3 lg:hidden text-white focus:outline-none mr-2" onClick={toggleMenu}>
+        <button className="absolute right-3 sm:right-8 lg:hidden text-white focus:outline-none mr-2" onClick={toggleMenu}>
           {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
         </button>
       </div>
 
     {/* Mobile Menu */}
     <div
-    className={`fixed top-0 right-0 h-full w-2/3 bg-gray-700 text-white z-50 transform ${
-      isMenuOpen ? "translate-x-0" : "translate-x-full"
+    className={`absolute top-0 right-0  w-full  h-max text-white z-50 transform bg-gradient-to-r from-slate-900 to-slate-700 p-6 rounded-lg shadow-lg   ${
+      isMenuOpen ? "translate-x-0 sm:translate-y-0" : "translate-x-full "
     } transition-transform duration-300`}
   >
     <button
-      className="absolute top-4 right-4 text-white"
+      className="absolute top-4 right-7 sm:right-10  text-white sm:py-3"
       onClick={toggleMenu}
     >
       <FaTimes size={24} />
     </button>
-    <ul className="mt-12 space-y-10 p-6 text-sm">
+    <ul className="mt-8 space-y-10 p-4 text-sm  sm:text-xl flex flex-col items-center justify-center ">
       {user?.role === "admin" && (
         <li className="flex items-center gap-2">
           <MdAdminPanelSettings className="text-xl" />
@@ -158,18 +160,18 @@ const Navbar = () => {
       <li className="flex items-center gap-2">
         <IoHomeSharp className="text-xl" />
         <NavLink to="/" onClick={toggleMenu}>
-          Home
+          Home Page
         </NavLink>
       </li>
       <li className="flex items-center gap-2">
-        <FaMapMarkerAlt className="text-xl" />
+        <FaPaperPlane className="text-xl" />
         <NavLink to="/contact" onClick={toggleMenu}>
           Contact Us
         </NavLink>
       </li>
       <li className="flex items-center gap-2">
-        <IoBusiness className="text-xl" />
-        <NavLink to="/api/v1/about" onClick={toggleMenu}>
+        <RiQuestionAnswerFill className="text-xl" />
+        <NavLink to="/about" onClick={toggleMenu}>
           About Us
         </NavLink>
       </li>
@@ -193,24 +195,26 @@ const Navbar = () => {
       {user ? (
         <button
           onClick={handleLogout}
-          className="bg-red-500  px-4 py-2 rounded-lg w-40 hover:bg-red-600 flex justify-center items-center gap-2"
+          className="bg-red-500  px-4 py-2 rounded-lg w-48 hover:bg-red-600 flex justify-center items-center gap-2 sm:w-60"
         >
           Logout <MdOutlineLogout className="text-white w-5 h-5" />
         </button>
       ) : (
         <>
+        <div className='flex flex-col space-y-6'>
           <button
             onClick={() => navigate("/user/login")}
-            className="bg-green-500 px-4 py-2 rounded-lg w-40 hover:bg-green-600 flex justify-center items-center gap-2"
+            className="bg-green-500 px-4 py-2 rounded-lg w-40 hover:bg-green-600 flex justify-center items-center gap-2 sm:w-60"
           >
             Login <RiShieldUserLine className="text-white w-5 h-5" />
           </button>
           <button
             onClick={() => navigate("/user/register")}
-            className="bg-blue-500 px-4 py-2 rounded-lg w-40 hover:bg-blue-600 flex justify-center items-center gap-2"
+            className="bg-blue-500 px-4 py-2 rounded-lg w-40 hover:bg-blue-600 flex justify-center items-center gap-2  sm:w-60"
           >
             Sign Up <PiUserCirclePlusBold className="text-white w-5 h-5" />
           </button>
+          </div>
         </>
       )}
     </ul>

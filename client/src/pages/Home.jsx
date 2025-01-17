@@ -75,7 +75,7 @@ const Home = () => {
 
   return (
     <>
-    <div className="bg-[url('/assets/home.jpg')]  bg-contain h-80  bg-no-repeat md:bg-cover md:w-[100%] md:h-[40rem] ">
+    <div className="bg-[url('/assets/home.jpg')]  bg-contain h-80  bg-no-repeat sm:bg-cover md:h-[40rem] ">
     <Navbar />
     </div>
       <Header />
