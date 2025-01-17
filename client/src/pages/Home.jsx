@@ -196,13 +196,7 @@ const Home = () => {
       </div>
 
       <ScrollComponent/>
-      <div className="flex justify-center items-center px-4">
-        <img
-          src={Banner}
-          alt="Banner"
-          className="w-full h-auto max-w-screen-lg rounded-2xl shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl my-10"
-        />
-      </div>
+
       <FAQs/>
       <div className="bg-gray-50 flex flex-col justify-evenly items-center sm:flex-row gap-6 py-10">
         <Counter start={0} end={1000} duration={2000} value="Hotels Listed" color="black" />
