@@ -19,15 +19,15 @@ const CurrencyExchange = ({ setCurrencyRates, selectedCurrency, setSelectedCurre
   };
 
   return (
-    <div className="currency-converter flex flex-col justify-center items-center -mt-5">
-      <label htmlFor="currency" className="text-gray-700 font-normal p-1">
+    <div className="currency-converter sm:w-60 flex flex-col justify-center items-center bg-gradient-to-r from-fuchsia-700 to-pink-600 p-3 rounded-xl shadow-md shadow-gray-700  ">
+      <label htmlFor="currency" className="text-white font-semibold p-1">
         Select Currency
       </label>
       <select
         id="currency"
         value={selectedCurrency} 
         onChange={handleCurrencyChange}
-        className="w-full border-2 border-gray-300 text-gray-800 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none relative"
+        className="w-full border-2 border-gray-300 text-gray-800 rounded-lg px-4 py-2 focus:outline-none focus:ring-2  focus:border-white appearance-none relative font-semibold text-center hover:cursor-pointer"
 
       >
         <option value="INR" className="">INR (₹)</option>

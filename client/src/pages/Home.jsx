@@ -91,7 +91,7 @@ const Home = () => {
     </div>
   </div>
   
-      <div className="flex justify-between items-center p-3 mt-3">
+      <div className="flex justify-between items-center mx-2 my-5 sm:mx-8">
         <CurrencyExchange
           setCurrencyRates={setConversionRate}
           selectedCurrency={selectedCurrency}
