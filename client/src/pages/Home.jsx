@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Banner from "../assets/banner.png";
+import { FaSearchLocation } from "react-icons/fa";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LikeBtn from "../components/LikeBtn/LikeBtn";
@@ -75,17 +76,21 @@ const Home = () => {
 
   return (
     <>
-    <div className="bg-[url('/assets/home.jpg')]  bg-contain h-80  bg-no-repeat sm:bg-cover md:h-[40rem] ">
+    <div className="bg-[url('/assets/home.jpg')]  bg-contain h-72  bg-no-repeat sm:bg-cover md:h-[40rem] ">
     <Navbar />
     </div>
-      <Header />
-      <div className="flex justify-center items-center">
-        <input
-          type="text"
-          placeholder="Search hotels by city"
-          className="bg-gray-400 p-2 w-80 m-3 placeholder:text-black border-2 border-white rounded-lg placeholder:text-center"
-        />
-      </div>
+    <Header />
+    <div className="flex justify-center items-center  sm:my-8 px-4 sm:px-0">
+    <div className="relative w-full max-w-md">
+      <input
+        type="text"
+        placeholder="search hotels by cities or states "
+        className="bg-neutral-200 p-3 w-full pr-12 placeholder:text-sm  placeholder:text-zinc-800 placeholder:font-semibold border-2 border-white rounded-3xl shadow-lg focus:outline-none focus:ring-2 focus:ring-green-400 placeholder:text-center shadow-gray-400 "
+      />
+      <FaSearchLocation className="absolute top-1/2 transform -translate-y-1/2 right-8 h-6 w-6 text-gray-800 cursor-pointer hover:text-green-600 transition duration-200 ease-in-out" />
+    </div>
+  </div>
+  
       <div className="flex justify-between items-center p-3 mt-3">
         <CurrencyExchange
           setCurrencyRates={setConversionRate}
