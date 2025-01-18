@@ -25,8 +25,8 @@ async function main(){
 const initDB = async() => {
     // await Hotel.deleteMany({});
     // await User.deleteMany({});
-    await Booking.deleteMany({});
-    // await Review.deleteMany({});
+    // await Booking.deleteMany({});
+    await Review.deleteMany({});
     // await Hotel.insertMany(sampleData);
     console.log("Data deleted successfully !");
 }

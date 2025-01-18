@@ -53,7 +53,7 @@ const AdminNavbar = () => {
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden capitalize lg:flex absolute right-7 gap-9  items-center ">
+        <ul className="hidden capitalize lg:flex absolute right-7 gap-6  items-center ">
         <li className={` ${user ? (user.role === "admin" ? "admin" : "hidden") : ""} `}>
         <Tippy content="Admin Panel" >
           <NavLink to="/admin">
@@ -64,21 +64,21 @@ const AdminNavbar = () => {
           <li >
           <Tippy content="Home">
             <NavLink to="users">
-              User details
+              Users
             </NavLink>
             </Tippy>
           </li>
           <li>
           <Tippy content="Contact Us">
             <NavLink to="hotels">
-             Hotel Details
+             Hotels
             </NavLink>
             </Tippy>
           </li>
           <li>
           <Tippy content="About Us" >
             <NavLink to="bookings">
-              Booking Details
+              Bookings
             </NavLink>
             </Tippy>
           </li>
@@ -89,9 +89,23 @@ const AdminNavbar = () => {
             </NavLink>
             </Tippy>
           </li>
-          <li>
-         
-          </li>
+          <button
+            onClick={() => { navigate("new-hotel")}}
+            className="bg-transparent px-4 py-3 rounded-lg hover:shadow-md hover:shadow-gray-800  hover:bg-purple-600 hover:bg-opacity-60 text-sm "
+            >
+            <span className='flex gap-2'>
+            Add Hotels<MdOutlineLogout className="text-white w-5 h-5"/>
+            </span>
+            </button>
+          <button
+            onClick={() => { navigate ('/blogs/add')}}
+            className="bg-transparent px-4 py-3 rounded-lg hover:shadow-md hover:shadow-gray-800  hover:bg-orange-600 hover:bg-opacity-60 text-sm "
+            >
+            <span className='flex gap-2'>
+            Add Blogs <MdOutlineLogout className="text-white w-5 h-5"/>
+            </span>
+            </button>
+          
           {user ? (
             
             <button
@@ -148,32 +162,44 @@ const AdminNavbar = () => {
         <li className="flex items-center gap-2">
           <MdAdminPanelSettings className="text-xl" />
           <NavLink to="/admin" onClick={toggleMenu}>
-            Admin Panel
+            Admin
           </NavLink>
         </li>
       )}
       <li className="flex items-center gap-2">
         <IoHomeSharp className="text-xl" />
         <NavLink to="users" onClick={toggleMenu}>
-          User Details
+          Users
         </NavLink>
       </li>
       <li className="flex items-center gap-2">
         <FaPaperPlane className="text-xl" />
         <NavLink to="hotels" onClick={toggleMenu}>
-          Hotel Details
+          Hotels
         </NavLink>
       </li>
       <li className="flex items-center gap-2">
         <RiQuestionAnswerFill className="text-xl" />
         <NavLink to="bookings" onClick={toggleMenu}>
-          Booking Details
+          Bookings
         </NavLink>
       </li>
       <li className="flex items-center gap-2">
         <RiQuestionAnswerFill className="text-xl" />
         <NavLink to="contacts" onClick={toggleMenu}>
-          Feedback Details
+          Feedbacks
+        </NavLink>
+      </li>
+      <li className="flex items-center gap-2">
+        <RiQuestionAnswerFill className="text-xl" />
+        <NavLink to="contacts" onClick={toggleMenu}>
+          Add Hotels
+        </NavLink>
+      </li>
+      <li className="flex items-center gap-2">
+        <RiQuestionAnswerFill className="text-xl" />
+        <NavLink to="contacts" onClick={toggleMenu}>
+          Add Blogs
         </NavLink>
       </li>
       <li className="flex items-center gap-2">

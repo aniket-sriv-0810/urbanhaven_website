@@ -97,23 +97,23 @@ useEffect( () => {
 <Review/>
 
 <div className='flex gap-5 space-x-6 flex-wrap'>
-{reviews  && reviews.length >0 ? reviews.map((reviewsItem) => (
-  <div 
+{reviews  && reviews.length > 0 ? reviews.map((reviewsItem) => (
+  <div
     key={reviewsItem._id} 
     className="w-80 max-w-full h-auto shadow-md shadow-black rounded-br-3xl rounded-tr-3xl border-4 p-4 my-2 mx-3 break-words whitespace-pre-wrap"
   >
     <div className="flex  justify-center items-start gap-3">
       <img
-        src={reviewsItem.userDetails.image ? reviewsItem.userDetails.image : null}
-        alt={`${reviewsItem.userDetails.name}'s profile`}
+        src={reviewsItem.userDetails ? reviewsItem.userDetails.image : null}
+        alt={`${reviewsItem.userDetails ? reviewsItem.userDetails.name : null} s profile`}
         className="w-12 h-12 rounded-full relative right-3 shadow-md shadow-black"
       />
 
       <div>
         <h2 className="text-lg text-center font-semibold">
-          {reviewsItem.userDetails.name}
+          {reviewsItem.userDetails ? reviewsItem.userDetails.name : null}
         </h2>
-        <p className="text-gray-600">@{reviewsItem.userDetails.username}</p>
+        <p className="text-gray-600">@{reviewsItem.userDetails ? reviewsItem.userDetails.username : null}</p>
       </div>
     </div>
     <ul className="mt-4">
