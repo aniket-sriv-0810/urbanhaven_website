@@ -8,6 +8,7 @@ import Logo from '../assets/webiste_full_logo.png';
 import Footer from '../components/Footer/Footer';
 import Policies from '../components/Policies/Policies';
 import ImageGallery from '../components/ImageGallery/ImageGallery';
+import FAQs from '../components/FAQs/FAQs';
 const ShowHotel = () => {
 const {id} = useParams();
 const [reviews, setReviews] = useState();
@@ -48,22 +49,28 @@ useEffect( () => {
   }
   return (
   <>
-  <div className="container px-4">
-  <h1 className="text-center text-2xl font-bold mt-6">View Your Hotel</h1>
+  <div className="container ">
+  <h1 className="text-xl text-center sm:text-3xl  md:text-4xl lg:text-5xl font-extrabold mt-8 mb-4 text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-pink-500">
+  Check out the Hotel details
+  <span className="block mt-2 text-sm md:text-base text-red-500 font-medium animate-bounce">
+    Explore amazing amenities and features!
+  </span>
+</h1>
+
   <div className="mt-6 ">
     <img
       src={showMyHotel.image}
       alt={showMyHotel.title}
-      className="  md:w-[60%] rounded-xl m-auto shadow-lg shadow-gray-700 object-contain"
+      className="  md:w-[50%] rounded-xl m-auto shadow-lg shadow-gray-800 object-contain"
     />
-    <h2 className="text-3xl font-semibold text-center mt-4">{showMyHotel.title}</h2>
-    <p className="text-center text-gray-600 mt-2">
-      {avgRating} ⭐ ({reviewCount} reviews)
-    </p>
   </div>
   <div className='flex justify-center items-center'>
   <ImageGallery />
   </div>
+    <h2 className="text-3xl font-semibold text-center mt-4">{showMyHotel.title}</h2>
+    <p className="text-center text-gray-600 mt-2">
+      {avgRating} ⭐ ({reviewCount} reviews)
+    </p>
   <ul className=''>
   <div className='ml-20 text-lg'>
   <li><p className='text-xl font-semibold'>About our place :</p> <span className='text-gray-700'>{showMyHotel.description} </span></li>
@@ -80,6 +87,7 @@ useEffect( () => {
   </Link>
   </div>
 <div className=' gap-3 mt-5'>
+<FAQs/>
 <Review/>
 
 <div className='flex gap-5 space-x-6 flex-wrap'>
