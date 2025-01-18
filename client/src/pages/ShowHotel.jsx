@@ -9,6 +9,7 @@ import Footer from '../components/Footer/Footer';
 import Policies from '../components/Policies/Policies';
 import ImageGallery from '../components/ImageGallery/ImageGallery';
 import FAQs from '../components/FAQs/FAQs';
+import { MdArrowCircleRight } from "react-icons/md";
 const ShowHotel = () => {
 const {id} = useParams();
 const [reviews, setReviews] = useState();
@@ -81,11 +82,16 @@ useEffect( () => {
   <div className='w-[90%] ml-20 border-3  shadow-md shadow-slate-600'><MapLocation hotel={showMyHotel} /></div>
   </ul>
   <Policies/>
-  <div className='flex justify-center items-center'>
+  <div className="flex justify-center items-center mt-8 ">
   <Link to={`/hotel/${id}/booking`}>
-  <button className="  m-5 bg-red-500 p-3 text-white w-60 rounded-2xl font-bold hover:bg-red-600">Book Now</button>
+    <button className="flex text-xl items-center justify-center bg-gradient-to-r from-pink-500 to-rose-500 text-white px-6 py-4 w-80 rounded-full font-bold shadow-md hover:bg-gradient-to-r hover:from-red-500 hover:to-pink-500  hover:scale-105 transition-all duration-300">
+      <span>Book Now</span>
+      <MdArrowCircleRight className="ml-2 text-2xl transition-transform duration-300 group-hover:translate-x-1" />
+    </button>
   </Link>
-  </div>
+</div>
+
+
 <div className=' gap-3 mt-5'>
 <FAQs/>
 <Review/>
@@ -171,9 +177,14 @@ useEffect( () => {
   <Link to="/">
   <button className="   bg-purple-600 p-3 text-white w-60 rounded-2xl font-bold ">Home</button>
   </Link>
+  <div className="flex justify-center items-center mt-8 ">
   <Link to={`/hotel/${id}/booking`}>
-  <button className=" mb-5 bg-red-500 p-3 text-white w-60 rounded-2xl font-bold hover:bg-red-600">Book Now</button>
+    <button className="flex text-xl items-center justify-center bg-gradient-to-r from-pink-500 to-rose-500 text-white px-6 py-4 w-80 rounded-full font-bold shadow-md hover:bg-gradient-to-r hover:from-red-500 hover:to-pink-500  hover:scale-105 transition-all duration-300">
+      <span>Book Now</span>
+      <MdArrowCircleRight className="ml-2 text-2xl transition-transform duration-300 group-hover:translate-x-1" />
+    </button>
   </Link>
+</div>
   </div>
 </div>
   <Footer/>
