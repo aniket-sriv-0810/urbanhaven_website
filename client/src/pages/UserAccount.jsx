@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import UserDashBoard from "../components/UserDashBoard/UserDashBoard";
 import { FaBars, FaTimes } from "react-icons/fa";
+import Navbar from '../components/Navbar.jsx/Navbar';
 
 const UserAccount = () => {
   const [showUser, setShowUser] = useState(null); // Initial state is null
@@ -24,6 +25,8 @@ const UserAccount = () => {
   }, [id]);
 
   return (
+    <>
+    <Navbar/>
     <div className="bg-gray-100 min-h-screen flex flex-col md:flex-row">
       {/* Header */}
       <div className="w-full md:hidden flex items-center justify-between bg-purple-700 p-4 text-white">
@@ -107,6 +110,7 @@ const UserAccount = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 
