@@ -53,9 +53,9 @@ const AdminNavbar = () => {
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden capitalize lg:flex absolute right-7 gap-6  items-center ">
-        <li className={` ${user ? (user.role === "admin" ? "admin" : "hidden") : ""} `}>
-        <Tippy content="Admin Panel" >
+        <ul className="hidden capitalize lg:flex absolute right-7 gap-6  items-center  ">
+        <li className={` ${user ? (user.role === "admin" ? "admin" : "hidden") : ""} hover:text-yellow-400 hover:scale-110 transition-all duration-100 `}>
+        <Tippy content="Admin Panel">
           <NavLink to="/admin">
            Admin
           </NavLink>
@@ -91,7 +91,7 @@ const AdminNavbar = () => {
           </li>
           <button
             onClick={() => { navigate("new-hotel")}}
-            className="bg-transparent px-4 py-3 rounded-lg hover:shadow-md hover:shadow-gray-800  hover:bg-purple-600 hover:bg-opacity-60 text-sm "
+            className="-mr-4 bg-transparent px-4 py-3 rounded-lg hover:shadow-md hover:shadow-gray-800  hover:bg-purple-600 hover:bg-opacity-60 text-sm "
             >
             <span className='flex gap-2'>
             Add Hotels<MdOutlineLogout className="text-white w-5 h-5"/>
