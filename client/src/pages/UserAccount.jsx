@@ -5,7 +5,8 @@ import UserDashBoard from "../components/UserDashBoard/UserDashBoard";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Navbar from '../components/Navbar.jsx/Navbar';
 import UserNavbar from "../components/UserNavbar/UserNavbar";
-
+import Logo from '../assets/main-logo.png';
+import LogoName from '../assets/main-logo-name.png';
 const UserAccount = () => {
   const [showUser, setShowUser] = useState(null); // Initial state is null
   const [menuOpen, setMenuOpen] = useState(false);
@@ -27,11 +28,10 @@ const UserAccount = () => {
 
   return (
     <>
-   <UserNavbar/>
     <div className="bg-gray-100 min-h-screen flex flex-col md:flex-row">
       {/* Header */}
-      <div className="w-full md:hidden flex items-center justify-between bg-purple-700 p-4 text-white">
-        <h1 className="text-xl font-bold">Welcome, User!</h1>
+      <div className="w-full md:hidden flex items-center justify-between bg-gradient-to-r from-violet-500 to-purple-500 px-4 text-white">
+        <img src={Logo} className="w-16" alt="logo" />
         <button
           className="text-2xl focus:outline-none"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -42,7 +42,7 @@ const UserAccount = () => {
 
       {/* Drawer for smaller devices */}
       <div
-        className={`py-16 px-5 absolute top-0 right-0 h-fit bg-purple-600 text-white w-3/4 sm:w-1/2 lg:w-1/3 transform ${
+        className={`py-16 px-5 absolute top-0 right-0 w-full h-msx bg-gradient-to-r from-violet-700 to-purple-800 text-white sm:w-1/2 lg:w-1/3 transform ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 z-50 md:hidden`}
       >

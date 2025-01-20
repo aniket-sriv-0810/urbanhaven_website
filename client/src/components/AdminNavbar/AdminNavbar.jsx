@@ -147,7 +147,7 @@ const AdminNavbar = () => {
 
     {/* Mobile Menu */}
     <div
-    className={`absolute top-0 right-0  w-full  h-max text-white z-50 transform bg-gradient-to-r from-slate-900 to-slate-700 p-6 rounded-lg shadow-lg   ${
+    className={`absolute top-0 right-0 w-full h-max text-white z-50 transform bg-gradient-to-r from-slate-900 to-slate-700 p-6 rounded-lg shadow-lg   ${
       isMenuOpen ? "translate-x-0 sm:translate-y-0" : "translate-x-full hidden "
     } transition-transform duration-300`}
   >
