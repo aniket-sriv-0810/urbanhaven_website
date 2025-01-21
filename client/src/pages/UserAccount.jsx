@@ -28,37 +28,9 @@ const UserAccount = () => {
 
   return (
     <>
+    <UserNavbar/> 
     <div className="bg-gray-100 min-h-screen flex flex-col md:flex-row">
-      {/* Header */}
-      <div className="w-full md:hidden flex items-center justify-between bg-gradient-to-r from-violet-500 to-purple-500 px-4 text-white">
-        <img src={Logo} className="w-16" alt="logo" />
-        <button
-          className="text-2xl focus:outline-none"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? <FaTimes /> : <FaBars />}
-        </button>
-      </div>
-
-      {/* Drawer for smaller devices */}
-      <div
-        className={`py-16 px-5 absolute top-0 right-0 w-full h-msx bg-gradient-to-r from-violet-700 to-purple-800 text-white sm:w-1/2 lg:w-1/3 transform ${
-          menuOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 z-50 md:hidden`}
-      >
-        <button
-          className="absolute top-4 right-4 text-white text-2xl"
-          onClick={() => setMenuOpen(false)}
-        >
-          <FaTimes />
-        </button>
-        <UserDashBoard closeMenu={() => setMenuOpen(false)} />
-      </div>
-
-      {/* Sidebar for medium and larger devices */}
-      <div className="hidden md:block w-1/4 bg-purple-600 text-white p-4">
-        <UserDashBoard />
-      </div>
+    
 
       {/* Main Content */}
       <div className="flex-1 bg-white p-6 shadow-lg rounded-lg">
