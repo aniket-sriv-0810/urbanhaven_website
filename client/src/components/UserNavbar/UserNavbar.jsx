@@ -53,12 +53,12 @@ const UserNavbar = () => {
           </NavLink>
           </Tippy>
           <h1 className="hidden sm:text-lg sm:block lg:hidden xl:block text-white font-semibold truncate">
-            {user ? `Welcome Admin,  ${user.name} to UrbanHaven !` : 'Welcome to UrbanHaven !'}
+            {user ? `Welcome , ${user.name} to UrbanHaven !` : 'Welcome to UrbanHaven !'}
           </h1>
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden capitalize lg:flex absolute right-7 gap-6  items-center  ">
+        <ul className="hidden capitalize lg:flex absolute right-7 gap-9  items-center  ">
         <li className={` ${user ? (user.role === "admin" ? "admin" : "hidden") : ""} hover:text-yellow-400 hover:scale-110 transition-all duration-100 `}>
         <Tippy content="Admin Panel">
           <NavLink to="/admin">
@@ -69,48 +69,24 @@ const UserNavbar = () => {
           <li >
           <Tippy content="Home">
             <NavLink to="users">
-              Users
+              My Account
             </NavLink>
             </Tippy>
           </li>
           <li>
           <Tippy content="Contact Us">
             <NavLink to="hotels">
-             Hotels
+             My Wishlists
             </NavLink>
             </Tippy>
           </li>
           <li>
           <Tippy content="About Us" >
             <NavLink to="bookings">
-              Bookings
+             My Bookings
             </NavLink>
             </Tippy>
           </li>
-          <li>
-          <Tippy content="About Us" >
-            <NavLink to="contacts">
-              Feedbacks
-            </NavLink>
-            </Tippy>
-          </li>
-          <button
-            onClick={() => { navigate("new-hotel")}}
-            className="-mr-4 bg-transparent px-4 py-3 rounded-lg hover:shadow-md hover:shadow-gray-800  hover:bg-purple-600 hover:bg-opacity-60 text-sm "
-            >
-            <span className='flex gap-2'>
-            Add Hotels<MdOutlineLogout className="text-white w-5 h-5"/>
-            </span>
-            </button>
-          <button
-            onClick={() => { navigate ('/blogs/add')}}
-            className="bg-transparent px-4 py-3 rounded-lg hover:shadow-md hover:shadow-gray-800  hover:bg-orange-600 hover:bg-opacity-60 text-sm "
-            >
-            <span className='flex gap-2'>
-            Add Blogs <MdOutlineLogout className="text-white w-5 h-5"/>
-            </span>
-            </button>
-          
           {user ? (
             
             <button
