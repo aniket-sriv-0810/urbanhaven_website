@@ -59,28 +59,28 @@ const UserNavbar = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden capitalize lg:flex absolute right-7 gap-9  items-center  ">
-        <li className={` ${user ? (user.role === "admin" ? "admin" : "hidden") : ""} hover:text-yellow-400 hover:scale-110 transition-all duration-100 `}>
+        <li className={` ${user ? (user.role === "admin" ? "admin" : "hidden") : ""} hover:text-yellow-400 hover:scale-110 transition-all duration-100 hover:font-semibold `}>
         <Tippy content="Admin Panel">
           <NavLink to="/admin">
            Admin
           </NavLink>
         </Tippy>
       </li>
-          <li >
+          <li className=' hover:text-yellow-400 hover:scale-110 transition-all duration-100 hover:font-semibold' >
           <Tippy content="Home">
             <NavLink to="users">
               My Account
             </NavLink>
             </Tippy>
           </li>
-          <li>
+          <li className=' hover:text-yellow-400 hover:scale-110 transition-all duration-100 hover:font-semibold'>
           <Tippy content="Contact Us">
             <NavLink to="hotels">
              My Wishlists
             </NavLink>
             </Tippy>
           </li>
-          <li>
+          <li className=' hover:text-yellow-400 hover:scale-110 transition-all duration-100 hover:font-semibold'>
           <Tippy content="About Us" >
             <NavLink to="bookings">
              My Bookings
