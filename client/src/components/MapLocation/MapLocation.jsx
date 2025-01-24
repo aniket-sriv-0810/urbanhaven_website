@@ -9,8 +9,9 @@ import 'leaflet/dist/leaflet.css';
 import axios from 'axios';
 
 const MapLocation = ({ hotel }) => {
-  const [coordinates, setCoordinates] = useState([28.7041, 77.1025]); // Default coordinates of New Delhi
+  const [coordinates, setCoordinates] = useState([28.7041, 77.1025]); // Default coordinates (New Delhi)
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchCoordinates = async () => {
@@ -29,9 +30,11 @@ const MapLocation = ({ hotel }) => {
             setCoordinates([parseFloat(lat), parseFloat(lon)]);
           } else {
             console.error('No coordinates found for the location.');
+            setError(true);
           }
         } catch (error) {
           console.error('Error fetching coordinates:', error);
+          setError(true);
         } finally {
           setLoading(false);
         }
@@ -42,27 +45,45 @@ const MapLocation = ({ hotel }) => {
   }, [hotel]);
 
   if (loading) {
-    return <p>Loading map...</p>;
+    return (
+      <div className="flex items-center justify-center h-64 w-full">
+        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-blue-500"></div>
+        <p className="ml-4 text-lg text-gray-600">Loading map...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex items-center justify-center h-64 w-full bg-red-100 text-red-600 rounded-md">
+        <p>Error loading map. Please try again later.</p>
+      </div>
+    );
   }
 
   return (
-    <MapContainer
-      center={coordinates}
-      zoom={13}
-      scrollWheelZoom={false}
-      style={{ height: '500px', width: '100%' }}
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Marker position={coordinates}>
-        <Popup>
-          <b>{hotel.title}</b> <br />
-          {hotel.city}, {hotel.state}, {hotel.country}
-        </Popup>
-      </Marker>
-    </MapContainer>
+    <div className="bg-gray-100 shadow-lg overflow-hidden rounded-b-2xl">
+      <h2 className="text-xl font-bold text-center text-gray-800 py-4">
+        Location Map
+      </h2>
+      <MapContainer
+        center={coordinates}
+        zoom={13}
+        scrollWheelZoom={false}
+        className="h-[300px] sm:h-[400px] md:h-[500px] w-full "
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={coordinates}>
+          <Popup>
+            <b>{hotel?.title || 'Hotel Name Unavailable'}</b> <br />
+            {hotel?.city || 'City'}, {hotel?.state || 'State'}, {hotel?.country || 'Country'}
+          </Popup>
+        </Marker>
+      </MapContainer>
+    </div>
   );
 };
 

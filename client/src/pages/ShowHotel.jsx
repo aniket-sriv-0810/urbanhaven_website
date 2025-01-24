@@ -51,24 +51,24 @@ useEffect( () => {
   return (
   <>
   <div className="container ">
-  <h1 className="text-xl text-center sm:text-3xl  md:text-4xl lg:text-5xl font-extrabold mt-8 mb-4 text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-pink-500">
+  <h1 className="text-xl text-center sm:text-3xl  md:text-4xl lg:text-5xl font-extrabold mt-8 mb-4 text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-500">
   Check out the Hotel details
   <span className="block mt-2 text-sm md:text-base text-red-500 font-medium animate-bounce">
     Explore amazing amenities and features!
   </span>
 </h1>
 
-  <div className="mt-6 ">
+  <div className="mt-6 md:w-[70%] m-auto">
     <img
       src={showMyHotel.image}
       alt={showMyHotel.title}
-      className="  md:w-[50%] rounded-xl m-auto shadow-lg shadow-gray-800 object-contain"
+      className=" rounded-xl  shadow-lg shadow-gray-800 object-contain"
     />
   </div>
   <div className='flex justify-center items-center'>
   <ImageGallery />
   </div>
-    <h2 className="text-3xl font-semibold text-center mt-4">{showMyHotel.title}</h2>
+    <h2 className="text-3xl uppercase font-bold text-center mt-4">{showMyHotel.title}</h2>
     <p className="text-center text-gray-600 mt-2">
       {avgRating} ⭐ ({reviewCount} reviews)
     </p>
@@ -82,8 +82,8 @@ useEffect( () => {
         <p className="text-gray-700 text-lg mb-4">
           {showMyHotel.description}
         </p>
-        <p className="text-lg font-medium text-gray-800 mb-2">
-          Price: <span className="text-green-600 font-bold">Rs {showMyHotel.price}</span>
+        <p className="text-xl font-medium text-gray-800 mb-2">
+          For <span className="text-green-600 font-bold">Rs {(showMyHotel.price).toLocaleString("INR")}/-</span>
         </p>
         <p className="text-lg text-gray-600 mb-4">
           Location: {showMyHotel.city}, {showMyHotel.state}, {showMyHotel.country}
@@ -93,7 +93,7 @@ useEffect( () => {
       {/* Amenities Section */}
       <Amenities />
     </div>
-  <div className='w-[90%] ml-20 border-3  shadow-md shadow-slate-600'><MapLocation hotel={showMyHotel} /></div>
+  <div className='w-[90%] m-auto border-3  shadow-md shadow-slate-600'><MapLocation hotel={showMyHotel} /></div>
   </ul>
   <Policies/>
   <div className="flex justify-center items-center mt-8 ">
