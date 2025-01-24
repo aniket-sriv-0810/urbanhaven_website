@@ -20,10 +20,11 @@ const Amenities = () => {
           { icon: <TbAirConditioning className="text-gray-700 text-3xl" />, text: "Cool Air Conditioning" },
           { icon: <GiToaster className="text-yellow-500 text-3xl" />, text: "Premium Toaster" },
           { icon: <FaWifi className="text-blue-500 text-3xl" />, text: "High-Speed Wifi" },
-          { icon: <GiToaster className="text-yellow-500 text-3xl" />, text: "Premium Toaster" },
-          { icon: <GiToaster className="text-yellow-500 text-3xl" />, text: "Premium Toaster" },
         ].map((amenity, index) => (
-          <li key={index} className="flex items-center space-x-4 p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow duration-300">
+          <li
+            key={index}
+            className="flex items-center space-x-4 p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow duration-300"
+          >
             <div>{amenity.icon}</div>
             <span className="text-lg font-medium text-gray-700">{amenity.text}</span>
           </li>

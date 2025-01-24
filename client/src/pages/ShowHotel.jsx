@@ -73,12 +73,26 @@ useEffect( () => {
       {avgRating} ⭐ ({reviewCount} reviews)
     </p>
   <ul className=''>
-  <div className='ml-20 text-lg'>
-  <li><p className='text-xl font-semibold'>About our place :</p> <span className='text-gray-700'>{showMyHotel.description} </span></li>
-  <li>Rs {showMyHotel.price}</li>
-  <li><p>Amenities Provided : </p><Amenities/></li>
-  <li><p>{showMyHotel.city} , {showMyHotel.state} , {showMyHotel.country} </p></li>
-  </div>
+  <div className="max-w-5xl mx-auto px-4 py-8">
+      {/* Hotel Details Section */}
+      <div className="bg-white shadow-md rounded-lg p-6 mb-8">
+        <h1 className="text-2xl font-bold text-gray-800 mb-4">
+          About Our Place:
+        </h1>
+        <p className="text-gray-700 text-lg mb-4">
+          {showMyHotel.description}
+        </p>
+        <p className="text-lg font-medium text-gray-800 mb-2">
+          Price: <span className="text-green-600 font-bold">Rs {showMyHotel.price}</span>
+        </p>
+        <p className="text-lg text-gray-600 mb-4">
+          Location: {showMyHotel.city}, {showMyHotel.state}, {showMyHotel.country}
+        </p>
+      </div>
+
+      {/* Amenities Section */}
+      <Amenities />
+    </div>
   <div className='w-[90%] ml-20 border-3  shadow-md shadow-slate-600'><MapLocation hotel={showMyHotel} /></div>
   </ul>
   <Policies/>
