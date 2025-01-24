@@ -96,101 +96,91 @@ useEffect( () => {
   <div className='w-[90%] m-auto border-3  shadow-md shadow-slate-600'><MapLocation hotel={showMyHotel} /></div>
   </ul>
   <Policies/>
-  <div className="flex justify-center items-center mt-8 ">
-  <Link to={`/hotel/${id}/booking`}>
-    <button className="flex text-xl items-center justify-center bg-gradient-to-r from-pink-500 to-rose-500 text-white px-6 py-4 w-80 rounded-full font-bold shadow-md hover:bg-gradient-to-r hover:from-red-500 hover:to-pink-500  hover:scale-105 transition-all duration-300">
-      <span>Book Now</span>
-      <MdArrowCircleRight className="ml-2 text-2xl transition-transform duration-300 group-hover:translate-x-1" />
-    </button>
-  </Link>
-</div>
+  <div className="flex justify-center items-center mt-8">
+      <Link to={`/hotel/${id}/booking`}>
+        <button className="flex items-center justify-center text-xl bg-gradient-to-r from-pink-500 to-rose-500 text-white px-6 py-4 w-72 md:w-80 rounded-full font-bold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-pink-500 hover:shadow-xl hover:scale-105 transition-all duration-300">
+          <span className="group">Book Now</span>
+          <MdArrowCircleRight className="ml-2 text-2xl transition-transform duration-300 group-hover:translate-x-1" />
+        </button>
+      </Link>
+    </div>
 
 
 <div className=' gap-3 mt-5'>
 <FAQs/>
 <Review/>
-
-<div className='flex gap-5 space-x-6 flex-wrap'>
-{reviews  && reviews.length > 0 ? reviews.map((reviewsItem) => (
-  <div
-    key={reviewsItem._id} 
-    className="w-80 max-w-full h-auto shadow-md shadow-black rounded-br-3xl rounded-tr-3xl border-4 p-4 my-2 mx-3 break-words whitespace-pre-wrap"
-  >
-    <div className="flex  justify-center items-start gap-3">
-      <img
-        src={reviewsItem.userDetails ? reviewsItem.userDetails.image : null}
-        alt={`${reviewsItem.userDetails ? reviewsItem.userDetails.name : null} s profile`}
-        className="w-12 h-12 rounded-full relative right-3 shadow-md shadow-black"
-      />
-
-      <div>
-        <h2 className="text-lg text-center font-semibold">
-          {reviewsItem.userDetails ? reviewsItem.userDetails.name : null}
-        </h2>
-        <p className="text-gray-600">@{reviewsItem.userDetails ? reviewsItem.userDetails.username : null}</p>
-      </div>
-    </div>
-    <ul className="mt-4">
-      <div className="mt-2 -mr-3 flex justify-center items-center">
-        <fieldset className="starability-slot">
-          <input
-            type="radio"
-            id={`no-rate-${reviewsItem._id}`}
-            className="input-no-rate"
-            name={`rating-${reviewsItem._id}`}
-            value="0"
-            checked={reviewsItem.rating === 0}
-            disabled
-            aria-label="No rating."
+<div className="flex flex-wrap gap-8 justify-center py-10 bg-gradient-to-b from-gray-50 to-white">
+  {reviews && reviews.length > 0 ? (
+    reviews.map((reviewsItem) => (
+      <div
+        key={reviewsItem._id}
+        className="w-full sm:w-80 max-w-full bg-white shadow-lg rounded-2xl border border-gray-200 p-6 transition-transform transform hover:scale-105 hover:shadow-2xl"
+      >
+        {/* User Info */}
+        <div className="flex items-center gap-4">
+          <img
+            src={reviewsItem.userDetails ? reviewsItem.userDetails.image : null}
+            alt={
+              reviewsItem.userDetails
+                ? `${reviewsItem.userDetails.name}'s profile`
+                : "User profile"
+            }
+            className="w-12 h-12 rounded-full shadow-md"
           />
+          <div>
+            <h2 className="text-lg font-semibold text-gray-800">
+              {reviewsItem.userDetails ? reviewsItem.userDetails.name : "Anonymous"}
+            </h2>
+            <p className="text-sm text-gray-600">
+              @{reviewsItem.userDetails ? reviewsItem.userDetails.username : "unknown"}
+            </p>
+          </div>
+        </div>
+
+        {/* Star Rating */}
+        <div className="flex justify-center items-center mt-4">
           {[1, 2, 3, 4, 5].map((rate) => (
-            <React.Fragment key={rate}>
-              <input
-                type="radio"
-                id={`rate-${rate}-${reviewsItem._id}`}
-                name={`rating-${reviewsItem._id}`}
-                value={rate}
-                checked={reviewsItem.rating === rate}
-                disabled
-              />
-              <label
-                htmlFor={`rate-${rate}-${reviewsItem._id}`}
-                title={
-                  rate === 1
-                    ? "Terrible"
-                    : rate === 2
-                    ? "Not good"
-                    : rate === 3
-                    ? "Average"
-                    : rate === 4
-                    ? "Very good"
-                    : "Amazing"
-                }
-                className="cursor-pointer"
-              >
-                {rate} star{rate > 1 && "s"}
-              </label>
-            </React.Fragment>
+            <span
+              key={rate}
+              className={`text-xl ${
+                reviewsItem.rating >= rate ? "text-yellow-400" : "text-gray-300"
+              }`}
+            >
+              ★
+            </span>
           ))}
-        </fieldset>
+        </div>
+
+        {/* Comment */}
+        <p className="mt-4 text-gray-700 whitespace-pre-wrap break-words">
+          {reviewsItem.comment}
+        </p>
+
+        {/* Verified Badge */}
+        <div className="  flex justify-end items-center mt-6">
+          <p className="text-sm text-gray-600">Verified by</p>
+          <img
+            src={Logo}
+            alt="Brand logo"
+            className="w-16 ml-2"
+          />
+        </div>
       </div>
-      <li className="text-gray-800 -mt-4 break-words whitespace-pre-wrap">
-        {reviewsItem.comment}
-      </li>
-      <p className="flex justify-end items-end">
-        Verified by <img src={Logo} alt="brand-logo" className="w-16 relative top-5" />
-      </p>
-    </ul>
-  </div>
-)) : null}
-
-
+    ))
+  ) : (
+    <p className="text-gray-600 text-lg">No reviews available at the moment.</p>
+  )}
 </div>
+
+
   </div>
   <div className='flex flex-col justify-center items-center space-y-7'>
   <Link to="/">
-  <button className="   bg-purple-600 p-3 text-white w-60 rounded-2xl font-bold ">Home</button>
-  </Link>
+  <button className="flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-500 text-white px-6 py-3 w-60 rounded-full font-bold shadow-lg hover:bg-gradient-to-r hover:from-indigo-500 hover:to-purple-600 transform hover:scale-105 transition-all duration-300">
+    <span>Home</span>
+  </button>
+</Link>
+
   <div className="flex justify-center items-center mt-8 ">
   <Link to={`/hotel/${id}/booking`}>
     <button className="flex text-xl items-center justify-center bg-gradient-to-r from-pink-500 to-rose-500 text-white px-6 py-4 w-80 rounded-full font-bold shadow-md hover:bg-gradient-to-r hover:from-red-500 hover:to-pink-500  hover:scale-105 transition-all duration-300">

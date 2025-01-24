@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 const FAQs = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -31,38 +32,38 @@ const FAQs = () => {
   ];
 
   return (
-    <section className="faq-section bg-gradient-to-b from-blue-100 to-white py-16 px-5 sm:px-20">
-      <h2 className="text-center text-3xl sm:text-5xl font-bold text-gray-800 mb-8">
-        Frequently Asked Questions
-      </h2>
-      <div className="max-w-4xl mx-auto space-y-6">
-        {faqs.map((faq, index) => (
-          <div
-            key={index}
-            className="faq-item border border-gray-300 rounded-lg shadow-md overflow-hidden"
+    <section className="faq-section bg-gradient-to-b from-blue-200 to-white py-16 px-5 sm:px-20">
+    {/* Title */}
+    <h2 className="text-center text-4xl sm:text-5xl font-bold text-gray-800 mb-12">
+      Frequently Asked Questions
+    </h2>
+
+    {/* FAQ Items */}
+    <div className="max-w-4xl mx-auto space-y-6">
+      {faqs.map((faq, index) => (
+        <div
+          key={index}
+          className="faq-item border border-gray-300 rounded-xl shadow-md overflow-hidden transition-all duration-300"
+        >
+          <button
+            className="w-full text-left flex justify-between items-center bg-white p-5 sm:p-6 font-semibold text-gray-800 hover:bg-blue-50 hover:shadow-lg transition"
+            onClick={() => toggleFAQ(index)}
           >
-            <button
-              className="w-full text-left flex justify-between items-center bg-white p-4 sm:p-6 font-semibold text-gray-800 hover:bg-blue-50 transition"
-              onClick={() => toggleFAQ(index)}
-            >
-              {faq.question}
-              <span
-                className={`ml-2 transform transition-transform ${
-                  activeIndex === index ? "rotate-180" : "rotate-0"
-                }`}
-              >
-                ▼
-              </span>
-            </button>
-            {activeIndex === index && (
-              <div className="p-4 sm:p-6 bg-gray-50 text-gray-600">
-                {faq.answer}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    </section>
+            <span>{faq.question}</span>
+            <span className="ml-4 text-xl">
+              {activeIndex === index ? <FaChevronUp /> : <FaChevronDown />}
+            </span>
+          </button>
+          {/* FAQ Answer */}
+          {activeIndex === index && (
+            <div className="p-5 sm:p-6 bg-blue-50 text-gray-700 leading-relaxed">
+              {faq.answer}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </section>
   );
 };
 
