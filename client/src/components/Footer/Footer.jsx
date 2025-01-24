@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from '../../assets/main-logo.png';
+import LogoName from '../../assets/main-logo-name.png';
 import { NavLink } from "react-router-dom";
 import { FaLinkedin, FaGithub } from "react-icons/fa6";
 import { CgMail } from "react-icons/cg";
@@ -12,7 +13,7 @@ const Footer = () => {
         {/* Top Section */}
         <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start lg:space-x-12  lg:space-y-0">
           {/* Logo Section */}
-          <div className="flex flex-col items-center lg:items-start">
+          <div className="flex items-center lg:items-start">
             <img src={Logo} alt="Logo" className="w-24 -mt-8" />
           </div>
 
