@@ -25,9 +25,7 @@ const hotelSchemaValidation = Joi.object({
         "string.empty": "Country is required.",
         "any.required": "Country is required.",
     }),
-    image: Joi.string().uri().optional().messages({
-        "string.uri": "Image must be a valid URI.",
-    }),
+    image: Joi.any(), // Accept the file as `any`
     review: Joi.array()
         .items(Joi.string().regex(/^[0-9a-fA-F]{24}$/)) // Matches MongoDB ObjectId format
         .optional(),

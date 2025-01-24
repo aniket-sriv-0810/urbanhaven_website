@@ -22,7 +22,7 @@ const Create = () => {
   };
 
   const handleFileChange = (e) => {
-    setImage(e.target.files[0]);
+    const file = e.target.files[0];
     if (file) {
       setImage(file);
       setPreview(URL.createObjectURL(file));
@@ -41,20 +41,23 @@ const Create = () => {
     if (image) {
       formData.append("image", image);
     }
+console.log([ ...formData]);
 
-    try {
-      const response = await axios.post("http://localhost:8000/api/v1/admin/new-hotel", formData, {
-        withCredentials: true,
-      });
-      if (response.status === 200) {
-        setNewHotel({
-          title: "",
-          description: "",
-          price: "",
+try {
+  const response = await axios.post("http://localhost:8000/api/v1/admin/new-hotel", formData, 
+    {
+    withCredentials: true,
+  });
+  if (response.status === 200) {
+    setNewHotel({
+      title: "",
+      description: "",
+      price: "",
           city: "",
           state: "",
           country: "",
         });
+        console.log("FormData sent: " + formData);
         setImage(null);
         setPreview(null);
         navigate("/admin");
