@@ -3,6 +3,9 @@ import React, { useRef, useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { useUser } from "../components/userContext/userContext";
 import { Bounce, ToastContainer, toast } from "react-toastify";
+import { FaUser } from "react-icons/fa";
+import { BsShieldLockFill } from "react-icons/bs";
+
 import "react-toastify/dist/ReactToastify.css";
 
 const LoginUser = () => {
@@ -117,15 +120,15 @@ const LoginUser = () => {
   };
 
   const inputStyling =
-    " border border-gray-300 rounded-xl p-3 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-[#5454544f] placeholder:text-center placeholder:capitalize placeholder:text-white valid:border-green-400 valid:border-2";
+    "w-full border border-gray-300 rounded-xl p-3 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-[#5454544f] placeholder:text-center placeholder:lowercase placeholder:text-white valid:border-green-400 valid:border-2";
 
   return (
     <>
       <div className="bg-[url('/assets/bg.jpg')] bg-cover flex flex-col justify-center items-center bg-purple-200 min-h-screen px-4 md:px-8">
-        <h1 className="text-white text-2xl font-semibold text-center mb-5 mt-2 sm:text-3xl">
+        <h1 className="text-white text-2xl font-semibold text-center mb-5 mt-2 sm:text-3xl md:-mt-4 md:mb-9">
           Log in to your Account
         </h1>
-        <div className="flex flex-col border-2 border-white rounded-xl p-6 bg-[#212521] max-w-md md:w-[65%]">
+        <div className="flex flex-col border-2 border-white rounded-xl p-10 bg-[#212521] max-w-md md:w-[65%]">
           <h2 className="text-white text-center font-bold text-xl mb-5">
             Verify Your Credentials
           </h2>
@@ -134,15 +137,38 @@ const LoginUser = () => {
             className="flex flex-col gap-y-4 lg:p-5"
             onSubmit={handleSubmitForm}
           >
+            <div className="relative flex flex-col">
+            {/* Icon */}
+            <FaUser
+              className={`absolute left-3 top-6  transition-colors duration-300 ${
+                formErrors.username || formErrors.password
+                  ? 'text-red-500' // Error state
+                  : loginUser.username
+                  ? 'text-green-500' // Valid state
+                  : 'text-gray-300' // Default state
+              }`}
+            />
             <input
               type="text"
               placeholder="Enter username"
               required
               name="username"
               ref={inputRefs.username}
-              className={`${inputStyling} ${formErrors.username || formErrors.password ? 'valid:border-red-500' : ''}`}
+              className={`pl-10 ${inputStyling} ${formErrors.username || formErrors.password ? 'valid:border-red-500' : ''}`}
               onChange={handleInputChange}
               value={loginUser.username}
+            />
+            </div>
+            <div className="relative flex flex-col">
+            {/* Icon */}
+            <BsShieldLockFill
+              className={`absolute left-3 top-6  transition-colors duration-300 ${
+                formErrors.password
+                  ? 'text-red-500' // Error state
+                  : loginUser.password
+                  ? 'text-green-500' // Valid state
+                  : 'text-gray-300' // Default state
+              }`}
             />
             <input
               type="password"
@@ -150,12 +176,12 @@ const LoginUser = () => {
               required
               name="password"
               ref={inputRefs.password}
-              className={`${inputStyling} ${formErrors.username || formErrors.password ? 'valid:border-red-500' : ''}`}
+              className={`pl-10 ${inputStyling} ${formErrors.username || formErrors.password ? 'valid:border-red-500' : ''}`}
               onChange={handleInputChange}
               value={loginUser.password}
             />
-            {formErrors.password && <p className="text-red-500 text-sm -mt-3 text-center">{formErrors.password}</p>}
-           
+            {formErrors.password && <p className="text-red-500 text-sm mt-2 text-center">{formErrors.password}</p>}
+           </div>
             <div className="text-center text-gray-400 mt-2 text-sm sm:text-base ">
               <span >Don’t have an account?{" "}</span>
               <NavLink to="/user/register" className="text-sky-500 hover:underline">

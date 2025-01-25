@@ -146,7 +146,7 @@ const RegisterUser = () => {
   };
 
   const inputStyling =
-     'w-full border border-gray-300 rounded-xl p-2 focus:outline-none focus:ring-1 focus:ring-green-400 bg-[#5454544f] placeholder:text-center placeholder:lowercase placeholder:text-white valid:border-green-400 valid:border-2 ';
+     'w-full border border-gray-300 rounded-xl p-2 focus:outline-none focus:ring-1 focus:ring-green-400 bg-[#5454544f] placeholder:text-center placeholder:lowercase placeholder:text-white valid:border-green-400 valid:border-2  ';
 
   return (
     <div className="bg-[url('/assets/bg.jpg')] bg-cover flex flex-col justify-center items-center bg-purple-200 min-h-screen px-4 md:px-8">
