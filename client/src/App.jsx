@@ -6,7 +6,7 @@ import ShowHotel from './pages/ShowHotel';
 import Edit from './pages/Edit';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import RegisterUser from './pages/RegisterUser';
+import RegisterUser from './pages/authentication/RegisterUser';
 import LoginUser from './pages/LoginUser';
 import Logout from './components/Logout/Logout';
 import Review from './components/Review/Review';

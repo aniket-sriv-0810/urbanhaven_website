@@ -1,7 +1,11 @@
 import axios from 'axios';
 import React, { useRef, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useUser } from '../components/userContext/userContext';
+import { useUser } from '../../components/userContext/userContext';
+import { FaUser , FaPhoneAlt  } from "react-icons/fa";
+import { BiSolidUserDetail } from "react-icons/bi";
+import { MdEmail } from "react-icons/md";
+import { BsShieldLockFill } from "react-icons/bs";
 
 const RegisterUser = () => {
   const { setUser } = useUser();
@@ -133,7 +137,6 @@ const RegisterUser = () => {
         }
         return acc;
       }, {});
-      setIsError(true);
       setFormErrors(backendErrors);
     } else {
       // Handle any unexpected errors
@@ -143,7 +146,7 @@ const RegisterUser = () => {
   };
 
   const inputStyling =
-    'border border-gray-300 rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-[#5454544f] placeholder:text-center placeholder:capitalize placeholder:text-white valid:border-green-400 valid:border-2 ';
+     'w-full border border-gray-300 rounded-xl p-2 focus:outline-none focus:ring-1 focus:ring-green-400 bg-[#5454544f] placeholder:text-center placeholder:lowercase placeholder:text-white valid:border-green-400 valid:border-2 ';
 
   return (
     <div className="bg-[url('/assets/bg.jpg')] bg-cover flex flex-col justify-center items-center bg-purple-200 min-h-screen px-4 md:px-8">
@@ -151,71 +154,133 @@ const RegisterUser = () => {
       <div className="flex flex-col border-2 border-white rounded-xl p-7 mb-3 bg-[#212125] max-w-md md:w-[60%]">
         <h2 className="text-white text-center font-bold text-xl mb-5 break-all">Enter Your Credentials</h2>
         <form className="flex flex-col gap-y-4 lg:p-5" onSubmit={handleSubmitForm}>
-          <input
-            type="text"
-            placeholder="Enter your name"
-            required
-            ref={inputRefs.name}
-            name="name"
-            className={`${inputStyling} ${formErrors.name ? 'valid:border-red-500' : ''}`}
-            onChange={handleInputChange}
-            value={newUser.name}
-            title="please enter your name"
-          />
-          {formErrors.name && <p className="text-red-500 text-sm -mt-3 text-center">{formErrors.name}</p>}
-          
+        <div className="relative flex flex-col">
+  {/* Icon */}
+  <FaUser
+    className={`absolute left-3 top-3  transition-colors duration-300 ${
+      formErrors.name
+        ? 'text-red-500' // Error state
+        : newUser.name
+        ? 'text-green-500' // Valid state
+        : 'text-gray-300' // Default state
+    }`}
+  />
+        
+  
+  {/* Input */}
+  <input
+    type="text"
+    placeholder="Enter your name"
+    required
+    ref={inputRefs.name}
+    name="name"
+    className={`pl-10 ${inputStyling} ${
+      formErrors.name ? 'valid:border-red-500' : ''
+    }`}
+    onChange={handleInputChange}
+    value={newUser.name}
+    title="please enter your name"
+  />
+</div>
+{formErrors.name && (
+  <p className="text-red-500 text-sm mt-2 text-center">{formErrors.name}</p>
+)}
+<div className="relative flex flex-col">
+  {/* Icon */}
+  <BiSolidUserDetail
+    className={`absolute left-3 top-3 text-lg transition-colors duration-300 ${
+      formErrors.username
+        ? 'text-red-500' // Error state
+        : newUser.username
+        ? 'text-green-500' // Valid state
+        : 'text-gray-300' // Default state
+    }`}
+  />
           <input
             type="text"
             placeholder="Enter your username"
             required
             ref={inputRefs.username}
             name="username"
-            className={`${inputStyling} ${formErrors.username ? ' valid:border-red-500' : ''}`}
+            className={`pl-10 ${inputStyling} ${formErrors.username ? ' valid:border-red-500' : ''}`}
             onChange={handleInputChange}
             value={newUser.username}
             title="please enter your username"
           />
-          {formErrors.username && <p className="text-red-500 text-sm -mt-3 text-center">{formErrors.username}</p>}
-          
+          {formErrors.username && <p className="text-red-500 text-sm mt-2 text-center">{formErrors.username}</p>}
+          </div>
+          <div className="relative flex flex-col ">
+  {/* Icon */}
+  <FaPhoneAlt 
+    className={`absolute left-3 top-3  transition-colors duration-300 ${
+      formErrors.phone
+        ? 'text-red-500' // Error state
+        : newUser.phone
+        ? 'text-green-500' // Valid state
+        : 'text-gray-300' // Default state
+    }`}
+     />
           <input
             type="number"
             placeholder="Enter phone number"
             required
             ref={inputRefs.phone}
             name="phone"
-            className={`${inputStyling} ${formErrors.phone ? "valid:border-red-500" : ''} `}
+            className={`pl-10 ${inputStyling} ${formErrors.phone ? "valid:border-red-500" : ''} `}
             onChange={handleInputChange}
             value={newUser.phone}
             title="please enter your phone number"
           />
-          {formErrors.phone && <p className="text-red-500 text-sm -mt-3 text-center">{formErrors.phone}</p>}
-          
+          {formErrors.phone && <p className="text-red-500 text-sm mt-2 text-center">{formErrors.phone}</p>}
+          </div>
+          <div className="relative flex flex-col">
+  {/* Icon */}
+  <MdEmail  
+    className={`absolute left-3 top-3  transition-colors duration-300 ${
+      formErrors.email
+        ? 'text-red-500' // Error state
+        : newUser.email
+        ? 'text-green-500' // Valid state
+        : 'text-gray-300' // Default state
+    }`}
+     />
           <input
             type="email"
             placeholder="Enter your email"
             required
             ref={inputRefs.email}
             name="email"
-            className={`${inputStyling} ${formErrors.email ? 'valid:border-red-500' : ''}`}
+            className={`pl-10 ${inputStyling} ${formErrors.email ? 'valid:border-red-500' : ''}`}
             onChange={handleInputChange}
             value={newUser.email}
             title="please enter your email"
           />
-          {formErrors.email && <p className="text-red-500 text-center text-sm -mt-3 ">{formErrors.email}</p>}
-          
+          {formErrors.email && <p className="text-red-500 text-center text-sm mt-2 ">{formErrors.email}</p>}
+        </div>  
+        <div className="relative flex flex-col">
+  {/* Icon */}
+  <BsShieldLockFill   
+    className={`absolute left-3 top-3 transition-colors duration-300 ${
+      formErrors.password
+        ? 'text-red-500' // Error state
+        : newUser.password
+        ? 'text-green-500' // Valid state
+        : 'text-gray-300' // Default state
+    }`}
+     />
           <input
             type="password"
             placeholder="Enter strong password"
             required
             ref={inputRefs.password}
             name="password"
-            className={`${inputStyling} ${formErrors.password ? "valid:border-red-500" : ''}  `}
+            className={`pl-10 ${inputStyling} ${formErrors.password ? "valid:border-red-500" : ''}  `}
             onChange={handleInputChange}
             value={newUser.password}
             title="please enter your password"
           />
-          {formErrors.password && <p className="text-red-500 text-sm -mt-3 text-center ">{formErrors.password}</p>}
-          
+          {formErrors.password && <p className="text-red-500 text-sm mt-2 text-center ">{formErrors.password}</p>}
+          </div>
           <div className="flex items-center gap-3">
             <input
               type="checkbox"
