@@ -120,7 +120,7 @@ const LoginUser = () => {
   };
 
   const inputStyling =
-    "w-full border border-gray-300 rounded-xl p-3 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-[#5454544f] placeholder:text-center placeholder:lowercase placeholder:text-white valid:border-green-400 valid:border-2";
+    "w-full border border-gray-300 rounded-xl p-3 mt-2 focus:outline-none focus:ring-2 focus:ring-green-200 bg-[#5454544f] placeholder:text-center placeholder:lowercase placeholder:text-white valid:border-green-400 valid:border-2";
 
   return (
     <>

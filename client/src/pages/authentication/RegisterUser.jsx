@@ -146,7 +146,7 @@ const RegisterUser = () => {
   };
 
   const inputStyling =
-     'w-full border border-gray-300 rounded-xl p-2 focus:outline-none focus:ring-1 focus:ring-green-400 bg-[#5454544f] placeholder:text-center placeholder:lowercase placeholder:text-white valid:border-green-400 valid:border-2  ';
+     'w-full border border-gray-300 rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-green-200 bg-[#5454544f] placeholder:text-center placeholder:lowercase placeholder:text-white valid:border-green-400 valid:border-2 caret-green-500 ';
 
   return (
     <div className="bg-[url('/assets/bg.jpg')] bg-cover flex flex-col justify-center items-center bg-purple-200 min-h-screen px-4 md:px-8">
@@ -304,7 +304,7 @@ const RegisterUser = () => {
           </div>
           <button
             type="submit"
-            className="w-full border-gray-500 font-semibold border-2 bg-green-600 px-4 py-2 text-white rounded-xl mt-4 2xl:p-3 hover:bg-green-700"
+            className="w-full border-gray-500 font-semibold border-2 bg-green-700 px-4 py-2 text-white rounded-xl mt-4 2xl:p-3 hover:bg-green-600"
           >
             Create Account
           </button>
