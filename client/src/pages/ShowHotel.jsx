@@ -10,6 +10,8 @@ import Policies from '../components/Policies/Policies';
 import ImageGallery from '../components/ImageGallery/ImageGallery';
 import FAQs from '../components/FAQs/FAQs';
 import { MdArrowCircleRight } from "react-icons/md";
+import Navbar from '../components/Navbar.jsx/Navbar';
+import { FaMapMarkerAlt } from "react-icons/fa";
 const ShowHotel = () => {
 const {id} = useParams();
 const [reviews, setReviews] = useState();
@@ -50,10 +52,13 @@ useEffect( () => {
   }
   return (
   <>
+  <div className='bg-gradient-to-r from-violet-600 to-indigo-600'>
+  <Navbar/>
+  </div>
   <div className="container ">
-  <h1 className="text-xl text-center sm:text-3xl  md:text-4xl lg:text-5xl font-extrabold mt-8 mb-4 text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-500">
+  <h1 className="text-xl text-center  w-max m-auto shadow-black sm:text-3xl  md:text-4xl lg:text-5xl font-extrabold mt-8 mb-4 text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-500 to-pink-600">
   Check out the Hotel details
-  <span className="block mt-2 text-sm md:text-base text-red-500 font-medium animate-bounce">
+  <span className="block mt-2 text-sm md:text-base text-red-500 font-semibold animate-bounce">
     Explore amazing amenities and features!
   </span>
 </h1>
@@ -62,7 +67,7 @@ useEffect( () => {
     <img
       src={showMyHotel.image}
       alt={showMyHotel.title}
-      className=" rounded-xl  shadow-lg shadow-gray-800 object-contain"
+      className=" rounded-xl  shadow-xl shadow-gray-900 object-contain"
     />
   </div>
   <div className='flex justify-center items-center'>
@@ -83,10 +88,12 @@ useEffect( () => {
           {showMyHotel.description}
         </p>
         <p className="text-xl font-medium text-gray-800 mb-2">
-          For <span className="text-green-600 font-bold">Rs {(showMyHotel.price).toLocaleString("INR")}/-</span>
+          For <span className="text-green-600 font-bold">Rs {(showMyHotel.price).toLocaleString("INR")} </span>
+          <span className="text-sm text-gray-500 font-normal"> /- per night <br />
+                  </span>
         </p>
-        <p className="text-lg text-gray-600 mb-4">
-          Location: {showMyHotel.city}, {showMyHotel.state}, {showMyHotel.country}
+        <p className="text-lg text-gray-600 mb-4 flex items-center gap-x-2">
+          <FaMapMarkerAlt className='text-red-500 w-5 h-5 ' />{showMyHotel.city}, {showMyHotel.state}, {showMyHotel.country}
         </p>
       </div>
 

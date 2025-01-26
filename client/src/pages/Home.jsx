@@ -118,10 +118,10 @@ const Home = () => {
           <p className="text-lg text-gray-600">Hotels Loading...</p>
         ) : (
           currentHotels.map((hotelItem) => {
-            const convertedPrice = (hotelItem.price * conversionRate).toFixed(2);
+            const convertedPrice = ((hotelItem.price) * conversionRate).toFixed(2);
             const convertedTax = (0.18 * hotelItem.price * conversionRate).toFixed(2);
 
-            const priceDisplay = `${currencySymbols[selectedCurrency]} ${convertedPrice}`;
+            const priceDisplay = `${currencySymbols[selectedCurrency]} ${(convertedPrice)}`;
             const taxDisplay = `${currencySymbols[selectedCurrency]} ${convertedTax}`;
 
             return (
