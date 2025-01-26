@@ -6,6 +6,7 @@ import { FaLinkedin, FaGithub } from "react-icons/fa6";
 import { CgMail } from "react-icons/cg";
 import { GrInstagram } from "react-icons/gr";
 
+const navLinkStyling = `sm:hover:scale-105 sm:hover:font-semibold sm:hover:text-blue-400 transition-all duration-100`
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-gray-300 py-10">
@@ -19,7 +20,7 @@ const Footer = () => {
 
           {/* Navigation Links */}
           <ul className="flex flex-wrap justify-center items-center space-x-6 md:space-x-8 text-sm lg:text-base">
-            <li>
+            <li className={`${navLinkStyling}`}>
               <NavLink
                 to="/"
                 className="hover:text-blue-400 transition duration-300"
@@ -27,7 +28,7 @@ const Footer = () => {
                 Home
               </NavLink>
             </li>
-            <li>
+            <li className={`${navLinkStyling}`}>
               <NavLink
                 to="/about"
                 className="hover:text-blue-400 transition duration-300"
@@ -35,7 +36,7 @@ const Footer = () => {
                 About
               </NavLink>
             </li>
-            <li>
+            <li className={`${navLinkStyling}`}>
               <NavLink
                 to="/contact"
                 className="hover:text-blue-400 transition duration-300"
@@ -43,7 +44,7 @@ const Footer = () => {
                 Contact
               </NavLink>
             </li>
-            <li>
+            <li className={`${navLinkStyling}`}>
               <NavLink
                 to="/policies"
                 className="hover:text-blue-400 transition duration-300"
@@ -51,7 +52,7 @@ const Footer = () => {
                 Policies
               </NavLink>
             </li>
-            <li>
+            <li className={`${navLinkStyling}`}>
               <NavLink
                 to="/show"
                 className="hover:text-blue-400 transition duration-300"
