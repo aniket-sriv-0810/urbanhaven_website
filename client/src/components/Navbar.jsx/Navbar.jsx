@@ -32,7 +32,7 @@ const Navbar = () => {
       console.error('Logout failed:', error);
     }
   };
-
+  const navLinkStyling = `sm:hover:scale-105 sm:hover:text-yellow-500 sm:hover:font-semibold transition-all duration-100`
   return (
     <nav className="  text-white  ">
       <div className="container flex justify-center items-center px-6 sm:justify-between  lg:px-8">
@@ -53,29 +53,29 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden capitalize lg:flex absolute right-7 gap-9  items-center ">
-        <li className={` ${user ? (user.role === "admin" ? "admin" : "hidden") : ""} `}>
+        <ul className="hidden capitalize lg:flex absolute right-7 gap-9  items-center  ">
+        <li className={` ${navLinkStyling} ${user ? (user.role === "admin" ? "admin" : "hidden") : ""} `}>
         <Tippy content="Admin Panel" >
           <NavLink to="/admin">
            Admin
           </NavLink>
         </Tippy>
       </li>
-          <li >
+          <li className={`${navLinkStyling}`}>
           <Tippy content="Home">
             <NavLink to="/">
               Home
             </NavLink>
             </Tippy>
           </li>
-          <li>
+          <li className={`${navLinkStyling}`}>
           <Tippy content="Contact Us">
             <NavLink to="/contact">
              Contact us
             </NavLink>
             </Tippy>
           </li>
-          <li>
+          <li className={`${navLinkStyling}`}>
           <Tippy content="About Us" >
             <NavLink to="/api/v1/about">
               about us
@@ -104,7 +104,7 @@ const Navbar = () => {
             className="bg-transparent px-4 py-3 rounded-lg hover:shadow-md hover:shadow-gray-800  hover:bg-red-600 hover:bg-opacity-60 text-sm "
             >
             <span className='flex gap-2'>
-            log out <MdOutlineLogout className="text-white w-5 h-5"/>
+            logout <MdOutlineLogout className="text-white w-5 h-5"/>
             </span>
             </button>
             

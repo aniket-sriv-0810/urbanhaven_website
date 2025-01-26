@@ -163,7 +163,7 @@ const LoginUser = () => {
             {/* Icon */}
             <BsShieldLockFill
               className={`absolute left-3 top-6  transition-colors duration-300 ${
-                formErrors.password
+                formErrors.password || formErrors.username
                   ? 'text-red-500' // Error state
                   : loginUser.password
                   ? 'text-green-500' // Valid state
