@@ -13,7 +13,6 @@ const Booking = () => {
     adultCount: 1,
     infantCount: 0,
     totalAmount: 0,
-    paymentDetails: "",
     status: "Pending",
   });
 
@@ -21,15 +20,15 @@ const Booking = () => {
   const handlePrevious = () => setCurrentPage((prev) => prev - 1);
 
   const styling =
-    "text-black text-center border border-gray-300 w-full rounded-xl p-3 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100 placeholder:text-gray-400 valid:border-green-400 valid:border-2";
+    "text-black text-center text-sm text-gray-800 border border-gray-300 w-full rounded-xl p-3 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100 placeholder:text-gray-400 valid:border-green-400 valid:border-2";
 
   return (
-    <div className="bg-gradient-to-r from-fuchsia-600 to-purple-600 flex flex-col justify-center items-center min-h-screen px-4 md:px-8">
+    <div className="bg-gradient-to-r from-fuchsia-600 to-purple-600 flex flex-col justify-center items-center min-h-screen px-4  md:px-8">
       <h1 className="text-white text-3xl font-bold text-center mt-5 mb-5">
         Confirm Your Booking
       </h1>
 
-      <div className="w-full  max-w-4xl bg-white shadow-lg rounded-lg p-6 sm:p-8 md:w-3/4">
+      <div className="w-full  max-w-4xl bg-white shadow-lg rounded-lg p-6 mb-10 sm:p-8 md:w-3/4">
         <div className="flex justify-center items-center mb-6">
           <div
             className={`w-1/3 h-2 rounded-full ${
@@ -56,7 +55,7 @@ const Booking = () => {
               ? "Booking Details"
               : "Payment"}
           </h2>
-          <p className="text-gray-500 text-sm">
+          <p className="text-gray-600 text-sm">
             {currentPage === 1
               ? "Fill in your details to start the booking process."
               : currentPage === 2
@@ -94,7 +93,6 @@ const Booking = () => {
           />
         )}
 
-       
       </div>
     </div>
   );

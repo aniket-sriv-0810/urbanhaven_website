@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { differenceInDays } from "date-fns";
 import { useUser } from "../../components/userContext/userContext";
+import { MdOutlinePayments } from "react-icons/md";
+import { TiArrowBack } from "react-icons/ti";
 const BookingDetails = ({
   bookingData,
   setBookingData,
@@ -60,7 +62,7 @@ const BookingDetails = ({
     <div className="bg-gray-50 min-h-screen px-4 flex justify-center">
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-4xl w-full space-y-6">
         {/* Hotel Details */}
-        <section className="space-y-4">
+        <section className="space-y-4 ">
           <h1 className="text-3xl font-bold text-gray-800">Hotel Details</h1>
           <div className="flex flex-col sm:flex-row sm:space-x-6">
             <img
@@ -124,7 +126,7 @@ const BookingDetails = ({
               <span className="font-medium">Taxes (18%):</span> ₹{(hotelData.price * 0.18).toFixed(2)}
             </p>
             <p className="text-xl font-semibold text-gray-800">
-              Total Amount: ₹{bookingData.totalAmount?.toLocaleString("INR")}
+              Total Amount: <span className="text-green-600"> ₹{bookingData.totalAmount?.toLocaleString("INR")}</span>
             </p>
           </div>
         </section>
@@ -133,15 +135,17 @@ const BookingDetails = ({
         <div className="flex justify-between">
           <button
             onClick={handlePrevious}
-            className="px-6 py-3 bg-gray-200 rounded-lg font-medium hover:bg-gray-300 transition-all"
+            className="flex  items-center gap-x-2 px-7 py-3 text-white bg-gray-200 rounded-lg font-medium hover:bg-gray-300 transition-all bg-gradient-to-r from-cyan-600 to-blue-800 hover:scale-105 hover:shadow-lg hover:shadow-gray-500"
           >
+            <TiArrowBack className="w-5 h-5" />
             Back
           </button>
           <button
             onClick={handleNext}
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-all"
+            className=" flex  items-center gap-x-3 px-6 py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-lg font-medium hover:scale-105 hover:bg-gradient-to-r hover:from-emerald-800 hover:to-green-600 transition-all hover:shadow-lg hover:shadow-gray-500"
           >
             Confirm Booking
+            <MdOutlinePayments className="w-5 h-5" />
           </button>
         </div>
       </div>

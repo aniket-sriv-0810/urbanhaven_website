@@ -3,7 +3,10 @@ import { useUser } from "../../components/userContext/userContext";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BsCreditCardFill } from "react-icons/bs";
-import { MdQrCodeScanner , MdPayments   } from "react-icons/md";
+import { MdQrCodeScanner, MdPayments } from "react-icons/md";
+import { TiArrowBack } from "react-icons/ti";
+import { BsCashCoin } from "react-icons/bs";
+
 const BookingPayment = ({ setBookingData, hotelData, bookingData, handlePrevious }) => {
   const { id } = useParams();
   const { user } = useUser();
@@ -16,6 +19,7 @@ const BookingPayment = ({ setBookingData, hotelData, bookingData, handlePrevious
       userDetails: user._id,
       hotelDetails: hotelData._id,
       ...bookingData,
+      paymentDetails : selectedPaymentMethod
     };
 
     try {
@@ -34,80 +38,103 @@ const BookingPayment = ({ setBookingData, hotelData, bookingData, handlePrevious
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
-      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-4xl space-y-6">
+    <div className="min-h-screen bg-gradient-to-r from-purple-600 to-pink-500 flex items-center justify-center p-6">
+      <div className="bg-white shadow-xl rounded-xl p-8 w-full max-w-4xl space-y-6">
         {/* Header */}
-        <h1 className="text-3xl font-bold text-gray-800 text-center">Payment Details</h1>
+        <h1 className="text-3xl font-bold p-1 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500 text-center">
+          Payment Details
+        </h1>
 
         {/* Total Amount */}
-        <div className="text-center">
-          <p className="text-lg font-semibold text-gray-600">
-            Total Amount: <span className="text-green-600">₹{bookingData.totalAmount?.toLocaleString("INR")}</span>
+        <div className="text-center mb-4">
+          <p className="text-lg font-semibold text-gray-700">
+            Total Amount:{" "}
+            <span className="text-green-600 font-bold text-2xl">
+              ₹{bookingData.totalAmount?.toLocaleString("INR")}
+            </span>
           </p>
         </div>
 
         {/* Payment Methods */}
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold text-gray-700">Choose Payment Method</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <h2 className="text-xl font-bold text-gray-800">Choose Payment Method</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {/* Credit/Debit Card */}
             <button
-              className={`p-4 rounded-lg border ${selectedPaymentMethod === "card" ? "border-blue-500 bg-blue-50" : "border-gray-300"}`}
+              className={`p-6 flex flex-col items-center justify-center rounded-xl shadow-md transition-all ${
+                selectedPaymentMethod === "card"
+                  ? "border-2 border-blue-600 bg-blue-50"
+                  : "border border-gray-300"
+              } hover:shadow-lg`}
               onClick={() => setSelectedPaymentMethod("card")}
             >
+              <BsCreditCardFill className="text-yellow-500 text-3xl mb-2" />
               <h3 className="font-semibold text-gray-800">Credit/Debit Card</h3>
-              <span><BsCreditCardFill className="text-yellow-500"/></span>
-              <p className="text-sm text-gray-500">Pay securely using your card details.</p>
+              <p className="text-sm text-gray-500 text-center">
+                Pay securely using your card details.
+              </p>
             </button>
 
             {/* UPI Payments */}
             <button
-              className={`p-4 rounded-lg border ${selectedPaymentMethod === "upi" ? "border-blue-500 bg-blue-50" : "border-gray-300"}`}
+              className={`p-6 flex flex-col items-center justify-center rounded-xl shadow-md transition-all ${
+                selectedPaymentMethod === "upi"
+                  ? "border-2 border-blue-600 bg-blue-50"
+                  : "border border-gray-300"
+              } hover:shadow-lg`}
               onClick={() => setSelectedPaymentMethod("upi")}
             >
+              <MdQrCodeScanner className="text-green-600 text-3xl mb-2" />
               <h3 className="font-semibold text-gray-800">UPI Payments</h3>
-              <span><MdQrCodeScanner className="text-black"/></span>
-              <p className="text-sm text-gray-500">Pay via GPay, PhonePe, Paytm, etc.</p>
+              <p className="text-sm text-gray-500 text-center">
+                Pay via GPay, PhonePe, Paytm, etc.
+              </p>
             </button>
 
-            {/* Book Now, Pay Later */}
+            {/* Pay Later */}
             <button
-              className={`p-4 rounded-lg border ${selectedPaymentMethod === "later" ? "border-blue-500 bg-blue-50" : "border-gray-300"}`}
+              className={`p-6 flex flex-col items-center justify-center rounded-xl shadow-md transition-all ${
+                selectedPaymentMethod === "later"
+                  ? "border-2 border-blue-600 bg-blue-50"
+                  : "border border-gray-300"
+              } hover:shadow-lg`}
               onClick={() => setSelectedPaymentMethod("later")}
             >
-              <h3 className="font-semibold text-gray-800">Book Now, Pay Later</h3>
-              <span><MdPayments  className="text-green-500"/></span>
-              <p className="text-sm text-gray-500">Pay at the time of hotel check-in.</p>
+              <MdPayments className="text-purple-600 text-3xl mb-2" />
+              <h3 className="font-semibold text-gray-800">Pay Later</h3>
+              <p className="text-sm text-gray-500 text-center">
+                Pay at the time of hotel check-in.
+              </p>
             </button>
           </div>
         </div>
 
         {/* Payment Form */}
-        <div className="space-y-4">
+        <div className="space-y-6">
           {selectedPaymentMethod === "card" && (
             <div>
-              <h3 className="text-lg font-semibold text-gray-700">Enter Card Details</h3>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">Enter Card Details</h3>
               <form className="space-y-4">
                 <input
                   type="text"
                   placeholder="Cardholder Name"
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <input
                   type="text"
                   placeholder="Card Number"
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <div className="flex space-x-4">
                   <input
                     type="text"
                     placeholder="Expiry (MM/YY)"
-                    className="w-1/2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-1/2 px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                   <input
                     type="text"
                     placeholder="CVV"
-                    className="w-1/2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-1/2 px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
               </form>
@@ -116,12 +143,12 @@ const BookingPayment = ({ setBookingData, hotelData, bookingData, handlePrevious
 
           {selectedPaymentMethod === "upi" && (
             <div>
-              <h3 className="text-lg font-semibold text-gray-700">Enter UPI ID</h3>
-              <form className="space-y-4">
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">Enter UPI ID</h3>
+              <form>
                 <input
                   type="text"
                   placeholder="e.g., yourname@bank"
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </form>
             </div>
@@ -129,7 +156,7 @@ const BookingPayment = ({ setBookingData, hotelData, bookingData, handlePrevious
 
           {selectedPaymentMethod === "later" && (
             <div>
-              <h3 className="text-lg font-semibold text-gray-700">Pay Later</h3>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">Pay Later</h3>
               <p className="text-gray-600">
                 Your booking will be confirmed, and you can pay at the time of hotel check-in.
               </p>
@@ -137,19 +164,21 @@ const BookingPayment = ({ setBookingData, hotelData, bookingData, handlePrevious
           )}
         </div>
 
-        {/* Buttons */}
+        {/* Navigation Buttons */}
         <div className="flex justify-between">
-          <button
-            onClick={handlePrevious}
-            className="px-6 py-3 bg-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-400 transition-all"
-          >
-            Back
-          </button>
+           <button
+                      onClick={handlePrevious}
+                      className="flex  items-center gap-x-2 px-7 py-3 text-white bg-gray-200 rounded-lg font-medium hover:bg-gray-300 transition-all bg-gradient-to-r from-cyan-600 to-blue-800 hover:scale-105 hover:shadow-lg hover:shadow-gray-500"
+                    >
+                      <TiArrowBack className="w-5 h-5" />
+                      Back
+                    </button>
           <button
             onClick={handlePayment}
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all"
+            className="flex items-center gap-x-2 px-6 py-4 bg-gradient-to-r from-emerald-900 to-green-600 text-white rounded-lg font-semibold hover:bg-gradient-to-r hover:from-green-600 hover:to-green-900 hover:scale-105 hover:shadow-md hover:shadow-gray-600 transition-all"
           >
-            Confirm & Pay
+            Confirm your payment
+             <BsCashCoin className="w-5 h-5 mt-2" />
           </button>
         </div>
       </div>
