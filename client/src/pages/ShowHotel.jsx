@@ -12,6 +12,7 @@ import FAQs from '../components/FAQs/FAQs';
 import { MdArrowCircleRight } from "react-icons/md";
 import Navbar from '../components/Navbar.jsx/Navbar';
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { IoHome } from "react-icons/io5";
 const ShowHotel = () => {
 const {id} = useParams();
 const [reviews, setReviews] = useState();
@@ -183,14 +184,15 @@ useEffect( () => {
   </div>
   <div className='flex flex-col justify-center items-center space-y-7'>
   <Link to="/">
-  <button className="flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-500 text-white px-6 py-3 w-60 rounded-full font-bold shadow-lg hover:bg-gradient-to-r hover:from-indigo-500 hover:to-purple-600 transform hover:scale-105 transition-all duration-300">
+  <button className="flex items-center justify-center space-x-5 bg-gradient-to-r from-purple-600 to-indigo-500 text-white px-6 py-3 w-80 rounded-full font-bold shadow-lg hover:bg-gradient-to-r hover:from-indigo-500 hover:to-purple-600 transform hover:scale-105 transition-all duration-300">
     <span>Home</span>
+      <IoHome className="ml-2 text-2xl transition-transform duration-300 group-hover:translate-x-1" />
   </button>
 </Link>
 
-  <div className="flex justify-center items-center mt-8 ">
+  <div className="flex justify-center items-center mt-8">
   <Link to={`/hotel/${id}/booking`}>
-    <button className="flex text-xl items-center justify-center bg-gradient-to-r from-pink-500 to-rose-500 text-white px-6 py-4 w-80 rounded-full font-bold shadow-md hover:bg-gradient-to-r hover:from-red-500 hover:to-pink-500  hover:scale-105 transition-all duration-300">
+    <button className="flex text-xl items-center justify-center bg-gradient-to-r from-pink-500 to-rose-500 text-white px-6 py-4 w-80 rounded-full font-bold shadow-md hover:bg-gradient-to-r hover:from-red-500 hover:to-pink-500  hover:scale-105 transition-all duration-300  mb-10">
       <span>Book Now</span>
       <MdArrowCircleRight className="ml-2 text-2xl transition-transform duration-300 group-hover:translate-x-1" />
     </button>
