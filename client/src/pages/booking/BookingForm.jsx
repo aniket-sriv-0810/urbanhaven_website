@@ -115,8 +115,9 @@ const BookingForm = ({ bookingData, setBookingData, handleNext, value, styling }
 </div>
    {/* Duration Display */}
    {bookingData.checkOutDate && bookingData.checkInDate && calculateStayDuration() > 0 && (
-        <span className="mt-5 p-3 sm:w-[50%] text-center font-semibold text-white bg-green-500 border-2 border-white rounded-xl">
-          {calculateStayDuration()} days selected for stay
+        <span className="mt-5  text-center font-semibold text-green-500 rounded-xl">
+        You’ve selected a stay of {calculateStayDuration()} wonderful {calculateStayDuration() > 1 ?"days" : "day" }
+
         </span>
       )}
 
