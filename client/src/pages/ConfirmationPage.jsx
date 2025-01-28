@@ -101,77 +101,91 @@ const generatePDF = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-500 to-indigo-700 p-6 text-white">
-      <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-lg text-gray-800 p-8">
-        <h1 className="text-3xl font-bold text-center text-purple-600">
-          Booking Confirmation
-        </h1>
-        <p className="text-center text-gray-500 mt-2">
-          Your booking has been confirmed. Details are below:
-        </p>
-        <div className="mt-6">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-2">
-            Hotel: {hotelDetails.title}
-          </h2>
-          <img
-            src={hotelDetails.image}
-            alt={hotelDetails.title}
-            className="h-80 object-contain rounded-lg shadow-md mb-4"
-          />
+    <div className="min-h-screen bg-gradient-to-b from-purple-500 to-indigo-700 p-6 text-white flex items-center justify-center">
+    <div className="w-full max-w-4xl bg-white rounded-2xl shadow-xl text-gray-800 p-8">
+      <h1 className="text-4xl font-extrabold text-center text-purple-600">
+        Booking Confirmation
+      </h1>
+      <p className="text-center text-gray-500 mt-3">
+        Your booking has been successfully confirmed. Find the details below:
+      </p>
+  
+      <div className="mt-8 space-y-6">
+        {/* Hotel Details Section */}
+        <div>
+          <h2 className="text-2xl font-bold text-gray-800">Hotel Details</h2>
+          <div className="flex flex-col md:flex-row gap-6 mt-4 items-center">
+            <img
+              src={hotelDetails.image}
+              alt={hotelDetails.title}
+              className="h-64 w-full md:w-1/2 object-cover rounded-xl shadow-lg"
+            />
+            <div className="w-full md:w-1/2 space-y-3">
+              <p className="text-lg text-gray-700">
+                <strong>Hotel Name:</strong> {hotelDetails.title}
+              </p>
+              <p className="text-lg text-gray-700">
+                <strong>City:</strong> {hotelDetails.city}
+              </p>
+              <p className="text-lg text-gray-700">
+                <strong>Bill:</strong> ₹{totalAmount}
+              </p>
+              <p className="text-lg text-gray-700">
+                <strong>Total Rooms:</strong> {room}
+              </p>
+              <p className="text-lg text-gray-700">
+                <strong>Adults:</strong> {adultCount}
+              </p>
+            </div>
+          </div>
+        </div>
+  
+        {/* Dates Section */}
+        <div className="space-y-2">
+          <h3 className="text-xl font-semibold text-gray-800">Stay Duration</h3>
           <p className="text-lg text-gray-700">
-            <strong>City:</strong> {hotelDetails.city}
-          </p>
-          <p className="text-lg text-gray-700">
-            <strong>Bill:</strong> ₹{totalAmount}
-          </p>
-          <p className="text-lg text-gray-700">
-            <strong>Total Rooms:</strong> {room}
-          </p>
-          <p className="text-lg text-gray-700">
-            <strong>Adults:</strong> {adultCount}
-          </p>
-          <p className="text-lg text-gray-700 mt-2">
             <strong>Check-In Date:</strong>{" "}
             {new Date(checkInDate).toLocaleDateString("en-GB").replace(/\//g, "-")}
           </p>
-          <p className="text-lg text-gray-700 mt-2">
+          <p className="text-lg text-gray-700">
             <strong>Check-Out Date:</strong>{" "}
             {new Date(checkOutDate).toLocaleDateString("en-GB").replace(/\//g, "-")}
           </p>
-          <div className="mt-6">
-            <h3 className="text-xl font-semibold text-gray-800">Guest Details</h3>
-            <p className="text-lg text-gray-700 mt-2">
-              <strong>Name:</strong> {userDetails.name}
-            </p>
-            <p className="text-lg text-gray-700">
-              <strong>Email:</strong> {userDetails.email}
-            </p>
-            <p className="text-lg text-gray-700">
-              <strong>Phone:</strong> {userDetails.phone}
-            </p>
-          </div>
         </div>
-
-        {/* Buttons for downloading PDF and going back home */}
-        <div className="mt-8 flex justify-between">
-          {/* Download as PDF Button */}
-          <button
-            onClick={generatePDF}
-            className="px-6 py-3 bg-purple-600 rounded-lg text-white font-semibold hover:bg-purple-700 transition-all"
-          >
-            Download as PDF
-          </button>
-
-          {/* Back to Home Button */}
-          <button
-            onClick={() => navigate("/")}
-            className="px-6 py-3 bg-gray-600 rounded-lg text-white font-semibold hover:bg-gray-700 transition-all"
-          >
-            Back to Home
-          </button>
+  
+        {/* Guest Details Section */}
+        <div className="space-y-2">
+          <h3 className="text-xl font-semibold text-gray-800">Guest Details</h3>
+          <p className="text-lg text-gray-700">
+            <strong>Name:</strong> {userDetails.name}
+          </p>
+          <p className="text-lg text-gray-700">
+            <strong>Email:</strong> {userDetails.email}
+          </p>
+          <p className="text-lg text-gray-700">
+            <strong>Phone:</strong> {userDetails.phone}
+          </p>
         </div>
       </div>
+  
+      {/* Action Buttons */}
+      <div className="mt-8 flex flex-col md:flex-row gap-4 justify-center">
+        <button
+          onClick={generatePDF}
+          className="w-full md:w-auto px-6 py-3 bg-purple-600 text-white font-semibold rounded-xl shadow-md hover:bg-purple-700 transition-all"
+        >
+          Download as PDF
+        </button>
+        <button
+          onClick={() => navigate("/")}
+          className="w-full md:w-auto px-6 py-3 bg-gray-600 text-white font-semibold rounded-xl shadow-md hover:bg-gray-700 transition-all"
+        >
+          Back to Home
+        </button>
+      </div>
     </div>
+  </div>
+  
   );
 };
 

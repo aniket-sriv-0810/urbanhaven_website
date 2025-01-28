@@ -112,55 +112,107 @@ const BookingPayment = ({ setBookingData, hotelData, bookingData, handlePrevious
         {/* Payment Form */}
         <div className="space-y-6">
           {selectedPaymentMethod === "card" && (
-            <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">Enter Card Details</h3>
-              <form className="space-y-4">
-                <input
-                  type="text"
-                  placeholder="Cardholder Name"
-                  className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-                <input
-                  type="text"
-                  placeholder="Card Number"
-                  className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-                <div className="flex space-x-4">
-                  <input
-                    type="text"
-                    placeholder="Expiry (MM/YY)"
-                    className="w-1/2 px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                  <input
-                    type="text"
-                    placeholder="CVV"
-                    className="w-1/2 px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-              </form>
-            </div>
+            <div className="bg-white shadow-lg rounded-2xl p-6 max-w-md mx-auto sm:w-[90%]">
+  <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+    Enter Card Details
+  </h3>
+  <form className="space-y-6">
+    {/* Cardholder Name */}
+    <div>
+      <label
+        htmlFor="cardholder-name"
+        className="block text-sm font-medium text-gray-700 mb-1"
+      >
+        Cardholder Name
+      </label>
+      <input
+        type="text"
+        id="cardholder-name"
+        placeholder="John Doe"
+        className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      />
+    </div>
+
+    {/* Card Number */}
+    <div>
+      <label
+        htmlFor="card-number"
+        className="block text-sm font-medium text-gray-700 mb-1"
+      >
+        Card Number
+      </label>
+      <input
+        type="text"
+        id="card-number"
+        placeholder="1234 5678 9101 1121"
+        maxLength={19}
+        className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      />
+    </div>
+
+    {/* Expiry and CVV */}
+    <div className="flex space-x-4">
+      <div className="w-1/2">
+        <label
+          htmlFor="expiry-date"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          Expiry Date
+        </label>
+        <input
+          type="text"
+          id="expiry-date"
+          placeholder="MM/YY"
+          maxLength={5}
+          className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+      <div className="w-1/2">
+        <label
+          htmlFor="cvv"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          CVV
+        </label>
+        <input
+          type="password"
+          id="cvv"
+          placeholder="•••"
+          maxLength={3}
+          className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+    </div>
+
+  </form>
+</div>
+
           )}
 
           {selectedPaymentMethod === "upi" && (
-            <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">Enter UPI ID</h3>
-              <form>
-                <input
-                  type="text"
-                  placeholder="e.g., yourname@bank"
-                  className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </form>
-            </div>
+            <div className="bg-white shadow-lg rounded-2xl p-6 max-w-md mx-auto sm:w-[90%]">
+  <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+    Enter UPI ID
+  </h3>
+  <form className="space-y-6">
+  <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Pay Using UPI</h3>
+  <p class="text-sm text-gray-600 mb-4 text-center">
+    Use the UPI ID below to complete your payment securely.
+  </p>
+  </form>
+</div>
+
           )}
 
           {selectedPaymentMethod === "later" && (
-            <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">Pay Later</h3>
-              <p className="text-gray-600">
-                Your booking will be confirmed, and you can pay at the time of hotel check-in.
-              </p>
-            </div>
+            <div class="p-5 bg-gray-50 shadow-lg rounded-xl">
+  <h3 class="text-xl font-bold text-gray-900 mb-3 text-center">Pay at Check-in</h3>
+  <p class="text-gray-700 text-center leading-relaxed">
+    Secure your booking today and enjoy the convenience of paying at the hotel during check-in.
+    No upfront payment required!
+  </p>
+</div>
+
           )}
         </div>
 
