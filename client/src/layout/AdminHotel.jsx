@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaEdit } from "react-icons/fa";
+import { MdDeleteForever } from "react-icons/md";
 
 const AdminHotel = () => {
   const navigate = useNavigate();
@@ -41,9 +43,6 @@ const AdminHotel = () => {
                   Title
                 </th>
                 <th className="border border-gray-200 px-4 py-3 text-left">
-                  Description
-                </th>
-                <th className="border border-gray-200 px-4 py-3 text-left">
                   Price
                 </th>
                 <th className="border border-gray-200 px-4 py-3 text-left">
@@ -67,7 +66,7 @@ const AdminHotel = () => {
               {hotelDetails.map((hotelInfo) => (
                 <tr
                   key={hotelInfo._id}
-                  className="hover:bg-gray-100 text-gray-800"
+                  className="hover:bg-gray-100 text-gray-800 "
                 >
                   <td className="border border-gray-200 px-4 py-2 text-center">
                     <img
@@ -76,22 +75,19 @@ const AdminHotel = () => {
                       className="w-12 h-12 md:w-16 md:h-16 rounded-full mx-auto object-cover border border-gray-300"
                     />
                   </td>
-                  <td className="border border-gray-200 px-4 py-2 text-left">
+                  <td className="border border-gray-200 px-4 py-2 text-center">
                     {hotelInfo.title}
                   </td>
-                  <td className="border border-gray-200 px-4 py-2 text-left">
-                    {hotelInfo.description}
-                  </td>
-                  <td className="border border-gray-200 px-4 py-2 text-left">
+                  <td className="border border-gray-200 px-4 py-2 text-center">
                     Rs {hotelInfo.price}
                   </td>
-                  <td className="border border-gray-200 px-4 py-2 text-left">
+                  <td className="border border-gray-200 px-4 py-2 text-center">
                     {hotelInfo.city}
                   </td>
-                  <td className="border border-gray-200 px-4 py-2 text-left">
+                  <td className="border border-gray-200 px-4 py-2 text-center">
                     {hotelInfo.state}
                   </td>
-                  <td className="border border-gray-200 px-4 py-2 text-left">
+                  <td className="border border-gray-200 px-4 py-2 text-center">
                     {hotelInfo.country}
                   </td>
                   <td className="border border-gray-200 px-4 py-2 text-center">
@@ -99,9 +95,9 @@ const AdminHotel = () => {
                       onClick={() =>
                         navigate(`/admin/hotel-details/${hotelInfo._id}/edit`)
                       }
-                      className="bg-green-500 px-4 py-2 rounded-lg text-white hover:bg-green-600 transition-colors"
+                      className="flex items-center gap-x-3 bg-green-500 px-4 py-4 m-auto rounded-full text-white hover:bg-green-600 transition-colors"
                     >
-                      Edit
+                      <FaEdit />
                     </button>
                   </td>
                   <td className="border border-gray-200 px-4 py-2 text-center">
@@ -109,9 +105,9 @@ const AdminHotel = () => {
                       onClick={() =>
                         navigate(`/admin/hotel/${hotelInfo._id}/delete`)
                       }
-                      className="bg-red-600 px-4 py-2 rounded-lg text-white hover:bg-red-700 transition-colors"
+                      className="flex items-center gap-x-2 m-auto bg-red-600 px-4 py-4 rounded-full text-white hover:bg-red-700 transition-colors"
                     >
-                      Delete
+                      <MdDeleteForever/>
                     </button>
                   </td>
                 </tr>

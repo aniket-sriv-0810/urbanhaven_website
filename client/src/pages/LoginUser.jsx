@@ -58,7 +58,7 @@ const LoginUser = () => {
         inputRefs[name].current.style.color = "white";
         inputRefs[name].current.style.textAlign = "center";
         inputRefs[name].current.style.backgroundColor = "#5454544f";
-      } 
+      }
     }
   };
 

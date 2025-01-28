@@ -127,7 +127,7 @@ const AdminBooking = () => {
                       bookingInfo.status === "Confirmed"
                         ? "bg-green-500 text-white"
                         : bookingInfo.status === "Pending"
-                        ? "bg-yellow-500 text-white"
+                        ? `bg-yellow-500 text-white`
                         : bookingInfo.status === "Cancelled"
                         ? "bg-red-500 text-white"
                         : "bg-gray-200 text-black"
