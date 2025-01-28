@@ -109,8 +109,8 @@ const Home = () => {
           setSelectedCurrency={setSelectedCurrency}
         />
       </div>
-      <h1 className="text-center font-bold text-2xl sm:text-4xl text-gray-800 p-6 sm:p-8  rounded-lg ">
-  Our Top Hotels
+      <h1 className="text-center font-bold text-2xl sm:text-4xl text-gray-800 p-6 sm:p-8 uppercase rounded-lg ">
+  our Top choices
 </h1>
 
       <div className="flex flex-wrap justify-evenly gap-8 mt-5 px-4">
