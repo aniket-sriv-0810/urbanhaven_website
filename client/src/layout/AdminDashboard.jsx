@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef , useEffect} from "react";
 import { useUser } from "../components/userContext/userContext";
 import { Outlet, useNavigate } from "react-router-dom";
 import { driver } from "driver.js";
@@ -6,6 +6,9 @@ import "driver.js/dist/driver.css";
 import "./AdminDriver.css";
 import AdminNavbar from "../components/AdminNavbar/AdminNavbar";
 import { FaUserShield, FaIdBadge, FaPhone, FaEnvelope } from "react-icons/fa";
+import AOS from "aos";
+import "aos/dist/aos.css"; // Import AOS styles
+
 const AdminDashboard = () => {
   const { user } = useUser();
   const navigate = useNavigate();
@@ -62,7 +65,15 @@ const AdminDashboard = () => {
   const startTour = () => {
     driverRef.current.drive();
   };
-
+useEffect(() => {
+    AOS.init({
+       // Start animation after scrolling 100px
+      duration: 1500, // Animation duration
+      easing: "ease-in-out", // Smooth effect
+      mirror:true,
+      once: false, // Animation repeats on scroll
+    });
+  }, []);
   return (
     <>
     <AdminNavbar/>
@@ -99,8 +110,9 @@ const AdminDashboard = () => {
         </div>
       </div>
     </div>
+    <div data-aos="fade-up">
           <Outlet />
-
+  </div>
       </div>
 
     </>
