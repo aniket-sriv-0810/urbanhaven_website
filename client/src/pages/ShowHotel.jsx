@@ -13,6 +13,9 @@ import { MdArrowCircleRight } from "react-icons/md";
 import Navbar from '../components/Navbar.jsx/Navbar';
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
+import AOS from "aos";
+import "aos/dist/aos.css"; // Import AOS styles
+
 const ShowHotel = () => {
 const {id} = useParams();
 const [reviews, setReviews] = useState();
@@ -20,6 +23,16 @@ const [showMyHotel , setShowMyHotel] = useState(null);
 const [loading, setLoading] = useState(true); // Loading state
 const [reviewCount , setReviewCount] = useState(0);
 const [avgRating , setAvgRating] = useState(0);
+
+ useEffect(() => {
+    AOS.init({
+       // Start animation after scrolling 100px
+      duration: 1500, // Animation duration
+      easing: "ease-in-out", // Smooth effect
+      mirror:true,
+      once: false, // Animation repeats on scroll
+    });
+  }, []);
 const showMyHotelDetails = async() => {
   try {
     const response = await axios.get(`http://localhost:8000/api/v1/hotel/${id}` ,{
@@ -64,14 +77,14 @@ useEffect( () => {
   </span>
 </h1>
 
-  <div className="mb-20 mt-20 md:w-[65%] m-auto">
+  <div className="mb-20 mt-20 md:w-[65%] m-auto" data-aos="fade-up">
     <img
       src={showMyHotel.image}
       alt={showMyHotel.title}
       className=" rounded-xl  shadow-xl shadow-gray-900 object-contain"
     />
   </div>
-  <div className='border-red-500 border-2 my-20 flex justify-center items-center'>
+  <div className='border-red-500 border-2 my-20 flex justify-center items-center'data-aos="fade-right">
   <ImageGallery />
   </div>
     <h2 className="text-3xl uppercase font-bold text-center mt-4">{showMyHotel.title}</h2>
@@ -79,7 +92,7 @@ useEffect( () => {
       {avgRating} ⭐ ({reviewCount} reviews)
     </p>
   <ul className=''>
-  <div className="max-w-5xl mx-auto my-20 border-red-500 border-2 px-4 py-8">
+  <div className="max-w-5xl mx-auto my-20 border-red-500 border-2 px-4 py-8" data-aos="fade-up">
       {/* Hotel Details Section */}
       <div className="bg-white shadow-md rounded-lg p-6 mb-8">
         <h1 className="text-2xl font-bold text-gray-800 mb-4">
@@ -101,28 +114,28 @@ useEffect( () => {
       {/* Amenities Section */}
       <Amenities />
     </div>
-  <div className='border-red-500 border-2 my-60 w-[90%] m-auto border-3  shadow-md shadow-slate-600'><MapLocation hotel={showMyHotel} /></div>
+  <div className='border-red-500 border-2 my-60 w-[90%] m-auto border-3  shadow-md shadow-slate-600' data-aos="fade-left"><MapLocation hotel={showMyHotel} /></div>
   </ul>
-  <div className='border-2 border-red-500 my-40'>
+  <div className='border-2 border-red-500 my-40' data-aos="fade-up">
   <Policies/>
   </div>
-  <div className="flex justify-center items-center">
+  <div className="w-[40%] m-auto " data-aos="fade-left" >
       <Link to={`/hotel/${id}/booking`}>
-        <button className="flex items-center justify-center text-xl bg-gradient-to-r from-pink-500 to-rose-500 text-white px-6 py-4 w-72 md:w-80 rounded-full font-bold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-pink-500 hover:shadow-xl hover:scale-105 transition-all duration-300">
+        <button className=" flex items-center justify-center text-xl bg-gradient-to-r from-pink-500 to-rose-500 text-white px-6 py-6  w-full rounded-3xl font-bold shadow-lg hover:bg-gradient-to-r hover:from-red-500 hover:to-pink-500 hover:shadow-xl hover:scale-105 transition-all duration-300">
           <span className="group">Book Now</span>
           <MdArrowCircleRight className="ml-2 text-2xl transition-transform duration-300 group-hover:translate-x-1" />
         </button>
       </Link>
     </div>
 
-<div className='border-red-500 border-2 my-80'>
+<div className='border-red-500 border-2 my-80' data-aos="fade-up">
 <FAQs/>
 </div>
-<div className='border-red-500 border-2 my-20'>
+<div className='border-red-500 border-2 my-20' data-aos="fade-up">
 <Review/>
 </div>
 
-<div className="my-40 border-red-500 border-2 flex flex-wrap gap-8 justify-center py-10 bg-gradient-to-b from-gray-50 to-white">
+<div className="my-40 border-red-500 border-2 flex flex-wrap gap-8 justify-center py-10 bg-gradient-to-b from-gray-50 to-white" data-aos="fade-up">
   {reviews && reviews.length > 0 ? (
     reviews.map((reviewsItem) => (
       <div
@@ -187,25 +200,27 @@ useEffect( () => {
 
 
 
-  <div className='my-20 flex flex-col justify-center items-center space-y-10'>
+  <div className='my-20 flex flex-col   space-y-10' data-aos="fade-right">
   <Link to="/">
-  <button className="flex items-center justify-center space-x-5 bg-gradient-to-r from-purple-600 to-indigo-500 text-white px-6 py-3 w-80 rounded-full font-bold shadow-lg hover:bg-gradient-to-r hover:from-indigo-500 hover:to-purple-600 transform hover:scale-105 transition-all duration-300">
+  <button className="m-auto flex items-center justify-center space-x-5 bg-gradient-to-r from-purple-600 to-indigo-500 text-white px-6 py-6 w-[40%] rounded-full font-bold shadow-lg hover:bg-gradient-to-r hover:from-indigo-500 hover:to-purple-600 transform hover:scale-105 transition-all duration-300">
     <span>Home</span>
       <IoHome className="ml-2 text-2xl transition-transform duration-300 group-hover:translate-x-1" />
   </button>
 </Link>
 
-  <div className="flex justify-center items-center mt-8">
+
   <Link to={`/hotel/${id}/booking`}>
-    <button className="flex text-xl items-center justify-center bg-gradient-to-r from-pink-500 to-rose-500 text-white px-6 py-4 w-80 rounded-full font-bold shadow-md hover:bg-gradient-to-r hover:from-red-500 hover:to-pink-500  hover:scale-105 transition-all duration-300  mb-10">
+    <button className="m-auto flex text-xl items-center justify-center bg-gradient-to-r from-pink-500 to-rose-500 text-white px-6 py-6 w-[40%] rounded-full font-bold shadow-md hover:bg-gradient-to-r hover:from-red-500 hover:to-pink-500  hover:scale-105 transition-all duration-300  mb-10">
       <span>Book Now</span>
       <MdArrowCircleRight className="ml-2 text-2xl transition-transform duration-300 group-hover:translate-x-1" />
     </button>
   </Link>
-</div>
+
   </div>
 </div>
+<div data-aos="fade-up">
   <Footer/>
+  </div>
   </>
   )
 }
