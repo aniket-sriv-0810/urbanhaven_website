@@ -86,8 +86,8 @@ const Home = () => {
     <Navbar />
     </div>
     <Header />
-    <div className="flex justify-center items-center  sm:my-8 px-4 sm:px-0">
-    <div className="relative w-full max-w-md">
+    <div className="flex justify-center items-center   sm:my-8 px-4 sm:px-0">
+    <div className="border-2 border-red-500 my-5 relative w-full max-w-md">
       <input
         type="text"
         placeholder="search hotels by cities or states "
@@ -97,7 +97,7 @@ const Home = () => {
     </div>
   </div>
   
-      <div className="flex justify-between items-center mx-2 my-5 sm:mx-8">
+      <div className="flex justify-between items-center mx-2 my-10 border-2 border-red-500  sm:mx-8">
         <CurrencyExchange
           setCurrencyRates={setConversionRate}
           selectedCurrency={selectedCurrency}
@@ -109,11 +109,11 @@ const Home = () => {
           setSelectedCurrency={setSelectedCurrency}
         />
       </div>
-      <h1 className="text-center font-bold text-2xl sm:text-4xl text-gray-800 p-6 sm:p-8 uppercase rounded-lg ">
+      <h1 className="mt-20 -mb-5  border-2 border-red-500 text-center font-bold text-2xl sm:text-4xl text-gray-800 p-6 sm:p-8 uppercase rounded-lg ">
   our Top choices
 </h1>
 
-      <div className="flex flex-wrap justify-evenly gap-8 mt-5 px-4">
+      <div className="border-red-500 border-2 mt-20 mb-10  flex flex-wrap justify-evenly gap-8  px-4">
         {loading ? (
           <p className="text-lg text-gray-600">Hotels Loading...</p>
         ) : (
@@ -179,7 +179,7 @@ const Home = () => {
       </div>
 
       {/* Pagination Buttons */}
-      <div className="flex justify-center mt-8">
+      <div className="border-2 border-red-500  flex justify-center my-40 ">
         {[...Array(totalPages)].map((_, index) => (
           <button
             key={index}
@@ -194,17 +194,22 @@ const Home = () => {
           </button>
         ))}
       </div>
-
+<div className="border-2 border-red-500 my-80">
       <ScrollComponent/>
+</div>
 
+<div className="border-2 border-red-500 my-80">
       <FAQs/>
-      <div className="bg-gray-50 flex flex-col justify-evenly items-center sm:flex-row gap-6 py-10">
+</div>
+      <div className="border-2 border-red-500 my-80">
+        <Blogs/>
+        </div>
+      <div className="border-red-500 border-2 my-20 bg-gray-50 flex flex-col justify-evenly items-center sm:flex-row gap-6 py-10">
         <Counter start={0} end={1000} duration={2000} value="Hotels Listed" color="black" />
         <Counter start={0} end={6000} duration={2000} value="Users Registered" color="green" />
         <Counter start={0} end={500} duration={2000} value="Cities Available" color="sky" />
         <Counter start={0} end={2000} duration={2000} value="Customer Feedbacks" color="red" />
       </div>
-        <Blogs/>
       <Footer />
     </>
   );
