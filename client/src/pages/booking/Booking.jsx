@@ -24,11 +24,11 @@ const Booking = () => {
 
   return (
     <div className="bg-gradient-to-r from-fuchsia-600 to-purple-600 flex flex-col justify-center items-center min-h-screen px-4  md:px-8">
-      <h1 className="text-white text-3xl font-bold text-center mt-5 mb-5">
+      <h1 className="my-10 text-white text-3xl font-bold text-center ">
         Confirm Your Booking
       </h1>
 
-      <div className="w-full  max-w-4xl bg-white shadow-lg rounded-lg p-6 mb-10 sm:p-8 md:w-3/4">
+      <div className="w-full  max-w-4xl bg-white shadow-lg rounded-lg p-6 mb-16 sm:p-8 md:w-3/4">
         <div className="flex justify-center items-center mb-6">
           <div
             className={`w-1/3 h-2 rounded-full ${
