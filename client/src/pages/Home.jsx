@@ -18,6 +18,10 @@ import Header from "../components/Header/Header";
 import ScrollComponent from "../components/ScollComponent/ScrollComponent";
 import FAQs from "../components/FAQs/FAQs";
 import Blogs from "../components/Blogs/Blogs";
+import AOS from "aos";
+import "aos/dist/aos.css"; // Import AOS styles
+
+
 
 const currencySymbols = {
   INR: "₹",
@@ -34,6 +38,15 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(4); // Default for larger screens
 
+  useEffect(() => {
+    AOS.init({
+       // Start animation after scrolling 100px
+      duration: 1500, // Animation duration
+      easing: "ease-in-out", // Smooth effect
+      mirror:true,
+      once: false, // Animation repeats on scroll
+    });
+  }, []);
   const fetchData = async () => {
     try {
       const response = await axios.get("http://localhost:8000/", {
@@ -109,11 +122,11 @@ const Home = () => {
           setSelectedCurrency={setSelectedCurrency}
         />
       </div>
-      <h1 className="mt-20 -mb-5  border-2 border-red-500 text-center font-bold text-2xl sm:text-4xl text-gray-800 p-6 sm:p-8 uppercase rounded-lg ">
+      <h1 className="mt-20 -mb-5  border-2 border-red-500 text-center font-bold text-2xl sm:text-4xl text-gray-800 p-6 sm:p-8 uppercase rounded-lg " data-aos="fade-up">
   our Top choices
 </h1>
 
-      <div className="border-red-500 border-2 mt-20 mb-10  flex flex-wrap justify-evenly gap-8  px-4">
+      <div className="border-red-500 border-2 mt-20 mb-10  flex flex-wrap justify-evenly gap-8  px-4" data-aos="fade-up">
         {loading ? (
           <p className="text-lg text-gray-600">Hotels Loading...</p>
         ) : (
@@ -194,23 +207,25 @@ const Home = () => {
           </button>
         ))}
       </div>
-<div className="border-2 border-red-500 my-80">
+<div className="border-2 border-red-500 my-80" data-aos="fade-down">
       <ScrollComponent/>
 </div>
 
-<div className="border-2 border-red-500 my-80">
+<div className="border-2 border-red-500 my-80" data-aos="fade-down">
       <FAQs/>
 </div>
-      <div className="border-2 border-red-500 my-80">
+      <div className="border-2 border-red-500 my-80" data-aos="fade-right">
         <Blogs/>
         </div>
-      <div className="border-red-500 border-2 my-20 bg-gray-50 flex flex-col justify-evenly items-center sm:flex-row gap-6 py-10">
+      <div className="border-red-500 border-2 my-20 bg-gray-50 flex flex-col justify-evenly items-center sm:flex-row gap-6 py-10" >
         <Counter start={0} end={1000} duration={2000} value="Hotels Listed" color="black" />
         <Counter start={0} end={6000} duration={2000} value="Users Registered" color="green" />
         <Counter start={0} end={500} duration={2000} value="Cities Available" color="sky" />
         <Counter start={0} end={2000} duration={2000} value="Customer Feedbacks" color="red" />
       </div>
+      <div data-aos="fade-down">
       <Footer />
+      </div>
     </>
   );
 };
