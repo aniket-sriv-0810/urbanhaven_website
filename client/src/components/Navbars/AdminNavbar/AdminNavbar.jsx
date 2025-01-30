@@ -7,8 +7,8 @@ import { FaPaperPlane } from "react-icons/fa";
 import { FaBuildingWheat } from "react-icons/fa6";
 import { RiQuestionAnswerFill } from "react-icons/ri";
 import { MdAdminPanelSettings } from 'react-icons/md';
-import { useUser } from '../userContext/userContext';
-import WebsiteLogo from '../../assets/main-logo.png';
+import { useUser } from '../../userContext/userContext';
+import WebsiteLogo from '../../../assets/main-logo.png';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // Optional for default styling
 import { MdOutlineLogout } from "react-icons/md";

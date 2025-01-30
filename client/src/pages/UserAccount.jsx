@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import UserDashBoard from "../components/UserDashBoard/UserDashBoard";
 import { FaBars, FaTimes } from "react-icons/fa";
-import Navbar from '../components/Navbar.jsx/Navbar';
-import UserNavbar from "../components/UserNavbar/UserNavbar";
+import Navbar from '../components/Navbars/Navbar/Navbar';
+import UserNavbar from "../components/Navbars/UserNavbar/UserNavbar";
 import Logo from '../assets/main-logo.png';
 import LogoName from '../assets/main-logo-name.png';
 const UserAccount = () => {

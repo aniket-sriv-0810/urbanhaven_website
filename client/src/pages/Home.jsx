@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import LikeBtn from "../components/LikeBtn/LikeBtn";
 import ShareBtn from "../components/ShareBtn/ShareBtn";
 import CurrencyExchange from "../components/CurrencyExchange/CurrencyExchange";
-import Navbar from "../components/Navbar.jsx/Navbar";
+import Navbar from "../components/Navbars/Navbar/Navbar";
 import Counter from "../components/Counter/Counter";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";

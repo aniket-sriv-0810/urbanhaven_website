@@ -10,7 +10,7 @@ import Policies from '../components/Policies/Policies';
 import ImageGallery from '../components/ImageGallery/ImageGallery';
 import FAQs from '../components/FAQs/FAQs';
 import { MdArrowCircleRight } from "react-icons/md";
-import Navbar from '../components/Navbar.jsx/Navbar';
+import Navbar from '../components/Navbars/Navbar/Navbar';
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
 import AOS from "aos";

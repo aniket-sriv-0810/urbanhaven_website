@@ -4,7 +4,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { driver } from "driver.js";
 import "driver.js/dist/driver.css";
 import "./AdminDriver.css";
-import AdminNavbar from "../components/AdminNavbar/AdminNavbar";
+import AdminNavbar from "../components/Navbars/AdminNavbar/AdminNavbar";
 import { FaUserShield, FaIdBadge, FaPhone, FaEnvelope } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
