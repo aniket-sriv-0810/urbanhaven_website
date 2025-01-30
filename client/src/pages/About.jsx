@@ -3,6 +3,7 @@ import React from 'react';
 import Image1 from '../assets/about-2.jpg';
 import Image2 from '../assets/about-3.jpg';
 import Image3 from '../assets/about-4.jpg';
+
 // Define the About Us component
 const AboutUs = () => {
   return (

@@ -163,7 +163,7 @@ const Home = () => {
                   {hotelItem.title}
                 </h2>
                 <p className="flex text-gray-600 mt-2 text-sm sm:text-base">
-                 <FaMapMarkerAlt className="-mx-1 mt-1 text-gray-500 " /> <span className="px-2"> {hotelItem.city}, {hotelItem.state}, {hotelItem.country}</span>
+                 <FaMapMarkerAlt className="-mx-1 mt-1 text-red-500 " /> <span className="px-2"> {hotelItem.city}, {hotelItem.state}, {hotelItem.country}</span>
                 </p>
                 <p className="text-lg font-semibold text-slate-700 mt-4">
                   {priceDisplay}
