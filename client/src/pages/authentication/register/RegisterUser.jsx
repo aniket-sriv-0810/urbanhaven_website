@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useRef, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useUser } from '../../components/userContext/userContext';
+import { useUser } from '../../../components/userContext/userContext';
 import { FaUser , FaPhoneAlt  } from "react-icons/fa";
 import { BiSolidUserDetail } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
