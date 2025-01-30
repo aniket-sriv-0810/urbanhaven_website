@@ -40,7 +40,7 @@ const Home = () => {
 
   useEffect(() => {
     AOS.init({
-       // Start animation after scrolling 100px
+      offset: 60, // Start animation after scrolling 100px
       duration: 1500, // Animation duration
       easing: "ease-in-out", // Smooth effect
       mirror:true,
