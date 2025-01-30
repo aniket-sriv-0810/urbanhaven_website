@@ -79,7 +79,7 @@ const UserForm = () => {
     <form className="flex flex-col gap-y-4 lg:p-5" onSubmit={handleSubmitForm}>
       <InputField Icon={FaUser} type="text" name="name" placeholder="Enter your name" value={newUser.name} onChange={handleInputChange} error={formErrors.name} inputRef={inputRefs.name} />
       <InputField Icon={BiSolidUserDetail} type="text" name="username" placeholder="Enter your username" value={newUser.username} onChange={handleInputChange} error={formErrors.username} inputRef={inputRefs.username} />
-      <InputField Icon={FaPhoneAlt} type="number" name="phone" placeholder="Enter phone number" value={newUser.phone} onChange={handleInputChange} error={formErrors.phone} inputRef={inputRefs.phone} />
+      <InputField Icon={FaPhoneAlt} type="number" name="phone" placeholder="Enter phone number" value={newUser.phone} onChange={handleInputChange} error={formErrors.phone} inputRef={inputRefs.phone}  />
       <InputField Icon={MdEmail} type="email" name="email" placeholder="Enter your email" value={newUser.email} onChange={handleInputChange} error={formErrors.email} inputRef={inputRefs.email} />
       <InputField Icon={BsShieldLockFill} type="password" name="password" placeholder="Enter strong password" value={newUser.password} onChange={handleInputChange} error={formErrors.password} inputRef={inputRefs.password} />
 

@@ -12,7 +12,7 @@ export const validateForm = (newUser) => {
       isValid = false;
     }
   
-    if (newUser.phone && !/^[0-9]{10}$/.test(newUser.phone)) {
+    if (!newUser.phone && !/^[0-9]{10}$/.test(newUser.phone)) {
       errors.phone = "Phone number must be a 10-digit number.";
       isValid = false;
     }
