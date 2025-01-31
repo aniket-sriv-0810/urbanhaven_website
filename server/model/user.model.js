@@ -62,6 +62,7 @@ userSchema.plugin(passportLocalMongoose);
 
 
 
+
 const User = mongoose.model( 'User' , userSchema);
 // db.users.updateMany({}, { $unset: { password: "" } });
 // db.users.dropIndex('password_1'); // Replace 'password_1' with the actual index name
