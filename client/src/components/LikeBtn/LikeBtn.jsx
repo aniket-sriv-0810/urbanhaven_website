@@ -9,7 +9,7 @@ const LikeBtn = () => {
 
   return (
    <>
-   <p onClick={checkLike}>
+   <p onClick={checkLike} className='hover:scale-110 transition-none duration-150 hover:text-red-500'>
 { isLiked ? <FaHeart className='text-red-600 w-7 h-10 '/> :    <FaRegHeart  className="w-7 h-10"/>}
 </p>
    </>

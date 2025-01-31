@@ -26,8 +26,8 @@ const ShareBtn = ({ hotelName, hotelLink }) => {
   };
 
   return (
-   <div onClick={handleShare}>
-      <FaShareAlt className="w-7 h-7  text-white  " />
+   <div onClick={handleShare} >
+      <FaShareAlt className="w-6 h-6  text-white hover:scale-110  " />
       </div>
   );
 };

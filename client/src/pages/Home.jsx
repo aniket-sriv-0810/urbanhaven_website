@@ -178,7 +178,7 @@ const Home = () => {
                 <p className="flex text-gray-600 mt-2 text-sm sm:text-base">
                  <FaMapMarkerAlt className="-mx-1 mt-1 text-red-500 " /> <span className="px-2"> {hotelItem.city}, {hotelItem.state}, {hotelItem.country}</span>
                 </p>
-                <p className="text-lg font-semibold text-slate-700 mt-4">
+                <p className="text-lg font-semibold text-gray-700 mt-4">
                   {priceDisplay}
                   <span className="text-sm text-gray-400 font-normal">
                     /- per night <br />+ {taxDisplay} taxes
