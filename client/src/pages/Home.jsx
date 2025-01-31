@@ -18,6 +18,8 @@ import Header from "../components/Header/Header";
 import ScrollComponent from "../components/ScollComponent/ScrollComponent";
 import FAQs from "../components/FAQs/FAQs";
 import Blogs from "../components/Blogs/Blogs";
+import SortHotels from "../components/SortHotels/SortHotels";
+
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
 
@@ -37,6 +39,7 @@ const Home = () => {
   const [selectedCurrency, setSelectedCurrency] = useState("INR");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(4); // Default for larger screens
+  const [sortOrder, setSortOrder] = useState("default");
 
   useEffect(() => {
     AOS.init({
@@ -92,7 +95,18 @@ const Home = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
+  const sortHotels = (order) => {
+    const sortedHotels = [...hotel];
+  
+    if (order === "lowToHigh") {
+      sortedHotels.sort((a, b) => a.price - b.price);
+    } else if (order === "highToLow") {
+      sortedHotels.sort((a, b) => b.price - a.price);
+    }
+  
+    setHotel(sortedHotels);
+  };
+  
   return (
     <>
     <div className="bg-[url('/assets/home.jpg')]  bg-contain h-72  bg-no-repeat sm:bg-cover md:h-[40rem] ">
@@ -110,12 +124,9 @@ const Home = () => {
     </div>
   </div>
   
-      <div className="flex justify-between items-center mx-2 my-10 border-2 border-red-500  sm:mx-8">
-        <CurrencyExchange
-          setCurrencyRates={setConversionRate}
-          selectedCurrency={selectedCurrency}
-          setSelectedCurrency={setSelectedCurrency}
-        />
+      <div className="flex flex-col sm:flex-row justify-between items-center mx-2 my-10 border-2 border-red-500  sm:mx-8">
+       
+        <SortHotels sortOrder={sortOrder} setSortOrder={setSortOrder} sortHotels={sortHotels} />
         <CurrencyExchange
           setCurrencyRates={setConversionRate}
           selectedCurrency={selectedCurrency}
@@ -127,6 +138,8 @@ const Home = () => {
 </h1>
 
       <div className="border-red-500 border-2 mt-20 mb-10  flex flex-wrap justify-evenly gap-8  px-4" data-aos="fade-up">
+      
+
         {loading ? (
           <p className="text-lg text-gray-600">Hotels Loading...</p>
         ) : (
