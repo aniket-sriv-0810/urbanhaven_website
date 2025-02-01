@@ -4,7 +4,7 @@ import { ApiError } from '../utils/ApiError.js';
 import { ApiResponse } from '../utils/ApiResponse.js';
 import Hotel from '../model/hotel.model.js';
 import Booking from '../model/booking.model.js';
-
+import Contact from '../model/contact.model.js';
 const adminUserData =  asyncHandler( async (req , res) => {
     try {
 
@@ -45,4 +45,15 @@ const adminBookingData = asyncHandler(async ( req , res ) => {
     }
 })
 
-export {adminUserData , adminHotelData , adminBookingData};
+const adminContactData = asyncHandler ( async (req , res) => {
+    try {
+        const contactData = await Contact.find({}).populate("user","name phone , email")
+        console.log("Fetching contact data...");
+        return res.json ( 
+            new ApiResponse(200 , {contactData} , "success in fetching the data..." ));
+    } catch (error) {
+        throw new ApiError (400 , error , "Fetching contact data failed !");
+    }
+});
+
+export {adminUserData , adminHotelData , adminBookingData , adminContactData};

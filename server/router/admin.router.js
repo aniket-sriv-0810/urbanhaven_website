@@ -2,7 +2,7 @@ import express from 'express';
 import { validate } from '../middleware/validator.js';
 import {  upload } from '../multer.js';
 import { hotelSchemaValidation } from '../test/hotel.validator.js';
-import { adminHotelData, adminUserData , adminBookingData } from '../controller/admin.controller.js';
+import { adminHotelData, adminUserData , adminBookingData, adminContactData } from '../controller/admin.controller.js';
 import {newHotelCreation ,  editMyHotel ,  deleteMyHotel} from '../controller/hotel.controller.js';
 import { isLoggedIn } from '../middleware/authentication.js';
 
@@ -27,6 +27,7 @@ router
 // All Contact Queries detailed Route !
 router
      .route('/contacts')
+     .get( isLoggedIn,adminContactData)
 
 // Register a new Hotel in the website Route
 router
