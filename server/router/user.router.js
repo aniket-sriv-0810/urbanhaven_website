@@ -8,6 +8,7 @@ import passport from 'passport';
 import { ApiResponse } from '../utils/ApiResponse.js';
 import { allHotel } from '../controller/hotel.controller.js';
 import { loginUserValidation } from '../test/login.validator.js';
+import { isLoggedIn } from '../middleware/authentication.js';
 const router = express.Router();
 
 // Register a New user Route
@@ -15,12 +16,12 @@ router
      .route('/register')
      .post( validate(userSchemaValidation) , createNewUser);
 
-// Login a the registered user
+// Login of the registered user
 router
      .route('/login')
      .post( validate(loginUserValidation) ,loginUser);
 
-// Logout a the registered user
+// Logout of the registered user
 router
      .route('/logout')
      .post(logOutUser);
@@ -33,16 +34,16 @@ router
 // User Account Details
 router
      .route('/:id/account')
-     .get(userAccountDetails)
+     .get( isLoggedIn,userAccountDetails)
 
 // User Account Edit Details
 router
      .route('/:id/account/edit')
-     .put(  upload.single('image')  ,userAccountEditDetails)
+     .put(  isLoggedIn,upload.single('image'),validate(userSchemaValidation)  ,userAccountEditDetails)
 
 // User Account Edit Details
 router
      .route('/:id/account/delete')
-     .delete(userAccountDelete)
+     .delete( isLoggedIn,userAccountDelete)
 
 export default router;

@@ -11,7 +11,7 @@ const app = express();
 
 // middleware setup
 const corsSessionOption = {
-    origin:"http://localhost:5173",
+    origin:process.env.FRONTEND_URL,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials:true,
     optionsSuccessStatus:200,
@@ -44,10 +44,12 @@ app.use(passport.session());
 import hotelRouter from './router/hotel.router.js';
 import userRouter from './router/user.router.js';
 import adminRouter from './router/admin.router.js';
+import navigateRouter from './router/navigation.router.js';
 // For hotel Routes
 app.use('/' , hotelRouter);
-app.use('/api/v1/user' , userRouter);
-app.use('/api/v1/admin', adminRouter);
+app.use('/v1/user' , userRouter);
+app.use('/v1/admin', adminRouter);
+app.use('/v1/navigate' , navigateRouter);
 
 
 

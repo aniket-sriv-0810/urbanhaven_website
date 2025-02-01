@@ -17,29 +17,26 @@ router
     .route('/')
     .get(allHotel)
 
-// Contact Information  Route
-router
-    .route('/api/v1/contact')
-    .get(contactLogic)
+
 
 // Show a Particular Hotel Route
 router
-     .route('/api/v1/hotel/:id')
+     .route('/v1/hotel/:id')
      .get( isLoggedIn, showMyHotel)
 
  // Create a new Review
 router
-     .route('/api/v1/hotel/:id/review')
+     .route('/v1/hotel/:id/review')
      .post( isLoggedIn ,createReview)
 
 // Booking  a particular hotel route
 router
-      .route('/api/v1/hotel/:id/booking')
+      .route('/v1/hotel/:id/booking')
       .post(isLoggedIn ,  bookingHotel)
 
 // Confirmation page
 router
-      .route('/api/v1/booking/:id')
+      .route('/v1/booking/:id')
       .get(isLoggedIn, confirmationDetails)
 
 export default router ;
