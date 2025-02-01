@@ -167,11 +167,6 @@ const deleteMyHotel =  asyncHandler(async (req, res) => {
 });
 
 
-// Contact Form logic
-const contactLogic = (req,res) =>{
-    return res.status(200).json(
-      new ApiResponse(200 , "Hello From Backend !")
-    );
-}
 
-export { allHotel , newHotelCreation , contactLogic , showMyHotel , editMyHotel , deleteMyHotel } ;
+
+export { allHotel , newHotelCreation , showMyHotel , editMyHotel , deleteMyHotel } ;
