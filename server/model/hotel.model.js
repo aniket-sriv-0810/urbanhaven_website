@@ -55,12 +55,16 @@ hotelSchema.index({ location: "2dsphere" });
 
 // Middleware to delete associated reviews
 hotelSchema.pre("findOneAndDelete", async function (next) {
-    const hotel = await this.model.findOne(this.getFilter()).populate("review");
-    if (hotel && hotel.review.length > 0) {
-      const reviewIds = hotel.review.map((r) => r._id);
-      await mongoose.model("Review").deleteMany({ _id: { $in: reviewIds } });
+    try {
+        const hotel = await this.model.findOne(this.getFilter()).populate("review");
+        if (hotel && hotel.review.length > 0) {
+          const reviewIds = hotel.review.map((r) => r._id);
+          await mongoose.model("Review").deleteMany({ _id: { $in: reviewIds } });
+        }
+        next();
+    } catch (error) {
+        next(error);
     }
-    next();
   });
 
 const Hotel = mongoose.model('Hotel' , hotelSchema);
