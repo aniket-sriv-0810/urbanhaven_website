@@ -36,12 +36,42 @@ router
      .route('/:id/account')
      .get( isLoggedIn,userAccountDetails)
 
+// User Account WishLists Details
+router
+     .route('/:id/account/wishlists')
+     .get( isLoggedIn,userAccountDetails)
+
+// User Account - ADD WishLists
+router
+     .route('/:id/account/wishlist/:id/add')
+     .post( isLoggedIn,userAccountDetails)
+
+// User Account - REMOVE WishLists Details
+router
+     .route('/:id/account/wishlist/:id/delete')
+     .get( isLoggedIn,userAccountDetails)
+
+// User Account Bookings Details
+router
+     .route('/:id/account/bookings')
+     .get( isLoggedIn,userAccountDetails)
+
+// User Account - EDIT Bookings Details
+router
+     .route('/:id/account/booking/:id/edit')
+     .put( isLoggedIn,userAccountDetails)
+
+// User Account - CANCEL Bookings Details
+router
+     .route('/:id/account/booking/:id/cancel')
+     .get( isLoggedIn,userAccountDetails)
+
 // User Account Edit Details
 router
      .route('/:id/account/edit')
      .put(  isLoggedIn,upload.single('image'),validate(userSchemaValidation)  ,userAccountEditDetails)
 
-// User Account Edit Details
+// User Account Delete
 router
      .route('/:id/account/delete')
      .delete( isLoggedIn,userAccountDelete)

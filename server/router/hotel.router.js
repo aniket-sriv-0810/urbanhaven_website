@@ -17,8 +17,6 @@ router
     .route('/')
     .get(allHotel)
 
-
-
 // Show a Particular Hotel Route
 router
      .route('/v1/hotel/:id')
