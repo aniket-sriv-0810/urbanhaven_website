@@ -47,16 +47,64 @@ const userSchema = new Schema ({
         enum: ["admin", "user"],
         default: "user",
     },
+    reviews:[
+        {
+            type: Schema.Types.ObjectId,
+            ref :"Review",
+        }
+    ],
+    wishlists :[
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Hotel"
+        },
+    ],
+    bookings :[
+        {
+            type: Schema.Types.ObjectId,
+            ref:"Booking"
+        }
+    ],
+    feedbacks :[
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Contact",
+        }
+    ]
 } ,
  {
     timestamps: true
 });
+
+userSchema.index({ phone: 1 }, { unique: true });
 
 userSchema.pre("save", function (next) {
     this.email = this.email.toLowerCase();
     this.username = this.username.toLowerCase();
     next();
 });
+
+userSchema.pre("save", async function (next) {
+    if (this.isModified("email")) {
+        this.email = this.email.toLowerCase();
+    }
+    if (this.isModified("username")) {
+        this.username = this.username.toLowerCase();
+    }
+    next();
+});
+userSchema.pre("findOneAndDelete", async function (next) {
+    const user = await this.model.findOne(this.getFilter());
+    if (!user) return next();
+    
+    await mongoose.model("Review").deleteMany({ _id: { $in: user.reviews } });
+    await mongoose.model("Hotel").updateMany({ _id: { $in: user.wishlists } }, { $pull: { wishlists: user._id } });
+    await mongoose.model("Booking").deleteMany({ _id: { $in: user.bookings } });
+    await mongoose.model("Contact").deleteMany({ _id: { $in: user.feedbacks } });
+
+    next();
+});
+
 
 userSchema.plugin(passportLocalMongoose);
 
