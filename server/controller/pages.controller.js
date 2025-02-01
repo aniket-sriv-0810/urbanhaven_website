@@ -6,9 +6,10 @@ import {User} from '../model/user.model.js'
 const contactLogic = asyncHandler ( async ( req , res) => {
   try {
       const {user , message} = req.body ;
-      if ( !user)
-          throw new ApiError(400 , "User not found !");
-  
+     const checkUser = await User.findById(user);
+    if( !checkUser)
+        throw new ApiError (400 , "User not found !");
+    
       const contact = await Contact ({ user , message})
       await contact.save();
       return res.json(200 , {contact} , "Feedback Saved successfully!");
