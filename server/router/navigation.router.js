@@ -1,8 +1,11 @@
 import express from 'express';
 import { isLoggedIn } from '../middleware/authentication.js';
 import { validate } from '../middleware/validator.js';
-import { showAllBlogs } from '../controller/blogs.controller.js';
-
+import { createBlog, showAllBlogs } from '../controller/blogs.controller.js';
+import { upload } from '../multer.js';
+import { isLoggedIn } from '../middleware/authentication.js';
+import { validate } from '../middleware/validator.js';
+import { blogSchemaValidation } from '../test/blog.validator.js';
 
 const router =  express.Router();
 // Contact Information  Route
@@ -18,7 +21,7 @@ router
 // Create a new Blog Route
 router
     .route('/add-blog')
-    .post()
+    .post(isLoggedIn , upload('image') ,validate(blogSchemaValidation) , createBlog)
 
 //Show a particular Blog
 router

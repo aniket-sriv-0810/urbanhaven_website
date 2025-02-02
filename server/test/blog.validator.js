@@ -15,14 +15,7 @@ const blogSchemaValidation = Joi.object({
             "string.empty": "Description is required!",
             "any.required": "Description is required!",
         }),
-    image: Joi.string()
-        .uri()
-        .required()
-        .messages({
-            "string.empty": "Image URL is required!",
-            "string.uri": "Image must be a valid URL!",
-            "any.required": "Image is required!",
-        }),
+    image: Joi.any(),
 });
 
 export { blogSchemaValidation };
