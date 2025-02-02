@@ -18,7 +18,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:8000/api/v1/user/logout', {}, { withCredentials: true });
+      await axios.post('http://localhost:8000/v1/user/logout', {}, { withCredentials: true });
       setUser(null);
       navigate('/');
     } catch (error) {

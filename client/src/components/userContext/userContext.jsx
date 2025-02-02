@@ -13,7 +13,7 @@ export const UserProvider = ({ children }) => {
   const fetchAuthStatus = async () => {
     try {
       // Fetch authentication status from the server
-      const response = await axios.get("http://localhost:8000/api/v1/user/auth", {
+      const response = await axios.get("http://localhost:8000/v1/user/auth", {
         withCredentials: true,
       });
 

@@ -17,6 +17,26 @@ const allHotel = async(req,res) =>{
     throw new ApiError(400 , error.message , "Unable to display all hotels");
    }
 };
+// Search hotel
+const searchHotels = async (req, res) => {
+  try {
+    const { query } = req.query;
+
+    if (!query) {
+      return res.status(400).json({ message: "Query parameter is required" });
+    }
+
+    const regex = new RegExp(query, "i"); // Case-insensitive search
+
+    const hotels = await Hotel.find({
+      $or: [{ name: regex }, { city: regex }, { state: regex }, { country: regex }],
+    });
+
+    res.status(200).json(hotels);
+  } catch (error) {
+    res.status(500).json({ message: "Server Error", error: error.message });
+  }
+};
 
 // Register a new Hotel Logic
 const newHotelCreation = asyncHandler(async (req, res) => {
@@ -169,4 +189,4 @@ const deleteMyHotel =  asyncHandler(async (req, res) => {
 
 
 
-export { allHotel , newHotelCreation , showMyHotel , editMyHotel , deleteMyHotel } ;
+export { allHotel , newHotelCreation , showMyHotel , editMyHotel , deleteMyHotel , searchHotels } ;

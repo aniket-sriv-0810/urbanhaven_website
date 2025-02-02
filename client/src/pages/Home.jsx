@@ -19,7 +19,8 @@ import ScrollComponent from "../components/ScollComponent/ScrollComponent";
 import FAQs from "../components/FAQs/FAQs";
 import Blogs from "../components/Blogs/Blogs";
 import SortHotels from "../components/SortHotels/SortHotels";
-
+import SearchBar from "../components/SearchBar/SearchBar";
+import HotelCard from "../components/HotelCard/HotelCard";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
 
@@ -40,6 +41,8 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(4); // Default for larger screens
   const [sortOrder, setSortOrder] = useState("default");
+  const [hotels, setHotels] = useState([]);
+
 
   useEffect(() => {
     AOS.init({
@@ -113,16 +116,15 @@ const Home = () => {
     <Navbar />
     </div>
     <Header />
-    <div className="flex justify-center items-center   sm:my-8 px-4 sm:px-0">
-    <div className="border-2 border-red-500 my-5 relative w-full max-w-md">
-      <input
-        type="text"
-        placeholder="search hotels by cities or states "
-        className="bg-neutral-200 p-3 w-full pr-12 placeholder:text-sm  placeholder:text-zinc-800 placeholder:font-semibold border-2 border-white rounded-3xl shadow-lg focus:outline-none focus:ring-2 focus:ring-green-400 placeholder:text-center shadow-gray-400 "
-      />
-      <FaSearchLocation className="absolute top-1/2 transform -translate-y-1/2 right-8 h-6 w-6 text-gray-800 cursor-pointer hover:text-green-600 transition duration-200 ease-in-out" />
+    <div className=" bg-gray-100 p-4">
+      <h1 className="text-3xl font-bold text-center my-4">Find Your Perfect Stay</h1>
+      <SearchBar setHotels={setHotels} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
+        {hotels.map((hotel) => (
+          <HotelCard key={hotel._id} hotel={hotel} />
+        ))}
+      </div>
     </div>
-  </div>
   
       <div className="flex flex-col sm:flex-row justify-between items-center mx-2 my-10 border-2 border-red-500  sm:mx-8">
        

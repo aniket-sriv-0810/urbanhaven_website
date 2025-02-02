@@ -24,7 +24,7 @@ const BookingPayment = ({ setBookingData, hotelData, bookingData, handlePrevious
 
     try {
       const response = await axios.post(
-        `http://localhost:8000/api/v1/hotel/${id}/booking`,
+        `http://localhost:8000/v1/hotel/${id}/booking`,
         dataSent,
         { withCredentials: true }
       );
