@@ -24,6 +24,7 @@ import HotelCard from "../components/HotelCard/HotelCard";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
 import { useUser } from "../components/userContext/userContext";
+import TypingAnimation from "../components/TypingAnimation/TypingAnimation";
 
 
 
@@ -137,10 +138,10 @@ const Home = () => {
           setSelectedCurrency={setSelectedCurrency}
         />
       </div>
+  <TypingAnimation/>
       <h1 className="mt-20 -mb-5  border-2 border-red-500 text-center font-bold text-2xl sm:text-4xl text-gray-800 p-6 sm:p-8 uppercase rounded-lg " data-aos="fade-up">
   our Top choices
 </h1>
-
       <div className="border-red-500 border-2 mt-20 mb-10  flex flex-wrap justify-evenly gap-8  px-4" data-aos="fade-up">
       
 
@@ -167,7 +168,7 @@ const Home = () => {
                   />
                 </div>
                 <div className="absolute top-1 right-3 z-20 text-white hover:cursor-pointer">
-                  <LikeBtn hotelId={hotelItem._id} userId={user._id} />
+                  <LikeBtn />
                 </div>
                 <img
                   src={hotelItem.image}
@@ -202,7 +203,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            
+
             );
           })
         )}

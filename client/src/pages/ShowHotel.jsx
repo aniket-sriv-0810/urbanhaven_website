@@ -35,7 +35,7 @@ const [avgRating , setAvgRating] = useState(0);
   }, []);
 const showMyHotelDetails = async() => {
   try {
-    const response = await axios.get(`http://localhost:8000/api/v1/hotel/${id}` ,{
+    const response = await axios.get(`http://localhost:8000/v1/hotel/${id}` ,{
       withCredentials: true,
     });
     console.log("Review => " ,response.data.data.allReviews);

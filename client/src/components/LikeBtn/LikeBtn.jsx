@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 const LikeBtn = ({ hotelId, userId }) => {
     const [isLiked, setIsLiked] = useState(false);
     
-
+{/* 
     useEffect(() => {
         const fetchWishlist = async () => {
             try {
@@ -37,10 +37,13 @@ const LikeBtn = ({ hotelId, userId }) => {
             console.error('Error updating wishlist:', error);
         }
     };
-
+*/}
+const toggleLike = () => {
+  setIsLiked(!isLiked);
+}
     return (
-        <p onClick={toggleWishlist} className="hover:scale-110 transition-none duration-150 hover:text-red-500">
-            {isLiked ? <FaHeart className="text-red-600 w-7 h-10" /> : <FaRegHeart className="w-7 h-10" />}
+        <p onClick={toggleLike}  className="hover:scale-110 transition-none duration-150 ">
+            {isLiked ? <FaHeart className="text-red-600 w-7 h-10" /> : <FaRegHeart className=" w-7 h-10" />}
         </p>
     );
 };
