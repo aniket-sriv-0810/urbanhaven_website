@@ -1,6 +1,7 @@
 import express from 'express';
 import { isLoggedIn } from '../middleware/authentication.js';
 import { validate } from '../middleware/validator.js';
+import { showAllBlogs } from '../controller/blogs.controller.js';
 
 
 const router =  express.Router();
@@ -12,7 +13,7 @@ router
 // Show all the Blogs
     router
          .route('/blogs')
-         .get()
+         .get(showAllBlogs)
 
 // Create a new Blog Route
 router
