@@ -1,10 +1,11 @@
+import Booking from "../model/booking.model.js";
 import { User } from "../model/user.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import mongoose from "mongoose";
-import passport from "passport";
+
 
 // User Account Details
 const userAccountDetails = asyncHandler(async (req, res) => {
@@ -26,6 +27,48 @@ const userAccountDetails = asyncHandler(async (req, res) => {
   }
 });
 
+// Show the particular booking booked by User
+const userBookingDetails = asyncHandler ( async ( req , res) => {
+  try {
+    const {id} = req.params ;
+        
+         if(!id){
+             throw new ApiError(400 ,"Hotel ID is required!");
+        }
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+          throw new ApiError(400, "Invalid ID", "Failed to Show the Hotel!");
+        }
+        const showBookings = await User.findById(id) .populate({
+          path: "bookings", // Populate the bookings array
+        });
+        console.log("Booking data loaded...");
+        return res.status(200).json (
+          new ApiResponse(200 , {showBookings} , "Booking data loaded successfully !")
+        )
+  } catch (error) {
+    throw new ApiError(400 , error , "Failed to Show the Booking data!");
+  }
+})
+
+// CANCEL the particular booking  of the user
+const cancelBooking = asyncHandler ( async ( req , res) => {
+  try {
+    const {id} = req.params ;
+    if(!id){
+      throw new ApiError(400 ,"Hotel ID is required!");
+ }
+ if (!mongoose.Types.ObjectId.isValid(id)) {
+   throw new ApiError(400, "Invalid ID", "Failed to Show the Hotel!");
+ }
+ await Booking.findByIdAndDelete(id);
+ console.log("Successfully cancelled !");
+ return res.status(200).json(
+  new ApiResponse(200 , "Booking cancelled !")
+ )
+  } catch (error) {
+    throw new ApiError(400, error ,"Failed to CANCEL the Booking !")
+  }
+})
 // User Account Edit Details
 const userAccountEditDetails = asyncHandler(async (req, res) => {
   try {
@@ -102,8 +145,9 @@ const userAccountDelete = asyncHandler(async (req, res) => {
 });
 
 export {
-
   userAccountDetails,
+  userBookingDetails,
+  cancelBooking,
   userAccountEditDetails,
   userAccountDelete
 };

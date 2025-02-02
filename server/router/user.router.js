@@ -3,7 +3,7 @@ import {validate} from '../middleware/validator.js';
 import {checkLogInUser} from '../middleware/auth.middleware.js';
 import {  upload } from '../multer.js';
 import { createNewUser, loginUser , logOutUser , checkAuthentication} from '../controller/user-authentication.controller.js';
-import { userAccountDetails , userAccountEditDetails , userAccountDelete} from '../controller/user.controller.js';
+import { userAccountDetails , userAccountEditDetails , userAccountDelete, userBookingDetails, cancelBooking} from '../controller/user.controller.js';
 import {userSchemaValidation} from '../test/user.validator.js'
 import passport from 'passport';
 import { ApiResponse } from '../utils/ApiResponse.js';
@@ -55,7 +55,7 @@ router
 // User Account Bookings Details
 router
      .route('/:id/account/bookings')
-     .get( isLoggedIn,userAccountDetails)
+     .get( isLoggedIn,userBookingDetails)
 
 // User Account - EDIT Bookings Details
 router
@@ -65,7 +65,7 @@ router
 // User Account - CANCEL Bookings Details
 router
      .route('/:id/account/booking/:id/cancel')
-     .get( isLoggedIn,userAccountDetails)
+     .get( isLoggedIn,userAccountDetails, cancelBooking)
 
 // User Account Edit Details
 router
