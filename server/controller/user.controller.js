@@ -1,5 +1,6 @@
 import Booking from "../model/booking.model.js";
 import { User } from "../model/user.model.js";
+import Hotel from "../model/hotel.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
@@ -69,6 +70,44 @@ const cancelBooking = asyncHandler ( async ( req , res) => {
     throw new ApiError(400, error ,"Failed to CANCEL the Booking !")
   }
 })
+
+const toggleWishlist = async (req, res) => {
+  const { userId } = req.params;
+  const { hotelId } = req.body;
+
+  try {
+      const user = await User.findById(userId);
+      if (!user) return res.status(404).json({ message: "User not found" });
+
+      const hotelExists = await Hotel.findById(hotelId);
+      if (!hotelExists) return res.status(404).json({ message: "Hotel not found" });
+
+      const index = user.wishlists.indexOf(hotelId);
+      if (index === -1) {
+          user.wishlists.push(hotelId); // Add hotel to wishlist
+      } else {
+          user.wishlists.splice(index, 1); // Remove from wishlist
+      }
+
+      await user.save();
+      return res.status(200).json({ wishlists: user.wishlists });
+  } catch (error) {
+      res.status(500).json({ message: "Internal Server Error", error });
+  }
+};
+
+ const getWishlist = async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+      const user = await User.findById(userId).populate('wishlists');
+      if (!user) return res.status(404).json({ message: "User not found" });
+
+      res.status(200).json({ wishlists: user.wishlists });
+  } catch (error) {
+      res.status(500).json({ message: "Internal Server Error", error });
+  }
+};
 // User Account Edit Details
 const userAccountEditDetails = asyncHandler(async (req, res) => {
   try {
@@ -149,5 +188,7 @@ export {
   userBookingDetails,
   cancelBooking,
   userAccountEditDetails,
-  userAccountDelete
+  userAccountDelete,
+  toggleWishlist,
+  getWishlist
 };

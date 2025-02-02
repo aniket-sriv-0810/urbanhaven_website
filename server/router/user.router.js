@@ -3,7 +3,7 @@ import {validate} from '../middleware/validator.js';
 import {checkLogInUser} from '../middleware/auth.middleware.js';
 import {  upload } from '../multer.js';
 import { createNewUser, loginUser , logOutUser , checkAuthentication} from '../controller/user-authentication.controller.js';
-import { userAccountDetails , userAccountEditDetails , userAccountDelete, userBookingDetails, cancelBooking} from '../controller/user.controller.js';
+import { userAccountDetails , userAccountEditDetails , userAccountDelete, userBookingDetails, cancelBooking , getWishlist , toggleWishlist} from '../controller/user.controller.js';
 import {userSchemaValidation} from '../test/user.validator.js'
 import passport from 'passport';
 import { ApiResponse } from '../utils/ApiResponse.js';
@@ -42,15 +42,11 @@ router
      .route('/:id/account/wishlists')
      .get( isLoggedIn,userAccountDetails)
 
-// User Account - ADD WishLists
+// User Account - ADD & REMOVE WishLists
 router
-     .route('/:id/account/wishlist/:id/add')
-     .post( isLoggedIn,userAccountDetails)
-
-// User Account - REMOVE WishLists Details
-router
-     .route('/:id/account/wishlist/:id/delete')
-     .get( isLoggedIn,userAccountDetails)
+     .route('/:id/account/wishlist')
+     .get( isLoggedIn,getWishlist)
+     .post( isLoggedIn,toggleWishlist)
 
 // User Account Bookings Details
 router

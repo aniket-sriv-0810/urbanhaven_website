@@ -23,6 +23,7 @@ import SearchBar from "../components/SearchBar/SearchBar";
 import HotelCard from "../components/HotelCard/HotelCard";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
+import { useUser } from "../components/userContext/userContext";
 
 
 
@@ -42,6 +43,7 @@ const Home = () => {
   const [itemsPerPage, setItemsPerPage] = useState(4); // Default for larger screens
   const [sortOrder, setSortOrder] = useState("default");
   const [hotels, setHotels] = useState([]);
+  const {user} = useUser();
 
 
   useEffect(() => {
@@ -165,7 +167,7 @@ const Home = () => {
                   />
                 </div>
                 <div className="absolute top-1 right-3 z-20 text-white hover:cursor-pointer">
-                  <LikeBtn />
+                  <LikeBtn hotelId={hotelItem._id} userId={user._id} />
                 </div>
                 <img
                   src={hotelItem.image}
