@@ -1,7 +1,7 @@
 import express from 'express';
 import { isLoggedIn } from '../middleware/authentication.js';
 import { validate } from '../middleware/validator.js';
-import { createBlog, showAllBlogs } from '../controller/blogs.controller.js';
+import { createBlog, editBlog, showAllBlogs, showBlogDetails } from '../controller/blog.controller.js';
 import { upload } from '../multer.js';
 import { isLoggedIn } from '../middleware/authentication.js';
 import { validate } from '../middleware/validator.js';
@@ -26,12 +26,12 @@ router
 //Show a particular Blog
 router
      .route('/blog/:id')
-     .get()
+     .get(showBlogDetails)
 
 // Edit a particular Blog
 router
      .route('/blog/:id/edit')
-     .put()
+     .put(isLoggedIn , upload('image') , validate(blogSchemaValidation) , editBlog)
 
 // Delete a particular Blog
 router
