@@ -1,9 +1,9 @@
-// Import necessary libraries
-import React from 'react';
-import Image1 from '../assets/about-2.jpg';
-import Image2 from '../assets/about-3.jpg';
-import Image3 from '../assets/about-4.jpg';
 
+  // Import necessary libraries
+import React from 'react';
+// import Image1 from '../assets/about-2.jpg';
+// import Image2 from '../assets/about-3.jpg';
+// import Image3 from '../assets/about-4.jpg';
 // Define the About Us component
 const AboutUs = () => {
   return (
@@ -21,11 +21,11 @@ const AboutUs = () => {
           
           {/* Image Section 1 */}
           <div>
-          <img
+          {/* <img
           src={Image1}
           alt="UrbanHaven Mission"
           className="rounded-lg shadow-md  h-auto object-cover "
-          />
+          /> */}
           </div>
           
           {/* Image Section 2 */}
@@ -51,11 +51,11 @@ const AboutUs = () => {
           </div>
         </div>
         <div>
-        <img
+        {/* <img
           src={Image2}
           alt="UrbanHaven Experience"
           className="rounded-lg shadow-md "
-        />
+        /> */}
       </div>
       </div>
         
@@ -64,11 +64,11 @@ const AboutUs = () => {
       
       {/* Image Section 1 */}
       <div>
-      <img
+      {/* <img
       src={Image3}
       alt="UrbanHaven Mission"
       className="rounded-lg shadow-md  h-auto object-cover "
-      />
+      /> */}
       </div>
       
       {/* Image Section 2 */}
@@ -100,6 +100,7 @@ const AboutUs = () => {
       </div>
      
     </section>
+    
   );
 };
 

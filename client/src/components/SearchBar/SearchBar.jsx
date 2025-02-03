@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaSearch } from "react-icons/fa";
 import axios from "axios";
 
 const SearchBar = ({ setHotels }) => {
@@ -16,18 +17,28 @@ const SearchBar = ({ setHotels }) => {
   };
 
   return (
-    <div className="flex items-center justify-center space-x-2 p-4">
+    <div className="flex flex-wrap items-center justify-center gap-4 p-4 w-full max-w-2xl mx-auto bg-white/50 backdrop-blur-md shadow-xl rounded-xl border border-gray-200">
+    {/* Input Box with Icon */}
+    <div className="relative w-full flex items-center">
+      <FaSearch className="absolute left-4 text-gray-500 text-lg" />
       <input
         type="text"
-        placeholder="Search hotels..."
+        placeholder="Search for hotels, destinations..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        className="w-full max-w-lg px-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-300"
+        className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-lg"
       />
-      <button onClick={handleSearch} className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700">
-        Search
-      </button>
     </div>
+
+    {/* Search Button */}
+    <button
+      onClick={handleSearch}
+      className="flex items-center justify-center px-5 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold text-lg rounded-lg shadow-lg hover:scale-105 transition-all duration-300"
+    >
+      <FaSearch className="mr-2 text-xl" />
+      Search
+    </button>
+  </div>
   );
 };
 

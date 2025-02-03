@@ -232,9 +232,11 @@ const Home = () => {
 <div className="border-2 border-red-500 my-80" data-aos="fade-down">
       <FAQs/>
 </div>
+{/*
       <div className="border-2 border-red-500 my-80" data-aos="fade-right">
         <Blogs/>
         </div>
+    */}
       <div className="border-red-500 border-2 my-20 bg-gray-50 flex flex-col justify-evenly items-center sm:flex-row gap-6 py-10" >
         <Counter start={0} end={1000} duration={2000} value="Hotels Listed" color="black" />
         <Counter start={0} end={6000} duration={2000} value="Users Registered" color="green" />
