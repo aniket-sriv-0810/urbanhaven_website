@@ -30,6 +30,7 @@ import PageNotFound from './pages/PageNotFound';
 import ContactUsLoader from './pages/ContactUsLoader';
 import ReviewLoader from './pages/ReviewLoader';
 import TermsAndConditions from './pages/TermsAndConditions';
+import CreateBlog from './pages/CreateBlog';
 
 export default function App() {
   const { setUser } = useUser();
@@ -140,6 +141,7 @@ export default function App() {
             <Route path="new-hotel" element={<Create />} />
             <Route path="hotel-details/:id/edit" element={<Edit />} />
             <Route path="hotel/:id/delete" element={<Delete />} />
+            <Route path="new-blog" element={<CreateBlog />} />
           </Route>
           <Route path="/terms-and-conditions" element={<TermsAndConditions/>}/>
           <Route path="/contact/confirmed" element={<ContactUsLoader/>}/>

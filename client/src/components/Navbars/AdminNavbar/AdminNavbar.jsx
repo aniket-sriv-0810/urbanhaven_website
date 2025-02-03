@@ -98,7 +98,7 @@ const AdminNavbar = () => {
             </span>
             </button>
           <button
-            onClick={() => { navigate ('/blogs/add')}}
+            onClick={() => { navigate ("new-blog")}}
             className="bg-transparent px-4 py-3 rounded-lg hover:shadow-md hover:shadow-gray-800  hover:bg-orange-600 hover:bg-opacity-60 text-sm "
             >
             <span className='flex gap-2'>

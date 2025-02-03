@@ -44,7 +44,7 @@ const Create = () => {
 console.log([ ...formData]);
 
 try {
-  const response = await axios.post("http://localhost:8000/api/v1/admin/new-hotel", formData, 
+  const response = await axios.post("http://localhost:8000/v1/admin/new-hotel", formData, 
     {
     withCredentials: true,
   });
