@@ -7,7 +7,7 @@ import { MdQrCodeScanner, MdPayments } from "react-icons/md";
 import { TiArrowBack } from "react-icons/ti";
 import { BsCashCoin } from "react-icons/bs";
 
-const BookingPayment = ({ setBookingData, hotelData, bookingData, handlePrevious }) => {
+const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
   const { id } = useParams();
   const { user } = useUser();
   const navigate = useNavigate();
@@ -30,6 +30,14 @@ const BookingPayment = ({ setBookingData, hotelData, bookingData, handlePrevious
       );
       if (response.status === 200) {
         const bookingId = response.data.data.newBooking._id;
+        const emailSent = response.data.data.emailSent; // Check if email was sent
+  
+        if (emailSent) {
+          alert("Booking confirmed! A confirmation email has been sent to your inbox.");
+        } else {
+          alert("Booking confirmed, but the confirmation email could not be sent.");
+        }
+  
         navigate(`/booking/${bookingId}`);
       }
     } catch (error) {

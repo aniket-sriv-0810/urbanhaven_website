@@ -4,6 +4,7 @@ import { User } from '../model/user.model.js';
 import { asyncHandler } from '../utils/asyncHandler.js';
 import { ApiError } from '../utils/ApiError.js';
 import { ApiResponse } from '../utils/ApiResponse.js';
+import {sendBookingConfirmation}  from '../utils/EmailService.js';
 import mongoose from 'mongoose';
 
 const bookingHotel = asyncHandler( async (req , res ) => {
@@ -35,10 +36,34 @@ const bookingHotel = asyncHandler( async (req , res ) => {
     checkInDate, checkOutDate , room ,adultCount , infantCount, totalAmount,
             paymentDetails, status 
         })
+   // Fetch user details to get email
+   const user = await User.findById(req.user._id);
+    
+   // Prepare email data
+   const bookingDetails = {
+     title: hotelDetails.title,
+     city: hotelDetails.city,
+     state: hotelDetails.state,
+     country: hotelDetails.country,
+     checkInDate,
+     checkOutDate,
+     paymentDetails,
+   };
+
+   // Send confirmation email
+   let emailSent = false;
+   try {
+     await sendBookingConfirmation(user.email, bookingDetails);
+     emailSent = true;
+   } catch (emailError) {
+     console.error("Error sending email:", emailError);
+   }
+
+
         await newBooking.save();
         console.log("Booking Confirmed Successfully !" , newBooking);
         return res.status(200).json( 
-            new ApiResponse(200, {newBooking} , "Booking Confirmed Successfully !")
+            new ApiResponse(200, {newBooking , emailSent } , "Booking Confirmed Successfully !")
         )
         
     } catch (error) {

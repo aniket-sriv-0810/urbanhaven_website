@@ -2,25 +2,27 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import {useNavigate} from 'react-router-dom';
+import { useUser } from "../components/userContext/userContext";
 
 const UserAccountEdit = () => {
+  const {user} = useUser();
    const navigate = useNavigate();
     const { id } = useParams();
     const [userData, setUserData] = useState({
-     name:"",
-     username:"",
-     phone:"",
-     email:"",
+     name:user.name,
+     username:user.username,
+     phone:user.phone,
+     email:user.email,
     });
     const [image, setImage] = useState(null);
-    const [orgImage , setOrgImg] = useState(null);
+    const [orgImage , setOrgImg] = useState(user.image);
 
   // Fetch the current user data
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/v1/user/${id}/account`,{
+          `http://localhost:8000/v1/user/${id}/account`,{
             withCredentials:true,
           },
         );
@@ -62,7 +64,7 @@ const UserAccountEdit = () => {
   
       try {
         const response = await axios.put(
-          `http://localhost:8000/api/v1/user/${id}/account/edit`,
+          `http://localhost:8000/v1/user/${id}/account/edit`,
           formData,{
             withCredentials:true,
           },
@@ -112,7 +114,7 @@ const UserAccountEdit = () => {
             value={userData.name}
             onChange={handleChange}
             required
-            className="mt-2 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-3"
+            className="mt-2 block w-full text-black rounded-lg border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-3"
           />
         </div>
 
