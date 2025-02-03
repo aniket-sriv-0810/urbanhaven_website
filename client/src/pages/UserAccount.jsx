@@ -15,7 +15,8 @@ const UserAccount = () => {
 
   const userDetails = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/v1/user/${id}/account`);
+      const response = await axios.get(`http://localhost:8000/v1/user/${id}/account` , 
+      {withCredentials: true});
       setShowUser(response.data.data.userInfo);
     } catch (error) {
       console.error("Failed to get user", error);

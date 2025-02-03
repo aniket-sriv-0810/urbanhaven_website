@@ -9,7 +9,7 @@ const AdminBooking = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/api/v1/admin/bookings",
+        "http://localhost:8000/v1/admin/bookings",
         { withCredentials: true }
       );
       if (response.status === 200) {
