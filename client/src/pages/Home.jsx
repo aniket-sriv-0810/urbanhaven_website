@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Banner from "../assets/banner.png";
-import { FaSearchLocation } from "react-icons/fa";
+import {  FaUsers, FaCity, FaComments } from "react-icons/fa";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { FaHotel } from "react-icons/fa6";
@@ -237,13 +237,13 @@ const Home = () => {
         <Blogs/>
         </div>
     */}
-      <div className="     my-20 bg-gray-50 flex flex-col justify-evenly items-center sm:flex-row gap-6 py-10" >
-        <Counter start={0} end={1000} duration={2000} value="Hotels Listed" color="black" />
-        <Counter start={0} end={6000} duration={2000} value="Users Registered" color="green" />
-        <Counter start={0} end={500} duration={2000} value="Cities Available" color="sky" />
-        <Counter start={0} end={2000} duration={2000} value="Customer Feedbacks" color="red" />
-      </div>
-      <div data-aos="slide-up">
+    <div className="my-20 bg-gradient-to-b from-gray-50 to-gray-100 flex flex-col justify-evenly items-center sm:flex-row gap-6 py-10 px-5 sm:px-20">
+      <Counter start={0} end={1000} duration={2000} value="Hotels Listed" color="blue" icon={<FaHotel className="text-blue-500 text-5xl" />} />
+      <Counter start={0} end={6000} duration={2000} value="Users Registered" color="green" icon={<FaUsers className="text-green-500 text-5xl" />} />
+      <Counter start={0} end={500} duration={2000} value="Cities Available" color="purple" icon={<FaCity className="text-purple-500 text-5xl" />} />
+      <Counter start={0} end={2000} duration={2000} value="Customer Feedbacks" color="red" icon={<FaComments className="text-red-500 text-5xl" />} />
+    </div>
+      <div data-aos="fade-up">
       <Footer />
       </div>
     </>

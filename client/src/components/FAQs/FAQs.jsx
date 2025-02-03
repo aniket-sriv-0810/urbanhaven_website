@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp, FaQuestionCircle } from "react-icons/fa";
+
 
 const FAQs = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -32,11 +33,17 @@ const FAQs = () => {
   ];
 
   return (
-    <section className="faq-section bg-gradient-to-b from-blue-200 to-white py-16 px-5 sm:px-20">
+    <section className="faq-section bg-gray-100 py-16 px-5 sm:px-20">
     {/* Title */}
-    <h2 className="text-center text-4xl sm:text-5xl font-bold text-gray-800 mb-12">
-      Frequently Asked Questions
-    </h2>
+    <div className="text-center mb-12">
+      <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-800 drop-shadow-lg flex items-center justify-center gap-2">
+        <FaQuestionCircle className="text-blue-600 text-5xl" />
+        FAQs
+      </h2>
+      <p className="text-lg sm:text-xl text-gray-600 mt-2">
+        Your questions, answered.
+      </p>
+    </div>
 
     {/* FAQ Items */}
     <div className="max-w-4xl mx-auto space-y-6">
@@ -49,17 +56,26 @@ const FAQs = () => {
             className="w-full text-left flex justify-between items-center bg-white p-5 sm:p-6 font-semibold text-gray-800 hover:bg-blue-50 hover:shadow-lg transition"
             onClick={() => toggleFAQ(index)}
           >
-            <span>{faq.question}</span>
+            <span className="flex items-center gap-2">
+              <FaQuestionCircle className="text-blue-600 text-lg" />
+              {faq.question}
+            </span>
             <span className="ml-4 text-xl">
-              {activeIndex === index ? <FaChevronUp /> : <FaChevronDown />}
+              {activeIndex === index ? (
+                <FaChevronUp className="text-blue-500" />
+              ) : (
+                <FaChevronDown className="text-gray-500" />
+              )}
             </span>
           </button>
           {/* FAQ Answer */}
-          {activeIndex === index && (
-            <div className="p-5 sm:p-6 bg-blue-50 text-gray-700 leading-relaxed">
-              {faq.answer}
-            </div>
-          )}
+          <div
+            className={`transition-max-height duration-500 ease-in-out overflow-hidden ${
+              activeIndex === index ? "max-h-96 p-5 sm:p-6 bg-blue-50 text-gray-700" : "max-h-0"
+            }`}
+          >
+            {faq.answer}
+          </div>
         </div>
       ))}
     </div>
