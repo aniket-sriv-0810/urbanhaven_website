@@ -84,7 +84,7 @@ useEffect( () => {
       className=" rounded-xl  shadow-xl shadow-gray-900 object-contain"
     />
   </div>
-  <div className='border-red-500 border-2 my-20 flex justify-center items-center'data-aos="fade-right">
+  <div className='       my-20 flex justify-center items-center'data-aos="fade-right">
   <ImageGallery />
   </div>
     <h2 className="text-3xl uppercase font-bold text-center mt-4">{showMyHotel.title}</h2>
@@ -92,7 +92,7 @@ useEffect( () => {
       {avgRating} ⭐ ({reviewCount} reviews)
     </p>
   <ul className=''>
-  <div className="max-w-5xl mx-auto my-20 border-red-500 border-2 px-4 py-8" data-aos="fade-up">
+  <div className="max-w-5xl mx-auto my-20        px-4 py-8" data-aos="fade-up">
       {/* Hotel Details Section */}
       <div className="bg-white shadow-md rounded-lg p-6 mb-8">
         <h1 className="text-2xl font-bold text-gray-800 mb-4">
@@ -114,9 +114,9 @@ useEffect( () => {
       {/* Amenities Section */}
       <Amenities />
     </div>
-  <div className='border-red-500 border-2 my-60 w-[90%] m-auto border-3  shadow-md shadow-slate-600' data-aos="fade-left"><MapLocation hotel={showMyHotel} /></div>
+  <div className='       my-60 w-[90%] m-auto border-3  shadow-md shadow-slate-600' data-aos="fade-left"><MapLocation hotel={showMyHotel} /></div>
   </ul>
-  <div className='border-2 border-red-500 my-40' data-aos="fade-up">
+  <div className='       my-40' data-aos="fade-up">
   <Policies/>
   </div>
   <div className="w-[40%] m-auto " data-aos="fade-left" >
@@ -128,14 +128,14 @@ useEffect( () => {
       </Link>
     </div>
 
-<div className='border-red-500 border-2 my-80' data-aos="fade-up">
+<div className='       my-80' data-aos="fade-up">
 <FAQs/>
 </div>
-<div className='border-red-500 border-2 my-20' data-aos="fade-up">
+<div className='       my-20' data-aos="fade-up">
 <Review/>
 </div>
 
-<div className="my-40 border-red-500 border-2 flex flex-wrap gap-8 justify-center py-10 bg-gradient-to-b from-gray-50 to-white" data-aos="fade-up">
+<div className="my-40        flex flex-wrap gap-8 justify-center py-10 bg-gradient-to-b from-gray-50 to-white" data-aos="fade-up">
   {reviews && reviews.length > 0 ? (
     reviews.map((reviewsItem) => (
       <div

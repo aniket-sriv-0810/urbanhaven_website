@@ -129,7 +129,7 @@ const Home = () => {
       </div>
     </div>
   
-      <div className="flex flex-col sm:flex-row justify-between items-center mx-2 my-10 border-2 border-red-500  sm:mx-8">
+      <div className="flex flex-col sm:flex-row justify-between items-center mx-2 my-10       sm:mx-8">
        
         <SortHotels sortOrder={sortOrder} setSortOrder={setSortOrder} sortHotels={sortHotels} />
         <CurrencyExchange
@@ -139,10 +139,10 @@ const Home = () => {
         />
       </div>
   <TypingAnimation/>
-      <h1 className="mt-20 -mb-5  border-2 border-red-500 text-center font-bold text-2xl sm:text-4xl text-gray-800 p-6 sm:p-8 uppercase rounded-lg " data-aos="fade-up">
+      <h1 className="mt-20 -mb-5       text-center font-bold text-2xl sm:text-4xl text-gray-800 p-6 sm:p-8 uppercase rounded-lg " data-aos="fade-up">
   our Top choices
 </h1>
-      <div className="border-red-500 border-2 mt-20 mb-10  flex flex-wrap justify-evenly gap-8  px-4" data-aos="fade-up">
+      <div className="     mt-20 mb-10  flex flex-wrap justify-evenly gap-8  px-4" data-aos="fade-up">
       
 
         {loading ? (
@@ -210,7 +210,7 @@ const Home = () => {
       </div>
 
       {/* Pagination Buttons */}
-      <div className="border-2 border-red-500  flex justify-center my-40 ">
+      <div className="      flex justify-center my-40 ">
         {[...Array(totalPages)].map((_, index) => (
           <button
             key={index}
@@ -225,25 +225,25 @@ const Home = () => {
           </button>
         ))}
       </div>
-<div className="border-2 border-red-500 my-80" data-aos="fade-down">
+<div className="     my-80" data-aos="fade-down">
       <ScrollComponent/>
 </div>
 
-<div className="border-2 border-red-500 my-80" data-aos="fade-down">
+<div className="     my-80" data-aos="fade-down">
       <FAQs/>
 </div>
 {/*
-      <div className="border-2 border-red-500 my-80" data-aos="fade-right">
+      <div className="     my-80" data-aos="fade-right">
         <Blogs/>
         </div>
     */}
-      <div className="border-red-500 border-2 my-20 bg-gray-50 flex flex-col justify-evenly items-center sm:flex-row gap-6 py-10" >
+      <div className="     my-20 bg-gray-50 flex flex-col justify-evenly items-center sm:flex-row gap-6 py-10" >
         <Counter start={0} end={1000} duration={2000} value="Hotels Listed" color="black" />
         <Counter start={0} end={6000} duration={2000} value="Users Registered" color="green" />
         <Counter start={0} end={500} duration={2000} value="Cities Available" color="sky" />
         <Counter start={0} end={2000} duration={2000} value="Customer Feedbacks" color="red" />
       </div>
-      <div data-aos="fade-down">
+      <div data-aos="slide-up">
       <Footer />
       </div>
     </>
