@@ -31,6 +31,7 @@ import ContactUsLoader from './pages/ContactUsLoader';
 import ReviewLoader from './pages/ReviewLoader';
 import TermsAndConditions from './pages/TermsAndConditions';
 import CreateBlog from './pages/CreateBlog';
+import AdminHome from './layout/AdminHome';
 
 export default function App() {
   const { setUser } = useUser();
@@ -128,13 +129,23 @@ export default function App() {
           <Route path="/user/login" element={<LoginUser />} />
           <Route path="/user/logout" element={<Logout />} />
           <Route
-            path="/admin"
+            path="/admin/dashboard"
             element={
               <PrivateRoute>
                 <AdminDashboard />
               </PrivateRoute>
             }
+          />
+          
+          <Route
+            path="/admin"
+            element={
+              <PrivateRoute>
+                <AdminHome />
+              </PrivateRoute>
+            }
           >
+         
             <Route path="users" element={<AdminUser />} />
             <Route path="hotels" element={<AdminHotel />} />
             <Route path="bookings" element={<AdminBooking />} />

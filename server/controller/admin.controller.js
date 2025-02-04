@@ -5,6 +5,36 @@ import { ApiResponse } from '../utils/ApiResponse.js';
 import Hotel from '../model/hotel.model.js';
 import Booking from '../model/booking.model.js';
 import Contact from '../model/contact.model.js';
+
+
+const adminDashboardData = asyncHandler(async (req, res) => {
+    try {
+        // Count total users
+        const totalUsers = await User.countDocuments();
+
+        // Count total hotels
+        const totalHotels = await Hotel.countDocuments();
+
+        // Count total bookings
+        const totalBookings = await Booking.countDocuments();
+
+        // Count total contact messages
+        const totalContacts = await Contact.countDocuments();
+
+        // Return the response
+        res.status(200).json(
+            new ApiResponse(200, {
+                totalUsers,
+                totalHotels,
+                totalBookings,
+                totalContacts
+            }, "Admin Dashboard Data Fetched Successfully")
+        );
+    } catch (error) {
+        throw new ApiError(500, "Failed to fetch admin dashboard data");
+    }
+});
+
 const adminUserData =  asyncHandler( async (req , res) => {
     try {
 
@@ -56,4 +86,4 @@ const adminContactData = asyncHandler ( async (req , res) => {
     }
 });
 
-export {adminUserData , adminHotelData , adminBookingData , adminContactData};
+export {adminDashboardData, adminUserData , adminHotelData , adminBookingData , adminContactData};

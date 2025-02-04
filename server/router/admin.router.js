@@ -2,12 +2,16 @@ import express from 'express';
 import { validate } from '../middleware/validator.js';
 import {  upload } from '../multer.js';
 import { hotelSchemaValidation } from '../test/hotel.validator.js';
-import { adminHotelData, adminUserData , adminBookingData, adminContactData } from '../controller/admin.controller.js';
+import { adminHotelData, adminUserData , adminBookingData, adminContactData, adminDashboardData } from '../controller/admin.controller.js';
 import {newHotelCreation ,  editMyHotel ,  deleteMyHotel} from '../controller/hotel.controller.js';
 import { isLoggedIn } from '../middleware/authentication.js';
 
 const router = express.Router();
 
+
+router
+     .route('/')
+     .get(isLoggedIn , adminDashboardData)
 
 // All Registered Users detailed  Route!
 router
