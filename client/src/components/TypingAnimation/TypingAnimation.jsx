@@ -4,7 +4,7 @@ import { FaHotel, FaShieldAlt, FaStar } from "react-icons/fa";
 
 const TypingAnimation = () => {
   return (
-    <div className="w-full flex flex-col items-center justify-center text-center py-16 bg-gradient-to-r from-purple-600 to-blue-500 text-white">
+    <div className="w-full flex flex-col items-center justify-center text-center py-16 bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white">
       <h1 className="text-4xl sm:text-5xl font-bold mb-4">
         Welcome to <span className="text-yellow-300">Urbanhaven</span>
       </h1>

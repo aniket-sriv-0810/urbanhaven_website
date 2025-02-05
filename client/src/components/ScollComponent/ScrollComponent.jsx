@@ -9,7 +9,7 @@ const ScrollComponent = () => {
       {/* Text Content */}
       <div className="relative z-10 flex flex-col justify-center items-center h-full px-5 text-center text-white">
         <h1 className="text-4xl sm:text-6xl font-extrabold mb-4">
-          Welcome to Urbanhaven
+          Welcome to <span className=" text-yellow-400">Urbanhaven</span>
         </h1>
         <p className="text-lg sm:text-xl max-w-2xl">
           Experience luxury and comfort like never before. Nestled in the heart
