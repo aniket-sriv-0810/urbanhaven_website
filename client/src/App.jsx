@@ -136,7 +136,6 @@ export default function App() {
               </PrivateRoute>
             }
           />
-          
           <Route
             path="/admin"
             element={
@@ -145,7 +144,6 @@ export default function App() {
               </PrivateRoute>
             }
           >
-         
             <Route path="users" element={<AdminUser />} />
             <Route path="hotels" element={<AdminHotel />} />
             <Route path="bookings" element={<AdminBooking />} />
