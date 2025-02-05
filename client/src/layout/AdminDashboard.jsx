@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useUser } from "../components/userContext/userContext";
-import { Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { driver } from "driver.js";
 import "driver.js/dist/driver.css";
 import "./AdminDriver.css";
@@ -136,6 +136,7 @@ const AdminDashboard = () => {
             <FaHotel className="text-blue-600 text-4xl mb-2" />
             <h2 className="text-3xl font-bold text-gray-900">{adminData.totalHotels}</h2>
             <p className="text-gray-600 text-lg font-medium">Hotels Listed</p>
+            <NavLink to="/admin/hotels" ><button className="rounded-xl text-white bg-green-500 p-2">Hotels</button></NavLink>
           </div>
 
           {/* Users */}

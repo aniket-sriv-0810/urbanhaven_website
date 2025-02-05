@@ -55,7 +55,7 @@ const Navbar = () => {
         <ul className="hidden capitalize lg:flex absolute right-7 gap-9  items-center  ">
         <li className={` ${navLinkStyling} ${user ? (user.role === "admin" ? "admin" : "hidden") : ""} `}>
         <Tippy content="Admin Panel" >
-          <NavLink to="/admin">
+          <NavLink to="/admin/dashboard">
            Admin
           </NavLink>
         </Tippy>
