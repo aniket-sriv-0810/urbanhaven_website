@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet , NavLink} from "react-router-dom";
 import AdminNavbar from "../components/Navbars/AdminNavbar/AdminNavbar";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
@@ -29,7 +29,7 @@ const AdminHome = () => {
             for your users.  
           </p>
         </div>
-
+        <NavLink to="/admin/dashboard" ><button className="rounded-xl mt-10 text-white bg-green-500 p-2">View Dashboard</button></NavLink>
         {/* Animated Content */}
         <div className="w-full mt-10" data-aos="fade-up">
           <Outlet />

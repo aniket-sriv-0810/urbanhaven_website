@@ -144,7 +144,9 @@ const AdminDashboard = () => {
             <FaUsers className="text-green-500 text-4xl mb-2" />
             <h2 className="text-3xl font-bold text-gray-900">{adminData.totalUsers}</h2>
             <p className="text-gray-600 text-lg font-medium">Users Registered</p>
+            <NavLink to="/admin/users" ><button className="rounded-xl text-white bg-green-500 p-2">Users</button></NavLink>
           </div>
+
 
           {/* Bookings */}
           <div className="bg-white shadow-md p-6 rounded-lg flex flex-col items-center" data-aos="zoom-in">
