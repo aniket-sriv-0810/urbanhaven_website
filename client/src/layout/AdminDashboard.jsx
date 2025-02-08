@@ -5,7 +5,7 @@ import { driver } from "driver.js";
 import "driver.js/dist/driver.css";
 import "./AdminDriver.css";
 import AdminNavbar from "../components/Navbars/AdminNavbar/AdminNavbar";
-import { FaUserShield, FaIdBadge, FaPhone, FaEnvelope, FaHotel, FaUsers, FaClipboardList, FaComments } from "react-icons/fa";
+import { FaUserShield, FaIdBadge, FaPhoneAlt , FaEnvelope, FaHotel, FaUsers, FaClipboardList, FaComments } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css"; 
 import axios from "axios";
@@ -100,9 +100,9 @@ const AdminDashboard = () => {
       <div className="min-h-screen bg-gray-100 py-10 px-5 sm:px-20">
         {/* Admin Welcome Section */}
         <div className="bg-white shadow-lg rounded-xl p-6 md:p-8 max-w-3xl mx-auto" data-aos="fade-up">
-          <div className="flex items-center gap-4 mb-6">
+          <div className="flex items-center justify-center gap-4 mb-6">
             <FaUserShield className="text-blue-600 text-3xl" />
-            <h2 className="text-3xl font-bold text-gray-900">Admin Credentials</h2>
+            <h2 className="text-3xl  font-bold text-gray-900">Admin Credentials</h2>
           </div>
 
           {/* Admin Info */}
@@ -118,7 +118,7 @@ const AdminDashboard = () => {
             </div>
 
             <div className="flex items-center gap-3 text-lg text-gray-800">
-              <FaPhone className="text-red-500" />
+              <FaPhoneAlt  className="text-red-500" />
               <span><strong>Phone:</strong> {user.phone}</span>
             </div>
 
@@ -130,37 +130,65 @@ const AdminDashboard = () => {
         </div>
 
         {/* Statistics Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+        <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
           {/* Hotels */}
-          <div className="bg-white shadow-md p-6 rounded-lg flex flex-col items-center" data-aos="zoom-in">
-            <FaHotel className="text-blue-600 text-4xl mb-2" />
-            <h2 className="text-3xl font-bold text-gray-900">{adminData.totalHotels}</h2>
-            <p className="text-gray-600 text-lg font-medium">Hotels Listed</p>
-            <NavLink to="/admin/hotels" ><button className="rounded-xl text-white bg-green-500 p-2">Hotels</button></NavLink>
-          </div>
+          <div className="bg-white shadow-lg  p-6 rounded-2xl flex flex-col items-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl  hover:shadow-slate-500  mx-auto w-64" data-aos="zoom-in">
+  <div className="bg-cyan-100 p-4 rounded-full shadow-md">
+    <FaHotel className="text-blue-600 text-5xl" />
+  </div>
+  <h2 className="text-4xl font-extrabold text-gray-900 mt-4">{adminData.totalHotels}</h2>
+  <p className="text-gray-600 text-lg font-medium">Hotels Listed</p>
+  <NavLink to="/admin/hotels">
+    <button className="rounded-2xl m-3 text-white bg-gradient-to-r from-purple-500 to-purple-900 hover:from-green-500 hover:to-emerald-700 px-8 py-3 font-semibold shadow-lg hover:opacity-90 transition-all duration-300 ease-in-out transform hover:scale-110">
+      View Hotels
+    </button>
+  </NavLink>
+</div>
 
-          {/* Users */}
-          <div className="bg-white shadow-md p-6 rounded-lg flex flex-col items-center" data-aos="zoom-in">
-            <FaUsers className="text-green-500 text-4xl mb-2" />
-            <h2 className="text-3xl font-bold text-gray-900">{adminData.totalUsers}</h2>
-            <p className="text-gray-600 text-lg font-medium">Users Registered</p>
-            <NavLink to="/admin/users" ><button className="rounded-xl text-white bg-green-500 p-2">Users</button></NavLink>
-          </div>
+
+<div className="bg-white shadow-lg p-6 rounded-2xl flex flex-col items-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl hover:shadow-slate-500 mx-auto w-64" data-aos="zoom-in">
+  <div className="bg-blue-100 p-4 rounded-full shadow-md">
+    <FaUsers className="text-green-500 text-5xl" />
+  </div>
+  <h2 className="text-4xl font-extrabold text-gray-900 mt-4">{adminData.totalUsers}</h2>
+  <p className="text-gray-600 text-lg font-medium">Hotels Listed</p>
+  <NavLink to="/admin/users">
+    <button className="rounded-2xl m-3 text-white bg-gradient-to-r from-purple-500 to-purple-900 hover:from-green-500 hover:to-emerald-700 px-8 py-3 font-semibold shadow-lg hover:opacity-90 transition-all duration-300 ease-in-out transform hover:scale-110">
+      View Users
+    </button>
+  </NavLink>
+</div>
 
 
           {/* Bookings */}
-          <div className="bg-white shadow-md p-6 rounded-lg flex flex-col items-center" data-aos="zoom-in">
-            <FaClipboardList className="text-purple-600 text-4xl mb-2" />
-            <h2 className="text-3xl font-bold text-gray-900">{adminData.totalBookings}</h2>
-            <p className="text-gray-600 text-lg font-medium">Bookings Made</p>
-          </div>
+          
+<div className="bg-white shadow-lg p-6 rounded-2xl flex flex-col items-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl hover:shadow-slate-500  mx-auto w-64" data-aos="zoom-in">
+  <div className="bg-blue-100 p-4 rounded-full shadow-md">
+    <FaClipboardList className="text-red-500 text-5xl" />
+  </div>
+  <h2 className="text-4xl font-extrabold text-gray-900 mt-4">{adminData.totalBookings}</h2>
+  <p className="text-gray-600 text-lg font-medium">Bookings Registered</p>
+  <NavLink to="/admin/bookings">
+    <button className="rounded-2xl m-3 text-white bg-gradient-to-r from-purple-500 to-purple-900 hover:from-green-500 hover:to-emerald-700 px-8 py-3 font-semibold shadow-lg hover:opacity-90 transition-all duration-300 ease-in-out transform hover:scale-110">
+      View Bookings
+    </button>
+  </NavLink>
+</div>
 
           {/* Contacts */}
-          <div className="bg-white shadow-md p-6 rounded-lg flex flex-col items-center" data-aos="zoom-in">
-            <FaComments className="text-orange-500 text-4xl mb-2" />
-            <h2 className="text-3xl font-bold text-gray-900">{adminData.totalContacts}</h2>
-            <p className="text-gray-600 text-lg font-medium">Contact Messages</p>
-          </div>
+                 
+<div className="bg-white shadow-lg p-6 rounded-2xl flex flex-col items-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl hover:shadow-slate-500 mx-auto w-64" data-aos="zoom-in">
+  <div className="bg-blue-100 p-4 rounded-full shadow-md">
+    <FaComments className="text-orange-500 text-5xl" />
+  </div>
+  <h2 className="text-4xl font-extrabold text-gray-900 mt-4">{adminData.totalBookings}</h2>
+  <p className="text-gray-600 text-lg font-medium">Feedbacks Received</p>
+  <NavLink to="/admin/contacts">
+    <button className="rounded-2xl m-3 text-white bg-gradient-to-r from-purple-500 to-purple-900 hover:from-green-500 hover:to-emerald-700 px-8 py-3 font-semibold shadow-lg hover:opacity-90 transition-all duration-300 ease-in-out transform hover:scale-110">
+      View Contacts
+    </button>
+  </NavLink>
+</div>
         </div>
       </div>
     </>
