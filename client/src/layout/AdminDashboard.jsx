@@ -6,6 +6,7 @@ import "driver.js/dist/driver.css";
 import "./AdminDriver.css";
 import AdminNavbar from "../components/Navbars/AdminNavbar/AdminNavbar";
 import { FaUserShield, FaIdBadge, FaPhoneAlt , FaEnvelope, FaHotel, FaUsers, FaClipboardList, FaComments } from "react-icons/fa";
+import { IoHome } from "react-icons/io5";
 import AOS from "aos";
 import "aos/dist/aos.css"; 
 import axios from "axios";
@@ -99,10 +100,16 @@ const AdminDashboard = () => {
     <>
       <div className="min-h-screen bg-gray-100 py-10 px-5 sm:px-20">
         {/* Admin Welcome Section */}
-        <div className="bg-white shadow-lg rounded-xl p-6 md:p-8 max-w-3xl mx-auto" data-aos="fade-up">
+        <div className="bg-white shadow-lg shadow-gray-400 rounded-xl p-6 md:p-8 max-w-3xl mx-auto" data-aos="fade-up">
           <div className="flex items-center justify-center gap-4 mb-6">
             <FaUserShield className="text-blue-600 text-3xl" />
             <h2 className="text-3xl  font-bold text-gray-900">Admin Credentials</h2>
+            <NavLink to="/admin/hotels">
+    <button className=" flex gap-3 rounded-full m-3 text-white bg-gradient-to-r from-purple-500 to-purple-900  p-4 font-semibold  shadow-lg hover:opacity-90 transition-all duration-300 ease-in-out transform hover:scale-110">
+
+            <IoHome className="text-xl" />
+    </button>
+  </NavLink>
           </div>
 
           {/* Admin Info */}
