@@ -104,7 +104,7 @@ const AdminDashboard = () => {
           <div className="flex items-center justify-center gap-4 mb-6">
             <FaUserShield className="text-blue-600 text-3xl" />
             <h2 className="text-3xl  font-bold text-gray-900">Admin Credentials</h2>
-            <NavLink to="/admin/hotels">
+            <NavLink to="/">
     <button className=" flex gap-3 rounded-full m-3 text-white bg-gradient-to-r from-purple-500 to-purple-900  p-4 font-semibold  shadow-lg hover:opacity-90 transition-all duration-300 ease-in-out transform hover:scale-110">
 
             <IoHome className="text-xl" />
