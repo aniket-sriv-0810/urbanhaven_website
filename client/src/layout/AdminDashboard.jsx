@@ -147,7 +147,7 @@ const AdminDashboard = () => {
 
 
 <div className="bg-white shadow-lg p-6 rounded-2xl flex flex-col items-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl hover:shadow-slate-500 mx-auto w-64" data-aos="zoom-in">
-  <div className="bg-blue-100 p-4 rounded-full shadow-md">
+  <div className="bg-emerald-100 p-4 rounded-full shadow-md">
     <FaUsers className="text-green-500 text-5xl" />
   </div>
   <h2 className="text-4xl font-extrabold text-gray-900 mt-4">{adminData.totalUsers}</h2>
@@ -163,7 +163,7 @@ const AdminDashboard = () => {
           {/* Bookings */}
           
 <div className="bg-white shadow-lg p-6 rounded-2xl flex flex-col items-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl hover:shadow-slate-500  mx-auto w-64" data-aos="zoom-in">
-  <div className="bg-blue-100 p-4 rounded-full shadow-md">
+  <div className="bg-red-100 p-4 rounded-full shadow-md">
     <FaClipboardList className="text-red-500 text-5xl" />
   </div>
   <h2 className="text-4xl font-extrabold text-gray-900 mt-4">{adminData.totalBookings}</h2>
@@ -178,7 +178,7 @@ const AdminDashboard = () => {
           {/* Contacts */}
                  
 <div className="bg-white shadow-lg p-6 rounded-2xl flex flex-col items-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl hover:shadow-slate-500 mx-auto w-64" data-aos="zoom-in">
-  <div className="bg-blue-100 p-4 rounded-full shadow-md">
+  <div className="bg-orange-100 p-4 rounded-full shadow-md">
     <FaComments className="text-orange-500 text-5xl" />
   </div>
   <h2 className="text-4xl font-extrabold text-gray-900 mt-4">{adminData.totalBookings}</h2>
