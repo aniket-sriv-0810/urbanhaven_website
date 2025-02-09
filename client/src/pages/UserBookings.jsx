@@ -33,7 +33,7 @@ const UserBookings = () => {
                             <p className="text-gray-600">{booking.hotelDetails.description}</p>
                             <p className="mt-2 text-gray-900 font-bold">₹{booking.hotelDetails.price} per night</p>
                             <p className="text-gray-600">
-                            Check-in: {new Date(booking.checkInDate).toLocaleDateString("en-IN")} → Check-out: {new Date(booking.checkOutDate).toLocaleString()}</p>
+                            Check-in: {new Date(booking.checkInDate).toLocaleDateString("en-IN")} → Check-out: {new Date(booking.checkOutDate).toLocaleDateString("en-IN")}</p>
                             <p className="text-gray-700">
                                 Rooms: {booking.room} | Adults: {booking.adultCount} | Infants: {booking.infantCount}
                             </p>
