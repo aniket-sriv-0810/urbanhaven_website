@@ -40,7 +40,7 @@ router
 // User Account WishLists Details
 router
      .route('/:id/account/wishlists')
-     .get( isLoggedIn,userAccountDetails)
+     .get( isLoggedIn,getWishlist)
 
 // User Account - ADD & REMOVE WishLists
 router
