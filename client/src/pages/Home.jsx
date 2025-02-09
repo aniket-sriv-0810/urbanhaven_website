@@ -168,7 +168,7 @@ const Home = () => {
                   />
                 </div>
                 <div className="absolute top-1 right-3 z-20 text-white hover:cursor-pointer">
-                  <LikeBtn />
+                  <LikeBtn id={user ? user._id : null} hotelId={hotelItem ? hotelItem._id : null} />
                 </div>
                 <img
                   src={hotelItem.image}

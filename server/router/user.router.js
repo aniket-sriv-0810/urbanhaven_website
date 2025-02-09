@@ -45,7 +45,6 @@ router
 // User Account - ADD & REMOVE WishLists
 router
      .route('/:id/account/wishlist')
-     .get( isLoggedIn,getWishlist)
      .post( isLoggedIn,toggleWishlist)
 
 // User Account Bookings Details

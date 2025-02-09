@@ -78,11 +78,11 @@ const cancelBooking = asyncHandler ( async ( req , res) => {
 })
 
 const toggleWishlist = async (req, res) => {
-  const { userId } = req.params;
+  const { id } = req.params;
   const { hotelId } = req.body;
 
   try {
-      const user = await User.findById(userId);
+      const user = await User.findById(id);
       if (!user) return res.status(404).json({ message: "User not found" });
 
       const hotelExists = await Hotel.findById(hotelId);
@@ -96,7 +96,7 @@ const toggleWishlist = async (req, res) => {
       }
 
       await user.save();
-      return res.status(200).json({ wishlists: user.wishlists });
+      return res.status(200).json(new ApiResponse(200 , { wishlists: user.wishlists } , "Updated Successfully !" ))
   } catch (error) {
       res.status(500).json({ message: "Internal Server Error", error });
   }
