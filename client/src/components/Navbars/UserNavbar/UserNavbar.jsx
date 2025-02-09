@@ -68,21 +68,21 @@ const UserNavbar = () => {
       </li>
           <li className=' hover:text-yellow-400 hover:scale-110 transition-all duration-100 hover:font-semibold' >
           <Tippy content="Home">
-            <NavLink to="users">
+            <NavLink to={`/user/${user._id}/account`}>
               My Account
             </NavLink>
             </Tippy>
           </li>
           <li className=' hover:text-yellow-400 hover:scale-110 transition-all duration-100 hover:font-semibold'>
           <Tippy content="Contact Us">
-            <NavLink to="hotels">
+            <NavLink to={`/user/${user._id}/wishlists`}>
              My Wishlists
             </NavLink>
             </Tippy>
           </li>
           <li className=' hover:text-yellow-400 hover:scale-110 transition-all duration-100 hover:font-semibold'>
           <Tippy content="About Us" >
-            <NavLink to="bookings">
+            <NavLink to={`/user/${user._id}/bookings`}>
              My Bookings
             </NavLink>
             </Tippy>
@@ -140,7 +140,7 @@ const UserNavbar = () => {
     </button>
     <ul className="mt-8 space-y-10 p-4 text-sm font-semibold sm:text-xl flex flex-col items-center justify-center ">
       {user?.role === "admin" && (
-        <li className="flex items-center gap-2 border-2 border-white rounded-xl px-6 py-3">
+        <li className="flex items-center gap-2">
           <MdAdminPanelSettings className="text-xl" />
           <NavLink to="/admin" onClick={toggleMenu}>
             Admin Panel
@@ -149,19 +149,19 @@ const UserNavbar = () => {
       )}
       <li className="flex items-center gap-2">
         <TbListDetails className="text-xl" />
-        <NavLink to="users" onClick={toggleMenu}>
+        <NavLink to={`/user/${user._id}/account`} >
           My Account
         </NavLink>
       </li>
       <li className="flex items-center gap-2">
         <IoHeartCircleSharp className="text-xl" />
-        <NavLink to="hotels" onClick={toggleMenu}>
+        <NavLink to={`/user/${user._id}/wishlists`} onClick={toggleMenu}>
          My Wishlists
         </NavLink>
       </li>
       <li className="flex items-center gap-2">
         <FaCalendarCheck className="text-xl" />
-        <NavLink to="bookings" onClick={toggleMenu}>
+        <NavLink to={`/user/${user._id}/bookings`} onClick={toggleMenu}>
           My Bookings
         </NavLink>
         </li>

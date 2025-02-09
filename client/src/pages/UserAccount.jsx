@@ -29,7 +29,7 @@ const UserAccount = () => {
 
   return (
     <>
-    <UserNavbar/> 
+    <UserNavbar/>
     <div className="bg-gray-100 min-h-screen flex flex-col md:flex-row">
       {/* Sidebar */}
       <div className="bg-gradient-to-br from-purple-600 to-blue-500 md:w-1/3 w-full p-6 flex items-center justify-center text-white">
@@ -155,7 +155,6 @@ const UserAccount = () => {
         )}
       </div>
     </div>
-    <Outlet/>
     </>
   );
 };

@@ -34,6 +34,7 @@ import CreateBlog from './pages/CreateBlog';
 import AdminHome from './layout/AdminHome';
 import UserWishLists from './pages/UserWishLists';
 import UserBookings from './pages/UserBookings';
+import UserHome from './pages/UserHome';
 
 export default function App() {
   const { setUser } = useUser();
@@ -119,15 +120,15 @@ export default function App() {
             path="/user/:id"
             element={
               <PrivateRoute>
-                <UserAccount />
+                <UserHome />
               </PrivateRoute>
             }
-          >
-          <Route path="account" element={<UserAccount />} />
-          <Route path="wishlists" element={<UserWishLists />} />
-          <Route path="bookings" element={<UserBookings />} />
+          />
+          <Route path="/user/:id/account" element={<UserAccount />} />
+          <Route path="/user/:id/wishlists" element={<UserWishLists />} />
+          <Route path="/user/:id/bookings" element={<UserBookings />} />
             
-          </Route>
+          
           <Route path="/user/:id/account/edit" element={<UserAccountEdit />} />
           <Route path="/user/:id/account/delete" element={<DeleteUser />} />
           <Route path="/user/register" element={<RegisterUser />} />

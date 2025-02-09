@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import UserNavbar from "../components/Navbars/UserNavbar/UserNavbar";
 
 const UserWishlists = () => {
     const [wishlists, setWishlists] = useState([]);
@@ -45,6 +46,8 @@ const UserWishlists = () => {
     if (error) return <p className="text-red-500">{error}</p>;
 
     return (
+      <>
+      <UserNavbar/>
       <div className="p-6 bg-gray-50 min-h-screen">
       <h2 className="text-2xl font-bold text-gray-900 mb-4">My Wishlists</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -62,6 +65,7 @@ const UserWishlists = () => {
           ) : null}
       </div>
   </div>
+  </>
     );
 };
 
