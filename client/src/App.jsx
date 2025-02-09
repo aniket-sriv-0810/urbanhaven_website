@@ -35,6 +35,9 @@ import AdminHome from './layout/AdminHome';
 import UserWishLists from './pages/UserWishLists';
 import UserBookings from './pages/UserBookings';
 import UserHome from './pages/UserHome';
+import AllBlogs from './pages/AllBlogs';
+import EditBlog from './pages/EditBlog';
+import ShowBlog from './pages/ShowBlog';
 
 export default function App() {
   const { setUser } = useUser();
@@ -163,6 +166,10 @@ export default function App() {
           <Route path="/terms-and-conditions" element={<TermsAndConditions/>}/>
           <Route path="/contact/confirmed" element={<ContactUsLoader/>}/>
           <Route path="/review/done" element={<ReviewLoader/>}/>
+          <Route path="/all-blogs" element={<AllBlogs/>}/>
+          <Route path="/blog/:id" element={<ShowBlog/>}/>
+          <Route path="/blog/:id/edit" element={<EditBlog/>}/>
+          
           <Route path="*" element={<PageNotFound/>}/>
         </Routes>
       )}
