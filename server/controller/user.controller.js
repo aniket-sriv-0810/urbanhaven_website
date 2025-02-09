@@ -39,12 +39,18 @@ const userBookingDetails = asyncHandler ( async ( req , res) => {
         if (!mongoose.Types.ObjectId.isValid(id)) {
           throw new ApiError(400, "Invalid ID", "Failed to Show the Hotel!");
         }
-        const showBookings = await User.findById(id) .populate({
-          path: "bookings", // Populate the bookings array
+        const showBookings = await User.findById(id)  .populate({
+          path: "bookings",
+          populate: {
+            path: "hotelDetails", // Populate hotel details inside each booking
+            model: "Hotel",
+          },
         });
+
+
         console.log("Booking data loaded...");
         return res.status(200).json (
-          new ApiResponse(200 , {showBookings} , "Booking data loaded successfully !")
+          new ApiResponse(200 , {showBookings : showBookings.bookings} , "Booking data loaded successfully !")
         )
   } catch (error) {
     throw new ApiError(400 , error , "Failed to Show the Booking data!");

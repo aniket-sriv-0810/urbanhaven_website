@@ -39,6 +39,9 @@ const bookingHotel = asyncHandler( async (req , res ) => {
    // Fetch user details to get email
    const user = await User.findById(req.user._id);
     
+    // Push the booking ID into the user's bookings array
+    user.bookings.push(newBooking._id);
+    await user.save();
    // Prepare email data
    const bookingDetails = {
      title: hotelDetails.title,
