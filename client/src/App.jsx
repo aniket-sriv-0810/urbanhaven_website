@@ -32,6 +32,8 @@ import ReviewLoader from './pages/ReviewLoader';
 import TermsAndConditions from './pages/TermsAndConditions';
 import CreateBlog from './pages/CreateBlog';
 import AdminHome from './layout/AdminHome';
+import UserWishLists from './pages/UserWishLists';
+import UserBookings from './pages/UserBookings';
 
 export default function App() {
   const { setUser } = useUser();
@@ -114,13 +116,18 @@ export default function App() {
             }
           />
           <Route
-            path="/user/:id/account"
+            path="/user/:id"
             element={
               <PrivateRoute>
                 <UserAccount />
               </PrivateRoute>
             }
-          />
+          >
+          <Route path="account" element={<UserAccount />} />
+          <Route path="wishlists" element={<UserWishLists />} />
+          <Route path="bookings" element={<UserBookings />} />
+            
+          </Route>
           <Route path="/user/:id/account/edit" element={<UserAccountEdit />} />
           <Route path="/user/:id/account/delete" element={<DeleteUser />} />
           <Route path="/user/register" element={<RegisterUser />} />

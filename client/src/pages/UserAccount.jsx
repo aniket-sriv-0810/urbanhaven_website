@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import UserDashBoard from "../components/UserDashBoard/UserDashBoard";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Navbar from '../components/Navbars/Navbar/Navbar';
@@ -155,6 +155,7 @@ const UserAccount = () => {
         )}
       </div>
     </div>
+    <Outlet/>
     </>
   );
 };
