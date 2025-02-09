@@ -158,7 +158,7 @@ const AdminDashboard = () => {
     <FaUsers className="text-green-500 text-5xl" />
   </div>
   <h2 className="text-4xl font-extrabold text-gray-900 mt-4">{adminData.totalUsers}</h2>
-  <p className="text-gray-600 text-lg font-medium">Hotels Listed</p>
+  <p className="text-gray-600 text-lg font-medium">Users Registered</p>
   <NavLink to="/admin/users">
     <button className="rounded-2xl m-3 text-white bg-gradient-to-r from-purple-500 to-purple-900 hover:from-green-500 hover:to-emerald-700 px-8 py-3 font-semibold shadow-lg hover:opacity-90 transition-all duration-300 ease-in-out transform hover:scale-110">
       View Users
@@ -174,7 +174,7 @@ const AdminDashboard = () => {
     <FaClipboardList className="text-red-500 text-5xl" />
   </div>
   <h2 className="text-4xl font-extrabold text-gray-900 mt-4">{adminData.totalBookings}</h2>
-  <p className="text-gray-600 text-lg font-medium">Bookings Registered</p>
+  <p className="text-gray-600 text-lg font-medium">Bookings Confirmed</p>
   <NavLink to="/admin/bookings">
     <button className="rounded-2xl m-3 text-white bg-gradient-to-r from-purple-500 to-purple-900 hover:from-green-500 hover:to-emerald-700 px-8 py-3 font-semibold shadow-lg hover:opacity-90 transition-all duration-300 ease-in-out transform hover:scale-110">
       View Bookings
