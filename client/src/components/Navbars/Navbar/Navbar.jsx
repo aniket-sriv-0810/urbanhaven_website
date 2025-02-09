@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import axios from 'axios';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { IoHomeSharp } from 'react-icons/io5';
@@ -13,6 +13,8 @@ import 'tippy.js/dist/tippy.css'; // Optional for default styling
 import { MdOutlineLogout } from "react-icons/md";
 import { RiShieldUserLine } from "react-icons/ri";
 import { PiUserCirclePlusBold } from "react-icons/pi";
+import AOS from "aos";
+import "aos/dist/aos.css"; // Import AOS styles
 const Navbar = () => {
   const { user, setUser } = useUser();
   const navigate = useNavigate();
@@ -21,7 +23,14 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
+ useEffect(() => {
+    AOS.init({
+      duration: 1500, // Animation duration
+      easing: "ease-in-out", // Smooth effect
+      mirror:true,
+      once: false, // Animation repeats on scroll
+    });
+  }, []);
   const handleLogout = async () => {
     try {
       await axios.post('http://localhost:8000/v1/user/logout', { withCredentials: true });
@@ -47,7 +56,7 @@ const Navbar = () => {
           </NavLink>
           </Tippy>
           <h1 className="hidden sm:text-lg sm:block lg:hidden xl:block text-white font-semibold truncate">
-            {user ? `Welcome, ${user.name} to UrbanHaven !` : 'Welcome to UrbanHaven !'}
+            <p>Welcome <span className='text-yellow-300'>{user ? user.name : null}</span> to UrbanHaven ! </p>
           </h1>
         </div>
 
@@ -70,17 +79,25 @@ const Navbar = () => {
           <li className={`${navLinkStyling}`}>
           <Tippy content="Contact Us">
             <NavLink to="/contact">
-             Contact us
+             Connect
             </NavLink>
             </Tippy>
           </li>
           <li className={`${navLinkStyling}`}>
           <Tippy content="About Us" >
-            <NavLink to="/api/v1/about">
+            <NavLink to="/about">
               about us
             </NavLink>
             </Tippy>
           </li>
+          <li className={`${navLinkStyling}`}>
+          <Tippy content="Our Blogs" >
+            <NavLink to="/all-blogs">
+              blogs
+            </NavLink>
+            </Tippy>
+          </li>
+          
           <li>
           <Tippy content="Viw Profile">
             <NavLink to={user ? `/user/${user._id}/account` : '/user/login'} >
@@ -130,7 +147,7 @@ const Navbar = () => {
         </ul>
 
         {/* Hamburger Icon */}
-        <button className="absolute right-3 sm:right-8 lg:hidden text-white focus:outline-none mr-2" onClick={toggleMenu}>
+        <button className="absolute right-3 sm:right-8 lg:hidden text-white focus:outline-none mr-2" onClick={toggleMenu} data-aos="fade-left">
           {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
         </button>
       </div>
@@ -140,7 +157,7 @@ const Navbar = () => {
     className={`absolute top-0 right-0  w-full  h-max text-white z-50 transform bg-gradient-to-r from-slate-900 to-slate-700 p-6 rounded-lg shadow-lg   ${
       isMenuOpen ? "translate-x-0 sm:translate-y-0" : "translate-x-full hidden "
     } transition-transform duration-300`}
-  >
+    data-aos="fade-left">
     <button
       className="absolute top-4 right-7 sm:right-10  text-white sm:py-3"
       onClick={toggleMenu}
@@ -172,6 +189,12 @@ const Navbar = () => {
         <RiQuestionAnswerFill className="text-xl" />
         <NavLink to="/about" onClick={toggleMenu}>
           About Us
+        </NavLink>
+      </li>
+      <li className="flex items-center gap-2">
+        <RiQuestionAnswerFill className="text-xl" />
+        <NavLink to="/all-blogs" onClick={toggleMenu}>
+          Our Blogs
         </NavLink>
       </li>
       <li className="flex items-center gap-2">
