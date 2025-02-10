@@ -31,7 +31,7 @@ const ImageGallery = () => {
   return (
     <div className="bg-gray-50 py-12 px-4 md:px-8 lg:px-16">
       {/* Gallery Title */}
-      <h1 className="text-4xl font-bold text-center text-gray-900 mb-10">
+      <h1 className="text-2xl sm:text-4xl font-bold text-center text-gray-900 mb-10">
         Stunning Image Gallery
       </h1>
 

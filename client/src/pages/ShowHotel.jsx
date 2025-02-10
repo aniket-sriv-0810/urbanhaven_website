@@ -67,7 +67,7 @@ useEffect( () => {
   }
   return (
   <>
-  <div className='bg-gradient-to-r from-violet-600 to-indigo-600'>
+  <div className='bg-gradient-to-r from-fuchsia-600 to-purple-600'>
   <Navbar/>
   </div>
   <div className="container overflow-x-hidden">
@@ -85,7 +85,7 @@ useEffect( () => {
       className=" rounded-xl  shadow-xl shadow-gray-900 object-contain"
     />
   </div>
-  <div className='       my-20 flex justify-center items-center'data-aos="fade-right">
+  <div className=' my-20 flex justify-center items-center'data-aos="fade-right">
   <ImageGallery />
   </div>
     <h2 className="text-3xl uppercase font-bold text-center mt-4">{showMyHotel.title}</h2>
