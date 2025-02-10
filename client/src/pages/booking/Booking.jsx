@@ -30,15 +30,15 @@ useEffect(() => {
   const handlePrevious = () => setCurrentPage((prev) => prev - 1);
 
   const styling =
-    "text-black text-center text-sm text-gray-800 border border-gray-300 w-full rounded-xl p-3 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100 placeholder:text-gray-400 valid:border-green-400 valid:border-2";
+    "text-black text-center text-sm text-gray-800 border border-gray-300 w-full rounded-xl p-3 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100 placeholder:text-gray-400 valid:border-green-400 valid:border-2 border-green-500";
 
   return (
     <div className="bg-gradient-to-r from-fuchsia-600 to-purple-600 flex flex-col justify-center items-center min-h-screen px-4  md:px-8" >
-      <h1 className="my-10 text-white text-3xl font-bold text-center ">
+      <h1 className="my-7 text-white text-3xl font-bold text-center ">
         Confirm Your Booking
       </h1>
 
-      <div className="w-full  max-w-4xl bg-white shadow-lg rounded-lg p-6 mb-16 sm:p-8 md:w-3/4" data-aos="fade-up">
+      <div className="w-full  max-w-4xl bg-gray-100 shadow-lg rounded-lg p-6 mb-16 sm:p-8 md:w-3/4" data-aos="fade-up">
         <div className="flex justify-center items-center mb-6">
           <div
             className={`w-1/3 h-2 rounded-full ${
@@ -58,14 +58,14 @@ useEffect(() => {
         </div>
 
         <div className="text-center mb-6">
-          <h2 className="text-2xl font-semibold text-purple-800">
+          <h2 className="text-3xl font-bold text-purple-800">
             {currentPage === 1
               ? "Booking Form"
               : currentPage === 2
               ? "Booking Details"
               : "Payment"}
           </h2>
-          <p className="text-gray-600 text-sm">
+          <p className="text-gray-600 text-sm mt-2 font-medium">
             {currentPage === 1
               ? "Fill in your details to start the booking process."
               : currentPage === 2
