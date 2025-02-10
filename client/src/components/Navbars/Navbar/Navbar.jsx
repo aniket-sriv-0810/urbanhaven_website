@@ -11,7 +11,7 @@ import WebsiteLogo from '../../../assets/main-logo.png';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // Optional for default styling
 import { MdOutlineLogout } from "react-icons/md";
-import { RiShieldUserLine } from "react-icons/ri";
+import { RiShieldUserLine , RiArticleFill } from "react-icons/ri";
 import { PiUserCirclePlusBold } from "react-icons/pi";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
@@ -52,16 +52,16 @@ const Navbar = () => {
               src={WebsiteLogo}
               alt="UrbanHaven"
               className="w-16 sm:w-20 lg:w-24"
-            />
+              data-aos="fade-down"/>
           </NavLink>
           </Tippy>
           <h1 className="hidden sm:text-lg sm:block lg:hidden xl:block text-white font-semibold truncate">
-            <p>Welcome <span className='text-yellow-300'>{user ? user.name : null}</span> to UrbanHaven ! </p>
+            <p data-aos="fade-down">Welcome <span className='text-yellow-300'>{user ? user.name : null}</span> to UrbanHaven ! </p>
           </h1>
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden capitalize lg:flex absolute right-7 gap-9  items-center  ">
+        <ul className="hidden capitalize lg:flex absolute right-7 gap-9  items-center  " data-aos="fade-up">
         <li className={` ${navLinkStyling} ${user ? (user.role === "admin" ? "admin" : "hidden") : ""} `}>
         <Tippy content="Admin Panel" >
           <NavLink to="/admin/dashboard">
@@ -120,7 +120,7 @@ const Navbar = () => {
             className="bg-transparent px-4 py-3 rounded-lg hover:shadow-md hover:shadow-gray-800  hover:bg-red-600 hover:bg-opacity-60 text-sm "
             >
             <span className='flex gap-2'>
-            logout <MdOutlineLogout className="text-white w-5 h-5"/>
+            Logout <MdOutlineLogout className="text-white w-5 h-5"/>
             </span>
             </button>
             
@@ -156,15 +156,15 @@ const Navbar = () => {
     <div
     className={`absolute top-0 right-0  w-full  h-max text-white z-50 transform bg-gradient-to-r from-slate-900 to-slate-700 p-6 rounded-lg shadow-lg   ${
       isMenuOpen ? "translate-x-0 sm:translate-y-0" : "translate-x-full hidden "
-    } transition-transform duration-300`}
-    data-aos="fade-left">
+    } transition-all duration-300`}
+    >
     <button
       className="absolute top-4 right-7 sm:right-10  text-white sm:py-3"
       onClick={toggleMenu}
     >
       <FaTimes size={24} />
     </button>
-    <ul className="mt-8 space-y-10 p-4 text-sm  sm:text-xl flex flex-col items-center justify-center ">
+    <ul className="mt-8 space-y-10 p-4 text-sm  sm:text-xl flex flex-col items-center justify-center " >
       {user?.role === "admin" && (
         <li className="flex items-center gap-2">
           <MdAdminPanelSettings className="text-xl" />
@@ -192,7 +192,7 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li className="flex items-center gap-2">
-        <RiQuestionAnswerFill className="text-xl" />
+        <RiArticleFill className="text-xl" />
         <NavLink to="/all-blogs" onClick={toggleMenu}>
           Our Blogs
         </NavLink>
