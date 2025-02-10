@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState ,useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import axios from "axios";
-
+import AOS from "aos";
+import "aos/dist/aos.css"; // Import AOS styles
 const SearchBar = ({ setHotels }) => {
   const [query, setQuery] = useState("");
 
@@ -15,31 +16,41 @@ const SearchBar = ({ setHotels }) => {
       console.error("Error fetching hotels:", error);
     }
   };
-
+ useEffect(() => {
+    AOS.init({
+      duration: 1500, // Animation duration
+      easing: "ease-in-out", // Smooth effect
+      mirror:true,
+      once: false, // Animation repeats on scroll
+    });
+  }, []);
   return (
-<div className="flex flex-wrap items-center justify-center gap-4 p-6 w-full max-w-2xl mx-auto bg-white/50 backdrop-blur-md shadow-2xl rounded-2xl border border-gray-300 transition-all duration-300 hover:shadow-md">
-  {/* Input Box with Icon */}
-  <div className="relative w-full sm:w-[80%] flex  items-center">
-    <FaSearch className="absolute left-4 text-gray-500 text-xl" />
-    <input
-      type="text"
-      placeholder="Search for hotels, destinations..."
-      value={query}
-      onChange={(e) => setQuery(e.target.value)}
-      className="w-full pl-14 pr-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 text-lg bg-white placeholder-gray-400 hover:border-gray-400"
-    />
-  </div>
+<div className="flex flex-wrap items-center justify-center gap-4 w-full max-w-3xl mx-auto p-6 rounded-2xl bg-white/20 backdrop-blur-xl shadow-xl border border-gray-200 transition-all duration-300 hover:shadow-2xl" data-aos="fade-down">
+<h1 className="text-base sm:text-3xl font-extrabold text-center my-6 bg-gradient-to-r from-slate-600 to-cyan-800 text-transparent bg-clip-text drop-shadow-lg">
+  Discover Your Dream Destination
+</h1>
 
-  {/* Search Button */}
-  <button
-    onClick={handleSearch}
-    className="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold text-lg rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-  >
-    <FaSearch className="mr-2 text-xl" />
-    Search
-  </button>
-</div>
+      {/* Input Box with Animated Icon */}
+      <div className="relative w-full sm:w-[75%]">
+        <FaSearch className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-600 text-xl transition-all duration-300 group-hover:scale-110" />
+        <input
+          type="text"
+          placeholder="search your destination wherever you wanna stay..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          className="w-full pl-14 pr-4 py-3 text-lg bg-white/70 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-all duration-300 placeholder-gray-500 hover:border-gray-400 outline-none placeholder:text-sm"
+        />
+      </div>
 
+      {/* Search Button with 3D Effect */}
+      <button
+        onClick={() => handleSearch(query)}
+        className="px-6 py-3 flex items-center justify-center text-lg font-semibold text-white bg-gradient-to-r from-yellow-500 to-yellow-700 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 focus:ring-4 focus:ring-yellow-300"
+      >
+        <FaSearch className="mr-2 text-xl" />
+        Search
+      </button>
+    </div>
   );
 };
 
