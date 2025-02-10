@@ -127,8 +127,10 @@ const Home = () => {
         ))}
       </div>
     </div>
-  
-      <div className="flex flex-col sm:flex-row justify-between items-center mx-2 my-10       sm:mx-8">
+    <div data-aos="fade-up">
+  <TypingAnimation/>
+  </div>
+      <div className="flex flex-col-reverse gap-y-5 sm:flex-row justify-between items-center mx-2 my-10 sm:mx-8">
        
         <SortHotels sortOrder={sortOrder} setSortOrder={setSortOrder} sortHotels={sortHotels} />
         <CurrencyExchange
@@ -137,7 +139,7 @@ const Home = () => {
           setSelectedCurrency={setSelectedCurrency}
         />
       </div>
-  <TypingAnimation/>
+     
       <h1 className="mt-20 -mb-5       text-center font-bold text-2xl sm:text-4xl text-gray-800 p-6 sm:p-8 uppercase rounded-lg " data-aos="fade-up">
   our Top choices
 </h1>

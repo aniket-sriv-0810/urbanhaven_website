@@ -27,7 +27,7 @@ const CurrencyExchange = ({ setCurrencyRates, selectedCurrency, setSelectedCurre
         id="currency"
         value={selectedCurrency} 
         onChange={handleCurrencyChange}
-        className="w-full border-2 border-gray-300 text-gray-800 rounded-lg px-4 py-2 focus:outline-none focus:ring-2  focus:border-white appearance-none relative font-semibold text-center hover:cursor-pointer"
+        className="w-[80%] border-2 border-gray-300 text-gray-800 rounded-lg px-4 py-2 focus:outline-none focus:ring-2  focus:border-white appearance-none relative font-semibold text-center hover:cursor-pointer"
 
       >
         <option value="INR" className="">INR (₹)</option>
