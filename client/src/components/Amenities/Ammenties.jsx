@@ -8,7 +8,7 @@ const Amenities = () => {
   return (
      <div className="mt-12 px-6 lg:px-20">
       <h2 className="text-3xl font-bold text-center text-gray-800 mb-10">
-        Amenities We Provide
+        Amenities & Services Available
       </h2>
       <ul className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {[
@@ -23,7 +23,7 @@ const Amenities = () => {
         ].map((amenity, index) => (
           <li
             key={index}
-            className="flex flex-col items-center text-center p-6 bg-gray-50 shadow-md rounded-3xl hover:shadow-2xl hover:shadow-gray-200 transition-transform transform hover:scale-105 duration-300"
+            className="flex flex-col items-center text-center p-6 bg-gray-50 shadow-md rounded-3xl hover:shadow-2xl hover:shadow-gray-300 transition-transform transform hover:scale-105 duration-300"
           >
             <div className="bg-gray-100 rounded-full p-4 mb-4">
               {amenity.icon}

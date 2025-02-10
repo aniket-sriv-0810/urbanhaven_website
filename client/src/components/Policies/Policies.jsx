@@ -1,7 +1,9 @@
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Policies = () => {
+  const navigate = useNavigate();
   const policies = [
     {
       title: "Check-In and Check-Out",
@@ -57,15 +59,15 @@ const Policies = () => {
         {policies.map((policy, index) => (
           <li
             key={index}
-            className="relative bg-white shadow-lg rounded-xl p-6 hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border-l-4 border-green-500"
+            className="relative bg-white shadow-lg rounded-xl p-6 hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border-l-4 border-green-500 hover:bg-green-100 "
           >
-            <div className="flex items-start">
-              <FaCheckCircle className="text-green-600 text-4xl mr-4" />
+            <div className="flex items-start ">
+              <FaCheckCircle className="text-green-600 text-4xl mr-4 " />
               <div>
                 <h4 className="text-xl font-semibold text-gray-900 mb-2">
                   {policy.title}
                 </h4>
-                <p className="text-gray-700 text-sm leading-relaxed">
+                <p className="text-gray-700 text-sm leading-relaxed ">
                   {policy.description}
                 </p>
               </div>
@@ -79,7 +81,10 @@ const Policies = () => {
         <p className="text-gray-600 text-lg mb-4">
           Have questions about our policies? We're here to help.
         </p>
-        <button className="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition duration-300">
+        
+        <button
+        onClick={() => navigate('/contact')}
+         className="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition duration-300">
           Contact Support
         </button>
       </div>

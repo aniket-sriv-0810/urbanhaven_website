@@ -7,6 +7,7 @@ import {
 } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import axios from 'axios';
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 const MapLocation = ({ hotel }) => {
   const [coordinates, setCoordinates] = useState([28.7041, 77.1025]); // Default coordinates (New Delhi)
@@ -62,9 +63,9 @@ const MapLocation = ({ hotel }) => {
   }
 
   return (
-    <div className="bg-gray-100 shadow-lg overflow-hidden rounded-b-2xl">
-      <h2 className="text-xl font-bold text-center text-gray-800 py-4">
-        Location Map
+    <div className="bg-gray-300 shadow-lg overflow-hidden ">
+      <h2 className="text-xl flex items-center justify-center gap-3 font-bold text-center text-black py-4">
+       <FaMapMarkerAlt className='text-red-500'/> Our Hotel Location
       </h2>
       <MapContainer
         center={coordinates}
@@ -73,11 +74,11 @@ const MapLocation = ({ hotel }) => {
         className="h-[300px] sm:h-[400px] md:h-[500px] w-full "
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          attribution='&copy; UrbanHaven Hotels'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={coordinates}>
-          <Popup>
+        <Marker position={coordinates} >
+          <Popup >
             <b>{hotel?.title || 'Hotel Name Unavailable'}</b> <br />
             {hotel?.city || 'City'}, {hotel?.state || 'State'}, {hotel?.country || 'Country'}
           </Popup>
