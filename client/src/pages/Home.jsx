@@ -140,10 +140,16 @@ const Home = () => {
         />
       </div>
      
-      <h1 className="mt-20 -mb-5       text-center font-bold text-2xl sm:text-4xl text-gray-800 p-6 sm:p-8 uppercase rounded-lg " data-aos="fade-up">
-  our Top choices
+      <h1
+  className="mt-20 -mb-5 text-center font-extrabold text-2xl sm:text-5xl text-gray-900 capitalize 
+            bg-gradient-to-r from-slate-900 to-slate-700 text-transparent bg-clip-text 
+            drop-shadow-lg shadow-gray-600 p-8 rounded-xl animate-fadeIn"
+  data-aos="fade-up"
+>
+   Discover Our Top Choices
 </h1>
-      <div className="     mt-20 mb-10  flex flex-wrap justify-evenly gap-8  px-4" data-aos="fade-up">
+
+      <div className=" mt-20 mb-10  flex flex-wrap justify-evenly gap-8  px-4" data-aos="fade-up">
       
 
         {loading ? (

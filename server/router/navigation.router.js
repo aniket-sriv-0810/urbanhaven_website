@@ -4,12 +4,18 @@ import { upload } from '../multer.js';
 import { isLoggedIn } from '../middleware/authentication.js';
 import { validate } from '../middleware/validator.js';
 import { blogSchemaValidation } from '../test/blog.validator.js';
+import { faqData } from '../controller/pages.controller.js';
 
 const router =  express.Router();
 // Contact Information  Route
 router
     .route('/contact')
     .get()
+
+//FAQs  Route
+router
+    .route('/faqs')
+    .get(faqData)
 
 // Show all the Blogs
     router
