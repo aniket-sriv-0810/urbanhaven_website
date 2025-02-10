@@ -45,7 +45,7 @@ const SearchBar = ({ setHotels }) => {
       {/* Search Button with 3D Effect */}
       <button
         onClick={() => handleSearch(query)}
-        className="px-6 py-3 flex items-center justify-center text-lg font-semibold text-white bg-gradient-to-r from-yellow-500 to-yellow-700 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 focus:ring-4 focus:ring-yellow-300"
+        className="px-6 py-3 flex items-center justify-center text-lg font-semibold text-white bg-gradient-to-r from-emerald-500 to-emerald-900 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 focus:ring-4 focus:ring-yellow-300"
       >
         <FaSearch className="mr-2 text-xl" />
         Search
