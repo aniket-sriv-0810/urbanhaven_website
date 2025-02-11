@@ -6,13 +6,12 @@ import {User} from '../model/user.model.js'
 import Faq from '../model/faq.model.js';
 const contactLogic = asyncHandler ( async ( req , res) => {
   try {
-      const {user , message} = req.body ;
-     const checkUser = await User.findById(user);
-    if( !checkUser)
-        throw new ApiError (400 , "User not found !");
+      const { user , message} = req.body ;
 
-      const contact = await Contact ({ user , message})
+      const contact = new Contact ({ user , message})
       await contact.save();
+      console.log("Contact Saved successfully !");
+      
       return res.json(
         new ApiResponse(200 , {contact} , "Feedback Saved successfully!"));
   } catch (error) {

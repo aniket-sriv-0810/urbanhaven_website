@@ -1,11 +1,49 @@
 // Import necessary libraries
-import React from 'react';
+import React, { useState } from 'react';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import WebsiteLogo from '../assets/main-logo.png';
 import { useUser } from '../components/userContext/userContext';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 // Define the Contact Us component
 const ContactUs = () => {
   const {user} = useUser();
+  const [contact , setContact] = useState({
+    message:""
+  });
+  const navigate = useNavigate();
+  const handleInput = (e) => {
+    setContact({...contact , [e.target.name] : e.target.value});
+  }
+  const handleSubmit = async(e) => {
+  try {
+      e.preventDefault();
+      const dataSent = {
+        user: user._id,
+        message:contact.message
+      }
+      console.log("Data sent : " , dataSent);
+        const response = await axios.post('http://localhost:8000/v1/navigate/contact',
+          dataSent,
+          {withCredentials: true}
+        )
+        console.log("Data sent : " , dataSent);
+
+          if(response.status == 200) {
+            setContact({
+              message:""
+            })
+            navigate('/contact/confirmed');
+          }
+  } catch (error) {
+    console.error("failed to sent feedback", error);
+    
+  }
+  }
+
+
+  
+
   return (
     <section className="bg-gradient-to-r from-emerald-500 to-green-600 text-gray-900 py-16 px-6 md:px-12 lg:px-24 xl:px-32">
       <div className="max-w-7xl mx-auto">
@@ -47,18 +85,18 @@ const ContactUs = () => {
           {/* Contact Form */}
           <div className="bg-white shadow-xl rounded-xl p-8 border-t-4 border-green-500">
             <h2 className="text-2xl font-bold text-teal-700 mb-6 text-center">Send Us a Message</h2>
-            <form className="space-y-5">
+            <form className="space-y-5" onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700">Full Name</label>
-                <input type="text" id="name" className="w-full mt-1 px-4 py-2 border rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500" placeholder="Enter your full name" value={user.name} disabled />
+                <label htmlFor="user" className="block text-sm font-medium text-gray-700">Full Name</label>
+                <input name="name" type="text" id="name" className="w-full mt-1 px-4 py-2 border rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500" placeholder="Enter your full name" value={user.name} disabled />
               </div>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email Address</label>
-                <input type="email" id="email" className="w-full mt-1 px-4 py-2 border rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500" placeholder="Enter your email" value={user.email} disabled/>
+                <input name="user" type="email" id="email" className="w-full mt-1 px-4 py-2 border rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500" placeholder="Enter your email" value={user.email} disabled/>
               </div>
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700">Your Message</label>
-                <textarea id="message" rows="4" className="w-full mt-1 px-4 py-2 border rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500" placeholder="Write your message..."></textarea>
+                <textarea onChange={handleInput} name="message" id="message" rows="4" className="w-full mt-1 px-4 py-2 border rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500" placeholder="Write your message..."></textarea>
               </div>
               <button type="submit" className="w-full bg-teal-600 text-white py-3 px-4 rounded-md shadow-md hover:bg-teal-500 transition duration-300">Send Message</button>
             </form>
