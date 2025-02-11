@@ -9,7 +9,7 @@ import { FaCircleRight, FaSquarePhone } from "react-icons/fa6";
 import { BiLogoGmail } from "react-icons/bi";
 import { toast , ToastContainer , Bounce } from "react-toastify"; 
 import "react-toastify/dist/ReactToastify.css";
-
+const customId = "custom-id-yes";
 const BookingForm = ({ bookingData, setBookingData, handleNext, value, styling }) => {
   const { user } = useUser();
 
@@ -32,35 +32,36 @@ const BookingForm = ({ bookingData, setBookingData, handleNext, value, styling }
   const handleIncrement = (field) => {
     setBookingData((prev) => {
       if (field === "room" && prev.room >= 4) {
-        toast.error('Maximum of 4 rooms to be booked ', {
+        toast.error('You may book up to 4 rooms in a single reservation', {
           position: "top-right",
           autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          progress: undefined,
           theme: "colored",
           transition: Bounce,
+          toastId:customId,
+          className: ' p-0 w-max',
           });
         return prev;
       }
       if (field === "adultCount" && prev.adultCount >= prev.room * 3) {
-        toast.error('Maximum of 3 adults are allowed in single room ', {
-          position: "bottom-right",
+        toast.error('A single room can host a maximum of 3 adults for optimal comfort', {
+          position: "top-right",
           autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          progress: undefined,
           theme: "colored",
           transition: Bounce,
+          toastId:customId,
+          className: 'p-0 w-max',
           });
         return prev;
       }
       if (field === "infantCount" && prev.infantCount >= prev.room * 2) {
-        toast.error("Maximum 2 infants per room allowed.");
+        toast.error('For a comfortable stay, each room allows up to 2 infants', {
+          position: "top-right",
+          autoClose: 2000,
+          theme: "colored",
+          transition: Bounce,
+          toastId:customId,
+          className: 'p-0 w-max',
+          });
         return prev;
       }
       return { ...prev, [field]: prev[field] + 1 };
@@ -70,24 +71,24 @@ const BookingForm = ({ bookingData, setBookingData, handleNext, value, styling }
   const handleDecrement = (field) => {
     setBookingData((prev) => ({
       ...prev,
-      [field]: Math.max(1, prev[field] - 1),
+      [field]: Math.max(field === "infantCount" ? 0 : 1, prev[field] - 1),
     }));
   };
+  
+  
 
   // Handle Form Submission
   const handleFormSubmit = () => {
     if (!bookingData.checkInDate || !bookingData.checkOutDate) {
-      toast.error('Select proper Dates ', {
+      toast.error('Please select valid check-in and check-out dates before proceeding', {
         position: "top-right",
         autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
         transition: Bounce,
+        toastId:customId,
+        className: 'p-0 w-max',
         });
+     
       return;
     }
     handleNext();
@@ -121,7 +122,7 @@ const BookingForm = ({ bookingData, setBookingData, handleNext, value, styling }
             dateFormat="dd-MM-yyyy"
             minDate={new Date()}
             placeholderText="Select Check-in Date"
-            className={`${styling} pl-10`}
+            className={`${styling} pl-10 required:border-2 border-orange-500`}
             required
           />
           <MdCalendarMonth className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 text-xl" />
@@ -135,7 +136,7 @@ const BookingForm = ({ bookingData, setBookingData, handleNext, value, styling }
             dateFormat="dd-MM-yyyy"
             minDate={bookingData.checkInDate || new Date()}
             placeholderText="Select Check-out Date"
-            className={`${styling} pl-10`}
+            className={`${styling} pl-10 required:border-2 border-orange-500`}
             required
           />
           <MdCalendarMonth className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 text-xl" />

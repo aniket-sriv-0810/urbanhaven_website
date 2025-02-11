@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { jsPDF } from "jspdf"; // Import jsPDF for creating the PDF
+import { FaHotel, FaMapMarkerAlt, FaRupeeSign, FaBed, FaUserFriends, FaCalendarCheck, FaCalendarTimes, FaUser, FaEnvelope, FaPhoneAlt, FaFileDownload, FaHome } from "react-icons/fa";
+
 
 const ConfirmationPage = () => {
   const { bookingId } = useParams();
@@ -101,91 +103,56 @@ const generatePDF = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-500 to-indigo-700 p-6 text-white flex items-center justify-center">
-    <div className="w-full max-w-4xl bg-white rounded-2xl shadow-xl text-gray-800 p-8">
-      <h1 className="text-4xl font-extrabold text-center text-purple-600">
-        Booking Confirmation
-      </h1>
-      <p className="text-center text-gray-500 mt-3">
-        Your booking has been successfully confirmed. Find the details below:
-      </p>
-  
-      <div className="mt-8 space-y-6">
-        {/* Hotel Details Section */}
-        <div>
-          <h2 className="text-2xl font-bold text-gray-800">Hotel Details</h2>
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-700 p-8 flex items-center justify-center text-white">
+      <div className="w-full max-w-3xl bg-gray-800 rounded-2xl shadow-2xl p-10 space-y-8">
+        <h1 className="text-4xl font-bold text-center text-green-400">🎉 Booking Confirmed!</h1>
+        <p className="text-center text-gray-300 text-lg">Your stay is successfully booked. Check your details below.</p>
+
+        {/* Hotel Details */}
+        <div className="p-6 bg-gray-700 rounded-xl shadow-md">
+          <h2 className="text-2xl font-semibold text-indigo-300 flex items-center gap-2"><FaHotel /> Hotel Details</h2>
           <div className="flex flex-col md:flex-row gap-6 mt-4 items-center">
-            <img
-              src={hotelDetails.image}
-              alt={hotelDetails.title}
-              className="h-64 w-full md:w-1/2 object-cover rounded-xl shadow-lg"
-            />
-            <div className="w-full md:w-1/2 space-y-3">
-              <p className="text-lg text-gray-700">
-                <strong>Hotel Name:</strong> {hotelDetails.title}
-              </p>
-              <p className="text-lg text-gray-700">
-                <strong>City:</strong> {hotelDetails.city}
-              </p>
-              <p className="text-lg text-gray-700">
-                <strong>Bill:</strong> ₹{totalAmount}
-              </p>
-              <p className="text-lg text-gray-700">
-                <strong>Total Rooms:</strong> {room}
-              </p>
-              <p className="text-lg text-gray-700">
-                <strong>Adults:</strong> {adultCount}
-              </p>
+            <img src={hotelDetails.image} alt={hotelDetails.title} className="h-56 w-full md:w-1/2 object-cover rounded-xl shadow-md" />
+            <div className="w-full md:w-1/2 space-y-3 text-lg">
+              <p className="flex items-center gap-2"><FaHotel /><strong>Hotel:</strong> {hotelDetails.title}</p>
+              <p className="flex items-center gap-2"><FaMapMarkerAlt /><strong>City:</strong> {hotelDetails.city}</p>
+              <p className="flex items-center gap-2"><FaRupeeSign /><strong>Bill:</strong> ₹{totalAmount}</p>
+              <p className="flex items-center gap-2"><FaBed /><strong>Rooms:</strong> {room}</p>
+              <p className="flex items-center gap-2"><FaUserFriends /><strong>Adults:</strong> {adultCount}</p>
             </div>
           </div>
         </div>
-  
+
         {/* Dates Section */}
-        <div className="space-y-2">
-          <h3 className="text-xl font-semibold text-gray-800">Stay Duration</h3>
-          <p className="text-lg text-gray-700">
-            <strong>Check-In Date:</strong>{" "}
-            {new Date(checkInDate).toLocaleDateString("en-GB").replace(/\//g, "-")}
-          </p>
-          <p className="text-lg text-gray-700">
-            <strong>Check-Out Date:</strong>{" "}
-            {new Date(checkOutDate).toLocaleDateString("en-GB").replace(/\//g, "-")}
-          </p>
+        <div className="p-6 bg-gray-700 rounded-xl shadow-md flex flex-col md:flex-row gap-6 items-center justify-between">
+          <div className="flex-1 text-center md:text-left">
+            <h3 className="text-xl font-semibold text-indigo-300 flex items-center gap-2 justify-center md:justify-start"><FaCalendarCheck /> Stay Duration</h3>
+            <p className="my-2 text-lg"><strong>Check-In:</strong> {new Date(checkInDate).toLocaleDateString("en-GB").replace(/\//g, "-")}</p>
+            <p className="text-lg"><strong>Check-Out:</strong> {new Date(checkOutDate).toLocaleDateString("en-GB").replace(/\//g, "-")}</p>
+          </div>
         </div>
-  
-        {/* Guest Details Section */}
-        <div className="space-y-2">
-          <h3 className="text-xl font-semibold text-gray-800">Guest Details</h3>
-          <p className="text-lg text-gray-700">
-            <strong>Name:</strong> {userDetails.name}
-          </p>
-          <p className="text-lg text-gray-700">
-            <strong>Email:</strong> {userDetails.email}
-          </p>
-          <p className="text-lg text-gray-700">
-            <strong>Phone:</strong> {userDetails.phone}
-          </p>
+
+          {/* Guest Details Section */}
+          <div className="p-6 bg-gray-700 rounded-xl shadow-md flex flex-col md:flex-row gap-6 items-center justify-between">
+          <div className="flex-1 text-center  md:text-left">
+            <h3 className="text-xl font-semibold text-indigo-300 flex items-center gap-2 justify-center md:justify-start"><FaUser /> Guest Details</h3>
+            <p className="my-2 text-lg flex items-center gap-2 justify-center md:justify-start"><FaUser /><strong>Name:</strong> {userDetails.name}</p>
+            <p className="my-2 text-lg flex items-center gap-2 justify-center md:justify-start"><FaEnvelope /><strong>Email:</strong> {userDetails.email}</p>
+            <p className="my-2 text-lg flex items-center gap-2 justify-center md:justify-start"><FaPhoneAlt /><strong>Phone:</strong> {userDetails.phone}</p>
+          </div>
         </div>
-      </div>
-  
-      {/* Action Buttons */}
-      <div className="mt-8 flex flex-col md:flex-row gap-4 justify-center">
-        <button
-          onClick={generatePDF}
-          className="w-full md:w-auto px-6 py-3 bg-purple-600 text-white font-semibold rounded-xl shadow-md hover:bg-purple-700 transition-all"
-        >
-          Download as PDF
-        </button>
-        <button
-          onClick={() => navigate("/")}
-          className="w-full md:w-auto px-6 py-3 bg-gray-600 text-white font-semibold rounded-xl shadow-md hover:bg-gray-700 transition-all"
-        >
-          Back to Home
-        </button>
+
+        {/* Action Buttons */}
+        <div className="mt-8 flex flex-col md:flex-row gap-4 justify-center">
+          <button onClick={generatePDF} className="w-full md:w-auto px-6 py-3 bg-indigo-500 text-white font-semibold rounded-xl shadow-md hover:bg-indigo-600 transition-all flex items-center gap-2">
+            <FaFileDownload /> Download PDF
+          </button>
+          <button onClick={() => navigate("/")} className="w-full md:w-auto px-6 py-3 bg-gray-500 text-white font-semibold rounded-xl shadow-md hover:bg-gray-600 transition-all flex items-center gap-2">
+            <FaHome /> Home
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-  
   );
 };
 
