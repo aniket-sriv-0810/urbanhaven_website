@@ -3,7 +3,7 @@ import { asyncHandler } from '../utils/asyncHandler.js';
 import { ApiError } from '../utils/ApiError.js';
 import { ApiResponse } from '../utils/ApiResponse.js';
 import { uploadOnCloudinary } from '../utils/cloudinary.js';
-
+import mongoose from 'mongoose';
 // Show all the blogs
 const showAllBlogs = asyncHandler( async (req ,res) => {
   try {
@@ -57,8 +57,6 @@ const showBlogDetails = asyncHandler ( async ( req , res) => {
          }
  
          const blogDetails = await Blog.findById(id);
-         console.log("Blog details fetched ...");
- 
          return res.json(
              new ApiResponse(200 , {blogDetails} , "Blog details fetched successfully !")
          )

@@ -1,11 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
+import { useNavigate , Link } from "react-router-dom";
+import { FaRegEdit } from "react-icons/fa";
+import { useUser } from "../components/userContext/userContext";
 const AllBlogs = () => {
   const [blogData, setBlogData] = useState([]); // Initialize with an empty array
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const navigate = useNavigate();
+  const {user} = useUser();
   const fetchData = async () => {
     try {
       const response = await axios.get("http://localhost:8000/v1/navigate/blogs", {
@@ -46,17 +49,25 @@ const AllBlogs = () => {
               key={blog._id}
               className="bg-white shadow-md rounded-lg overflow-hidden transition-transform transform hover:scale-105"
             >
+            
               <img
                 src={blog.image}
                 alt="Blog"
                 className="w-full h-60 object-cover"
               />
+              
               <div className="p-4">
-                <h2 className="text-xl font-bold text-gray-900">{blog.title}</h2>
+                <h2 className="flex items-center justify-between text-xl font-bold text-gray-900">{blog.title}
+                {user.role === "admin"  ?
+                <Link to={`/blog/${blog._id}/>edit`}>
+                 <FaRegEdit className="w-4 h-4 m-2 text-gray-400 hover:scale-110 hover:text-green-600 hover:cursor-pointer" />
+                 </Link>
+                : null}
+                 </h2>
                 <p className="text-gray-600 mt-2 line-clamp-3">
                   {blog.description}
                 </p>
-                <button className="mt-3 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+                <button className="mt-3 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition" onClick={() => navigate(`/blog/${blog._id}`)} >
                   Read More
                 </button>
               </div>

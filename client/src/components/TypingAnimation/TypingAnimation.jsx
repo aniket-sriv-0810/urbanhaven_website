@@ -19,9 +19,9 @@ const TypingAnimation = () => {
   <h3 className="text-xl sm:text-3xl lg:text-4xl font-bold text-yellow-300 mt-4 drop-shadow-xl animate-pulse">
     <Typewriter
       words={[
-        "🌟 Luxurious & Affordable Stays",
-        "🔒 24/7 Secure & Hassle-Free Booking",
-        "🏨 Top-Rated & Verified Properties",
+        " Luxurious & Affordable Stays",
+        " 24/7 Secure & Hassle-Free Booking",
+        " Top-Rated & Verified Properties",
       ]}
       loop={true}
       cursor
