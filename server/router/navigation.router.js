@@ -8,19 +8,23 @@ import { contactLogic, faqData } from '../controller/pages.controller.js';
 import { contactSchemaValidation } from '../test/contact.validator.js';
 
 const router =  express.Router();
-// Contact Information  Route
+
+
+// Contact & Feedbacks Route
 router
     .route('/contact')
     .post(isLoggedIn ,validate(contactSchemaValidation) , contactLogic)
 
-//FAQs  Route
+
+//FAQs Rendering Route
 router
     .route('/faqs')
     .get(faqData)
 
-// Show all the Blogs
+
+// All Blogs Routes
     router
-         .route('/blogs')
+         .route('/all-blogs')
          .get(showAllBlogs)
 
 // Create a new Blog Route
@@ -28,17 +32,20 @@ router
     .route('/add-blog')
     .post(isLoggedIn , upload.single('image') ,validate(blogSchemaValidation) , createBlog)
 
-//Show a particular Blog
+
+//Show a particular Blog Route
 router
      .route('/blog/:id')
      .get(showBlogDetails)
 
-// Edit a particular Blog
+
+// Edit a particular Blog Route
 router
      .route('/blog/:id/edit')
      .put(isLoggedIn , upload.single('image') , validate(blogSchemaValidation) , editBlog)
 
-// Delete a particular Blog
+
+// Delete a particular Blog Route
 router
      .route('/blog/:id/delete')
      .delete(isLoggedIn , deleteBlog)

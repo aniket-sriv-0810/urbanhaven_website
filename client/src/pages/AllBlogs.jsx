@@ -13,7 +13,7 @@ const AllBlogs = () => {
   const {id} = useParams();
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/v1/navigate/blogs", {
+      const response = await axios.get("http://localhost:8000/v1/navigate/all-blogs", {
         withCredentials: true,
       });
       console.log(response.data.data.allBlogs);

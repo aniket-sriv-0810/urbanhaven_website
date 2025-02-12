@@ -8,6 +8,7 @@ import Hotel from '../model/hotel.model.js';
 import { User } from '../model/user.model.js';
 import Review from '../model/review.model.js';
 import Booking from '../model/booking.model.js';
+import Blog from '../model/blog.model.js';
 // Database configuration
 main()
 .then(() =>{
@@ -57,7 +58,8 @@ const initDB = async() => {
     // await Booking.deleteMany({});
     // await Review.deleteMany({});
     // await Hotel.insertMany(sampleData);
-    await Faq.insertMany(faqData);
+    // await Faq.insertMany(faqData);
+    await Blog.deleteMany({});
     console.log("Data inserted successfully !");
 }
 

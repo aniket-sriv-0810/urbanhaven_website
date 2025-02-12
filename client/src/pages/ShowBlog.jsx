@@ -63,6 +63,7 @@ const ShowBlog = () => {
             <Link to={`/blog/${blog._id}/delete`}>
                  <MdDeleteForever className="w-4 h-4 m-2 text-gray-400 hover:scale-110 hover:text-red-600 hover:cursor-pointer" onClick={deleteBlog} />
                  </Link></h1>
+                 <p>Blog ID : {blog._id}</p>
             <p className="text-gray-600 text-base">{blog.description}</p>
           </div>
         </div>

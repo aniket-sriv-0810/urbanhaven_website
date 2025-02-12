@@ -4,10 +4,7 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import passport from './middleware/passport.middleware.js';
 
-
-
 const app = express();
-
 
 // middleware setup
 const corsSessionOption = {
@@ -49,6 +46,8 @@ import navigateRouter from './router/navigation.router.js';
 app.use('/' , hotelRouter);
 app.use('/v1/user' , userRouter);
 app.use('/v1/admin', adminRouter);
+
+//Router for - Blogs , Faqs and Contact
 app.use('/v1/navigate' , navigateRouter);
 
 
