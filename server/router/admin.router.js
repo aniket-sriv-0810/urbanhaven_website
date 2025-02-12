@@ -8,35 +8,43 @@ import { isLoggedIn } from '../middleware/authentication.js';
 
 const router = express.Router();
 
+// CORE Route - /v1/admin
 
+// Admin Dashboard Data Route
 router
      .route('/')
      .get(isLoggedIn , adminDashboardData)
 
-// All Registered Users detailed  Route!
+
+// All Registered Users details Route
 router
      .route('/users')
      .get( isLoggedIn,adminUserData)
 
-// All Registered Users detailed  Route!
+
+// All Listed Hotels details Route
 router
      .route('/hotels')
      .get( isLoggedIn,adminHotelData)
 
-// All Booking Details Route!
+
+// All Booking Details Route
 router
      .route('/bookings')
      .get( isLoggedIn,adminBookingData)
 
-// All Contact Queries detailed Route !
+
+// All Contact & Feedbacks details Route
 router
      .route('/contacts')
      .get( isLoggedIn,adminContactData)
+
 
 // Register a new Hotel in the website Route
 router
      .route('/new-hotel')
      .post( isLoggedIn , upload.single('image') ,validate(hotelSchemaValidation) ,newHotelCreation )
+
 
 // Edit the Hotel details in the website Route
 router

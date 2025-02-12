@@ -45,6 +45,9 @@ import navigateRouter from './router/navigation.router.js';
 // For hotel Routes
 app.use('/' , hotelRouter);
 app.use('/v1/user' , userRouter);
+
+
+//Router for - Admin details routes and adding new listings & blogs
 app.use('/v1/admin', adminRouter);
 
 //Router for - Blogs , Faqs and Contact

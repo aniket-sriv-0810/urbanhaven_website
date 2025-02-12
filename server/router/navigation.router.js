@@ -9,6 +9,8 @@ import { contactSchemaValidation } from '../test/contact.validator.js';
 
 const router =  express.Router();
 
+// CORE Route - /v1/navigate
+
 
 // Contact & Feedbacks Route
 router
