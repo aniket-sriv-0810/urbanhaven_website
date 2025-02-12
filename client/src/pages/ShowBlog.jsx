@@ -3,7 +3,7 @@ import { useParams , Link } from "react-router-dom";
 import axios from "axios";
 import { FaHome } from "react-icons/fa";
 import { GrArticle } from "react-icons/gr";
-
+import { MdDeleteForever } from "react-icons/md";
 const ShowBlog = () => {
   const [blog, setBlog] = useState(null);
   const { id } = useParams();
@@ -29,6 +29,19 @@ const ShowBlog = () => {
     fetchData();
   }, []);
 
+  const deleteBlog = async() => {
+    try {
+     const response = await axios.delete(`http://localhost:8000/v1/navigate/blog/${id}/delete`,
+       {withCredentials: true});
+    
+       if(response.status == 200 ){
+        alert("Blog deleted successfully !")
+       }
+    } catch (error) {
+     console.error("Failed to delete Blog " , error);
+    }
+   }
+
   return (
     <div className="flex flex-col justify-center items-center min-h-screen bg-gray-200 px-4">
       {loading ? (
@@ -46,7 +59,10 @@ const ShowBlog = () => {
             className="w-full h-60 object-cover"
           />
           <div className="p-6">
-            <h1 className="text-2xl font-bold text-gray-800 mb-4">{blog.title}</h1>
+            <h1 className="text-2xl font-bold text-gray-800 mb-4">{blog.title}
+            <Link to={`/blog/${blog._id}/delete`}>
+                 <MdDeleteForever className="w-4 h-4 m-2 text-gray-400 hover:scale-110 hover:text-red-600 hover:cursor-pointer" onClick={deleteBlog} />
+                 </Link></h1>
             <p className="text-gray-600 text-base">{blog.description}</p>
           </div>
         </div>

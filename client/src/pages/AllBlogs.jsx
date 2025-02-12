@@ -1,14 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate , Link } from "react-router-dom";
+import { useNavigate , Link, useParams } from "react-router-dom";
 import { FaRegEdit } from "react-icons/fa";
 import { useUser } from "../components/userContext/userContext";
+
 const AllBlogs = () => {
   const [blogData, setBlogData] = useState([]); // Initialize with an empty array
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const {user} = useUser();
+  const {id} = useParams();
   const fetchData = async () => {
     try {
       const response = await axios.get("http://localhost:8000/v1/navigate/blogs", {
@@ -30,6 +32,8 @@ const AllBlogs = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+
 
   if (loading) return <p className="text-center text-lg font-semibold mt-10">Loading Blogs...</p>;
   if (error) return <p className="text-red-500 text-center mt-10">{error}</p>;
@@ -59,9 +63,11 @@ const AllBlogs = () => {
               <div className="p-4">
                 <h2 className="flex items-center justify-between text-xl font-bold text-gray-900">{blog.title}
                 {user.role === "admin"  ?
-                <Link to={`/blog/${blog._id}/>edit`}>
+                <div className="flex gap-3 items-center">
+                <Link to={`/blog/${blog._id}/edit`}>
                  <FaRegEdit className="w-4 h-4 m-2 text-gray-400 hover:scale-110 hover:text-green-600 hover:cursor-pointer" />
                  </Link>
+                 </div>
                 : null}
                  </h2>
                 <p className="text-gray-600 mt-2 line-clamp-3">

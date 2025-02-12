@@ -128,4 +128,4 @@ const deleteBlog = asyncHandler ( async ( req , res) => {
 })
 
 
-export {showAllBlogs , createBlog , showBlogDetails , editBlog}
+export {showAllBlogs , createBlog , showBlogDetails , editBlog, deleteBlog}

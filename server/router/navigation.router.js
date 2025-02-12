@@ -1,5 +1,5 @@
 import express from 'express';
-import { createBlog, editBlog, showAllBlogs, showBlogDetails } from '../controller/blog.controller.js';
+import { createBlog, deleteBlog, editBlog, showAllBlogs, showBlogDetails } from '../controller/blog.controller.js';
 import { upload } from '../multer.js';
 import { isLoggedIn } from '../middleware/authentication.js';
 import { validate } from '../middleware/validator.js';
@@ -41,7 +41,7 @@ router
 // Delete a particular Blog
 router
      .route('/blog/:id/delete')
-     .delete()
+     .delete(isLoggedIn , deleteBlog)
 
 
      export default router ;
