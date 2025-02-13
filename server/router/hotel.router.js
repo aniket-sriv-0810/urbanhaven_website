@@ -21,24 +21,30 @@ router
     .get(allHotel)
 // Search Route Page
     router.get("/search", searchHotels);
+
+
 // Show a Particular Hotel Route
 router
      .route('/v1/hotel/:id')
      .get( isLoggedIn, showMyHotel)
 
- // Create a new Review
+
+ // Create a new Review for a particular hotel Route
 router
      .route('/v1/hotel/:id/review')
      .post( isLoggedIn , validate(reviewSchemaValidation),createReview)
 
-// Booking  a particular hotel route
+
+// Booking  a particular hotel Route
 router
       .route('/v1/hotel/:id/booking')
       .post(isLoggedIn , validate(bookingSchemaValidation)  ,bookingHotel)
 
-// Confirmation page route
+
+// Confirmation page Route
 router
       .route('/v1/booking/:id')
       .get(isLoggedIn, confirmationDetails)
+
 
 export default router ;

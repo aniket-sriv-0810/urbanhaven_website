@@ -77,17 +77,26 @@ const newHotelCreation = asyncHandler(async (req, res) => {
     throw new ApiError(400, error.message, "Failed to Register a new Hotel!");
   }
 });
-// Show  a particular hotel
+
+
+// Show  a particular hotel Controller Code
 const showMyHotel = async(req , res ) => {
    try {
      let {id} = req.params;
-    
-     if(!id){
-         throw new ApiError(400 ,"Hotel ID is required!");
-    }
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      throw new ApiError(400, "Invalid ID", "Failed to Show the Hotel!");
-    }
+        console.log("Body:", req.body);
+
+    // Check if Hotel ID is not found or if it is Valid
+              if(!id){
+                return res.status(404).json(
+                   new ApiError(404 ,"Hotel ID is required!")
+                )
+             }
+             if (!mongoose.Types.ObjectId.isValid(id)) {
+              return res.status(400).json(
+                 new ApiError(400, "Invalid ID", "Invalid ID ! Failed to Show the Review!")
+              )
+             }
+        
      const showHotel = await Hotel.findById(id) .populate({
       path: "review", // Populate the reviews array
       populate: {
@@ -95,23 +104,33 @@ const showMyHotel = async(req , res ) => {
         select: "name username image", // Only include specific fields from User model
       },
     });
+    
+    if(!showHotel){
+      return res.status(404).json(
+        new ApiError(404, "Unable to Find ", "Hotel Details Unavailable !")
+     )
+    }
 
     const totalReviews = showHotel.review.length; // Count the reviews
 
      // Calculate the average rating
      const totalRatings = showHotel.review.reduce((acc, review) => acc + review.rating, 0);
      const avgRating = showHotel.review.length > 0 ? (totalRatings / showHotel.review.length).toFixed(2) : 0;
- 
-     if (!showHotel) {
-      throw new ApiError(404, "Hotel not found", "Failed to Show the Hotel!");
+
+     if(!totalReviews || !totalRatings || !avgRating){
+      return res.status(404).json(
+        new ApiError(404, "Unable to Find ", "Reviews Details Unavailable !")
+     )
     }
-    
+
      console.log("My Hotel => " ,showHotel);
      console.log("Review Count => " ,totalReviews);
      return res.status(200).json(new ApiResponse(200 , {showHotel , allReviews : showHotel.review , totalReviews , avgRating} , "Here's my hotel !"));
    }
    catch (error) {
-   throw new ApiError(400 , error , "Failed to Show the Hotel !"); 
+      return res.status(400).json(
+        new ApiError(400, "Unable to Find ", "FAILED to show Hotel Details !")
+     )
    }
 };
 
