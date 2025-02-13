@@ -17,22 +17,25 @@ router
      .route('/register')
      .post( validate(userSchemaValidation) , createNewUser);
 
-// Login of the registered user
+
+// Login of the registered user Route
 router
      .route('/login')
      .post( validate(loginUserValidation) ,loginUser);
 
-// Logout of the registered user
+
+// Logout of the registered user Route
 router
      .route('/logout')
      .post(logOutUser);
 
-// Check for the user authentication
+
+// Check for the user authentication Route
 router
      .route('/auth')
      .get(checkAuthentication)
 
-// User Account Details
+// User Account Details Route
 router
      .route('/:id/account')
      .get( isLoggedIn,userAccountDetails)
