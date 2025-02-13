@@ -8,27 +8,41 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import mongoose from "mongoose";
 
 
-// User Account Details
+// User Account Details Controller Code
 const userAccountDetails = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
-    console.log("Id=", id);
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      throw new ApiError(400, null, "User ID is invalid!");
-    }
+    if(!id){
+      return res.status(400).json(
+         new ApiError(400 ,"User ID is required!")
+      )
+   }
+   if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json(
+       new ApiError(400, "Invalid ID", "Invalid ID ! Failed to Show the User details !")
+    )
+   }
     const userInfo = await User.findById(id);
-    if (!userInfo) throw new ApiError(400, null, "user doesn't exist");
+    if (!userInfo){
+      return response.status(400).json(
+        new ApiError(400, null, "user doesn't exist")
+      )
+    }
     console.log("User Info =>", userInfo);
 
     return res
       .status(200)
-      .json(new ApiResponse(200, { userInfo }, "User detailed !"));
-  } catch (error) {
+      .json(new ApiResponse(200, { userInfo }, "User details !"));
+  }
+  catch (error) {
     console.error("User data fetch error", error);
+    return response.status(400).json(
+      new ApiError(400, null, "Failed to Show the User details !")
+    )
   }
 });
 
-// Show the particular booking booked by User
+// Show the particular booking booked by User Controller Code
 const userBookingDetails = asyncHandler ( async ( req , res) => {
   try {
     const {id} = req.params ;
