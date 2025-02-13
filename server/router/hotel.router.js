@@ -19,8 +19,11 @@ const router =  express.Router();
 router
     .route('/')
     .get(allHotel)
+
+
 // Search Route Page
-    router.get("/search", searchHotels);
+    router
+    .get("/search", searchHotels);
 
 
 // Show a Particular Hotel Route

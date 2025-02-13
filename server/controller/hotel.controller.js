@@ -6,35 +6,56 @@ import { uploadOnCloudinary } from '../utils/cloudinary.js';
 import mongoose from 'mongoose';
 
 
-// Home Page Logic - Display all the hotels
+// Home Page Logic - Display all the hotels Controller Code
 const allHotel = async(req,res) =>{
    try {
      const allHotel = await Hotel.find({});
+
+     if(!allHotel) {
+      return res.status(404).json(
+        new ApiError(404 , "No Hotels Found " , "Hotels unavailable !")
+      )
+     }
      return res.status(200).json(
        new ApiResponse(200 , {allHotel} , "List of all Hotels ! ")
      );
-   } catch (error) {
-    throw new ApiError(400 , error.message , "Unable to display all hotels");
+   }
+   catch (error) {
+    return res.status(400).json(
+      new ApiError(400 , error.message , "Unable to display all hotels")
+    )
    }
 };
-// Search hotel
+
+
+// Search hotel as per search and query Controller Code
 const searchHotels = async (req, res) => {
   try {
-    const { query } = req.query;
+    const { q } = req.query;
 
-    if (!query) {
+    if (!q) {
       return res.status(400).json({ message: "Query parameter is required" });
     }
 
-    const regex = new RegExp(query, "i"); // Case-insensitive search
+    const regex = new RegExp(q, "i"); // Case-insensitive search
 
     const hotels = await Hotel.find({
       $or: [{ name: regex }, { city: regex }, { state: regex }, { country: regex }],
     });
 
-    res.status(200).json(hotels);
-  } catch (error) {
-    res.status(500).json({ message: "Server Error", error: error.message });
+    if(hotels.length <= 0){
+      return res.status(404).json(
+        new ApiError (404 , ["Not Found"] , "No Hotel Found !")
+      )
+    }
+
+    return res.status(200).json(
+      new ApiResponse(200 , {hotels} , "Here's your required hotels !")
+    );
+
+  } 
+  catch (error) {
+    return res.status(400).json({ message: "Server Error", error: error.message });
   }
 };
 
