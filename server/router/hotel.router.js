@@ -36,7 +36,7 @@ router
       .route('/v1/hotel/:id/booking')
       .post(isLoggedIn , validate(bookingSchemaValidation)  ,bookingHotel)
 
-// Confirmation page
+// Confirmation page route
 router
       .route('/v1/booking/:id')
       .get(isLoggedIn, confirmationDetails)

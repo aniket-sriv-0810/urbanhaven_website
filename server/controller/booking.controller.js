@@ -100,12 +100,12 @@ const confirmationDetails = asyncHandler( async ( req , res) => {
         const {id} = req.params;
         if(!id){
             return res.status(400).json(
-               new ApiError(400 ,"Booking ID is required!")
+               new ApiError(400 ,"Hotel ID is required!")
             )
          }
          if (!mongoose.Types.ObjectId.isValid(id)) {
           return res.status(400).json(
-             new ApiError(400, "Invalid ID", "Invalid ID ! Failed to Show the Confirmation Page !")
+             new ApiError(400, "Invalid ID", "Invalid ID ! Failed to Show the Hotel Booking !")
           )
          }
 
@@ -115,7 +115,7 @@ const confirmationDetails = asyncHandler( async ( req , res) => {
 
         if(!booking){
             return res.status(404).json(
-               new ApiError(404 ,"Booking details are required!")
+               new ApiError(404 ,["INVALID ID"] ,"INVALID ID ! Booking details are not found!")
             )
          }
 
@@ -125,7 +125,7 @@ const confirmationDetails = asyncHandler( async ( req , res) => {
         )
     } catch (error) {
         return res.status(400).json(
-            new ApiError(400 , error , "Fetching booking details failed !")
+            new ApiError(400 , error , "Fetching booking details failed !"  )
         )
     }
 })
