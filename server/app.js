@@ -43,6 +43,8 @@ import userRouter from './router/user.router.js';
 import adminRouter from './router/admin.router.js';
 import navigateRouter from './router/navigation.router.js';
 // For hotel Routes
+
+//Router for - Hotels ,Reviews and Booking
 app.use('/' , hotelRouter);
 app.use('/v1/user' , userRouter);
 

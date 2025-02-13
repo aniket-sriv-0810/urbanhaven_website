@@ -10,7 +10,10 @@ import {bookingSchemaValidation } from '../test/booking.validator.js';
 
 
 
+
 const router =  express.Router();
+
+//CORE Route - '/'
 
 // Home Route Page
 router
@@ -31,7 +34,7 @@ router
 // Booking  a particular hotel route
 router
       .route('/v1/hotel/:id/booking')
-      .post(isLoggedIn ,  bookingHotel)
+      .post(isLoggedIn , validate(bookingSchemaValidation)  ,bookingHotel)
 
 // Confirmation page
 router
