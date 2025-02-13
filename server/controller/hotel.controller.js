@@ -53,13 +53,13 @@ const searchHotels = async (req, res) => {
       new ApiResponse(200 , {hotels} , "Here's your required hotels !")
     );
 
-  } 
+  }
   catch (error) {
     return res.status(400).json({ message: "Server Error", error: error.message });
   }
 };
 
-// Register a new Hotel Logic
+// Register a new Hotel Logic Controller Code
 const newHotelCreation = asyncHandler(async (req, res) => {
   try {
     const {
@@ -73,12 +73,24 @@ const newHotelCreation = asyncHandler(async (req, res) => {
 
     // Validate files existence
   if(!req.file){
-    throw new ApiError(400 , "Image file not found !");
+    return res.status(404).json(
+      new ApiError(404 , ["Validation Error"] ,"Image file not found !")
+    )
+  }
+  const existenceTitle = await Hotel.findOne({title});
+  if(existenceTitle){
+    return res.status(400).json(
+      new ApiError(400 , ["Validation Error"] ,"Hotel Title already exists !")
+    )
   }
   const imagePath = req.file.path ;
   const image = await uploadOnCloudinary(imagePath);
 
-
+if(!image){
+  return res.status(404).json(
+    new ApiError(400 , ["Validation Error !"] , "Image URL is required !")
+  )
+}
     // Create a new hotel
     const newHotel = new Hotel({
       title,
@@ -89,13 +101,23 @@ const newHotelCreation = asyncHandler(async (req, res) => {
       country,
       image:image.url, // Save Cloudinary URL
     });
+    if(!newHotel){
+      return res.status(404).json(
+        new ApiError(404 , ["Validation Error"] , "Hotel Creation Failed !")
+      )
+    }
+
     await newHotel.save();
 
     console.log("New hotel saved!");
+
     return res.status(200).json(new ApiResponse(200, "Hotel Successfully Registered!"));
-  } catch (error) {
+  } 
+  catch (error) {
     console.error("Error in newHotelCreation:", error);
-    throw new ApiError(400, error.message, "Failed to Register a new Hotel!");
+    return res.json(400).json(
+      new ApiError(400, error.message, "Failed to Register a new Hotel!")
+    )
   }
 });
 
@@ -155,17 +177,23 @@ const showMyHotel = async(req , res ) => {
    }
 };
 
-// Edit a particular hotel
+// Edit a particular hotel Controller Code
 const editMyHotel =  asyncHandler(async (req , res) => {
     try {
       let {id} = req.params;
       const {title , description , price , city , state , country} = req.body;
+      // Check if Hotel ID is not found or if it is Valid
       if(!id){
-        throw new ApiError(400 ,"Hotel ID is required!");
-   }
-   if (!mongoose.Types.ObjectId.isValid(id)) {
-     throw new ApiError(400, "Invalid ID", "Failed to Show the Hotel!");
-   }
+        return res.status(400).json(
+           new ApiError(400 ,"Hotel ID is required!")
+        )
+     }
+     if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json(
+         new ApiError(400, "Invalid ID", "Invalid ID ! Failed to Show the Hotel!")
+      )
+     }
+
   console.log("Req.file =>" , req.file);
   let cloudinaryResult = null;
 
@@ -192,13 +220,20 @@ const editMyHotel =  asyncHandler(async (req , res) => {
     new: true,
     runValidators: true,
   });
+
   if(!updatedData){
-    throw new ApiError(400,"Couldn't find updated hotel !" , "Something went wrong")
+    return res.status(400).json(
+      new ApiError(400," Something went wrong!" , "Couldn't find updated hotel !")
+    )
   }
-  res.status(200).json(new ApiResponse(200, {updatedHotel} , "Hotel Updated Successfully !"));
-    } 
+  return  res.status(200).json(
+    new ApiResponse(200, {updatedHotel} , "Hotel Updated Successfully !")
+  );
+    }
     catch (error) {
-    throw new ApiError (400 , error ,  "Error in updating the hotel details !");  
+      return res.status(400).json(
+        new ApiError (400 , error ,  "Error in updating the hotel details !")
+      )
     }
 });
 
@@ -206,23 +241,34 @@ const editMyHotel =  asyncHandler(async (req , res) => {
 const deleteMyHotel =  asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
-    if(!id){
-      throw new ApiError(400 ,"Hotel ID is required!");
- }
- if (!mongoose.Types.ObjectId.isValid(id)) {
-   throw new ApiError(400, "Invalid ID", "Failed to Show the Hotel!");
- }
+     // Check if Hotel ID is not found or if it is Valid
+     if(!id){
+      return res.status(400).json(
+         new ApiError(400 ,"Hotel ID is required!")
+      )
+   }
+   if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json(
+       new ApiError(400, "Invalid ID", "Invalid ID ! Failed to Show the Hotel!")
+    )
+   }
     console.log("Hotel ID to delete:", id); // Debugging
+
     const deletedHotel = await Hotel.findByIdAndDelete(id);
+
     if (!deletedHotel) {
-      throw new ApiError(400,"Unable to delete the hotel !")
+      return res.status(404).json(
+        new ApiError(400,["Validation Error"], "Unable to delete the hotel !")
+      )
     }
     return res.status(200).json(
       new ApiResponse(200 , " Deleted Successfully !")
     );
   }
   catch (error) {
-    throw new ApiError(400 , error , "Failed to delete the hotel !");
+    return res.status(400).json(
+      new ApiError(400 , error , "Failed to delete the hotel !")
+    )
   }
 });
 
