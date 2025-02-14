@@ -26,6 +26,7 @@ const InputField = forwardRef(({ type, name, placeholder, value, onChange, error
         className={` pl-10 ${inputStyling} ${
           error ? "border-red-500" : value ? "border-green-500 " : " border-gray-200"
         }`}
+        required
       />
   
     </div>

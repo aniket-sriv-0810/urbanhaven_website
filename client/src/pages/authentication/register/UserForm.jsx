@@ -76,7 +76,7 @@ const UserForm = () => {
   };
 
   return (
-    <form className="flex flex-col gap-y-4 lg:p-5" onSubmit={handleSubmitForm}>
+    <form className="flex flex-col gap-y-4 md:p-5 lg:p-5" onSubmit={handleSubmitForm}>
       <InputField Icon={FaUser} type="text" name="name" placeholder="Enter your name" value={newUser.name} onChange={handleInputChange} error={formErrors.name} inputRef={inputRefs.name} />
       <InputField Icon={BiSolidUserDetail} type="text" name="username" placeholder="Enter your username" value={newUser.username} onChange={handleInputChange} error={formErrors.username} inputRef={inputRefs.username} />
       <InputField Icon={FaPhoneAlt} type="number" name="phone" placeholder="Enter phone number" value={newUser.phone} onChange={handleInputChange} error={formErrors.phone} inputRef={inputRefs.phone}  />

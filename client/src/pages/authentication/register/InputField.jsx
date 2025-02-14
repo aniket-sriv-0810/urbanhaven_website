@@ -19,6 +19,7 @@ const InputField = ({ Icon, type, name, placeholder, value, onChange, error, inp
         }`}
         value={value}
         onChange={onChange}
+        required
       />
       
       {/* Error Message */}
