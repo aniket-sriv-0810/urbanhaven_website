@@ -62,12 +62,6 @@ router
      .get( isLoggedIn,userBookingDetails)
 
 
-// User Account - EDIT Bookings Details Route
-router
-     .route('/:id/account/booking/:id/edit')
-     .put( isLoggedIn, validate(userSchemaValidation) ,userAccountDetails)
-
-
 // User Account - CANCEL Bookings Details
 router
   .route('/:userId/account/booking/:bookingId/cancel')

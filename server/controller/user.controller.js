@@ -81,7 +81,7 @@ const userBookingDetails = asyncHandler ( async ( req , res) => {
   }
   catch (error) {
     return res.status(400).json (
-      new ApiError(400 , error , "Failed to Show the Booking data!")
+      new ApiError(400 ,  "Failed to Show the Booking data ! " , error = error)
     )
   }
 })
@@ -129,8 +129,6 @@ const cancelBooking = asyncHandler(async (req, res) => {
     );
   }
 });
-
-
 
 // ADD & REMOVE Hotel Wishlists Controller Code
 const toggleWishlist = async (req, res) => {
