@@ -12,6 +12,8 @@ import { loginUserValidation } from '../test/login.validator.js';
 import { isLoggedIn } from '../middleware/authentication.js';
 const router = express.Router();
 
+// CORE Route - /v1/user
+
 // Register a New user Route
 router
      .route('/register')
@@ -35,44 +37,53 @@ router
      .route('/auth')
      .get(checkAuthentication)
 
+
 // User Account Details Route
 router
      .route('/:id/account')
      .get( isLoggedIn,userAccountDetails)
 
-// User Account WishLists Details
+
+// User Account WishLists Details Route
 router
      .route('/:id/account/wishlists')
      .get( isLoggedIn,getWishlist)
 
-// User Account - ADD & REMOVE WishLists
+
+// User Account - ADD & REMOVE WishLists Route
 router
      .route('/:id/account/wishlist')
      .post( isLoggedIn,toggleWishlist)
 
-// User Account Bookings Details
+
+// User Account Bookings Details Route
 router
      .route('/:id/account/bookings')
      .get( isLoggedIn,userBookingDetails)
 
-// User Account - EDIT Bookings Details
+
+// User Account - EDIT Bookings Details Route
 router
      .route('/:id/account/booking/:id/edit')
-     .put( isLoggedIn,userAccountDetails)
+     .put( isLoggedIn, validate(userSchemaValidation) ,userAccountDetails)
+
 
 // User Account - CANCEL Bookings Details
 router
-     .route('/:id/account/booking/:id/cancel')
-     .get( isLoggedIn,userAccountDetails, cancelBooking)
+  .route('/:userId/account/booking/:bookingId/cancel')
+  .delete(isLoggedIn, cancelBooking);
 
-// User Account Edit Details
+
+// User Account Edit Details Route
 router
      .route('/:id/account/edit')
      .put(  isLoggedIn,upload.single('image'),validate(userSchemaValidation)  ,userAccountEditDetails)
 
-// User Account Delete
+
+// User Account Delete Route
 router
      .route('/:id/account/delete')
      .delete( isLoggedIn,userAccountDelete)
+
 
 export default router;
