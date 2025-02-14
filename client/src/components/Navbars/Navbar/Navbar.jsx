@@ -15,6 +15,7 @@ import { RiShieldUserLine , RiArticleFill } from "react-icons/ri";
 import { PiUserCirclePlusBold } from "react-icons/pi";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
+import DesktopNavbar from './DesktopNavbar';
 const Navbar = () => {
   const { user, setUser } = useUser();
   const navigate = useNavigate();
@@ -60,92 +61,7 @@ const Navbar = () => {
           </h1>
         </div>
 
-        {/* Desktop Menu */}
-        <ul className="hidden capitalize lg:flex absolute right-7 gap-9  items-center  " data-aos="fade-up">
-        <li className={` ${navLinkStyling} ${user ? (user.role === "admin" ? "admin" : "hidden") : ""} `}>
-        <Tippy content="Admin Panel" >
-          <NavLink to="/admin/dashboard">
-           Admin
-          </NavLink>
-        </Tippy>
-      </li>
-          <li className={`${navLinkStyling}`}>
-          <Tippy content="Home">
-            <NavLink to="/">
-              Home
-            </NavLink>
-            </Tippy>
-          </li>
-          <li className={`${navLinkStyling}`}>
-          <Tippy content="Contact Us">
-            <NavLink to="/contact">
-             Connect
-            </NavLink>
-            </Tippy>
-          </li>
-          <li className={`${navLinkStyling}`}>
-          <Tippy content="About Us" >
-            <NavLink to="/about">
-              about us
-            </NavLink>
-            </Tippy>
-          </li>
-          <li className={`${navLinkStyling}`}>
-          <Tippy content="Our Blogs" >
-            <NavLink to="/all-blogs">
-              blogs
-            </NavLink>
-            </Tippy>
-          </li>
-          
-          <li>
-          <Tippy content="Viw Profile">
-            <NavLink to={user ? `/user/${user._id}/account` : '/user/login'} >
-              {user ? (
-                <img
-                  src={user.image}
-                  alt={user.name}
-                  className="w-10 h-10 rounded-full border-2 border-black"
-                />
-              ) : (
-                <FaUserCircle className="text-2xl text-white" />
-              )}
-            </NavLink>
-            </Tippy>
-          </li>
-          {user ? (
-            
-            <button
-            onClick={handleLogout}
-            className="bg-transparent px-4 py-3 rounded-lg hover:shadow-md hover:shadow-gray-800  hover:bg-red-600 hover:bg-opacity-60 text-sm "
-            >
-            <span className='flex gap-2'>
-            Logout <MdOutlineLogout className="text-white w-5 h-5"/>
-            </span>
-            </button>
-            
-          ) : (
-            <>
-              <button
-                onClick={() => navigate('/user/login')}
-                className="bg-transparent px-3 py-3 rounded-lg hover:shadow-md hover:shadow-gray-800 hover:bg-green-600 hover:bg-opacity-60"
-                >
-                <span className='flex gap-2'>
-                Login  <RiShieldUserLine className="text-white w-5 h-5 mt-1"/>
-                </span>
-                </button>
-                <button
-                onClick={() => navigate('/user/register')}
-                className="bg-transparent px-3 py-3 rounded-lg hover:shadow-md hover:shadow-gray-800 hover:bg-blue-500 hover:bg-opacity-60"
-                >
-                <span className='flex gap-2'>
-                Sign up <PiUserCirclePlusBold className="text-white w-5 h-5 mt-1"/>
-                </span>
-                </button>
-            </>
-          )}
-        </ul>
-
+        <DesktopNavbar/>
         {/* Hamburger Icon */}
         <button className="absolute right-3 sm:right-8 lg:hidden text-white focus:outline-none mr-2" onClick={toggleMenu} data-aos="fade-left">
           {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
