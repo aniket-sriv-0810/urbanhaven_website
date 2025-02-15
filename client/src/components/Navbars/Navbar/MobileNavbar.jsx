@@ -27,9 +27,9 @@ const MobileNavbar = () => {
   };
 
   const menuItems = [
-    { to: "/", label: "Home Page", icon: <IoHomeSharp /> },
-    { to: "/contact", label: "Contact Us", icon: <FaPaperPlane /> },
-    { to: "/about", label: "About Us", icon: <RiQuestionAnswerFill /> },
+    { to: "/", label: "All hotels", icon: <IoHomeSharp /> },
+    { to: "/contact", label: "Contact us", icon: <FaPaperPlane /> },
+    { to: "/about", label: "About us", icon: <RiQuestionAnswerFill /> },
     { to: "/all-blogs", label: "Our Blogs", icon: <RiArticleFill /> },
   ];
 
@@ -46,7 +46,7 @@ const MobileNavbar = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="absolute top-0 right-0 w-full h-max text-white z-50 bg-gradient-to-r from-slate-900 to-slate-700 p-6 rounded-lg shadow-lg transition-all duration-300">
+        <div className="absolute top-0 right-0 w-full h-max text-white z-50 bg-gradient-to-r from-slate-900 to-slate-700 p-6 shadow-lg transition-all duration-300">
           <button className="absolute top-4 right-7 sm:right-10 text-white sm:py-3" onClick={toggleMenu}>
             <FaTimes size={24} />
           </button>

@@ -13,6 +13,9 @@ export default {
         'home-bg' : "url('/assets/home.jpg')",
         'home-banner' : "url('/assets/home-banner.jpg')",
       },
+      screens: {
+        'xs': '425px', // Custom breakpoint for small screens
+      },
     },
   },
   plugins: [],

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
@@ -8,16 +8,12 @@ import { PiUserCirclePlusBold } from "react-icons/pi";
 import { useUser } from "../../userContext/userContext";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
-import AOS from "aos";
-import "aos/dist/aos.css";
+
 
 const DesktopNavbar = () => {
   const { user, setUser } = useUser();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    AOS.init({ duration: 1500, easing: "ease-in-out", mirror: true, once: false });
-  }, []);
 
   const navItems = [
     { to: "/", label: "Home", tooltip: "Home" },
@@ -49,9 +45,9 @@ const DesktopNavbar = () => {
       )}
 
       {navItems.map(({ to, label, tooltip }) => (
-        <li key={to}>
+        <li key={to} className="hover:scale-110 hover:font-semibold">
           <Tippy content={tooltip}>
-            <NavLink to={to} className="hover:text-yellow-500 hover:font-semibold">
+            <NavLink to={to} className="hover:text-yellow-500  ">
               {label}
             </NavLink>
           </Tippy>
@@ -62,7 +58,7 @@ const DesktopNavbar = () => {
         <Tippy content="View Profile">
           <NavLink to={user ? `/user/${user._id}/account` : "/user/login"}>
             {user ? (
-              <img src={user.image} alt={user.name} className="w-10 h-10 rounded-full" />
+              <img src={user.image} alt={user.name} className="w-10 h-10 rounded-full hover:scale-110" />
             ) : (
               <FaUserCircle className="text-2xl text-white" />
             )}
