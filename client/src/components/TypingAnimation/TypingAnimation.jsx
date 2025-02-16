@@ -35,7 +35,7 @@ const TypingAnimation = () => {
   {/* Features Section */}
   <div className="flex flex-col sm:flex-row items-center justify-center  mt-12 space-y-8 sm:space-y-0 sm:space-x-8">
     {/* Feature 1 - Hotels */}
-    <div className="flex items-center space-x-4 bg-white text-gray-800 px-4 py-4 rounded-2xl shadow-2xl hover:scale-105 transition duration-300 transform hover:shadow-yellow-400/60">
+    <div className="flex items-center space-x-4 bg-white text-gray-800 px-4 py-4 sm:py-2 sm:px-5  md:py-4 rounded-2xl shadow-2xl hover:scale-105 transition duration-300 transform hover:shadow-yellow-400/60">
       <FaHotel className="text-blue-600 text-5xl" />
       <div>
         <h3 className="text-xl sm:text-sm font-bold">Premium Hotels</h3>
@@ -44,7 +44,7 @@ const TypingAnimation = () => {
     </div>
 
     {/* Feature 2 - Secure Booking */}
-    <div className="flex items-center space-x-4 bg-white text-gray-800 px-5 py-4 rounded-2xl shadow-2xl hover:scale-105 transition duration-300 transform hover:shadow-green-400/60">
+    <div className="flex items-center space-x-4 bg-white text-gray-800 px-4 py-4 sm:py-2 md:py-4  rounded-2xl shadow-2xl hover:scale-105 transition duration-300 transform hover:shadow-green-400/60">
       <FaShieldAlt className="text-green-600 text-5xl" />
       <div>
         <h3 className="text-xl sm:text-sm font-bold">Secure Bookings</h3>
@@ -53,7 +53,7 @@ const TypingAnimation = () => {
     </div>
 
     {/* Feature 3 - Top Ratings */}
-    <div className="flex items-center space-x-4 bg-white text-gray-800 px-5 py-4 rounded-2xl shadow-2xl hover:scale-105 transition duration-300 transform hover:shadow-yellow-400/60">
+    <div className="flex items-center space-x-4 bg-white text-gray-800 px-5 py-4 sm:py-2 md:py-4  rounded-2xl shadow-2xl hover:scale-105 transition duration-300 transform hover:shadow-yellow-400/60">
       <FaStar className="text-yellow-500 text-5xl" />
       <div>
         <h3 className="text-xl sm:text-sm font-bold">Top-Rated Stays</h3>
