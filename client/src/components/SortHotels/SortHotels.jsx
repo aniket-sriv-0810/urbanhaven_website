@@ -1,5 +1,5 @@
 import React from "react";
-import { FaSortAmountDown, FaSortAmountUp, FaExchangeAlt } from "react-icons/fa";
+import { FaSortAmountDown, FaSortAmountUp, FaExchangeAlt   } from "react-icons/fa";
 
 const SortHotels = ({ sortOrder, setSortOrder, sortHotels }) => {
   return (
@@ -15,8 +15,8 @@ const SortHotels = ({ sortOrder, setSortOrder, sortHotels }) => {
         className="appearance-none border-2 border-gray-300 bg-white py-3 pl-4 pr-14 rounded-lg shadow-xl text-gray-800 text-base sm:text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 cursor-pointer hover:border-indigo-500 transition-all duration-300 w-full hover:shadow-2xl"
       >
         <option value="default">🔽 Sort Hotels</option>
-        <option value="lowToHigh">💰 Price: Low to High</option>
-        <option value="highToLow">💎 Price: High to Low</option>
+        <option value="lowToHigh"> Price: Low to High </option>
+        <option value="highToLow"> Price: High to Low</option>
       </select>
   
       {/* Icons */}
