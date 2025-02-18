@@ -133,7 +133,7 @@ const Home = () => {
   <TypingAnimation/>
   </div>
       <div className="flex flex-col-reverse gap-y-5 sm:flex-row justify-between items-center mx-2 my-10 sm:mx-8">
-       
+
         <SortHotels sortOrder={sortOrder} setSortOrder={setSortOrder} sortHotels={sortHotels} />
         <CurrencyExchange
           setCurrencyRates={setConversionRate}

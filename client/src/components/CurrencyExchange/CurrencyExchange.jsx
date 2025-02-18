@@ -19,7 +19,7 @@ const CurrencyExchange = ({ setCurrencyRates, selectedCurrency, setSelectedCurre
   };
 
   return (
-    <div className="currency-converter w-60  flex flex-col justify-center items-center bg-gradient-to-r from-fuchsia-700 to-pink-600 p-3 rounded-xl shadow-md shadow-gray-700  ">
+    <div className="currency-converter w-60  flex flex-col justify-center items-center bg-purple-700 p-3 rounded-xl shadow-md shadow-gray-700  ">
       <label htmlFor="currency" className="text-white font-semibold p-1">
         Select Currency
       </label>
