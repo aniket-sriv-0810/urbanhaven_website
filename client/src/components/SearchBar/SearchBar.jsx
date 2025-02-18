@@ -3,11 +3,14 @@ import { FaSearch } from "react-icons/fa";
 import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
-const SearchBar = ({ setHotels }) => {
+const SearchBar = ({ setFilteredHotels, allHotels }) => {
   const [query, setQuery] = useState("");
 
   const handleSearch = async () => {
-    if (!query) return;
+    if (!query) {
+      setFilteredHotels(allHotels); // If search is empty, show all hotels again
+      return;
+    }
 
     try {
       const { data } = await axios.get(`http://localhost:8000/search?query=${query}`);
@@ -16,6 +19,8 @@ const SearchBar = ({ setHotels }) => {
       console.error("Error fetching hotels:", error);
     }
   };
+ 
+
  useEffect(() => {
     AOS.init({
       duration: 1500, // Animation duration
@@ -37,8 +42,11 @@ const SearchBar = ({ setHotels }) => {
           type="text"
           placeholder="search your destination wherever you wanna stay..."
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          className="w-full pl-14 pr-4 py-3 text-lg bg-white/70 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-all duration-300 placeholder-gray-500 hover:border-gray-400 outline-none placeholder:text-sm"
+  onChange={(e) => {
+    setQuery(e.target.value);
+    handleSearch(); // Call search on each input change
+  }}
+  className="w-full pl-14 pr-4 py-3 text-lg bg-white/70 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-all duration-300 placeholder-gray-500 hover:border-gray-400 outline-none placeholder:text-sm"
         />
       </div>
 
