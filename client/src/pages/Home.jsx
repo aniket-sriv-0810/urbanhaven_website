@@ -25,7 +25,7 @@ import AllBlogs from "./AllBlogs";
 
 
 const Home = () => {
-  const [hotel, setHotel] = useState([]);
+
   const [conversionRate, setConversionRate] = useState(1); // Default conversion rate for INR
   const [selectedCurrency, setSelectedCurrency] = useState("INR");
   const [sortOrder, setSortOrder] = useState("default");

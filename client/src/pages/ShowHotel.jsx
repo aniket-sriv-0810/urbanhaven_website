@@ -67,11 +67,11 @@ useEffect( () => {
   }
   return (
   <>
-  <div className='bg-gradient-to-r from-fuchsia-600 to-purple-600'>
+  <div className='bg-gradient-to-r from-slate-600 to-slate-800'>
   <Navbar/>
   </div>
   <div className="container overflow-x-hidden">
-  <h1 className="text-xl text-center  w-max m-auto shadow-black sm:text-3xl  md:text-4xl lg:text-5xl font-extrabold mt-10 mb-10 text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-500 to-pink-600">
+  <h1 className="text-xl text-center  w-max m-auto shadow-black sm:text-3xl  md:text-4xl lg:text-5xl font-extrabold mt-10 mb-10 text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-500 to-pink-500">
   Check out the Hotel details
   <span className="block mt-2 text-sm md:text-base text-red-500 font-semibold animate-bounce">
     Explore amazing amenities and features!
