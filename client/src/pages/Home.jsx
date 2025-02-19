@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";;
 import {  FaUsers, FaCity, FaComments } from "react-icons/fa";
-import axios from "axios";
+import axios, { all } from "axios";
 import { FaHotel } from "react-icons/fa6";
 import CurrencyExchange from "../components/CurrencyExchange/CurrencyExchange";
 import Navbar from "../components/Navbars/Navbar/Navbar";
@@ -18,7 +18,7 @@ import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
 import HotelDetails from "../components/HotelDetails/HotelDetails";
 import Pagination from "../components/Pagination/Pagination";
-import SearchCard from "../components/SearchCard/SearchCard";
+import SearchCard from "../components/SearchCard/HotelCard";
 
 
 
@@ -28,18 +28,15 @@ const Home = () => {
   const [conversionRate, setConversionRate] = useState(1); // Default conversion rate for INR
   const [selectedCurrency, setSelectedCurrency] = useState("INR");
   const [sortOrder, setSortOrder] = useState("default");
-  const [hotels, setHotels] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(4);
   const [allHotels, setAllHotels] = useState([]);  // Store all hotels fetched from API
-  const [filteredHotels, setFilteredHotels] = useState([]); // Stores filtered hotels
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("http://localhost:8000/", { withCredentials: true });
         setAllHotels(response.data.data.allHotel);
-      setFilteredHotels(response.data.data.allHotel); // Initially, filteredHotels = allHotels
       setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -63,8 +60,10 @@ const Home = () => {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentHotels = allHotels.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(allHotels.length / itemsPerPage);
+  const currentHotels = Array.isArray(allHotels) ? allHotels.slice(indexOfFirstItem, indexOfLastItem) : [];
+
+    const totalPages = Math.ceil(allHotels.length / itemsPerPage);
+  
 
 
   useEffect(() => {
@@ -86,7 +85,7 @@ const Home = () => {
       sortedHotels.sort((a, b) => b.price - a.price);
     }
   
-    setHotel(sortedHotels);
+    setAllHotels(sortedHotels);
   };
   
   return (
@@ -99,15 +98,8 @@ const Home = () => {
     <Header />
     <div className="bg-gray-100 p-4">
     {/* Pass both allHotels & setFilteredHotels */}
-    <SearchBar setFilteredHotels={setFilteredHotels} allHotels={allHotels} />
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
-      {filteredHotels.map((hotel) => (
-        <SearchCard key={hotel._id} hotel={hotel} />
-      ))}
-    </div>
-  </div>
-    <div data-aos="fade-up">
-  <TypingAnimation/>
+    <SearchBar  setHotels={setAllHotels}  />
+
   </div>
       <div className="flex flex-col-reverse gap-y-5 sm:flex-row justify-between items-center mx-2 my-10 sm:mx-8" data-aos="fade-up">
 
@@ -118,8 +110,9 @@ const Home = () => {
           setSelectedCurrency={setSelectedCurrency}
         />
       </div>
-     
+
 <HotelHeading/>
+
 
       <div className=" mt-20 mb-10 flex justify-evenly flex-wrap gap-8  px-4" data-aos="fade-up">
 
@@ -143,6 +136,11 @@ const Home = () => {
 <div className="     my-80" data-aos="fade-down">
       <FAQs/>
 </div>
+
+  
+<div data-aos="fade-up">
+  <TypingAnimation/>
+  </div>
 {/*
       <div className="     my-80" data-aos="fade-right">
         <Blogs/>

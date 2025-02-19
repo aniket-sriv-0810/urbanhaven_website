@@ -3,24 +3,23 @@ import { FaSearch } from "react-icons/fa";
 import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
-const SearchBar = ({ setFilteredHotels, allHotels }) => {
-  const [query, setQuery] = useState("");
+const SearchBar = ({ setHotels }) => {
+  const [q, setQ] = useState("");
 
   const handleSearch = async () => {
-    if (!query) {
-      setFilteredHotels(allHotels); // If search is empty, show all hotels again
-      return;
-    }
-
     try {
-      const { data } = await axios.get(`http://localhost:8000/search?query=${query}`);
-      setHotels(data);
+      if (!q) {
+        console.log("Hello World !");
+        return;
+      }
+      const response = await axios.get(`http://localhost:8000/search?q=${q}`);
+      console.log("API Response:", response.data.data.hotels);
+      setHotels(response.data.data.hotels || []); // Make sure we extract the hotels array
     } catch (error) {
       console.error("Error fetching hotels:", error);
     }
   };
- 
-
+  
  useEffect(() => {
     AOS.init({
       duration: 1500, // Animation duration
@@ -41,18 +40,15 @@ const SearchBar = ({ setFilteredHotels, allHotels }) => {
         <input
           type="text"
           placeholder="search your destination wherever you wanna stay..."
-          value={query}
-  onChange={(e) => {
-    setQuery(e.target.value);
-    handleSearch(); // Call search on each input change
-  }}
-  className="w-full pl-14 pr-4 py-3 text-lg bg-white/70 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-all duration-300 placeholder-gray-500 hover:border-gray-400 outline-none placeholder:text-sm"
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          className="w-full pl-14 pr-4 py-3 text-lg bg-white/70 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-all duration-300 placeholder-gray-500 hover:border-gray-400 outline-none placeholder:text-sm"
         />
       </div>
 
       {/* Search Button with 3D Effect */}
       <button
-        onClick={() => handleSearch(query)}
+        onClick={() => handleSearch()}
         className="px-6 py-3 flex items-center justify-center text-lg font-semibold text-white bg-gradient-to-r from-emerald-500 to-emerald-900 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 focus:ring-4 focus:ring-yellow-300"
       >
         <FaSearch className="mr-2 text-xl" />

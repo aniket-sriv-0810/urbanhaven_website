@@ -1,5 +1,5 @@
 import React from "react";
-const SearchCard = ({ hotel }) => {
+const HotelCard = ({ hotel }) => {
     return (
       <div className="border rounded-lg shadow-lg p-4">
         <img src={hotel.image} alt={hotel.name} className="w-full h-40 object-cover rounded-md" />
@@ -10,5 +10,5 @@ const SearchCard = ({ hotel }) => {
     );
   };
   
-  export default SearchCard;
+  export default HotelCard;
   

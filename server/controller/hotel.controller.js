@@ -33,7 +33,7 @@ const searchHotels = async (req, res) => {
   try {
     const { q } = req.query;
 
-    if (!q) {
+    if (!q || q.trim() === "") {
       return res.status(400).json({ message: "Query parameter is required" });
     }
 
