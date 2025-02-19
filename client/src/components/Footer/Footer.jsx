@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "../../assets/main-logo.png";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaLinkedin, FaGithub } from "react-icons/fa6";
 import { CgMail } from "react-icons/cg";
 import { GrInstagram } from "react-icons/gr";
@@ -21,7 +21,7 @@ const Footer = () => {
           </div>
 
           {/* Navigation Links */}
-          <ul className="flex flex-wrap justify-center items-center sm:mb-8 space-x-6  md:space-x-8 text-sm lg:text-base  lg:relative lg:left-10 lg:top-5">
+          <ul className="flex flex-wrap justify-center items-center sm:mb-8 space-x-6  md:space-x-8 text-xs lg:text-base  lg:relative lg:left-14 lg:top-5">
             {["Home", "About", "Contact", "Policies", "Show"].map((item, index) => (
               <li key={index} className="relative">
                 <NavLink
@@ -40,7 +40,7 @@ const Footer = () => {
             {[
               { icon: FaLinkedin, link: "https://www.linkedin.com/in/aniket-srivastava-0141b22b8/", color: "bg-blue-600" },
               { icon: CgMail, link: "mailto:aniket08official@gmail.com", color: "bg-red-600" },
-              { icon: GrInstagram, link: "https://www.instagram.com/aniket_sriv_0810/", color: "bg-pink-500" },
+              { icon: GrInstagram, link: "https://www.instagram.com/aniket_sriv_0810/", color: "bg-purple-600" },
               { icon: FaGithub, link: "https://github.com/aniket-sriv-0810", color: "bg-gray-600" },
             ].map(({ icon: Icon, link, color }, index) => (
               <NavLink
@@ -61,11 +61,15 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="text-center space-y-3">
-          <p className="text-sm text-gray-500">
+          <p className="text-xs lg:text-sm text-gray-500">
             © {new Date().getFullYear()}{" "}
-            <span className="text-blue-400">UrbanHaven Hotels</span>. All rights reserved.
+            <span className="text-blue-400 hover:text-cyan-500">
+            <Link to="/about">
+            UrbanHaven Hotels
+            </Link>
+            </span>. All rights reserved.
           </p>
-          <p className="text-sm text-gray-500">
+          <p className="text-xs text-gray-500">
             Developed and Maintained By:{" "}
             <NavLink
               to="https://www.linkedin.com/in/aniket-srivastava-0141b22b8/"

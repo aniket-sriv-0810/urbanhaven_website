@@ -18,7 +18,7 @@ import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
 import HotelDetails from "../components/HotelDetails/HotelDetails";
 import Pagination from "../components/Pagination/Pagination";
-
+import AllBlogs from "./AllBlogs";
 
 
 
@@ -142,16 +142,16 @@ const Home = () => {
 <div data-aos="fade-up">
   <TypingAnimation/>
   </div>
-{/*
+
       <div className="     my-80" data-aos="fade-right">
-        <Blogs/>
+        <AllBlogs/>
         </div>
-    */}
-    <div className="my-20 bg-gradient-to-b from-gray-50 to-gray-100 flex flex-col justify-evenly items-center sm:flex-row gap-6 py-10 px-5 sm:px-20">
-      <Counter start={0} end={1000} duration={2000} value="Hotels Listed" color="blue" icon={<FaHotel className="text-blue-500 text-5xl" />} />
-      <Counter start={0} end={6000} duration={2000} value="Users Registered" color="green" icon={<FaUsers className="text-green-500 text-5xl" />} />
-      <Counter start={0} end={500} duration={2000} value="Cities Available" color="purple" icon={<FaCity className="text-purple-500 text-5xl" />} />
-      <Counter start={0} end={2000} duration={2000} value="Customer Feedbacks" color="red" icon={<FaComments className="text-red-500 text-5xl" />} />
+    
+    <div className="my-20 bg-gradient-to-b from-gray-50 to-gray-100 flex flex-col flex-wrap justify-evenly items-center sm:flex-row gap-6 xs:gap-3 py-10 px-5 sm:px-5">
+      <Counter start={0} end={1000} duration={2000} value="Hotels Listed" color="blue" icon={<FaHotel className="text-blue-500 text-2xl md:text-3xl lg:text-5xl" />} />
+      <Counter start={0} end={6000} duration={2000} value="Users Registered" color="green" icon={<FaUsers className="text-green-500 text-2xl md:text-3xl lg:text-5xl" />} />
+      <Counter start={0} end={500} duration={2000} value="Cities Available" color="purple" icon={<FaCity className="text-purple-500 text-2xl md:text-3xl lg:text-5xl" />} />
+      <Counter start={0} end={2000} duration={2000} value="Customer Feedbacks" color="red" icon={<FaComments className="text-red-500 text-2xl md:text-3xl lg:text-5xl" />} />
     </div>
       <div data-aos="fade-up">
       <Footer />

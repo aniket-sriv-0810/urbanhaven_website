@@ -48,15 +48,15 @@ const Counter = ({ start, end, duration, value, color, icon }) => {
   return (
     <div
     ref={ref}
-    className="flex flex-col justify-center items-center shadow-lg rounded-xl p-6 transition-transform transform hover:scale-105 bg-white hover:bg-gray-100 w-56 sm:w-64 text-center"
+    className="flex flex-col justify-center items-center shadow-lg rounded-2xl p-4 transition-transform transform hover:scale-105 bg-white hover:bg-gray-100 w-36 md:w-40 lg:w-52 xl:w-60 text-center"
   >
-    <div className="flex items-center justify-center mb-3">
+    <div className="flex items-center  justify-center mb-3">
       {icon}
     </div>
-    <h1 className={`text-4xl font-extrabold text-${color}-500`}>
+    <h1 className={`text-lg sm:text-xl md:text-2xl xl:text-4xl font-extrabold text-${color}-500`}>
       {count}+
     </h1>
-    <p className="text-base text-gray-700 font-semibold">{value}</p>
+    <p className="text-sm lg:text-lg text-gray-700 font-semibold">{value}</p>
   </div>
   );
 };
