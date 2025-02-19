@@ -33,10 +33,10 @@ const FAQs = () => {
   }, []);
 
   return (
-    <section className="faq-section bg-gradient-to-br from-blue-200 to-gray-200 py-16 px-5 sm:px-20">
+    <section className="faq-section bg-gradient-to-r from-teal-100 to-blue-200 py-16 px-5 sm:px-20">
       {/* Title */}
       <div className="text-center mb-12">
-        <h2 className="text-xl sm:text-4xl font-extrabold text-gray-800 drop-shadow-lg flex items-center justify-center gap-2">
+        <h2 className="text-lg xs:text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-800 drop-shadow-lg flex items-center justify-center gap-2">
           <IoMdHelpCircleOutline className="text-blue-600 text-2xl sm:text-5xl animate-pulse" />
           Frequently Asked Questions
         </h2>
@@ -57,8 +57,8 @@ const FAQs = () => {
                 className="w-full text-left flex justify-between items-center p-5 sm:p-6 font-semibold text-gray-800 bg-gradient-to-r from-gray-100 to-gray-50 hover:from-blue-50 hover:to-white transition"
                 onClick={() => toggleFAQ(index)}
               >
-                <span className="flex items-center gap-3">
-                  <FaQuestionCircle className="text-blue-600 text-xl" />
+                <span className="flex items-center gap-3 text-xs sm:text-lg">
+                  <FaQuestionCircle className="text-blue-600 text-2xl" />
                   {faq.title}
                 </span>
                 <span className="ml-4 text-2xl transition-transform duration-300">
@@ -72,15 +72,15 @@ const FAQs = () => {
 
               {/* FAQ Answer */}
               <div
-                className={`transition-all duration-500 ease-in-out overflow-hidden ${
+                className={`bg-blue-500 transition-all duration-500 ease-in-out overflow-hidden ${
                   activeIndex === index
                     ? "max-h-96 p-5 sm:p-6 bg-blue-50 text-gray-700 opacity-100"
                     : "max-h-0 opacity-0"
                 }`}
               >
-                <div className="flex items-start gap-3">
-                  <MdOutlineQuestionAnswer className="text-blue-600 text-2xl" />
-                  <p className="text-gray-700">{faq.solution}</p>
+                <div className="flex items-center gap-5 text-xs sm:text-lg">
+                  <MdOutlineQuestionAnswer className="text-white text-3xl" />
+                  <p className=" text-white">{faq.solution}</p>
                 </div>
               </div>
             </div>
