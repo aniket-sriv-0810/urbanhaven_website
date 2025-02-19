@@ -126,7 +126,7 @@ if(!image){
 const showMyHotel = async(req , res ) => {
    try {
      let {id} = req.params;
-        console.log("Body:", req.body);
+        console.log("Body:", req);
 
     // Check if Hotel ID is not found or if it is Valid
               if(!id){

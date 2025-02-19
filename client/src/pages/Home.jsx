@@ -18,7 +18,8 @@ import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
 import HotelDetails from "../components/HotelDetails/HotelDetails";
 import Pagination from "../components/Pagination/Pagination";
-import SearchCard from "../components/SearchCard/HotelCard";
+
+
 
 
 

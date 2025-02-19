@@ -3,23 +3,33 @@ import { FaSearch } from "react-icons/fa";
 import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
+
 const SearchBar = ({ setHotels }) => {
   const [q, setQ] = useState("");
-
+  const [status , setStatus] = useState("");
   const handleSearch = async () => {
     try {
       if (!q) {
-        console.log("Hello World !");
+        setStatus("Please enter a destination!");
         return;
       }
+  
       const response = await axios.get(`http://localhost:8000/search?q=${q}`);
+  
+      if (!response.data.data.hotels || response.data.data.hotels.length === 0) {
+        setStatus("No Hotel Found!");
+        setHotels([]); // Clear the existing list if no results
+        return;
+      }
+  
       console.log("API Response:", response.data.data.hotels);
-      setHotels(response.data.data.hotels || []); // Make sure we extract the hotels array
+      setHotels(response.data.data.hotels);
+      setStatus(""); // Clear status if search is successful
     } catch (error) {
       console.error("Error fetching hotels:", error);
+      setStatus("No hotel found...");
     }
   };
-  
  useEffect(() => {
     AOS.init({
       duration: 1500, // Animation duration
@@ -29,7 +39,7 @@ const SearchBar = ({ setHotels }) => {
     });
   }, []);
   return (
-<div className="flex flex-wrap items-center justify-center gap-4 w-full max-w-3xl mx-auto p-6 rounded-2xl bg-white/20 backdrop-blur-xl shadow-xl border border-gray-200 transition-all duration-300 hover:shadow-2xl" data-aos="fade-down">
+<div className={`flex flex-wrap items-center justify-center gap-4 w-full max-w-3xl mx-auto p-6 rounded-2xl bg-white/20 backdrop-blur-xl shadow-xl border border-gray-200 transition-all duration-300 hover:shadow-2xl ${status.length > 0 ? " border-red-500" : null}`} data-aos="fade-down">
 <h1 className="text-base sm:text-3xl font-extrabold text-center my-6 bg-gradient-to-r from-slate-600 to-cyan-800 text-transparent bg-clip-text drop-shadow-lg">
   Discover Your Dream Destination
 </h1>
@@ -41,7 +51,8 @@ const SearchBar = ({ setHotels }) => {
           type="text"
           placeholder="search your destination wherever you wanna stay..."
           value={q}
-          onChange={(e) => setQ(e.target.value)}
+          onChange={(e) => setQ(e.target.value.trimStart())}
+
           className="w-full pl-14 pr-4 py-3 text-lg bg-white/70 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-all duration-300 placeholder-gray-500 hover:border-gray-400 outline-none placeholder:text-sm"
         />
       </div>
@@ -54,6 +65,9 @@ const SearchBar = ({ setHotels }) => {
         <FaSearch className="mr-2 text-xl" />
         Search
       </button>
+      <div className="text-red-500 text-xl font-semibold">
+        {status.length > 0  ? status : null}
+      </div>
     </div>
   );
 };
