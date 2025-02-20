@@ -71,7 +71,7 @@ const ContactUs = () => {
               </li>
               <li className="flex items-center gap-4">
                 <FaEnvelope className="text-teal-500 text-xl" />
-                <a href="mailto:support@urbanhaven.com" className="hover:text-teal-700 transition">
+                <a href="mailto:support@urbanhaven.com" className="hover:text-teal-700 transition ">
                   <strong>Email:</strong> support@urbanhaven.com
                 </a>
               </li>
