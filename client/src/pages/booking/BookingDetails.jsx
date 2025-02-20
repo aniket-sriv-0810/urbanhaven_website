@@ -92,7 +92,7 @@ const BookingDetails = ({
       {/* User Booking Details */}
       <section className="space-y-6">
         <h2 className="text-base font-bold text-white text-center drop-shadow-md">Your Booking Details</h2>
-        <div className=" grid grid-cols-1 xs:grid-cols-2 gap-6 text-white text-xs sm:text-sm">
+        <div className=" grid grid-cols-1 xs:grid-cols-2 gap-6 text-white text-xs sm:text-sm lg:text-base">
           <p className="flex items-center  gap-2 "><FaUser className="text-green-400" /> <span className="font-medium">Name:</span> {user.name}</p>
           <p className="flex items-center  gap-2 "><FaPhoneAlt className="text-green-400" /> <span className="font-medium">Phone:</span> {user.phone}</p>
           <p className="flex items-center gap-2 "><FaEnvelope className="text-green-400" /> <span className="font-medium">Email:</span> {user.email}</p>
@@ -130,7 +130,7 @@ const BookingDetails = ({
           onClick={handleNext}
           className="flex text-xs justify-center items-center gap-x-3 px-5 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg font-medium hover:scale-105 transition-all"
         >
-          Confirm Booking
+          Proceed to Payment
           <MdOutlinePayments className="w-5 h-5" />
         </button>
       </div>

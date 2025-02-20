@@ -9,8 +9,10 @@ import { BsCashCoin } from "react-icons/bs";
 import { FaCcVisa, FaCcMastercard, FaCcAmazonPay } from "react-icons/fa";
 import { SiPaytm, SiGooglepay, SiPhonepe } from "react-icons/si";
 import { MdOutlinePayments } from "react-icons/md";  // Payment icon
-import { FaCalendarCheck, FaShieldAlt } from "react-icons/fa";  // Calendar & Security icons
-
+import { FaCalendarCheck, FaCreditCard , FaAddressCard , FaShieldAlt } from "react-icons/fa";  
+import { LuCalendarCheck } from "react-icons/lu";
+import { RiSecurePaymentFill } from "react-icons/ri";
+import QRCode from '../../assets/qr.jpg';
 
 const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
   const { id } = useParams();
@@ -89,11 +91,24 @@ const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
         <div className="bg-white/10 shadow-lg rounded-2xl p-6 w-full mx-auto">
           <h3 className="text-sm md:text-lg font-bold text-white mb-4 text-center">Enter Card Details</h3>
           <form className="space-y-4 ">
+          <span className="flex items-center justify-center">
+            <FaAddressCard  className=" hidden xs:block relative left-10 text-white text-2xl " />
             <input type="text" placeholder="Cardholder Name" className="w-full p-2 border rounded-xl bg-white/20 text-white text-center placeholder:text-xs placeholder-gray-300  md:p-3" />
+          </span>
+          <span className="flex items-center justify-center">
+          <FaCreditCard  className=" hidden xs:block relative left-10 text-white text-2xl " />
             <input type="text" placeholder="1234 5678 9101 1121" maxLength={19} className="w-full p-2 border rounded-xl bg-white/20 text-center text-white placeholder:text-xs placeholder-gray-300  md:p-3" />
-            <div className="flex flex-col gap-3 xs:flex-row">
+          </span>
+          
+            <div className="flex justify-evenly flex-col gap-3 xs:flex-row">
+            <span className="flex items-center justify-center">
+          <LuCalendarCheck   className=" hidden xs:block relative left-10 text-white text-2xl " />
               <input type="text" placeholder="MM/YY" maxLength={5} className="w-full p-2 border text-center rounded-xl bg-white/20 text-white placeholder:text-xs placeholder-gray-300  md:p-3" />
+          </span>
+          <span className="flex items-center justify-center">
+          <RiSecurePaymentFill   className=" hidden xs:block relative left-10 text-white text-2xl " />
               <input type="password" placeholder="CVV" maxLength={3} className="w-full p-2 text-center border rounded-xl bg-white/20 text-white placeholder:text-xs placeholder-gray-300  md:p-3" />
+          </span>
             </div>
           </form>
         </div>
@@ -119,26 +134,10 @@ const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
   <div className="p-6 bg-white/20 backdrop-blur-md shadow-xl rounded-2xl border border-white/30">
     <h3 className="text-xl font-bold text-white text-center mb-4">UPI Payment</h3>
 
-    {/* UPI ID Input */}
-    <div className="flex flex-col  items-center space-y-3">
-      <input
-        type="text"
-        placeholder="Enter your UPI ID "
-        className="w-full p-2 sm:p-3 text-gray-900 rounded-lg bg-white shadow-md placeholder:text-xs  text-center outline-none"
-      />
-      <p className="text-gray-200 text-xs sm:text-sm text-center">Ensure your UPI ID is correct to avoid payment failures.</p>
-    </div>
-
-    {/* OR Divider */}
-    <div className="relative my-6 flex items-center justify-center">
-      <div className="absolute inset-0 border-t border-gray-300"></div>
-      <span className="bg-white rounded-full text-gray-700  mt-5  p-2 font-medium">OR</span>
-    </div>
-
     {/* QR Code Option */}
     <div className="flex flex-col items-center space-y-4">
       <div className="bg-white p-4 rounded-xl shadow-md">
-        <img src="/path-to-your-qr-code.png" alt="Scan to Pay" className="w-32 h-32 sm:w-44 sm:h-44 object-cover" />
+        <img src={QRCode} alt="Scan to Pay" className="w-32 h-32 sm:w-44 sm:h-44 object-cover" />
       </div>
       <p className="text-gray-200 text-xs text-center">Scan the QR code above to pay using any UPI app.</p>
     </div>
@@ -150,11 +149,11 @@ const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
           className={`p-6 flex flex-col items-center justify-center sm:flex-row sm:justify-evenly  rounded-xl shadow-lg transition-all ${selectedPaymentMethod === "later" ? "border-2 border-green-400 bg-white/10" : "border border-white/30"} hover:scale-105`}
           onClick={() => setSelectedPaymentMethod("later")}
         >
-        <span className="flex gap-3">
-          <MdPayments className="text-green-300 text-2xl mb-2" />
-          <h3 className="font-semibold text-white">Book Now & Pay Later</h3>
+        <span className="flex items-center gap-3">
+          <MdPayments className="text-green-300 text-2xl " />
+          <h3 className="font-semibold text-xs  sm:text-sm text-white">Book Now & Pay Later</h3>
         </span>
-          <p className="text-sm text-gray-300 text-center">Pay at the time of hotel check-in.</p>
+          <p className="text-xs text-gray-300 text-center">Pay at the time of hotel check-in.</p>
         </button>
       </div>
 
