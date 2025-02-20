@@ -113,7 +113,7 @@ const BookingForm = ({ bookingData, setBookingData, handleNext, value, styling }
       </div>
 
       <h2 className="text-xl font-semibold mt-6 mb-4">Booking Details</h2>
-      <div className="flex flex-col sm:flex-row sm:space-x-5 space-y-4 sm:space-y-0">
+      <div className="flex flex-col  sm:flex-row sm:space-x-5 space-y-4 sm:space-y-0">
         {/* Check-in Date */}
         <div className="relative">
           <DatePicker
@@ -145,7 +145,7 @@ const BookingForm = ({ bookingData, setBookingData, handleNext, value, styling }
 
       {/* Duration Display */}
       {bookingData.checkOutDate && bookingData.checkInDate && calculateStayDuration() > 0 && (
-        <span className="mt-5 text-center font-semibold text-green-500 rounded-xl">
+        <span className="mt-5 text-xs xs:text-sm text-center font-semibold text-green-500 rounded-xl">
           You’ve selected a stay of {calculateStayDuration()} {calculateStayDuration() > 1 ? "days" : "day"}.
         </span>
       )}
@@ -181,7 +181,7 @@ const BookingForm = ({ bookingData, setBookingData, handleNext, value, styling }
       {/* Next Button with Validation */}
       <button
         onClick={handleFormSubmit}
-        className="flex justify-center items-center gap-x-3 w-full sm:w-[40%] mt-6 px-7 py-3 bg-purple-600 rounded-full font-semibold hover:bg-purple-700"
+        className="flex justify-center items-center gap-x-3 w-full sm:w-[40%] mt-6 px-5 py-2 bg-indigo-700 rounded-full font-semibold hover:bg-purple-700"
       >
         Next <FaCircleRight />
       </button>

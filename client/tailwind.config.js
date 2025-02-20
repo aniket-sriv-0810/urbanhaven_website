@@ -14,7 +14,7 @@ export default {
         'home-banner' : "url('/assets/home-banner.jpg')",
       },
       screens: {
-        'xs': '425px', // Custom breakpoint for small screens
+        'xs': '500px', // Custom breakpoint for small screens
       },
     },
   },

@@ -62,75 +62,80 @@ const BookingDetails = ({
   }, [hotelData, bookingData.checkInDate, bookingData.checkOutDate]);
 
   return (
-    <div className="bg-gray-100 min-h-screen px-4 flex justify-center py-5">
-      <div className="bg-white shadow-2xl rounded-2xl p-8 max-w-4xl w-full space-y-8">
-        
-        {/* Hotel Details */}
-        <section className="space-y-6">
-          <h1 className="text-4xl font-bold text-gray-800 text-center"> Hotel Details</h1>
-          <div className="flex flex-col sm:flex-row sm:space-x-6">
-            <img
-              src={hotelData.image}
-              alt={hotelData.title}
-              className="w-full sm:w-1/3 rounded-lg shadow-md object-cover"
-            />
-            <div className="space-y-3 flex-1">
-              <h2 className="text-2xl font-semibold text-gray-700">{hotelData.title}</h2>
-              <p className="text-gray-500">{hotelData.city}, {hotelData.state}</p>
-              <p className="text-gray-700 text-lg">
-                <span className="font-semibold">Price per Night:</span> ₹{hotelData.price}
-              </p>
-            </div>
-          </div>
-        </section>
+    <div className="relative flex justify-center items-center min-h-screen  bg-gradient-to-r from-indigo-800 to-purple-900">
+      
+    {/* Background Blur Overlay */}
+    <div className="absolute inset-0 bg-black/40 backdrop-blur-md"></div>
 
-        {/* User Booking Details */}
-        <section className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-800 text-center"> Your Booking Details</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-gray-700">
-            <p className="flex items-center gap-2"><FaUser className="text-teal-600" /> <span className="font-medium">Name:</span> {user.name}</p>
-            <p className="flex items-center gap-2"><FaPhoneAlt className="text-teal-600" /> <span className="font-medium">Phone:</span> {user.phone}</p>
-            <p className="flex items-center gap-2"><FaEnvelope className="text-teal-600" /> <span className="font-medium">Email:</span> {user.email}</p>
-            <p className="flex items-center gap-2"><FaBed className="text-teal-600" /> <span className="font-medium">Rooms:</span> {bookingData.room}</p>
-            <p className="flex items-center gap-2"><FaCalendarAlt className="text-teal-600" /> <span className="font-medium">Check-in:</span> {bookingData.checkInDate?.toLocaleDateString("en-IN")}</p>
-            <p className="flex items-center gap-2"><FaCalendarAlt className="text-teal-600" /> <span className="font-medium">Check-out:</span> {bookingData.checkOutDate?.toLocaleDateString("en-IN")}</p>
-            <p className="flex items-center gap-2"><FaUserFriends className="text-teal-600" /> <span className="font-medium">Adults:</span> {bookingData.adultCount}</p>
-            <p className="flex items-center gap-2"><FaBaby className="text-teal-600" /> <span className="font-medium">Infants:</span> {bookingData.infantCount}</p>
-          </div>
-        </section>
-
-        {/* Pricing Section */}
-        <section className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-800 text-center"> Pricing Details</h2>
-          <div className="space-y-3 text-lg text-gray-700">
-            <p><span className="font-medium">Total Stay:</span> {calculateStayDuration()} nights</p>
-            <p><span className="font-medium">Price per Night:</span> ₹{hotelData.price}</p>
-            <p><span className="font-medium">Taxes (18%):</span> ₹{(hotelData.price * 0.18).toFixed(2)}</p>
-            <p className="text-2xl font-bold text-gray-800">
-              Total Amount: <span className="text-green-600"> ₹{bookingData.totalAmount?.toLocaleString("INR")}</span>
+    {/* Booking Details Card */}
+    <div className="relative w-full max-w-4xl bg-white/20 backdrop-blur-lg shadow-xl  p-8 sm:p-10 border border-white/30 space-y-10">
+      
+      {/* Hotel Details Section */}
+      <section className="space-y-6">
+        <h1 className="text-2xl font-bold text-white text-center drop-shadow-md">Hotel Details</h1>
+        <div className="flex flex-col sm:flex-row sm:space-x-6">
+          <img
+            src={hotelData.image}
+            alt={hotelData.title}
+            className="w-full sm:w-1/3 rounded-lg shadow-md object-cover"
+          />
+          <div className="space-y-4 m-auto flex-1 text-white">
+            <h2 className="text-2xl font-semibold">{hotelData.title}</h2>
+            <p className="text-gray-300 text-sm">{hotelData.city}, {hotelData.state}</p>
+            <p className="text-sm">
+              <span className="font-normal">Price per Night:</span> <span className="text-green-300">₹{ hotelData ? (hotelData.price).toLocaleString("INR") : null}</span>
             </p>
           </div>
-        </section>
-
-        {/* Actions */}
-        <div className="flex justify-between">
-          <button
-            onClick={handlePrevious}
-            className="flex items-center gap-x-2 px-7 py-3 text-white bg-gray-500 rounded-lg font-medium hover:bg-gray-700 transition-all"
-          >
-            <TiArrowBack className="w-5 h-5" />
-            Back
-          </button>
-          <button
-            onClick={handleNext}
-            className="flex items-center gap-x-3 px-6 py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-lg font-medium hover:scale-105 transition-all"
-          >
-            Confirm Booking
-            <MdOutlinePayments className="w-5 h-5" />
-          </button>
         </div>
+      </section>
+
+      {/* User Booking Details */}
+      <section className="space-y-6">
+        <h2 className="text-base font-bold text-white text-center drop-shadow-md">Your Booking Details</h2>
+        <div className=" grid grid-cols-1 xs:grid-cols-2 gap-6 text-white text-xs sm:text-sm">
+          <p className="flex items-center  gap-2 "><FaUser className="text-green-400" /> <span className="font-medium">Name:</span> {user.name}</p>
+          <p className="flex items-center  gap-2 "><FaPhoneAlt className="text-green-400" /> <span className="font-medium">Phone:</span> {user.phone}</p>
+          <p className="flex items-center gap-2 "><FaEnvelope className="text-green-400" /> <span className="font-medium">Email:</span> {user.email}</p>
+          <p className="flex items-center gap-2"><FaBed className="text-green-400" /> <span className="font-medium">Rooms:</span> {bookingData.room}</p>
+          <p className="flex items-center gap-2"><FaCalendarAlt className="text-green-400" /> <span className="font-medium">Check-in:</span> {bookingData.checkInDate?.toLocaleDateString("en-IN")}</p>
+          <p className="flex items-center gap-2"><FaCalendarAlt className="text-green-400" /> <span className="font-medium">Check-out:</span> {bookingData.checkOutDate?.toLocaleDateString("en-IN")}</p>
+          <p className="flex items-center gap-2"><FaUserFriends className="text-green-400" /> <span className="font-medium">Adults:</span> {bookingData.adultCount}</p>
+          <p className="flex items-center gap-2"><FaBaby className="text-green-400" /> <span className="font-medium">Infants:</span> {bookingData.infantCount}</p>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="space-y-6 text-center">
+        <h2 className="text-xl font-bold text-white text-center drop-shadow-md">Pricing Details</h2>
+        <div className="space-y-5 text-sm text-white">
+          <p><span className="font-medium">Total Stay:</span> {calculateStayDuration()} nights</p>
+          <p><span className="font-medium">Price per Night:</span> ₹{hotelData.price}</p>
+          <p><span className="font-medium">Taxes (18%):</span> ₹{(hotelData.price * 0.18).toFixed(2)}</p>
+          <p className=" text-2xl font-bold">
+            Total Amount <span className="text-green-400 mx-3"> ₹{bookingData.totalAmount?.toLocaleString("INR")}</span>
+          </p>
+        </div>
+      </section>
+
+      {/* Actions */}
+      <div className="flex  flex-col-reverse xs:flex-row gap-4 justify-between">
+        <button
+          onClick={handlePrevious}
+          className="flex justify-center items-center gap-x-2 px-7 py-3 text-white bg-gray-500 rounded-lg font-medium hover:bg-gray-700 transition-all"
+        >
+          <TiArrowBack className="w-5 h-5" />
+          Back
+        </button>
+        <button
+          onClick={handleNext}
+          className="flex text-xs justify-center items-center gap-x-3 px-5 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg font-medium hover:scale-105 transition-all"
+        >
+          Confirm Booking
+          <MdOutlinePayments className="w-5 h-5" />
+        </button>
       </div>
     </div>
+  </div>
   );
 };
 
