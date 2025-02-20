@@ -83,7 +83,7 @@ const BookingDetails = ({
             <h2 className="text-2xl font-semibold">{hotelData.title}</h2>
             <p className="text-gray-300 text-sm">{hotelData.city}, {hotelData.state}</p>
             <p className="text-sm">
-              <span className="font-normal">Price per Night:</span> <span className="text-green-300">₹{ hotelData ? (hotelData.price).toLocaleString("INR") : null}</span>
+              <span className="font-normal">Price per Night:</span> <span className="text-green-300">₹{ hotelData.price ? (hotelData.price).toLocaleString("INR") : null}</span>
             </p>
           </div>
         </div>
