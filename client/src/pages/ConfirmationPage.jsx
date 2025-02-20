@@ -103,18 +103,18 @@ const generatePDF = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-700 p-8 flex items-center justify-center text-white">
-      <div className="w-full max-w-3xl bg-gray-800 rounded-2xl shadow-2xl p-10 space-y-8">
-        <h1 className="text-4xl font-bold text-center text-green-400">🎉 Booking Confirmed!</h1>
-        <p className="text-center text-gray-300 text-lg">Your stay is successfully booked. Check your details below.</p>
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-700 p-3 xs:p-3 flex items-center justify-center text-white">
+      <div className="w-full max-w-3xl bg-gray-800 rounded-2xl shadow-2xl p-2 md:p-5  space-y-8">
+        <h1 className="text-2xl mt-2  md:text-4xl font-bold text-center text-green-400">🎉 Booking Confirmed!</h1>
+        <p className="text-center text-gray-300 text-sm">Your stay is successfully booked. Check your details below.</p>
 
         {/* Hotel Details */}
         <div className="p-6 bg-gray-700 rounded-xl shadow-md">
-          <h2 className="text-2xl font-semibold text-indigo-300 flex items-center gap-2"><FaHotel /> Hotel Details</h2>
+          <h2 className="text-2xl  font-semibold text-indigo-300 flex items-center justify-center gap-2"><FaHotel /> Hotel Details</h2>
           <div className="flex flex-col md:flex-row gap-6 mt-4 items-center">
             <img src={hotelDetails.image} alt={hotelDetails.title} className="h-56 w-full md:w-1/2 object-cover rounded-xl shadow-md" />
             <div className="w-full md:w-1/2 space-y-3 text-lg">
-              <p className="flex items-center gap-2"><FaHotel /><strong>Hotel:</strong> {hotelDetails.title}</p>
+              <p className="flex items-center gap-2"><FaHotel /><strong>Hotel</strong> {hotelDetails.title}</p>
               <p className="flex items-center gap-2"><FaMapMarkerAlt /><strong>City:</strong> {hotelDetails.city}</p>
               <p className="flex items-center gap-2"><FaRupeeSign /><strong>Bill:</strong> ₹{totalAmount}</p>
               <p className="flex items-center gap-2"><FaBed /><strong>Rooms:</strong> {room}</p>
@@ -144,10 +144,10 @@ const generatePDF = () => {
 
         {/* Action Buttons */}
         <div className="mt-8 flex flex-col md:flex-row gap-4 justify-center">
-          <button onClick={generatePDF} className="w-full md:w-auto px-6 py-3 bg-indigo-500 text-white font-semibold rounded-xl shadow-md hover:bg-indigo-600 transition-all flex items-center gap-2">
+          <button onClick={generatePDF} className="w-full md:w-auto px-6 py-3 bg-indigo-500 text-white font-semibold rounded-xl shadow-md hover:bg-indigo-600 transition-all flex items-center justify-center gap-2">
             <FaFileDownload /> Download PDF
           </button>
-          <button onClick={() => navigate("/")} className="w-full md:w-auto px-6 py-3 bg-gray-500 text-white font-semibold rounded-xl shadow-md hover:bg-gray-600 transition-all flex items-center gap-2">
+          <button onClick={() => navigate("/")} className="w-full md:w-auto px-6 py-3 bg-gray-500 text-white font-semibold rounded-xl shadow-md hover:bg-gray-600 transition-all flex items-center justify-center gap-2">
             <FaHome /> Home
           </button>
         </div>
