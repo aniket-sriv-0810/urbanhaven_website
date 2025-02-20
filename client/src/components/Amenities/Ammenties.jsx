@@ -7,10 +7,10 @@ import { MdDinnerDining } from "react-icons/md";
 const Amenities = () => {
   return (
      <div className="mt-12 px-6 lg:px-20">
-      <h2 className="text-3xl font-bold text-center text-gray-800 mb-10">
+      <h2 className="text-xl font-bold text-center text-gray-800 mb-10">
         Amenities & Services Available
       </h2>
-      <ul className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <ul className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {[
           { icon: <FaWifi className="text-blue-500 text-4xl" />, text: "Free Unlimited Wifi" },
           { icon: <TbAirConditioning className="text-gray-700 text-4xl" />, text: "Air Conditioning" },
@@ -23,9 +23,9 @@ const Amenities = () => {
         ].map((amenity, index) => (
           <li
             key={index}
-            className="flex flex-col items-center text-center p-6 bg-gray-50 shadow-md rounded-3xl hover:shadow-2xl hover:shadow-gray-300 transition-transform transform hover:scale-105 duration-300"
+            className="flex flex-row items-center xs:flex-col sm:flex-row md:flex-col text-center p-3 xs:p-5 bg-gray-50 shadow-md rounded-3xl hover:shadow-2xl hover:shadow-gray-300 transition-transform transform hover:scale-105 duration-300"
           >
-            <div className="bg-gray-100 rounded-full p-4 mb-4">
+            <div className="bg-gray-100 rounded-full p-4">
               {amenity.icon}
             </div>
             <span className="text-lg font-medium text-gray-700">

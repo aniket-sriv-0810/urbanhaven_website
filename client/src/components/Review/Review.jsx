@@ -45,21 +45,21 @@ const Review = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-blue-50 to-white py-10 px-5 sm:px-20 min-h-screen flex justify-center items-center">
-      <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-8">
-        <h1 className="text-center text-2xl font-bold text-gray-800 mb-6">
+    <div className="bg-gradient-to-b from-blue-50 to-white py-10 px-5 sm:px-20 min-h-screen flex justify-center items-center rounded-xl">
+      <div className="bg-gray-100 rounded-2xl shadow-xl w-full max-w-md p-8">
+        <h1 className=" text-center xs:text-lg text-base font-bold text-gray-700 mb-6">
           Kindly Provide Your Feedback
         </h1>
         <form onSubmit={handleSubmitForm} className="space-y-6">
           {/* User Information */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center justify-center gap-4">
             <img
               src={user ? user.image : null}
               alt="User"
-              className="w-14 h-14 rounded-full shadow-md"
+              className="w-10 h-10 xs:w-14 xs:h-14 rounded-full shadow-md"
             />
             <div>
-              <h2 className="text-lg font-semibold text-gray-800">
+              <h2 className="text-base font-semibold text-gray-700">
                 {user ? user.name.toUpperCase() : ""}
               </h2>
               <p className="text-sm text-gray-500">

@@ -63,7 +63,7 @@ const MapLocation = ({ hotel }) => {
   }
 
   return (
-    <div className="bg-gray-300 shadow-lg overflow-hidden ">
+    <div className="bg-gray-300 rounded-2xl shadow-lg shadow-gray-400 overflow-hidden ">
       <h2 className="text-xl flex items-center justify-center gap-3 font-bold text-center text-black py-4">
        <FaMapMarkerAlt className='text-red-500'/> Our Hotel Location
       </h2>

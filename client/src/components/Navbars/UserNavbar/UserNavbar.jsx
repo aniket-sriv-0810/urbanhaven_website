@@ -42,7 +42,7 @@ const UserNavbar = () => {
     <nav className=" bg-gradient-to-r from-indigo-500 to-purple-600 text-white  ">
       <div className="container flex justify-center items-center px-6 sm:justify-between  lg:px-8">
         {/* Logo and Welcome Message */}
-        <div className="flex  items-center space-x-5">
+        <div className="flex  items-center  xs:-ml-5 space-x-5" data-aos="fade-down">
         <Tippy content="Urbanhaven" className='bg-red-400'>
           <NavLink to="/">
             <img
@@ -58,7 +58,7 @@ const UserNavbar = () => {
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden capitalize lg:flex absolute right-7 gap-9  items-center  ">
+        <ul className="hidden capitalize lg:flex absolute right-7 gap-9 items-center" data-aos="fade-up">
         <li className={` ${user ? (user.role === "admin" ? "admin" : "hidden") : ""} hover:text-yellow-400 hover:scale-110 transition-all duration-100 hover:font-semibold `}>
         <Tippy content="Admin Panel">
           <NavLink to="/admin">

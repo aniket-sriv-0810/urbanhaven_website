@@ -62,13 +62,13 @@ const AllBlogs = () => {
               
               <div className="p-4">
                 <h2 className="flex items-center justify-between text-xl font-bold text-gray-900">{blog.title}
-                {user.role === "admin"  ?
+                { user ? user.role === "admin"  ?
                 <div className="flex gap-3 items-center">
                 <Link to={`/blog/${blog._id}/edit`}>
                  <FaRegEdit className="w-4 h-4 m-2 text-gray-400 hover:scale-110 hover:text-green-600 hover:cursor-pointer" />
                  </Link>
                  </div>
-                : null}
+                : null : null}
                  </h2>
                 <p className="text-gray-600 mt-2 line-clamp-3">
                   {blog.description}

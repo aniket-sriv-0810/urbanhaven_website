@@ -50,24 +50,24 @@ const Policies = () => {
   return (
     <div className="mt-10 px-6 sm:px-12 lg:px-20 py-12 bg-gradient-to-b from-gray-50 to-gray-100">
       {/* Page Title */}
-      <h3 className="text-4xl font-bold text-center text-gray-800 mb-10">
+      <h3 className="text-2xl font-bold text-center text-gray-800 mb-10">
         Our Policies & Guidelines
       </h3>
 
       {/* Policy Cards */}
-      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-8">
         {policies.map((policy, index) => (
           <li
             key={index}
             className="relative bg-white shadow-lg rounded-xl p-6 hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border-l-4 border-green-500 hover:bg-green-100 "
           >
-            <div className="flex items-start ">
-              <FaCheckCircle className="text-green-600 text-4xl mr-4 " />
+            <div className="flex items-start  ">
+              <FaCheckCircle className="text-green-600 text-3xl mr-4 " />
               <div>
-                <h4 className="text-xl font-semibold text-gray-900 mb-2">
+                <h4 className="text-base font-semibold text-gray-900 mb-2">
                   {policy.title}
                 </h4>
-                <p className="text-gray-700 text-sm leading-relaxed ">
+                <p className="text-gray-700 text-xs xs:text-sm leading-relaxed ">
                   {policy.description}
                 </p>
               </div>
