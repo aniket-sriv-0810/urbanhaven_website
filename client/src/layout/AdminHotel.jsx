@@ -28,36 +28,36 @@ const AdminHotel = () => {
 
   return (
     <div className="admin-hotel-container min-h-screen bg-gray-50 p-4 md:p-8">
-      <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">
+      <h1 className="text-3xl font-semibold text-center mb-6 text-gray-800">
         Hotel Details
       </h1>
       {hotelDetails ? (
         <div className="overflow-x-auto bg-white shadow-lg rounded-lg">
           <table className="min-w-full border-collapse border border-gray-200">
-            <thead className="bg-indigo-600 text-white text-sm lg:text-base">
+            <thead className="bg-gray-800 text-white text-sm lg:text-base">
               <tr>
-                <th className="border border-gray-200 px-4 py-3 text-left">
+                <th className="border border-gray-200 px-4 py-3 font-medium text-center">
                   Hotel Image
                 </th>
-                <th className="border border-gray-200 px-4 py-3 text-left">
+                <th className="border border-gray-200 px-4 py-3 font-medium text-center">
                   Title
                 </th>
-                <th className="border border-gray-200 px-4 py-3 text-left">
+                <th className="border border-gray-200 px-4 py-3 font-medium text-center">
                   Price
                 </th>
-                <th className="border border-gray-200 px-4 py-3 text-left">
+                <th className="border border-gray-200 px-4 py-3 font-medium text-center">
                   City
                 </th>
-                <th className="border border-gray-200 px-4 py-3 text-left">
+                <th className="border border-gray-200 px-4 py-3 font-medium text-center">
                   State
                 </th>
-                <th className="border border-gray-200 px-4 py-3 text-left">
+                <th className="border border-gray-200 px-4 py-3 font-medium text-center">
                   Country
                 </th>
-                <th className="border border-gray-200 px-4 py-3 text-left">
+                <th className="border border-gray-200 px-4 py-3 font-medium text-center">
                   Edit Details
                 </th>
-                <th className="border border-gray-200 px-4 py-3 text-left">
+                <th className="border border-gray-200 px-4 py-3  text-center">
                   Delete Hotel
                 </th>
               </tr>
@@ -66,20 +66,20 @@ const AdminHotel = () => {
               {hotelDetails.map((hotelInfo) => (
                 <tr
                   key={hotelInfo._id}
-                  className="hover:bg-gray-100 text-gray-800 "
+                  className="hover:bg-zinc-600 hover:text-white text-gray-800 "
                 >
                   <td className="border border-gray-200 px-4 py-2 text-center">
                     <img
                       src={hotelInfo.image}
                       alt={hotelInfo.title}
-                      className="w-12 h-12 md:w-16 md:h-16 rounded-full mx-auto object-cover border border-gray-300"
+                      className="w-12 h-12 shadow-lg shadow-gray-700 md:w-16 md:h-16 rounded-full mx-auto object-cover border border-gray-600"
                     />
                   </td>
-                  <td className="border border-gray-200 px-4 py-2 text-center">
+                  <td className="border border-gray-200 px-4 py-2  text-center">
                     {hotelInfo.title}
                   </td>
                   <td className="border border-gray-200 px-4 py-2 text-center">
-                    Rs {hotelInfo.price}
+                  ₹ {hotelInfo.price}
                   </td>
                   <td className="border border-gray-200 px-4 py-2 text-center">
                     {hotelInfo.city}
@@ -95,7 +95,7 @@ const AdminHotel = () => {
                       onClick={() =>
                         navigate(`/admin/hotel-details/${hotelInfo._id}/edit`)
                       }
-                      className="flex items-center gap-x-3 bg-green-500 px-4 py-4 m-auto rounded-full text-white hover:bg-green-600 transition-colors"
+                      className="flex items-center gap-x-3 bg-green-500 px-4 py-4 m-auto rounded-full text-white hover:bg-green-600 hover:scale-110 transition-colors"
                     >
                       <FaEdit />
                     </button>
@@ -105,7 +105,7 @@ const AdminHotel = () => {
                       onClick={() =>
                         navigate(`/admin/hotel/${hotelInfo._id}/delete`)
                       }
-                      className="flex items-center gap-x-2 m-auto bg-red-600 px-4 py-4 rounded-full text-white hover:bg-red-700 transition-colors"
+                      className="flex items-center gap-x-2 m-auto bg-red-600 px-4 py-4 rounded-full text-white hover:bg-red-700 hover:scale-110 transition-colors"
                     >
                       <MdDeleteForever/>
                     </button>
