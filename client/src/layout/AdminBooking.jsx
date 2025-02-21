@@ -30,7 +30,7 @@ const AdminBooking = () => {
 
   return (
     <div className="admin-booking-container bg-gray-50 min-h-screen p-6">
-      <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">
+      <h1 className="text-3xl font-semibold text-center mb-6 text-gray-800">
         Booking Details
       </h1>
       {loading ? (
@@ -43,7 +43,7 @@ const AdminBooking = () => {
       ) : adminBookingData && adminBookingData.length > 0 ? (
         <div className="overflow-x-auto bg-white shadow-lg rounded-lg">
           <table className="min-w-full table-auto border-collapse border border-gray-300">
-            <thead className="bg-indigo-600 text-white text-sm lg:text-base">
+            <thead className="bg-gray-800 text-white text-sm lg:text-base">
               <tr>
                 <th colSpan="3" className="border border-gray-300 px-4 py-3">
                   Booked By
@@ -89,41 +89,41 @@ const AdminBooking = () => {
               {adminBookingData.map((bookingInfo) => (
                 <tr
                   key={bookingInfo._id}
-                  className="hover:bg-gray-100 text-gray-800"
+                  className="hover:bg-zinc-600 hover:text-white text-gray-800"
                 >
                   <td className="border border-gray-300 px-4 py-2 text-center">
                     {bookingInfo.userDetails?.name || "N/A"}
                   </td>
-                  <td className="border border-gray-300 px-4 py-2 text-center">
+                  <td className="border border-gray-300 px-4 py-2  text-center">
                     {bookingInfo.userDetails?.phone || "N/A"}
                   </td>
-                  <td className="border border-gray-300 px-4 py-2 text-center">
+                  <td className="border border-gray-300 px-4 py-2  text-center">
                     {bookingInfo.userDetails?.email || "N/A"}
                   </td>
-                  <td className="border border-gray-300 px-4 py-2 text-center">
+                  <td className="border border-gray-300 px-4 py-2   text-center">
                     <img
                       src={bookingInfo.hotelDetails?.image}
                       alt={bookingInfo.hotelDetails?.title || "Hotel Image"}
                       className="w-16 h-16 object-cover m-auto rounded-md border"
                     />
                   </td>
-                  <td className="border border-gray-300 px-4 py-2 text-center">
+                  <td className="border border-gray-300 px-4 py-2  text-center">
                     {bookingInfo.hotelDetails?.title || "N/A"}
                   </td>
-                  <td className="border border-gray-300 px-4 py-2 text-center">
+                  <td className="border border-gray-300 px-4 py-2  text-center">
                     {bookingInfo.hotelDetails?.city || "N/A"}
                   </td>
-                  <td className="border border-gray-300 px-4 py-2 text-center">
+                  <td className="border border-gray-300 px-4 py-2   text-center">
                     {new Date(bookingInfo.checkInDate).toLocaleDateString()}
                   </td>
-                  <td className="border border-gray-300 px-4 py-2 text-center">
+                  <td className="border border-gray-300 px-4 py-2   text-center">
                     {new Date(bookingInfo.checkOutDate).toLocaleDateString()}
                   </td>
-                  <td className="border border-gray-300 px-4 py-2 text-center">
+                  <td className="border border-gray-300 px-4 py-2   text-center">
                     {bookingInfo.paymentDetails}
                   </td>
-                  <td
-                    className={`border border-gray-300 px-4 py-2 text-center font-bold ${
+                  <td className=" flex justify-center items-center mt-5">
+                  <button  className={`border border-gray-300 px-4 py-2 text-center rounded-xl font-medium ${
                       bookingInfo.status === "Confirmed"
                         ? "bg-green-500 text-white"
                         : bookingInfo.status === "Pending"
@@ -131,9 +131,9 @@ const AdminBooking = () => {
                         : bookingInfo.status === "Cancelled"
                         ? "bg-red-500 text-white"
                         : "bg-gray-200 text-black"
-                    }`}
-                  >
+                    }`}>
                     {bookingInfo.status}
+                  </button>
                   </td>
                 </tr>
               ))}

@@ -4,7 +4,6 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { driver } from "driver.js";
 import "driver.js/dist/driver.css";
 import "./AdminDriver.css";
-import AdminNavbar from "../components/Navbars/AdminNavbar/AdminNavbar";
 import { FaUserShield, FaIdBadge, FaPhoneAlt , FaEnvelope, FaHotel, FaUsers, FaClipboardList, FaComments } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
 import AOS from "aos";
@@ -98,9 +97,9 @@ const AdminDashboard = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-gray-100 py-10 px-5 sm:px-20">
+      <div className="min-h-screen bg-gradient-to-r from-slate-300 to-slate-500 py-10 px-5 sm:px-20">
         {/* Admin Welcome Section */}
-        <div className="bg-white shadow-lg shadow-gray-400 rounded-xl p-6 md:p-8 max-w-3xl mx-auto" data-aos="fade-up">
+        <div className="bg-gray-100 shadow-lg shadow-gray-400 rounded-xl p-6 md:p-8 max-w-3xl mx-auto" data-aos="fade-up">
           <div className="flex items-center justify-center gap-4 mb-6">
             <FaUserShield className="text-blue-600 text-3xl" />
             <h2 className="text-3xl  font-bold text-gray-900">Admin Credentials</h2>
