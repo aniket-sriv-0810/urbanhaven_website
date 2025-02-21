@@ -5,6 +5,7 @@ import WebsiteLogo from '../assets/main-logo.png';
 import { useUser } from '../components/userContext/userContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { BiSolidPaperPlane } from "react-icons/bi";
 // Define the Contact Us component
 const ContactUs = () => {
   const {user} = useUser();
@@ -64,20 +65,25 @@ const ContactUs = () => {
             <h2 className="text-2xl font-bold text-teal-700 mb-6 text-center">Contact Information</h2>
             <ul className="space-y-6 text-lg text-gray-800">
               <li className="flex items-center gap-4">
-                <FaPhoneAlt className="text-teal-500 text-xl" />
+                <FaPhoneAlt className="text-green-500 text-xl" />
                 <a href="tel:+1234567890" className="hover:text-teal-700 transition">
-                  <strong>Phone:</strong> +1 234 567 890
+                  <strong className='hidden md:block'>Phone:</strong> +1 234 567 890
                 </a>
               </li>
               <li className="flex items-center gap-4">
-                <FaEnvelope className="text-teal-500 text-xl" />
-                <a href="mailto:support@urbanhaven.com" className="hover:text-teal-700 transition ">
-                  <strong>Email:</strong> support@urbanhaven.com
+                <FaEnvelope className="text-blue-500 text-xl" />
+                <a href="mailto:support@urbanhaven.com" className="hover:text-teal-700 transition">
+                  <strong className='hidden md:block'>Email:</strong> <span className='text-base'>
+                  support@urbanhaven.com
+                  </span> 
                 </a>
               </li>
               <li className="flex items-center gap-4">
-                <FaMapMarkerAlt className="text-teal-500 text-xl" />
-                <span><strong>Address:</strong> 123 UrbanHaven Lane, Comfort City, Anywhere 56789</span>
+                <FaMapMarkerAlt className="text-red-500 text-xl" />
+                <span><strong className='hidden md:block'>Address:</strong>
+                <span className='text-sm'>
+                 123 UrbanHaven Lane, Comfort City, Anywhere 56789</span>
+                 </span>
               </li>
             </ul>
           </div>
@@ -98,7 +104,11 @@ const ContactUs = () => {
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700">Your Message</label>
                 <textarea onChange={handleInput} name="message" id="message" rows="4" className="w-full mt-1 px-4 py-2 border rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500" placeholder="Write your message..."></textarea>
               </div>
-              <button type="submit" className="w-full bg-teal-600 text-white py-3 px-4 rounded-md shadow-md hover:bg-teal-500 transition duration-300">Send Message</button>
+              <span className='ml-5 flex items-center justify-center gap-2'>
+              <button type="submit" className="w-full flex justify-center items-center sm:w-[70%] bg-green-600 text-white p-2 sm:p-3 rounded-xl shadow-md hover:bg-teal-500 transition duration-300">Send Message
+                <BiSolidPaperPlane className=' relative left-5 text-xl text-white'/>
+              </button>
+              </span>
             </form>
           </div>
         </div>
