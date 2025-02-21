@@ -111,21 +111,21 @@ const generatePDF = () => {
         {/* Hotel Details */}
         <div className="p-6 bg-gray-700 rounded-xl shadow-md">
           <h2 className="text-2xl  font-semibold text-indigo-300 flex items-center justify-center gap-2"><FaHotel /> Hotel Details</h2>
-          <div className="flex flex-col md:flex-row gap-6 mt-4 items-center">
+          <div className="flex flex-col md:flex-row gap-6 mt-4 items-center ">
             <img src={hotelDetails.image} alt={hotelDetails.title} className="h-56 w-full md:w-1/2 object-cover rounded-xl shadow-md" />
-            <div className="w-full md:w-1/2 space-y-3 text-lg">
-              <p className="flex items-center gap-2"><FaHotel /><strong>Hotel</strong> {hotelDetails.title}</p>
-              <p className="flex items-center gap-2"><FaMapMarkerAlt /><strong>City:</strong> {hotelDetails.city}</p>
-              <p className="flex items-center gap-2"><FaRupeeSign /><strong>Bill:</strong> ₹{totalAmount}</p>
-              <p className="flex items-center gap-2"><FaBed /><strong>Rooms:</strong> {room}</p>
-              <p className="flex items-center gap-2"><FaUserFriends /><strong>Adults:</strong> {adultCount}</p>
+            <div className="w-full md:w-1/2 space-y-3 text-lg font-semibold">
+              <p className="flex items-center gap-2"><FaHotel /><p>Hotel</p> {hotelDetails.title}</p>
+              <p className="flex items-center gap-2"><FaMapMarkerAlt /><p>City:</p> {hotelDetails.city}</p>
+              <p className="flex items-center gap-2"><FaRupeeSign /><p>Bill:</p> ₹ {(totalAmount).toLocaleString("INR")}</p>
+              <p className="flex items-center gap-2"><FaBed /><p>Rooms:</p> {room}</p>
+              <p className="flex items-center gap-2"><FaUserFriends /><p>Adults:</p> {adultCount}</p>
             </div>
           </div>
         </div>
 
         {/* Dates Section */}
         <div className="p-6 bg-gray-700 rounded-xl shadow-md flex flex-col md:flex-row gap-6 items-center justify-between">
-          <div className="flex-1 text-center md:text-left">
+          <div className="flex flex-col justify-start items-start gap-2  text-center md:text-left">
             <h3 className="text-xl font-semibold text-indigo-300 flex items-center gap-2 justify-center md:justify-start"><FaCalendarCheck /> Stay Duration</h3>
             <p className="my-2 text-lg"><strong>Check-In:</strong> {new Date(checkInDate).toLocaleDateString("en-GB").replace(/\//g, "-")}</p>
             <p className="text-lg"><strong>Check-Out:</strong> {new Date(checkOutDate).toLocaleDateString("en-GB").replace(/\//g, "-")}</p>
@@ -134,16 +134,16 @@ const generatePDF = () => {
 
           {/* Guest Details Section */}
           <div className="p-6 bg-gray-700 rounded-xl shadow-md flex flex-col md:flex-row gap-6 items-center justify-between">
-          <div className="flex-1 text-center  md:text-left">
-            <h3 className="text-xl font-semibold text-indigo-300 flex items-center gap-2 justify-center md:justify-start"><FaUser /> Guest Details</h3>
-            <p className="my-2 text-lg flex items-center gap-2 justify-center md:justify-start"><FaUser /><strong>Name:</strong> {userDetails.name}</p>
-            <p className="my-2 text-lg flex items-center gap-2 justify-center md:justify-start"><FaEnvelope /><strong>Email:</strong> {userDetails.email}</p>
-            <p className="my-2 text-lg flex items-center gap-2 justify-center md:justify-start"><FaPhoneAlt /><strong>Phone:</strong> {userDetails.phone}</p>
+          <div className="flex flex-col justify-start items-start text-center   md:text-left">
+            <h3 className="text-xl mb-3 font-semibold text-indigo-300 flex items-center gap-2 justify-center md:justify-start"><FaUser /> Guest Details</h3>
+            <p className="my-2 text-lg flex items-center gap-2 justify-start"><FaUser /><strong className="hidden md:block">Name:</strong> {userDetails.name}</p>
+            <p className="my-2 text-lg flex items-center gap-2 justify-start"><FaEnvelope /><strong className="hidden md:block">Email:</strong> {userDetails.email}</p>
+            <p className="my-2 text-lg flex items-center gap-2 justify-start"><FaPhoneAlt /><strong className="hidden md:block">Phone:</strong> {userDetails.phone}</p>
           </div>
         </div>
 
         {/* Action Buttons */}
-        <div className="mt-8 flex flex-col md:flex-row gap-4 justify-center">
+        <div className="mt-8 flex flex-col p-4 sm:flex-row gap-4 justify-center">
           <button onClick={generatePDF} className="w-full md:w-auto px-6 py-3 bg-indigo-500 text-white font-semibold rounded-xl shadow-md hover:bg-indigo-600 transition-all flex items-center justify-center gap-2">
             <FaFileDownload /> Download PDF
           </button>
