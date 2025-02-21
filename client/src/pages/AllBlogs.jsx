@@ -51,7 +51,7 @@ const AllBlogs = () => {
           {blogData.map((blog) => (
             <div
               key={blog._id}
-              className="bg-white shadow-md rounded-lg overflow-hidden transition-transform transform hover:scale-105"
+              className="bg-white w-80 shadow-md rounded-lg overflow-hidden transition-transform transform hover:scale-105"
             >
             
               <img

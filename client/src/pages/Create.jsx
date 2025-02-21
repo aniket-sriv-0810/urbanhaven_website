@@ -70,7 +70,7 @@ try {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-600">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-gray-200 to-zinc-300">
       <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg">
         <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">
           Create a New Hotel
