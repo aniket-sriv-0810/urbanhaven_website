@@ -59,82 +59,76 @@ const CreateBlog = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
-      <div className="bg-white shadow-lg rounded-2xl p-6 w-full sm:w-3/4 md:w-1/2 lg:w-1/3">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-          Create a New Blog
-        </h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Title Input */}
-          <div>
-            <label className="block text-gray-700 font-medium">Title</label>
-            <input
-              type="text"
-              name="title"
-              placeholder="Enter blog title"
-              value={formData.title}
-              onChange={handleChange}
-              className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-              required
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-200 px-4 py-10">
+    <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-lg">
+      <h2 className="text-xl sm:text-3xl font-extrabold text-center text-gray-800 mb-6 animate-fadeIn">
+        Create a New Blog
+      </h2>
+      <form onSubmit={handleSubmit} className="space-y-5">
+        {/* Title Input */}
+        <div>
+          <label className="block text-gray-700 font-semibold">Title</label>
+          <input
+            type="text"
+            name="title"
+            placeholder="Enter blog title"
+            value={formData.title}
+            onChange={handleChange}
+            className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none transition"
+            required
+          />
+        </div>
+
+        {/* Description Input */}
+        <div>
+          <label className="block text-gray-700 font-semibold">Description</label>
+          <textarea
+            name="description"
+            rows="4"
+            placeholder="Enter blog description"
+            value={formData.description}
+            onChange={handleChange}
+            className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none transition"
+            required
+          ></textarea>
+        </div>
+
+        {/* Image Upload */}
+        <div>
+          <label className="block text-gray-700 font-semibold">Upload Image</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+            className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg hover:cursor-pointer focus:outline-none"
+            required
+          />
+        </div>
+
+        {/* Image Preview */}
+        {preview && (
+          <div className="mt-4 rounded-lg overflow-hidden shadow-md">
+            <img
+              src={preview}
+              alt="Preview"
+              className="w-full h-48 object-cover transform hover:scale-105  transition duration-500 "
             />
           </div>
+        )}
 
-          {/* Description Input */}
-          <div>
-            <label className="block text-gray-700 font-medium">
-              Description
-            </label>
-            <textarea
-              name="description"
-              rows="4"
-              placeholder="Enter blog description"
-              value={formData.description}
-              onChange={handleChange}
-              className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-              required
-            ></textarea>
-          </div>
-
-          {/* Image Upload */}
-          <div>
-            <label className="block text-gray-700 font-medium">
-              Upload Image
-            </label>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none"
-              required
-            />
-          </div>
-
-          {/* Image Preview */}
-          {preview && (
-            <div className="mt-3">
-              <img
-                src={preview}
-                alt="Preview"
-                className="w-full h-48 object-cover rounded-lg shadow-md"
-              />
-            </div>
-          )}
-
-          {/* Submit Button */}
-          <button
-            type="submit"
-            className={`w-full py-2 mt-4 text-white rounded-lg shadow-md ${
-              loading
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-blue-600 hover:bg-blue-700"
-            }`}
-            disabled={loading}
-          >
-            {loading ? "Creating Blog..." : "Create Blog"}
-          </button>
-        </form>
-      </div>
+        {/* Submit Button */}
+        <button
+          type="submit"
+          className={`w-full p-2 mt-4 text-white rounded-xl shadow-md font-bold text-lg transition transform hover:scale-105 ${
+            loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"
+          }`}
+          disabled={loading}
+        >
+          {loading ? "Creating Blog..." : "Create Blog"}
+        </button>
+      </form>
     </div>
+  </div>
   );
 };
 

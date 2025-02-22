@@ -82,12 +82,12 @@ const EditBlog = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
+    <div className="min-h-screen flex items-center justify-center bg-gray-200 p-6">
       <div className="bg-white shadow-lg rounded-2xl p-6 w-full sm:w-3/4 md:w-1/2 lg:w-1/3">
         
         {/* Back Button */}
         <button 
-          className="flex items-center gap-2 text-gray-700 hover:text-blue-600 mb-4"
+          className="flex items-center gap-2 text-gray-700 hover:text-red-600 mb-4"
           onClick={() => navigate(-1)}
         >
            Back
@@ -149,7 +149,7 @@ const EditBlog = () => {
               name="image"
               onChange={handleImageChange}
               className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none"
-              required
+              
             />
           </div>
 
