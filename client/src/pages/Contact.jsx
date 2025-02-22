@@ -6,6 +6,8 @@ import { useUser } from '../components/userContext/userContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { BiSolidPaperPlane } from "react-icons/bi";
+import Navbar from '../components/Navbars/Navbar/Navbar';
+import Footer from '../components/Footer/Footer';
 // Define the Contact Us component
 const ContactUs = () => {
   const {user} = useUser();
@@ -46,6 +48,11 @@ const ContactUs = () => {
   
 
   return (
+    <>
+<div className='bg-gradient-to-r from-slate-600 to-slate-800'>
+        <Navbar />
+      </div>
+    
     <section className="bg-gradient-to-r from-emerald-500 to-green-600 text-gray-900 py-16 px-6 md:px-12 lg:px-24 xl:px-32">
       <div className="max-w-7xl mx-auto">
         {/* Header with Logo */}
@@ -105,7 +112,7 @@ const ContactUs = () => {
                 <textarea onChange={handleInput} name="message" id="message" rows="4" className="w-full mt-1 px-4 py-2 border rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500" placeholder="Write your message..."></textarea>
               </div>
               <span className='ml-5 flex items-center justify-center gap-2'>
-              <button type="submit" className="w-full flex justify-center items-center sm:w-[70%] bg-green-600 text-white p-2 sm:p-3 rounded-xl shadow-md hover:bg-teal-500 transition duration-300">Send Message
+              <button type="submit" className="w-full mr-5 flex justify-center items-center sm:w-[70%] bg-green-600 text-white p-2 sm:p-3 rounded-xl shadow-md hover:bg-teal-500 transition duration-300">Send Message
                 <BiSolidPaperPlane className=' relative left-5 text-xl text-white'/>
               </button>
               </span>
@@ -123,6 +130,8 @@ const ContactUs = () => {
         </div>
       </div>
     </section>
+    <Footer />
+    </>
   );
 };
 

@@ -13,7 +13,7 @@ const currencySymbols = {
   POUND: "£",
 };
 
-const HotelDetails = ({ hotel, conversionRate, selectedCurrency }) => {
+const HotelDetails = ({ hotel, conversionRate = 1 , selectedCurrency = "INR" }) => {
   const { user } = useUser();
 
   const convertedPrice = (hotel.price * conversionRate).toFixed(2);

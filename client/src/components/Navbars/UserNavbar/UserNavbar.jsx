@@ -40,7 +40,7 @@ const UserNavbar = () => {
 
   return (
     <nav className=" bg-gradient-to-r from-indigo-500 to-purple-600 text-white  ">
-      <div className="container flex justify-center items-center px-6 sm:justify-between  lg:px-8">
+      <div className=" flex justify-center items-center px-6 sm:justify-between  lg:px-8">
         {/* Logo and Welcome Message */}
         <div className="flex  items-center  xs:-ml-5 space-x-5" data-aos="fade-down">
         <Tippy content="Urbanhaven" className='bg-red-400'>
