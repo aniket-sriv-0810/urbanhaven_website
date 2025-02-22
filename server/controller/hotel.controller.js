@@ -126,7 +126,7 @@ if(!image){
 const showMyHotel = async(req , res ) => {
    try {
      let {id} = req.params;
-        console.log("Body:", req);
+        console.log("ID:", id);
 
     // Check if Hotel ID is not found or if it is Valid
               if(!id){
@@ -159,16 +159,13 @@ const showMyHotel = async(req , res ) => {
      // Calculate the average rating
      const totalRatings = showHotel.review.reduce((acc, review) => acc + review.rating, 0);
      const avgRating = showHotel.review.length > 0 ? (totalRatings / showHotel.review.length).toFixed(2) : 0;
-
-     if(!totalReviews || !totalRatings || !avgRating){
-      return res.status(404).json(
-        new ApiError(404, "Unable to Find ", "Reviews Details Unavailable !")
-     )
-    }
+     console.log("My Hotel => " ,showHotel);
+     console.log("Review Count => " ,totalReviews);
 
      console.log("My Hotel => " ,showHotel);
      console.log("Review Count => " ,totalReviews);
-     return res.status(200).json(new ApiResponse(200 , {showHotel , allReviews : showHotel.review , totalReviews , avgRating} , "Here's my hotel !"));
+     return res.status(200).json(
+      new ApiResponse(200 , {showHotel , allReviews : showHotel.review , totalReviews , avgRating} , "Here's my hotel !"));
    }
    catch (error) {
       return res.status(400).json(

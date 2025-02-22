@@ -9,7 +9,7 @@ const Delete = () => {
     useEffect(() => {
         const deleteHotel = async() => {
             try {
-              let response = await axios.delete(`http://localhost:8000/api/v1/admin/hotel/${id}/delete` ,{
+              let response = await axios.delete(`http://localhost:8000/v1/admin/hotel/${id}/delete` ,{
                 withCredentials: true,
               });
               console.log(response.data.message);

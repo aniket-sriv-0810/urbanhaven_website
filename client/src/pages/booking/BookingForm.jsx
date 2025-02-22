@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState ,useEffect } from "react";
 import { useUser } from "../../components/userContext/userContext";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,11 +7,11 @@ import { FaMinus, FaPlus, FaUserAlt } from "react-icons/fa";
 import { MdCalendarMonth } from "react-icons/md";
 import { FaCircleRight, FaSquarePhone } from "react-icons/fa6";
 import { BiLogoGmail } from "react-icons/bi";
-import { toast , ToastContainer , Bounce } from "react-toastify"; 
-import "react-toastify/dist/ReactToastify.css";
+import ShowErrorToast from "../../components/ShowErrorToast";
 const customId = "custom-id-yes";
 const BookingForm = ({ bookingData, setBookingData, handleNext, value, styling }) => {
   const { user } = useUser();
+  const [errorMessage, setErrorMessage] = useState(""); // Error state
 
   const handleDateChange = (date, fieldName) => {
     setBookingData({ ...bookingData, [fieldName]: date });
@@ -32,36 +32,15 @@ const BookingForm = ({ bookingData, setBookingData, handleNext, value, styling }
   const handleIncrement = (field) => {
     setBookingData((prev) => {
       if (field === "room" && prev.room >= 4) {
-        toast.error('You may book up to 4 rooms in a single reservation', {
-          position: "top-right",
-          autoClose: 2000,
-          theme: "colored",
-          transition: Bounce,
-          toastId:customId,
-          className: ' p-0 w-max',
-          });
+        setErrorMessage("Maximum of 4 rooms allowed!");
         return prev;
       }
       if (field === "adultCount" && prev.adultCount >= prev.room * 3) {
-        toast.error('A single room can host a maximum of 3 adults for optimal comfort', {
-          position: "top-right",
-          autoClose: 2000,
-          theme: "colored",
-          transition: Bounce,
-          toastId:customId,
-          className: 'p-0 w-max',
-          });
+        setErrorMessage("Maximum adults reached for selected rooms!");
         return prev;
       }
       if (field === "infantCount" && prev.infantCount >= prev.room * 2) {
-        toast.error('For a comfortable stay, each room allows up to 2 infants', {
-          position: "top-right",
-          autoClose: 2000,
-          theme: "colored",
-          transition: Bounce,
-          toastId:customId,
-          className: 'p-0 w-max',
-          });
+        setErrorMessage("Maximum infants reached for selected rooms!");
         return prev;
       }
       return { ...prev, [field]: prev[field] + 1 };
@@ -80,14 +59,7 @@ const BookingForm = ({ bookingData, setBookingData, handleNext, value, styling }
   // Handle Form Submission
   const handleFormSubmit = () => {
     if (!bookingData.checkInDate || !bookingData.checkOutDate) {
-      toast.error('Please select valid check-in and check-out dates before proceeding', {
-        position: "top-right",
-        autoClose: 2000,
-        theme: "colored",
-        transition: Bounce,
-        toastId:customId,
-        className: 'p-0 w-max',
-        });
+      setErrorMessage("Please select check-in and check-out dates!");
      
       return;
     }
@@ -185,20 +157,8 @@ const BookingForm = ({ bookingData, setBookingData, handleNext, value, styling }
       >
         Next <FaCircleRight />
       </button>
-   
-    <ToastContainer
-position="top-right"
-autoClose={2000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover={false}
-theme="light"
-transition={Bounce}
-/>
+   {/* Error Modal */}
+   {errorMessage && <ShowErrorToast message={errorMessage} onClose={() => setErrorMessage("")} />}
 </div>
   );
 };

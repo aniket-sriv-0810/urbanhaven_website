@@ -29,26 +29,35 @@ const ShowHotel = () => {
     AOS.init({ duration: 1500, easing: "ease-in-out", mirror: true, once: false });
   }, []);
 
+  console.log("Hotel ID : " , id);
   const fetchHotelDetails = async () => {
+    
     try {
-      const response = await axios.get(`http://localhost:8000/v1/hotel/${id}`, { withCredentials: true });
-      setShowMyHotel(response.data.data.showHotel);
-      setReviews(response.data.data.allReviews);
-      setReviewCount(response.data.data.totalReviews);
-      setAvgRating(response.data.data.avgRating);
+      const response = await axios.get(`http://localhost:8000/v1/hotel/${id}`,
+       { withCredentials: true });
+      console.log(response.data);
+      
+      if(response.status == 200){
+
+        setShowMyHotel(response.data.data.showHotel);
+        setReviews(response.data.data.allReviews);
+        setReviewCount(response.data.data.totalReviews);
+        setAvgRating(response.data.data.avgRating);
+        
+      }
     } catch (error) {
       console.error("Error fetching hotel details:", error);
-    } finally {
+    }finally{
       setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchHotelDetails();
-  }, [id]);
+  }, []);
 
   if (loading) return <p>Loading hotel details...</p>;
-  if (!showMyHotel) return <p>Hotel not found or an error occurred.</p>;
+  
 
   return (
     <>
@@ -57,7 +66,8 @@ const ShowHotel = () => {
       </div>
       <div className=" overflow-hidden">
         <ShowHotelHeading />
-        <HotelImage image={showMyHotel.image} title={showMyHotel.title} />
+        {showMyHotel ? <HotelImage image={showMyHotel.image} title={showMyHotel.title} /> : <p>Hotel Image not available</p>}
+
         <ImageGallery />
         <HotelDetails hotel={showMyHotel} avgRating={avgRating} reviewCount={reviewCount} />
         <Amenities />

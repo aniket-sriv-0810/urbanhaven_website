@@ -80,7 +80,7 @@ try {
             type="text"
             placeholder="Hotel Title"
             name="title"
-            className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 text-center border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={newHotel.title}
             onChange={handleInputChange}
             required
@@ -89,7 +89,7 @@ try {
             placeholder="Description"
             name="description"
             rows="4"
-            className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 text-center border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={newHotel.description}
             onChange={handleInputChange}
             required
@@ -98,7 +98,7 @@ try {
             type="number"
             placeholder="Price (per night)"
             name="price"
-            className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 text-center border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={newHotel.price}
             onChange={handleInputChange}
             required
@@ -108,7 +108,7 @@ try {
               Upload Hotel Image
             </label>
             <div
-              className="relative w-full p-6 text-center border-2 border-dashed rounded-lg border-gray-300 bg-gray-50 hover:bg-gray-100 transition cursor-pointer"
+              className="relative w-full  p-6 text-center border-2 border-dashed rounded-lg border-gray-300 bg-gray-50 hover:bg-gray-100 transition cursor-pointer"
               onClick={() => document.getElementById("fileInput").click()}
             >
               {preview ? (
@@ -119,7 +119,7 @@ try {
                 />
               ) : (
                 <p className="text-gray-500">
-                  Drag & drop an image here, or <span className="text-blue-500 underline">browse</span>
+                  Drag & drop an image here, or <span className="text-blue-500 text-center underline">browse</span>
                 </p>
               )}
               <input
@@ -141,7 +141,7 @@ try {
               type="text"
               placeholder="City"
               name="city"
-              className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="p-3 border text-center rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={newHotel.city}
               onChange={handleInputChange}
               required
@@ -150,7 +150,7 @@ try {
               type="text"
               placeholder="State"
               name="state"
-              className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="p-3 border text-center rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={newHotel.state}
               onChange={handleInputChange}
               required
@@ -159,7 +159,7 @@ try {
               type="text"
               placeholder="Country"
               name="country"
-              className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="p-3 border text-center rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={newHotel.country}
               onChange={handleInputChange}
               required

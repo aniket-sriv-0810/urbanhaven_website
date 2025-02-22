@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { FaCloudUploadAlt } from "react-icons/fa";
 
 const Edit = () => {
   const navigate = useNavigate();
@@ -16,12 +17,11 @@ const Edit = () => {
   const [image, setImage] = useState(null);
   const [orgImage, setOrgImg] = useState(null);
 
-  // Fetch the current hotel data
   useEffect(() => {
     const fetchHotel = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/v1/hotel/${id}`,
+          `http://localhost:8000/v1/hotel/${id}`,
           { withCredentials: true }
         );
         setOrgImg(response.data.data.showHotel.image);
@@ -30,24 +30,19 @@ const Edit = () => {
         console.error("Error fetching hotel data:", error);
       }
     };
-
     fetchHotel();
   }, [id]);
 
-  // Handle input change
   const handleChange = (e) => {
     setHotelData({ ...hotelData, [e.target.name]: e.target.value });
   };
 
-  // Handle image upload
   const handleImageChange = (e) => {
     setImage(e.target.files[0]);
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const formData = new FormData();
     formData.append("title", hotelData.title);
     formData.append("description", hotelData.description);
@@ -60,157 +55,43 @@ const Edit = () => {
     }
 
     try {
-      const response = await axios.put(
-        `http://localhost:8000/api/v1/admin/hotel-details/${id}/edit`,
-        formData,
-        {
-          withCredentials: true,
-        }
-      );
-
-      console.log("Hotel updated:", response.data.data.updatedHotel);
+      await axios.put(`http://localhost:8000/v1/admin/hotel-details/${id}/edit`, formData, {
+        withCredentials: true,
+      });
       navigate("/admin/hotels");
     } catch (error) {
       console.error("Error updating hotel:", error);
     }
   };
-
+const inputStyling = `w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-400 focus:outline-none`
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-10 px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-2xl bg-white shadow-xl rounded-lg p-8">
-        <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-          Edit Hotel Details
-        </h1>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 to-indigo-100 p-6">
+      <div className="w-full max-w-3xl bg-white shadow-lg rounded-lg p-8">
+        <h1 className="text-xl xs:text-3xl font-semibold text-gray-700 mb-6 text-center">Edit Hotel Details</h1>
         {orgImage && (
-          <div className="mb-4">
-            <img
-              src={orgImage}
-              alt={hotelData.title}
-              className="w-full h-48 object-cover rounded-md"
-            />
+          <div className="mb-4 flex justify-center">
+            <img src={orgImage} alt={hotelData.title} className="w-full max-h-72 object-cover xs:object-contain rounded-xl shadow-md" />
           </div>
         )}
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div>
-              <label htmlFor="title" className="block text-sm font-medium text-gray-700">
-                Title
-              </label>
-              <input
-                type="text"
-                name="title"
-                id="title"
-                value={hotelData.title}
-                onChange={handleChange}
-                placeholder="Hotel Title"
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="price" className="block text-sm font-medium text-gray-700">
-                Price
-              </label>
-              <input
-                type="number"
-                name="price"
-                id="price"
-                value={hotelData.price}
-                onChange={handleChange}
-                placeholder="Price per night"
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                required
-              />
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text" name="title" value={hotelData.title} onChange={handleChange} placeholder="Title" className={inputStyling} required />
+            <input type="number" name="price" value={hotelData.price} onChange={handleChange} placeholder="Price per night" className={inputStyling} required />
           </div>
-
-          <div>
-            <label htmlFor="description" className="block text-sm font-medium text-gray-700">
-              Description
-            </label>
-            <textarea
-              name="description"
-              id="description"
-              value={hotelData.description}
-              onChange={handleChange}
-              placeholder="Write a brief description of the hotel..."
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              required
-            />
+          <textarea name="description" value={hotelData.description} onChange={handleChange} placeholder="Hotel Description" className={` ${inputStyling} h-28`} required />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <input type="text" name="city" value={hotelData.city} onChange={handleChange} placeholder="City" className={inputStyling} required />
+            <input type="text" name="state" value={hotelData.state} onChange={handleChange} placeholder="State" className={inputStyling} required />
+            <input type="text" name="country" value={hotelData.country} onChange={handleChange} placeholder="Country" className={inputStyling} required />
           </div>
-
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <div>
-              <label htmlFor="city" className="block text-sm font-medium text-gray-700">
-                City
-              </label>
-              <input
-                type="text"
-                name="city"
-                id="city"
-                value={hotelData.city}
-                onChange={handleChange}
-                placeholder="City"
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="state" className="block text-sm font-medium text-gray-700">
-                State
-              </label>
-              <input
-                type="text"
-                name="state"
-                id="state"
-                value={hotelData.state}
-                onChange={handleChange}
-                placeholder="State"
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="country" className="block text-sm font-medium text-gray-700">
-                Country
-              </label>
-              <input
-                type="text"
-                name="country"
-                id="country"
-                value={hotelData.country}
-                onChange={handleChange}
-                placeholder="Country"
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                required
-              />
-            </div>
-          </div>
-
-          <div>
-            <label htmlFor="image" className="block text-sm font-medium text-gray-700">
-              Image
-            </label>
-            <input
-              type="file"
-              name="image"
-              id="image"
-              onChange={handleImageChange}
-              className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border file:border-gray-300 file:text-sm file:font-medium file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
-            />
-          </div>
-
-          <div>
-            <button
-              type="submit"
-              className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              Update Hotel
-            </button>
-          </div>
+          <label className="flex flex-col items-center justify-center border-2 border-dashed border-indigo-400 rounded-lg p-4 cursor-pointer hover:bg-indigo-50 transition">
+            <FaCloudUploadAlt className="text-3xl text-indigo-500" />
+            <span className="text-gray-500 mt-2">Click to upload image</span>
+            <input type="file" name="image" onChange={handleImageChange} className="hidden" />
+          </label>
+          <button type="submit" className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 transition">
+            Update Hotel
+          </button>
         </form>
       </div>
     </div>

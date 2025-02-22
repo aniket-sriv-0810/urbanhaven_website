@@ -46,7 +46,7 @@ const Review = () => {
 
   return (
     <div className="bg-gradient-to-b from-blue-50 to-white py-10 px-5 sm:px-20 min-h-screen flex justify-center items-center rounded-xl">
-      <div className="bg-gray-100 rounded-2xl shadow-xl w-full max-w-md p-8">
+      <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-8">
         <h1 className=" text-center xs:text-lg text-base font-bold text-gray-700 mb-6">
           Kindly Provide Your Feedback
         </h1>
