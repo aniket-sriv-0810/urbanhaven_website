@@ -38,6 +38,7 @@ import UserHome from './pages/UserHome';
 import AllBlogs from './pages/AllBlogs';
 import EditBlog from './pages/EditBlog';
 import ShowBlog from './pages/ShowBlog';
+import AdminContact from './layout/AdminContact';
 
 export default function App() {
   const { setUser } = useUser();
@@ -158,6 +159,7 @@ export default function App() {
             <Route path="users" element={<AdminUser />} />
             <Route path="hotels" element={<AdminHotel />} />
             <Route path="bookings" element={<AdminBooking />} />
+            <Route path="contacts" element={<AdminContact />} />
             <Route path="new-hotel" element={<Create />} />
             <Route path="hotel-details/:id/edit" element={<Edit />} />
             <Route path="hotel/:id/delete" element={<Delete />} />

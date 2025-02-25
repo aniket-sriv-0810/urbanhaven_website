@@ -27,8 +27,8 @@ const AdminHotel = () => {
   }, []);
 
   return (
-    <div className="admin-hotel-container min-h-screen bg-gray-50 p-4 md:p-8">
-      <h1 className="text-3xl font-semibold text-center mb-6 text-gray-800">
+    <div className=" min-h-screen bg-gray-50 md:p-8">
+      <h1 className="text-3xl font-semibold text-center pt-5 mb-6 text-gray-800">
         Hotel Details
       </h1>
       {hotelDetails ? (

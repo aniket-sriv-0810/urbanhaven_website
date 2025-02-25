@@ -23,8 +23,8 @@ const AdminUser = () => {
   }, []);
 
   return (
-    <div className="admin-user-container min-h-screen bg-gray-50 p-4 md:p-8">
-      <h1 className="text-3xl font-semibold text-center mb-6 text-gray-800">
+    <div className=" min-h-screen bg-gray-50 p-4 md:p-8">
+      <h1 className="text-3xl font-semibold text-center pt-5 mb-6 text-gray-800">
         User Details
       </h1>
       {userDetails ? (

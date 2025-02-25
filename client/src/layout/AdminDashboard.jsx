@@ -97,14 +97,14 @@ const AdminDashboard = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-r from-slate-300 to-slate-500 py-10 px-5 sm:px-20">
+      <div className="min-h-screen bg-gradient-to-r from-slate-300 to-gray-300 py-10 px-5 sm:px-20">
         {/* Admin Welcome Section */}
         <div className="bg-gray-100 shadow-lg shadow-gray-400 rounded-xl p-6 md:p-8 max-w-3xl mx-auto" data-aos="fade-up">
           <div className="flex items-center justify-center gap-4 mb-6">
             <FaUserShield className="text-blue-600 text-3xl" />
             <h2 className="text-3xl  font-bold text-gray-900">Admin Credentials</h2>
             <NavLink to="/">
-    <button className=" flex gap-3 rounded-full m-3 text-white bg-gradient-to-r from-purple-500 to-purple-900  p-4 font-semibold  shadow-lg hover:opacity-90 transition-all duration-300 ease-in-out transform hover:scale-110">
+    <button className=" flex gap-3 rounded-full m-3 text-white bg-gradient-to-r from-cyan-500 to-purple-900  p-4 font-semibold  shadow-lg hover:opacity-90 transition-all duration-300 ease-in-out transform hover:scale-110">
 
             <IoHome className="text-xl" />
     </button>
@@ -145,7 +145,7 @@ const AdminDashboard = () => {
   <h2 className="text-4xl font-extrabold text-gray-900 mt-4">{adminData.totalHotels}</h2>
   <p className="text-gray-600 text-lg font-medium">Hotels Listed</p>
   <NavLink to="/admin/hotels">
-    <button className="rounded-2xl m-3 text-white bg-gradient-to-r from-purple-500 to-purple-900 hover:from-green-500 hover:to-emerald-700 px-8 py-3 font-semibold shadow-lg hover:opacity-90 transition-all duration-300 ease-in-out transform hover:scale-110">
+    <button className="rounded-2xl m-3 text-white bg-gradient-to-r from-cyan-500 to-purple-900 hover:from-green-500 hover:to-emerald-700 px-8 py-3 font-semibold shadow-lg hover:opacity-90 transition-all duration-300 ease-in-out transform hover:scale-110">
       View Hotels
     </button>
   </NavLink>
@@ -159,7 +159,7 @@ const AdminDashboard = () => {
   <h2 className="text-4xl font-extrabold text-gray-900 mt-4">{adminData.totalUsers}</h2>
   <p className="text-gray-600 text-lg font-medium">Users Registered</p>
   <NavLink to="/admin/users">
-    <button className="rounded-2xl m-3 text-white bg-gradient-to-r from-purple-500 to-purple-900 hover:from-green-500 hover:to-emerald-700 px-8 py-3 font-semibold shadow-lg hover:opacity-90 transition-all duration-300 ease-in-out transform hover:scale-110">
+    <button className="rounded-2xl m-3 text-white bg-gradient-to-r from-cyan-500 to-purple-900 hover:from-green-500 hover:to-emerald-700 px-8 py-3 font-semibold shadow-lg hover:opacity-90 transition-all duration-300 ease-in-out transform hover:scale-110">
       View Users
     </button>
   </NavLink>
@@ -175,7 +175,7 @@ const AdminDashboard = () => {
   <h2 className="text-4xl font-extrabold text-gray-900 mt-4">{adminData.totalBookings}</h2>
   <p className="text-gray-600 text-lg font-medium">Bookings Confirmed</p>
   <NavLink to="/admin/bookings">
-    <button className="rounded-2xl m-3 text-white bg-gradient-to-r from-purple-500 to-purple-900 hover:from-green-500 hover:to-emerald-700 px-8 py-3 font-semibold shadow-lg hover:opacity-90 transition-all duration-300 ease-in-out transform hover:scale-110">
+    <button className="rounded-2xl m-3 text-white bg-gradient-to-r from-cyan-500 to-purple-900 hover:from-green-500 hover:to-emerald-700 px-8 py-3 font-semibold shadow-lg hover:opacity-90 transition-all duration-300 ease-in-out transform hover:scale-110">
       View Bookings
     </button>
   </NavLink>
@@ -190,7 +190,7 @@ const AdminDashboard = () => {
   <h2 className="text-4xl font-extrabold text-gray-900 mt-4">{adminData.totalBookings}</h2>
   <p className="text-gray-600 text-lg font-medium">Feedbacks Received</p>
   <NavLink to="/admin/contacts">
-    <button className="rounded-2xl m-3 text-white bg-gradient-to-r from-purple-500 to-purple-900 hover:from-green-500 hover:to-emerald-700 px-8 py-3 font-semibold shadow-lg hover:opacity-90 transition-all duration-300 ease-in-out transform hover:scale-110">
+    <button className="rounded-2xl m-3 text-white bg-gradient-to-r from-cyan-500 to-purple-900 hover:from-green-500 hover:to-emerald-700 px-8 py-3 font-semibold shadow-lg hover:opacity-90 transition-all duration-300 ease-in-out transform hover:scale-110">
       View Contacts
     </button>
   </NavLink>
