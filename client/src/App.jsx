@@ -39,6 +39,7 @@ import AllBlogs from './pages/AllBlogs';
 import EditBlog from './pages/EditBlog';
 import ShowBlog from './pages/ShowBlog';
 import AdminContact from './layout/AdminContact';
+import BookingLoader from './pages/BookingLoader';
 
 export default function App() {
   const { setUser } = useUser();
@@ -52,7 +53,7 @@ export default function App() {
       setIsLoading(true);
       const timer = setTimeout(() => {
         setIsLoading(false);
-      }, 1500);
+      }, 2500);
 
       return () => clearTimeout(timer); // Cleanup the timer on unmount
     } else {
@@ -72,14 +73,17 @@ export default function App() {
      
       {isLoading ? (
         // Display loading animation while isLoading is true
-        <div className="loading-page flex justify-center items-center h-screen bg-gray-100">
+        <div className="loading-page flex flex-col justify-center gap-6 items-center h-screen bg-gradient-to-t from-blue-200 to-purple-400">
 
     <DotLottieReact
       src="https://lottie.host/e32980de-2d5a-4f0c-96ae-853d398fecab/qJq4lBxhtz.lottie"
       loop
       autoplay
-       className="w-40 h-40"
+      className='w-60 h-60'
     />
+    <p className='uppercase text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 animate-pulse py-2'>
+      Loading...
+    </p>
         </div>
       ) : (
         
@@ -168,6 +172,7 @@ export default function App() {
           <Route path="/terms-and-conditions" element={<TermsAndConditions/>}/>
           <Route path="/contact/confirmed" element={<ContactUsLoader/>}/>
           <Route path="/review/done" element={<ReviewLoader/>}/>
+          <Route path="/booking/done" element={<BookingLoader/>}/>
           <Route path="/all-blogs" element={<AllBlogs/>}/>
           <Route path="/blog/:id" element={<ShowBlog/>}/>
           <Route path="/blog/:id/edit" element={<EditBlog/>}/>

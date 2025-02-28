@@ -20,7 +20,7 @@ const LoginLoader = () => {
     <>
     {isLoading ?
         <>
-        <div className="loading-page flex flex-col justify-center items-center h-screen bg-green-600">
+        <div className=" flex flex-col justify-center items-center h-screen bg-green-600">
         <DotLottieReact
         src="https://lottie.host/b252713a-708e-4d91-ad15-5efe7981c816/lQGVg4AsxK.lottie"
         autoplay
