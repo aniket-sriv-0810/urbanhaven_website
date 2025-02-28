@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { IoIosHome } from "react-icons/io";
 const Create = () => {
   const navigate = useNavigate();
   const [image, setImage] = useState(null);
@@ -70,8 +70,8 @@ try {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-gray-200 to-zinc-300">
-      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-gray-300 to-zinc-300">
+      <div className="bg-gray-200 shadow-lg shadow-black rounded-lg p-8 w-full max-w-lg">
         <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">
           Create a New Hotel
         </h1>
@@ -80,7 +80,7 @@ try {
             type="text"
             placeholder="Hotel Title"
             name="title"
-            className="w-full p-3 text-center border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 text-center border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={newHotel.title}
             onChange={handleInputChange}
             required
@@ -89,7 +89,7 @@ try {
             placeholder="Description"
             name="description"
             rows="4"
-            className="w-full p-3 text-center border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 text-center border  border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={newHotel.description}
             onChange={handleInputChange}
             required
@@ -98,7 +98,7 @@ try {
             type="number"
             placeholder="Price (per night)"
             name="price"
-            className="w-full p-3 text-center border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 text-center border  border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={newHotel.price}
             onChange={handleInputChange}
             required
@@ -108,7 +108,7 @@ try {
               Upload Hotel Image
             </label>
             <div
-              className="relative w-full  p-6 text-center border-2 border-dashed rounded-lg border-gray-300 bg-gray-50 hover:bg-gray-100 transition cursor-pointer"
+              className="relative w-full  p-6 text-center border-2  border-gray-400 border-dashed rounded-lg border-gray-300 bg-gray-50 hover:bg-gray-100 transition cursor-pointer"
               onClick={() => document.getElementById("fileInput").click()}
             >
               {preview ? (
@@ -141,7 +141,7 @@ try {
               type="text"
               placeholder="City"
               name="city"
-              className="p-3 border text-center rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="p-3 border  border-gray-400 text-center rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={newHotel.city}
               onChange={handleInputChange}
               required
@@ -150,7 +150,7 @@ try {
               type="text"
               placeholder="State"
               name="state"
-              className="p-3 border text-center rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="p-3 border  border-gray-400 text-center rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={newHotel.state}
               onChange={handleInputChange}
               required
@@ -159,7 +159,7 @@ try {
               type="text"
               placeholder="Country"
               name="country"
-              className="p-3 border text-center rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="p-3 border  border-gray-400 text-center rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={newHotel.country}
               onChange={handleInputChange}
               required
@@ -167,9 +167,10 @@ try {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-lg shadow-md transition duration-300"
+            className="w-full flex items-center justify-center gap-4 bg-gradient-to-r from-blue-500 to-purple-500 hover:bg-blue-600 text-white hover:scale-105 font-bold py-3 rounded-lg shadow-md transition duration-300"
           >
             Create Hotel
+            <IoIosHome className="text-xl" />
           </button>
         </form>
       </div>

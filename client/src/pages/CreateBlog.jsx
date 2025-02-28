@@ -59,8 +59,8 @@ const CreateBlog = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-200 px-4 py-10">
-    <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-lg">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 px-4 py-10">
+    <div className="bg-gray-100 shadow-xl rounded-2xl p-8 w-full max-w-lg">
       <h2 className="text-xl sm:text-3xl font-extrabold text-center text-gray-800 mb-6 animate-fadeIn">
         Create a New Blog
       </h2>
@@ -74,7 +74,7 @@ const CreateBlog = () => {
             placeholder="Enter blog title"
             value={formData.title}
             onChange={handleChange}
-            className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none transition"
+            className="w-full px-4 py-2 mt-2 border border-gray-400 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none transition"
             required
           />
         </div>
@@ -88,7 +88,7 @@ const CreateBlog = () => {
             placeholder="Enter blog description"
             value={formData.description}
             onChange={handleChange}
-            className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none transition"
+            className="w-full px-4 py-2 mt-2 border border-gray-400 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none transition"
             required
           ></textarea>
         </div>
@@ -100,7 +100,7 @@ const CreateBlog = () => {
             type="file"
             accept="image/*"
             onChange={handleImageChange}
-            className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg hover:cursor-pointer focus:outline-none"
+            className="w-full px-4 py-2 mt-2 border border-gray-400 rounded-lg hover:cursor-pointer focus:outline-none"
             required
           />
         </div>
@@ -120,7 +120,7 @@ const CreateBlog = () => {
         <button
           type="submit"
           className={`w-full p-2 mt-4 text-white rounded-xl shadow-md font-bold text-lg transition transform hover:scale-105 ${
-            loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"
+            loading ? "bg-gray-400 cursor-not-allowed" : "bg-gradient-to-r from-blue-500 to-purple-500 hover:bg-blue-700"
           }`}
           disabled={loading}
         >
