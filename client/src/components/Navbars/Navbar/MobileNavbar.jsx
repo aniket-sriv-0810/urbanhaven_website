@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import { IoHomeSharp } from "react-icons/io5";
 import { FaUserCircle, FaBars, FaTimes, FaPaperPlane } from "react-icons/fa";
@@ -11,20 +10,11 @@ import "tippy.js/dist/tippy.css";
 
 const MobileNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { user, setUser } = useUser();
+  const { user } = useUser();
   const navigate = useNavigate();
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
-  const handleLogout = async () => {
-    try {
-      await axios.post("http://localhost:8000/v1/user/logout", { withCredentials: true });
-      setUser(null);
-      navigate("/");
-    } catch (error) {
-      console.error("Logout failed:", error);
-    }
-  };
 
   const menuItems = [
     { to: "/", label: "All hotels", icon: <IoHomeSharp /> },
@@ -46,7 +36,7 @@ const MobileNavbar = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="absolute top-0 right-0 w-full h-max text-white z-50 bg-gradient-to-r from-slate-900 to-slate-700 p-6 shadow-lg transition-all duration-300">
+        <div className="absolute top-0 right-0 w-full h-max text-white z-50 bg-gradient-to-t from-zinc-800 to-gray-900 p-6 shadow-lg transition-all duration-300">
           <button className="absolute top-4 right-7 sm:right-10 text-white sm:py-3" onClick={toggleMenu}>
             <FaTimes size={24} />
           </button>
@@ -83,7 +73,7 @@ const MobileNavbar = () => {
 
             {user ? (
               <button
-                onClick={handleLogout}
+                onClick={() => navigate("/user/logout")}
                 className="bg-red-500 px-4 py-2 rounded-lg w-48 hover:bg-red-600 flex justify-center items-center gap-2 sm:w-60"
               >
                 Logout <MdOutlineLogout className="text-white w-5 h-5" />

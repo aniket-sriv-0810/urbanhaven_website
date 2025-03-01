@@ -5,7 +5,7 @@ const CreateBlog = () => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-    image: null,
+    image: "",
   });
   const [preview, setPreview] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -41,7 +41,7 @@ const CreateBlog = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/v1/navigate/add-blog", // Update with your backend API
+        `${import.meta.env.VITE_API_URL}/v1/navigate/add-blog`, // Update with your backend API
         blogData,
         { withCredentials: true } ,
 
@@ -49,7 +49,7 @@ const CreateBlog = () => {
 
       console.log(response.data);
       alert("Blog Created Successfully!");
-      setFormData({ title: "", description: "", image: null });
+      setFormData({ title: "", description: "", image: "" });
       setPreview(null);
     } catch (error) {
       console.error(error);
@@ -59,7 +59,7 @@ const CreateBlog = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 px-4 py-10">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-200 to-gray-200 px-4 py-10">
     <div className="bg-gray-100 shadow-xl rounded-2xl p-8 w-full max-w-lg">
       <h2 className="text-xl sm:text-3xl font-extrabold text-center text-gray-800 mb-6 animate-fadeIn">
         Create a New Blog
@@ -120,11 +120,18 @@ const CreateBlog = () => {
         <button
           type="submit"
           className={`w-full p-2 mt-4 text-white rounded-xl shadow-md font-bold text-lg transition transform hover:scale-105 ${
-            loading ? "bg-gray-400 cursor-not-allowed" : "bg-gradient-to-r from-blue-500 to-purple-500 hover:bg-blue-700"
+            loading ? "bg-gradient-to-r from-blue-500 to-purple-500 hover:bg-blue-700 cursor-not-allowed" : "bg-gradient-to-r from-blue-500 to-purple-500 hover:bg-blue-700"
           }`}
           disabled={loading}
         >
-          {loading ? "Creating Blog..." : "Create Blog"}
+          {loading ? 
+            <>
+            <span className="animate-pulse font-semibold  text-white flex justify-center items-center gap-3" >
+            <div className="w-5 h-5  border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+            Creating Blog...
+           </span>
+          </>
+          : "Create Blog"}
         </button>
       </form>
     </div>

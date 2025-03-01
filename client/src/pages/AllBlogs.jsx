@@ -15,7 +15,7 @@ const AllBlogs = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/v1/navigate/all-blogs", {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/v1/navigate/all-blogs`, {
           withCredentials: true,
         });
 

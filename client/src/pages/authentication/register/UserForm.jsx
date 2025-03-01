@@ -57,6 +57,8 @@ const [isLoading, setIsLoading] = useState(false);
 
       if (response.status === 200) {
         setUser(response.data.data.registerNewUser);
+         // Store a flag for guided tour
+      localStorage.setItem("startTour", "true");
         navigate("/user/register/authentication");
       }
     } catch (error) {

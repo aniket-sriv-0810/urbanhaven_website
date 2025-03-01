@@ -40,6 +40,7 @@ import EditBlog from './pages/EditBlog';
 import ShowBlog from './pages/ShowBlog';
 import AdminContact from './layout/AdminContact';
 import BookingLoader from './pages/BookingLoader';
+import DeleteBlog from './pages/DeleteBlog';
 
 export default function App() {
   const { setUser } = useUser();
@@ -135,8 +136,7 @@ export default function App() {
           <Route path="/user/:id/account" element={<UserAccount />} />
           <Route path="/user/:id/wishlists" element={<UserWishLists />} />
           <Route path="/user/:id/bookings" element={<UserBookings />} />
-            
-          
+
           <Route path="/user/:id/account/edit" element={<UserAccountEdit />} />
           <Route path="/user/:id/account/delete" element={<DeleteUser />} />
           <Route path="/user/register" element={<RegisterUser />} />
@@ -176,6 +176,7 @@ export default function App() {
           <Route path="/all-blogs" element={<AllBlogs/>}/>
           <Route path="/blog/:id" element={<ShowBlog/>}/>
           <Route path="/blog/:id/edit" element={<EditBlog/>}/>
+          <Route path="/blog/:id/delete" element={<DeleteBlog/>}/>
           
           <Route path="*" element={<PageNotFound/>}/>
         </Routes>

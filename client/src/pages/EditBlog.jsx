@@ -18,7 +18,7 @@ const EditBlog = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/v1/navigate/blog/${id}`,
+        `${import.meta.env.VITE_API_URL}/v1/navigate/blog/${id}`,
         { withCredentials: true }
       );
       if (response.status === 200) {
@@ -66,7 +66,7 @@ const EditBlog = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8000/v1/navigate/blog/${id}/edit`,
+        `${import.meta.env.VITE_API_URL}/v1/navigate/blog/${id}/edit`,
         blogData,
         { withCredentials: true }
       );
@@ -155,14 +155,21 @@ const EditBlog = () => {
 
           {/* Submit Button */}
           <button
-            type="submit"
-            className={`w-full py-2 mt-4 flex items-center justify-center text-white rounded-lg shadow-md ${
-              loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"
-            }`}
-            disabled={loading}
-          >
-            {loading ? "loading..." : "Update Blog"}
-          </button>
+          type="submit"
+          className={`w-full p-2 mt-4 text-white rounded-xl shadow-md font-bold text-lg transition transform hover:scale-105 ${
+            loading ? "bg-gradient-to-r from-blue-500 to-purple-500 hover:bg-blue-700 cursor-not-allowed" : "bg-gradient-to-r from-blue-500 to-purple-500 hover:bg-blue-700"
+          }`}
+          disabled={loading}
+        >
+          {loading ? 
+            <>
+            <span className="animate-pulse font-semibold  text-white flex justify-center items-center gap-3" >
+            <div className="w-5 h-5  border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+            Updating Blog...
+           </span>
+          </>
+          : "Update Blog Details"}
+        </button>
         </form>
       </div>
     </div>

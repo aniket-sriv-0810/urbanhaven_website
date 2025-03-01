@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import { MdOutlineLogout } from "react-icons/md";
@@ -11,7 +10,7 @@ import "tippy.js/dist/tippy.css";
 
 
 const DesktopNavbar = () => {
-  const { user, setUser } = useUser();
+  const { user} = useUser();
   const navigate = useNavigate();
 
 

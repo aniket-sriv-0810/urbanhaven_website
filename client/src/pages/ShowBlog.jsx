@@ -15,7 +15,7 @@ const ShowBlog = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/v1/navigate/blog/${id}`, {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/v1/navigate/blog/${id}`, {
           withCredentials: true,
         });
 
@@ -34,7 +34,7 @@ const ShowBlog = () => {
 
   const deleteBlog = async () => {
     try {
-      const response = await axios.delete(`http://localhost:8000/v1/navigate/blog/${id}/delete`, {
+      const response = await axios.delete(`${import.meta.env.VITE_API_URL}/v1/navigate/blog/${id}/delete`, {
         withCredentials: true,
       });
 
@@ -77,7 +77,7 @@ const ShowBlog = () => {
               {blog.title}
               <MdDeleteForever
                 className="w-6 h-6 text-gray-500 hover:text-red-600 cursor-pointer transition-transform transform hover:scale-110"
-                onClick={deleteBlog}
+                onClick={() => navigate(`/blog/${blog._id}/delete`)}
               />
             </h1>
             <p className="text-gray-600 text-base leading-relaxed">{blog.description}</p>

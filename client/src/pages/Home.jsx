@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";;
 import {  FaUsers, FaCity, FaComments } from "react-icons/fa";
 import axios, { all } from "axios";
 import { FaHotel } from "react-icons/fa6";
+import {driver} from "driver.js"; // Import driver.js
+import "driver.js/dist/driver.css"; // Import driver.js styles
 import CurrencyExchange from "../components/CurrencyExchange/CurrencyExchange";
 import Navbar from "../components/Navbars/Navbar/Navbar";
 import Counter from "../components/Counter/Counter";
@@ -45,7 +47,55 @@ const Home = () => {
       }
     };
     fetchData();
+      // Check if the guided tour should start
+      if (localStorage.getItem("startTour") === "true") {
+        startTour();
+        localStorage.removeItem("startTour"); // Remove flag after tour starts
+      }
   }, []);
+
+
+  const startTour = () => {
+    const driverObj = driver({
+      showProgress: true,
+      steps: [
+        {
+          element: ".navbar", // Navbar highlight
+          popover: {
+            title: "Welcome!",
+            description: "This is the navigation bar where you can explore the website.",
+            position: "bottom",
+          },
+        },
+        {
+          element: ".search-bar", // Search box
+          popover: {
+            title: "Search Hotels",
+            description: "Use this bar to search for hotels based on location, price, and other filters.",
+            position: "bottom",
+          },
+        },
+        {
+          element: ".hotel-cards", // Hotel listings
+          popover: {
+            title: "Hotel Listings",
+            description: "These are the available hotels. Click on a card to view details.",
+            position: "top",
+          },
+        },
+        {
+          element: ".pagination", // Pagination
+          popover: {
+            title: "Pagination",
+            description: "Use these buttons to navigate through different hotel listings.",
+            position: "top",
+          },
+        },
+      ],
+    });
+
+    driverObj.drive(); // Start the guided tour
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -93,13 +143,13 @@ const Home = () => {
     <>
     {/* Navbar & bg wallpaper component */}
     <div className="bg-[url('/assets/home.jpg')] xs:bg-cover bg-contain h-72  bg-no-repeat sm:bg-cover md:h-[40rem] ">
-    <Navbar />
+    <Navbar className="navbar" />
     </div>
 
     <Header />
     <div className="bg-gray-100 p-4">
     {/* Pass both allHotels & setFilteredHotels */}
-    <SearchBar  setHotels={setAllHotels}  />
+    <SearchBar className="search-bar" setHotels={setAllHotels}  />
 
   </div>
       <div className="flex flex-col-reverse gap-y-5 sm:flex-row justify-between items-center mx-2 my-10 sm:mx-8" data-aos="fade-up">
@@ -115,7 +165,7 @@ const Home = () => {
 <HotelHeading/>
 
 
-      <div className=" mt-20 mb-10 flex justify-evenly flex-wrap gap-8  px-4" data-aos="fade-up">
+      <div className="hotel-cards mt-20 mb-10 flex justify-evenly flex-wrap gap-8  px-4" data-aos="fade-up">
 
         {loading ? (
           <p className="text-lg text-gray-600">Hotels Loading...</p>
@@ -126,7 +176,7 @@ const Home = () => {
         )}
 
 </div>
-<div data-aos="fade-up">
+<div className="pagination" data-aos="fade-up">
       <Pagination totalPages={totalPages} currentPage={currentPage} handlePageChange={setCurrentPage} />
       </div>
       
