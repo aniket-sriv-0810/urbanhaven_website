@@ -24,7 +24,6 @@ import AdminBooking from './layout/AdminBooking';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import './App.css';
 import ConfirmationPage from './pages/booking/ConfirmationPage';
-import AuthLoader from './pages/loaders/AuthLoader';
 import LoginLoader from './pages/loaders/LoginLoader';
 import PageNotFound from './pages/loaders/PageNotFound';
 import ContactUsLoader from './pages/loaders/ContactUsLoader';
@@ -41,6 +40,7 @@ import EditBlog from './pages/blogs/EditBlog/EditBlog';
 import ShowBlog from './pages/blogs/ShowBlog/ShowBlog';
 import AdminContact from './layout/AdminContact';
 import DeleteBlog from './pages/blogs/DeleteBlog/DeleteBlog';
+import AuthSuccessPopup from './pages/loaders/AuthSuccessPopup';
 
 export default function App() {
   const { setUser } = useUser();
@@ -140,7 +140,7 @@ export default function App() {
           <Route path="/user/:id/account/edit" element={<UserAccountEdit />} />
           <Route path="/user/:id/account/delete" element={<DeleteUser />} />
           <Route path="/user/register" element={<RegisterUser />} />
-          <Route path="/user/register/authentication" element={<AuthLoader />} />
+          <Route path="/user/register/successfully" element={<AuthSuccessPopup />} />
           <Route path="/user/login/confirmed" element={<LoginLoader />} />
           <Route path="/user/login" element={<LoginUser />} />
           <Route path="/user/logout" element={<Logout />} />

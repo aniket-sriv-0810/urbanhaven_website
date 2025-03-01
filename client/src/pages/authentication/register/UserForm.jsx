@@ -59,7 +59,7 @@ const [isLoading, setIsLoading] = useState(false);
         setUser(response.data.data.registerNewUser);
          // Store a flag for guided tour
       localStorage.setItem("startTour", "true");
-        navigate("/user/register/authentication");
+        navigate("/user/register/successfully");
       }
     } catch (error) {
       if (error.response && error.response.data.details) {

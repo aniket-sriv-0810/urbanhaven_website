@@ -7,7 +7,7 @@ import ErrorMessage from "./ErrorMessage";
 import { FaUser } from "react-icons/fa";
 import { BsShieldLockFill } from "react-icons/bs";
 
-const LoginForm = () => {
+const LoginForm = ({ onSuccess }) => {
   const navigate = useNavigate();
   const { setUser } = useUser();
   const [loginUser, setLoginUser] = useState({ username: "", password: "" });
@@ -39,9 +39,11 @@ const LoginForm = () => {
   const handleSubmitForm = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
-
+    // Simulate successful login
+    setTimeout(() => {
+      onSuccess(); // Trigger popup
+    }, 1000);
     setIsLoading(true); // Start loading animation
-
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/v1/user/login`,
@@ -54,7 +56,7 @@ const LoginForm = () => {
         setLoginUser({ username: "", password: "" });
         setUser(userData);
         localStorage.setItem("user", JSON.stringify(userData));
-        navigate("/user/login/confirmed");
+        navigate("/user/register/successfully");
       }
     } catch (error) {
       console.error("Login error:", error);
