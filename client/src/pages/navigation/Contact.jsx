@@ -1,13 +1,13 @@
 // Import necessary libraries
 import React, { useState } from 'react';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
-import WebsiteLogo from '../assets/main-logo.png';
-import { useUser } from '../components/userContext/userContext';
+import WebsiteLogo from '../../assets/main-logo.png';
+import { useUser } from '../../components/userContext/userContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { BiSolidPaperPlane } from "react-icons/bi";
-import Navbar from '../components/Navbars/Navbar/Navbar';
-import Footer from '../components/Footer/Footer';
+import Navbar from '../../components/Navbars/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer';
 // Define the Contact Us component
 const ContactUs = () => {
   const {user} = useUser();

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import UserNavbar from "../components/Navbars/UserNavbar/UserNavbar";
+import UserNavbar from "../../components/Navbars/UserNavbar/UserNavbar";
 
 const UserBookings = () => {
     const [bookings, setBookings] = useState([]);

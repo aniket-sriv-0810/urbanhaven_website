@@ -1,7 +1,7 @@
 import React from "react";
-import Logo from "../assets/webiste_full_logo.png";
-import Navbar from "../components/Navbars/Navbar/Navbar";
-import Footer from "../components/Footer/Footer";
+import Logo from "../../assets/webiste_full_logo.png";
+import Navbar from "../../components/Navbars/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 
 const AboutUs = () => {
   return (

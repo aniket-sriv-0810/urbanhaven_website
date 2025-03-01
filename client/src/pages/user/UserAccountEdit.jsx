@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import {useNavigate} from 'react-router-dom';
-import { useUser } from "../components/userContext/userContext";
+import { useUser } from "../../components/userContext/userContext";
 
 const UserAccountEdit = () => {
   const {user} = useUser();

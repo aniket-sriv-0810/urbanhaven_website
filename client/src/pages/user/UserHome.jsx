@@ -1,6 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import UserNavbar from '../components/Navbars/UserNavbar/UserNavbar'
+import UserNavbar from '../../components/Navbars/UserNavbar/UserNavbar'
 
 
 const UserHome = () => {

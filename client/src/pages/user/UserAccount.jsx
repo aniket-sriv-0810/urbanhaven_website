@@ -1,12 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Outlet, useNavigate, useParams } from "react-router-dom";
-import UserDashBoard from "../components/UserDashBoard/UserDashBoard";
-import { FaBars, FaTimes } from "react-icons/fa";
-import Navbar from '../components/Navbars/Navbar/Navbar';
-import UserNavbar from "../components/Navbars/UserNavbar/UserNavbar";
-import Logo from '../assets/main-logo.png';
-import LogoName from '../assets/main-logo-name.png';
+import {  useNavigate, useParams } from "react-router-dom";
+import UserNavbar from "../../components/Navbars/UserNavbar/UserNavbar";
 import { FaEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 const UserAccount = () => {

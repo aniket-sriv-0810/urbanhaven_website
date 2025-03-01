@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import UserNavbar from "../components/Navbars/UserNavbar/UserNavbar";
-import HotelDetails from "../components/HotelDetails/HotelDetails";
+import UserNavbar from "../../components/Navbars/UserNavbar/UserNavbar";
+import HotelDetails from "../../components/HotelDetails/HotelDetails";
 
 const UserWishlists = () => {
     const [wishlists, setWishlists] = useState([]);
