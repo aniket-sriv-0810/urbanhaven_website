@@ -12,7 +12,7 @@ import { useUser } from "../../../components/userContext/userContext";
 const UserForm = () => {
   const { setUser } = useUser();
   const navigate = useNavigate();
-
+const [isLoading, setIsLoading] = useState(false); 
   const [newUser, setNewUser] = useState({
     name: "",
     username: "",
@@ -48,9 +48,10 @@ const UserForm = () => {
       setFormErrors(errors);
       return;
     }
+    setIsLoading(true); // Start loading animation
 
     try {
-      const response = await axios.post("http://localhost:8000/v1/user/register", newUser, {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/v1/user/register`, newUser, {
         withCredentials: true,
       });
 
@@ -72,6 +73,8 @@ const UserForm = () => {
       } else {
         setFormErrors({ global: "An unexpected error occurred." });
       }
+    }finally {
+      setIsLoading(false); // Stop loading animation
     }
   };
 
@@ -83,8 +86,23 @@ const UserForm = () => {
       <InputField Icon={MdEmail} type="email" name="email" placeholder="Enter your email" value={newUser.email} onChange={handleInputChange} error={formErrors.email} inputRef={inputRefs.email} />
       <InputField Icon={BsShieldLockFill} type="password" name="password" placeholder="Enter strong password" value={newUser.password} onChange={handleInputChange} error={formErrors.password} inputRef={inputRefs.password} />
 
-      <button type="submit" className="w-full border-gray-500 font-semibold border-2 bg-green-700 px-4 py-2 text-white rounded-xl mt-4 hover:bg-green-600">
-        Create Account
+      <button
+        type="submit"
+        disabled={isLoading}
+        className={`w-full border-gray-500 border-2 font-semibold px-4 py-2 text-white rounded-xl mt-4 ${
+          isLoading ? "bg-gray-800 cursor-not-allowed" : "bg-green-600 hover:bg-green-700"
+        } flex items-center justify-center gap-2`}
+      >
+        {isLoading ? (
+          <>
+            <span className="animate-pulse font-semibold text-green-400 flex items-center gap-3" >
+            <div className="w-5 h-5 border-2 border-green-400 border-t-transparent rounded-full animate-spin"></div>
+            Creating Account...
+           </span>
+          </>
+        ) : (
+          "Create Account"
+        )}
       </button>
     </form>
   );

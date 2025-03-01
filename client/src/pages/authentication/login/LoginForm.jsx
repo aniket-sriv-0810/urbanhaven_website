@@ -6,13 +6,13 @@ import InputField from "./InputField";
 import ErrorMessage from "./ErrorMessage";
 import { FaUser } from "react-icons/fa";
 import { BsShieldLockFill } from "react-icons/bs";
-import { toast } from "react-toastify";
 
 const LoginForm = () => {
   const navigate = useNavigate();
   const { setUser } = useUser();
   const [loginUser, setLoginUser] = useState({ username: "", password: "" });
   const [formErrors, setFormErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false); 
   const inputRefs = { username: useRef(), password: useRef() };
 
   const validateForm = () => {
@@ -40,9 +40,11 @@ const LoginForm = () => {
     e.preventDefault();
     if (!validateForm()) return;
 
+    setIsLoading(true); // Start loading animation
+
     try {
       const response = await axios.post(
-        "http://localhost:8000/v1/user/login",
+        `${import.meta.env.VITE_API_URL}/v1/user/login`,
         loginUser,
         { withCredentials: true }
       );
@@ -53,8 +55,6 @@ const LoginForm = () => {
         setUser(userData);
         localStorage.setItem("user", JSON.stringify(userData));
         navigate("/user/login/confirmed");
-      } else {
-        toast.error("Failed to log in. Please check your credentials.");
       }
     } catch (error) {
       console.error("Login error:", error);
@@ -69,23 +69,27 @@ const LoginForm = () => {
       } else {
         setFormErrors({ global: error.response?.data?.message || "An error occurred" });
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <form className="flex flex-col gap-y-4 lg:p-5" onSubmit={handleSubmitForm}>
       {formErrors.global && <ErrorMessage message={formErrors.global} />}
+      
       <InputField
         type="text"
         name="username"
         placeholder="Enter username"
         value={loginUser.username}
         onChange={handleInputChange}
-        error={formErrors.username }
+        error={formErrors.username}
         icon={<FaUser />}
         ref={inputRefs.username || inputRefs.password}
       />
-       {formErrors.username && <p className="text-red-500 text-sm  text-center">{formErrors.username} </p>}
+      {formErrors.username && <p className="text-red-500 text-sm text-center">{formErrors.username}</p>}
+      
       <InputField
         type="password"
         name="password"
@@ -96,7 +100,8 @@ const LoginForm = () => {
         icon={<BsShieldLockFill />}
         ref={inputRefs.password || inputRefs.username}
       />
-{formErrors.password && <p className="text-red-500 text-sm mt-2 text-center">{formErrors.password} </p>}
+      {formErrors.password && <p className="text-red-500 text-sm mt-2 text-center">{formErrors.password}</p>}
+
       <div className="text-center text-gray-400 mt-2 text-sm sm:text-base">
         <span>Don’t have an account? </span>
         <NavLink to="/user/register" className="text-sky-500 hover:underline">
@@ -106,9 +111,20 @@ const LoginForm = () => {
 
       <button
         type="submit"
-        className="w-full border-gray-500 border-2 font-semibold bg-green-600 px-4 py-2 text-white rounded-xl mt-4 hover:bg-green-700"
+        disabled={isLoading}
+        className={`w-full border-gray-500 border-2 font-semibold px-4 py-2 text-white rounded-xl mt-4 ${
+          isLoading ? "bg-gray-800 cursor-not-allowed" : "bg-green-600 hover:bg-green-700"
+        } flex items-center justify-center gap-2`}
       >
-        Verify Now
+        {isLoading ? (
+          <>
+            <span className="animate-pulse flex items-center gap-3 text-green-400">
+            <div className="w-5 h-5 border-2 border-green-400 border-t-transparent rounded-full animate-spin"></div>
+            Verifying...</span>
+          </>
+        ) : (
+          "Verify Now"
+        )}
       </button>
     </form>
   );

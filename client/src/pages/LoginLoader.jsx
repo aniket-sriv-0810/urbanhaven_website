@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import { useNavigate  ,useLocation} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const LoginLoader = () => {
     const [isLoading , setIsLoading] = useState(false);
     const navigate = useNavigate();
-      const location = useLocation();
     useEffect(()=>{
         setIsLoading(true);
         const timer = setTimeout( () => {
             setIsLoading(false);
-            const redirectPath = location.state?.from?.pathname || "/";
-            navigate(redirectPath);
+            navigate("/");
         }, 4000)
         return () => {
             clearTimeout(timer)
@@ -25,7 +23,7 @@ const LoginLoader = () => {
         src="https://lottie.host/b252713a-708e-4d91-ad15-5efe7981c816/lQGVg4AsxK.lottie"
         autoplay
         />
-        <span className='text-center text-2xl font-bold text-[#6de28f] animate-pulse relative -top-[30%] sm:text-4xl lg:-top-[20%] lg:text-5xl'>Logged in Successfully</span>
+        <span className='text-center text-2xl font-bold text-[#6de28f] animate-pulse relative sm:-top-[20%] sm:text-4xl lg:-top-[20%] lg:text-5xl'>Logged in Successfully</span>
   </div>
   </>
   : null
