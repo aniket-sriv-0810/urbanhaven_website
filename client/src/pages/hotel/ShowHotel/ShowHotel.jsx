@@ -4,18 +4,18 @@ import axios from 'axios';
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import Navbar from '../components/Navbars/Navbar/Navbar';
-import Footer from '../components/Footer/Footer';
-import ShowHotelHeading from '../components/HotelHeading/ShowHotelHeading';
-import HotelImage from '../components/HotelImage/HotelImage';
-import HotelDetails from '../components/ShowHotelDetails/ShowHotelDetails';
-import ImageGallery from '../components/ImageGallery/ImageGallery';
-import Amenities from '../components/Amenities/Ammenties';
-import MapLocation from '../components/MapLocation/MapLocation';
-import Policies from '../components/Policies/Policies';
-import FAQs from '../components/FAQs/FAQs';
-import HotelReviews from '../components/HotelReviews/HotelReviews';
-import Review from '../components/Review/Review';
+import Navbar from '../../../components/Navbars/Navbar/Navbar';
+import Footer from '../../../components/Footer/Footer';
+import ShowHotelHeading from '../../../components/HotelHeading/ShowHotelHeading';
+import HotelImage from '../../../components/HotelImage/HotelImage';
+import HotelDetails from '../../../components/ShowHotelDetails/ShowHotelDetails';
+import ImageGallery from '../../../components/ImageGallery/ImageGallery';
+import Amenities from '../../../components/Amenities/Ammenties';
+import MapLocation from '../../../components/MapLocation/MapLocation';
+import Policies from '../../../components/Policies/Policies';
+import FAQs from '../../../components/FAQs/FAQs';
+import HotelReviews from '../../../components/HotelReviews/HotelReviews';
+import Review from '../../../components/Review/Review';
 
 const ShowHotel = () => {
   const { id } = useParams();
@@ -80,7 +80,7 @@ const ShowHotel = () => {
         <div className='w-full'>
         <HotelReviews reviews={reviews} />
         </div>
-        
+
       </div>
       <Footer />
     </>

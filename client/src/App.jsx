@@ -1,9 +1,9 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Home from './pages/Home';
-import Create from './pages/Create';
-import ShowHotel from './pages/ShowHotel';
-import Edit from './pages/Edit';
+import CreateHotel from './pages/hotel/CreateHotel/CreateHotel';
+import ShowHotel from './pages/hotel/ShowHotel/ShowHotel';
+import EditHotel from './pages/hotel/EditHotel/EditHotel';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import RegisterUser from './pages/authentication/register/RegisterUser';
@@ -14,7 +14,7 @@ import PrivateRoute from './components/userContext/PrivateRoute';
 import AdminDashboard from './layout/AdminDashboard';
 import AdminUser from './layout/AdminUser';
 import AdminHotel from './layout/AdminHotel';
-import Delete from './pages/Delete';
+import DeleteHotel from './pages/hotel/DeleteHotel/DeleteHotel';
 import UserAccount from './pages/UserAccount';
 import UserAccountEdit from './pages/UserAccountEdit';
 import DeleteUser from './pages/DeleteUser';
@@ -87,7 +87,7 @@ export default function App() {
     </p>
         </div>
       ) : (
-        
+
         // Render the actual app content
         <Routes>
           <Route path="/" element={<Home />} />
@@ -164,9 +164,9 @@ export default function App() {
             <Route path="hotels" element={<AdminHotel />} />
             <Route path="bookings" element={<AdminBooking />} />
             <Route path="contacts" element={<AdminContact />} />
-            <Route path="new-hotel" element={<Create />} />
-            <Route path="hotel-details/:id/edit" element={<Edit />} />
-            <Route path="hotel/:id/delete" element={<Delete />} />
+            <Route path="new-hotel" element={<CreateHotel />} />
+            <Route path="hotel-details/:id/edit" element={<EditHotel />} />
+            <Route path="hotel/:id/delete" element={<DeleteHotel />} />
             <Route path="new-blog" element={<CreateBlog />} />
           </Route>
           <Route path="/terms-and-conditions" element={<TermsAndConditions/>}/>

@@ -49,7 +49,7 @@ router
 // Edit the Hotel details in the website Route
 router
      .route('/hotel-details/:id/edit')
-     .put(isLoggedIn ,upload.single('image') ,validate(hotelSchemaValidation),editMyHotel)
+     .put(isLoggedIn ,upload.single('image') ,editMyHotel)
 
 
 // Delete a Particular Hotel Route

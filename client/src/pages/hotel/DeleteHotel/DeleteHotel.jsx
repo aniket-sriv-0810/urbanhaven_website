@@ -3,13 +3,13 @@ import axios from 'axios';
 import { useNavigate} from 'react-router-dom';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-const Delete = () => {
+const DeleteHotel = () => {
     const navigate = useNavigate();
     const {id} = useParams();
     useEffect(() => {
         const deleteHotel = async() => {
             try {
-              let response = await axios.delete(`http://localhost:8000/v1/admin/hotel/${id}/delete` ,{
+              let response = await axios.delete(`${import.meta.env.VITE_API_URL}/v1/admin/hotel/${id}/delete` ,{
                 withCredentials: true,
               });
               console.log(response.data.message);
@@ -26,4 +26,4 @@ const Delete = () => {
   )
 }
 
-export default Delete
+export default DeleteHotel
