@@ -30,17 +30,17 @@ import PageNotFound from './pages/PageNotFound';
 import ContactUsLoader from './pages/ContactUsLoader';
 import ReviewLoader from './pages/ReviewLoader';
 import TermsAndConditions from './pages/TermsAndConditions';
-import CreateBlog from './pages/CreateBlog';
+import CreateBlog from './pages/blogs/CreateBlog/CreateBlog';
 import AdminHome from './layout/AdminHome';
 import UserWishLists from './pages/UserWishLists';
 import UserBookings from './pages/UserBookings';
 import UserHome from './pages/UserHome';
-import AllBlogs from './pages/AllBlogs';
-import EditBlog from './pages/EditBlog';
-import ShowBlog from './pages/ShowBlog';
+import AllBlogs from './pages/blogs/AllBlogs/AllBlogs';
+import EditBlog from './pages/blogs/EditBlog/EditBlog';
+import ShowBlog from './pages/blogs/ShowBlog/ShowBlog';
 import AdminContact from './layout/AdminContact';
 import BookingLoader from './pages/BookingLoader';
-import DeleteBlog from './pages/DeleteBlog';
+import DeleteBlog from './pages/blogs/DeleteBlog/DeleteBlog';
 
 export default function App() {
   const { setUser } = useUser();

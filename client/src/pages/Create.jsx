@@ -108,7 +108,7 @@ try {
               Upload Hotel Image
             </label>
             <div
-              className="relative w-full  p-6 text-center border-2  border-gray-400 border-dashed rounded-lg border-gray-300 bg-gray-50 hover:bg-gray-100 transition cursor-pointer"
+              className="relative w-full  p-6 text-center border-2   border-dashed rounded-lg border-gray-300 bg-gray-50 hover:bg-gray-100 transition cursor-pointer"
               onClick={() => document.getElementById("fileInput").click()}
             >
               {preview ? (
