@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useUser } from "../userContext/userContext";
 import axios from "axios";
-import { FaStar } from "react-icons/fa";
+
 
 const Review = () => {
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ const Review = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:8000/api/v1/hotel/${id}/review`,
+        `${import.meta.env.VITE_API_URL}/v1/hotel/${id}/review`,
         dataSent,
         { withCredentials: true }
       );

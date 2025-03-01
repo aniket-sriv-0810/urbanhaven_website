@@ -1,5 +1,4 @@
 import React from 'react';
-import { MdOutlineStar } from "react-icons/md";
 import Logo from '../../assets/webiste_full_logo.png';
 
 const ReviewCard = ({ review }) => {
