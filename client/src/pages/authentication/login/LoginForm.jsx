@@ -7,7 +7,7 @@ import ErrorMessage from "./ErrorMessage";
 import { FaUser } from "react-icons/fa";
 import { BsShieldLockFill } from "react-icons/bs";
 
-const LoginForm = ({ onSuccess }) => {
+const LoginForm = () => {
   const navigate = useNavigate();
   const { setUser } = useUser();
   const [loginUser, setLoginUser] = useState({ username: "", password: "" });
@@ -39,11 +39,7 @@ const LoginForm = ({ onSuccess }) => {
   const handleSubmitForm = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
-    // Simulate successful login
-    setTimeout(() => {
-      onSuccess(); // Trigger popup
-    }, 1000);
-    setIsLoading(true); // Start loading animation
+    setIsLoading(true);
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/v1/user/login`,

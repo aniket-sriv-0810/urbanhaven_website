@@ -43,7 +43,7 @@ const AuthSuccessPopup = ({ message = "Successfully Authenticated !", redirectPa
           className="mt-5 bg-gradient-to-t from-green-600 to-teal-500 text-white font-medium px-5 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
           onClick={() => navigate(redirectPath)}
         >
-          Go to Dashboard →
+          Go to Home →
         </button>
       </div>
     </div>
