@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import BlogForm from "../../../components/Blogs/Edit-Blog/BlogForm";
 import LoadingSkeleton from "../../../components/Blogs/Show-Blog/LoadingSkeleton";
+import AdminNavbar from "../../../components/Navbars/AdminNavbar/AdminNavbar";
 const EditBlog = () => {
   const [loading, setLoading] = useState(false);
   const [blogData, setBlogData] = useState(null);
@@ -68,8 +69,10 @@ const EditBlog = () => {
       )
       :
       (
+        <>
+        <AdminNavbar/>
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-200 to-gray-200 px-4 py-10">
-      <div className="bg-gray-100 shadow-xl rounded-2xl p-8 w-full max-w-lg">
+      <div className="bg-gray-100 shadow-xl shadow-gray-400 rounded-2xl p-8 w-full max-w-lg">
         {/* Back Button */}
         <button
           className="flex items-center gap-2 text-gray-700 hover:text-red-600 mb-4"
@@ -90,6 +93,7 @@ const EditBlog = () => {
         )}
       </div>
     </div>
+    </>
       )
 }
 </>

@@ -33,7 +33,7 @@ const BlogList = () => {
   if (error) return <p className="text-red-500 text-center mt-10">{error}</p>;
 
   return (
-    <div className="m-auto mb-10 mt-10 p-6 bg-gray-200">
+    <div className="m-auto  p-6 bg-gray-200">
       <h1 className="text-2xl sm:text-4xl font-extrabold text-center text-gray-800 mb-10 tracking-wide">
         Tour & Travel Blogs
       </h1>

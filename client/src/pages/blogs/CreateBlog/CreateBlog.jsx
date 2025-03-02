@@ -36,7 +36,7 @@ const CreateBlog = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-200 to-gray-200 px-4 py-10">
-      <div className="bg-gray-100 shadow-xl rounded-2xl p-8 w-full max-w-lg">
+      <div className="bg-gray-100 shadow-xl shadow-gray-400 rounded-2xl p-8 w-full max-w-lg">
         <h2 className="text-xl sm:text-3xl font-extrabold text-center text-gray-800 mb-6 animate-fadeIn">
           Create a New Blog
         </h2>
