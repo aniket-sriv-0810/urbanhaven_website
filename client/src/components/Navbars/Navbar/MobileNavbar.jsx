@@ -41,9 +41,9 @@ const MobileNavbar = () => {
             <FaTimes size={24} />
           </button>
 
-          <ul className="mt-8 space-y-10 p-4 text-sm sm:text-xl flex flex-col items-center justify-center">
+          <ul className="mt-8 space-y-7 p-4 text-sm sm:text-xl flex flex-col items-center justify-center">
             {user?.role === "admin" && (
-              <li className="flex items-center gap-2">
+              <li className="opacity-80 flex items-center justify-center p-2.5 gap-2 bg-gray-800 rounded-2xl w-60 hover:text-yellow-400">
                 <MdAdminPanelSettings className="text-xl" />
                 <NavLink to="/admin" onClick={toggleMenu}>
                   Admin Panel
@@ -52,7 +52,7 @@ const MobileNavbar = () => {
             )}
 
             {menuItems.map(({ to, label, icon }) => (
-              <li key={to} className="flex items-center gap-2">
+              <li key={to} className="opacity-80 flex items-center justify-center p-2.5 gap-2 bg-gray-800 rounded-2xl w-60 hover:text-yellow-400">
                 {icon}
                 <NavLink to={to} onClick={toggleMenu}>
                   {label}
@@ -60,7 +60,7 @@ const MobileNavbar = () => {
               </li>
             ))}
 
-            <li className="flex items-center gap-2">
+            <li className="opacity-80 flex items-center justify-center p-2.5 gap-2 bg-gray-800 rounded-2xl w-60 hover:text-yellow-400">
               {user ? (
                 <img src={user.image} alt={user.name} className="w-8 h-8 rounded-full border-2 border-white" />
               ) : (
