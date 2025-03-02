@@ -16,7 +16,7 @@ const UserNavbar = () => {
 
 
   return (
-    <nav className="bg-gradient-to-t from-gray-700 to-blue-600 text-white">
+    <nav className="bg-gradient-to-r from-slate-600 to-slate-800 text-white">
       <div className="flex justify-center items-center px-6 sm:justify-between lg:px-8">
         <div className="flex items-center xs:-ml-5 space-x-5" data-aos="fade-down">
           <UserNavLogo />

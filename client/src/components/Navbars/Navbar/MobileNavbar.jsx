@@ -37,7 +37,7 @@ const MobileNavbar = () => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="absolute top-0 right-0 w-full h-max text-white z-50 bg-gradient-to-t from-zinc-800 to-gray-900 p-6 shadow-lg transition-all duration-300">
-          <button className="absolute top-4 right-7 sm:right-10 text-white sm:py-3" onClick={toggleMenu}>
+          <button className="absolute top-4 right-7 sm:right-10 text-white  sm:py-3" onClick={toggleMenu}>
             <FaTimes size={24} />
           </button>
 

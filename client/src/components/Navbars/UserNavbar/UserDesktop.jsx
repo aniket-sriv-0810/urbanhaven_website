@@ -33,7 +33,7 @@ const UserDesktop = ({ user, navigate }) => {
       {user ? (
         <button onClick={() => navigate("/user/logout")} className="flex items-center justify-center bg-transparent px-4 py-3 rounded-lg hover:bg-red-600 hover:bg-opacity-80">
           <span className="flex gap-2">
-            Log out <MdOutlineLogout className="text-white w-5 h-5 mt-0.5 " />
+            Logout <MdOutlineLogout className="text-white w-5 h-5 mt-0.5 " />
           </span>
         </button>
       ) : (
