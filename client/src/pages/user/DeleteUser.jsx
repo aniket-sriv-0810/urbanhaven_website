@@ -9,7 +9,7 @@ const DeleteUser = () => {
     useEffect(() => {
         const deleteUser = async() => {
             try {
-              let response = await axios.delete(`http://localhost:8000/api/v1/user/${id}/account/delete` ,{
+              let response = await axios.delete(`${import.meta.env.VITE_API_URL}/v1/user/${id}/account/delete` ,{
                 withCredentials: true,
               });
               console.log(response.data.message);

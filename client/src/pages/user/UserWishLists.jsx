@@ -20,7 +20,7 @@ const UserWishlists = () => {
         const fetchWishlist = async () => {
             try {
                 const res = await axios.get(
-                    `http://localhost:8000/v1/user/${id}/account/wishlists`,
+                    `${import.meta.env.VITE_API_URL}/v1/user/${id}/account/wishlists`,
                     { withCredentials: true }
                 );
 

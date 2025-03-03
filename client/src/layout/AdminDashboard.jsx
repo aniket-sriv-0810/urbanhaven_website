@@ -74,7 +74,7 @@ const AdminDashboard = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/v1/admin/", { withCredentials: true });
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/v1/admin/`, { withCredentials: true });
       if (response.status === 200) {
         setAdminData(response.data.data);
       }

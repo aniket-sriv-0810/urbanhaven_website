@@ -13,7 +13,7 @@ const AdminDesktop = () => {
     { to: "users", label: "Users", tooltip: "User Details" },
     { to: "hotels", label: "Hotels", tooltip: "Hotel Details" },
     { to: "bookings", label: "Bookings", tooltip: "Booking Details" },
-    { to: "feedbacks", label: "Feedbacks", tooltip: "Feedback Details" },
+    { to: "contacts", label: "Feedbacks", tooltip: "Feedback Details" },
   ];
 
   return (
