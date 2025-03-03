@@ -79,7 +79,7 @@ const LoginForm = () => {
       <InputField
         type="text"
         name="username"
-        placeholder="Enter username"
+        placeholder="please enter your username"
         value={loginUser.username}
         onChange={handleInputChange}
         error={formErrors.username}
@@ -91,7 +91,7 @@ const LoginForm = () => {
       <InputField
         type="password"
         name="password"
-        placeholder="Enter strong password"
+        placeholder="please enter your password"
         value={loginUser.password}
         onChange={handleInputChange}
         error={formErrors.password || formErrors.username}

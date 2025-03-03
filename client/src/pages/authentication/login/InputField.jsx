@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 
 const InputField = forwardRef(({ type, name, placeholder, value, onChange, error, icon }, ref) => {
   const inputStyling =
-  'w-full border border-gray-300 rounded-xl p-2 my-1 focus:outline-none focus:ring-2 focus:ring-green-300 bg-[#5454544f] placeholder:text-center placeholder:lowercase placeholder:text-sm placeholder:text-gray-400  valid:border-2 caret-green-500 ';
+  'w-full border border-gray-300 rounded-xl p-2 my-1 focus:outline-none focus:ring-2 focus:ring-green-300 bg-[#5454544f] placeholder:text-center placeholder:lowercase placeholder:text-xs placeholder:text-gray-400  valid:border-2 caret-green-500 ';
   return (
     <>
         
