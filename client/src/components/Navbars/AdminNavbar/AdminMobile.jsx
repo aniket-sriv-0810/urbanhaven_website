@@ -4,8 +4,8 @@ import { IoHomeSharp } from "react-icons/io5";
 import { FaHotel , FaPaperPlane } from "react-icons/fa";
 import { FaBars, FaTimes , FaPowerOff } from "react-icons/fa";
 import {  RiShieldUserLine } from "react-icons/ri";
-import { MdAdminPanelSettings, MdOutlineLogout , MdEditCalendar , MdOutlinePostAdd   } from "react-icons/md";
-import { BsFillHouseAddFill } from "react-icons/bs";
+import { MdAdminPanelSettings, MdEditCalendar , MdOutlinePostAdd   } from "react-icons/md";
+import { BsBuildingFillAdd } from "react-icons/bs";
 import { PiUserCirclePlusBold } from "react-icons/pi";
 import { useUser } from "../../userContext/userContext";
 const AdminMobile = ({ isMenuOpen, toggleMenu }) => {
@@ -18,13 +18,13 @@ const AdminMobile = ({ isMenuOpen, toggleMenu }) => {
     { to: "hotels", label: "All Hotel Details", icon: <FaHotel /> },
     { to: "bookings", label: "Booking Details", icon: <MdEditCalendar /> },
     { to: "contacts", label: "Feedback Details", icon: <FaPaperPlane /> },
-    { to: "new-hotel", label: "Add New Hotels", icon: <BsFillHouseAddFill /> },
+    { to: "new-hotel", label: "Add New Hotels", icon: <BsBuildingFillAdd /> },
     { to: "new-blog", label: "Add New Blogs", icon: <MdOutlinePostAdd  /> },
   ];
 
   return (
     <>
-        <button className="absolute  right-3 lg:hidden focus:outline-none z-50 sm:absolute sm:right-5 " onClick={toggleMenu}>
+        <button className="absolute  right-3 lg:hidden focus:outline-none z-50 sm:absolute sm:right-5 " data-aos="fade-left" onClick={toggleMenu}>
           {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
         </button>
     

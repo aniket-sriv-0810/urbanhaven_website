@@ -5,7 +5,7 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // Optional for default styling
 const HeaderImage = () => {
   return (
-    <div >
+    <div data-aos="fade-down">
        <Tippy content="Urbanhaven" className='bg-red-400'>
           <NavLink to="/">
             <img

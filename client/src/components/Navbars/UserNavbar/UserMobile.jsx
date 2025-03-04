@@ -13,8 +13,8 @@ const UserMobile = ({ user, navigate, isMenuOpen, toggleMenu }) => {
       className={`absolute top-0 right-0 w-full  z-50 transform bg-gradient-to-r from-slate-600 to-slate-800 text-white p-6 shadow-lg ${
         isMenuOpen ? "translate-x-0 sm:translate-y-0" : "translate-x-full hidden"
       } transition-transform duration-300`}
-    >
-      <button className="absolute top-4 right-7 sm:right-10 text-white hover:text-red-500 sm:py-3" onClick={toggleMenu}>
+     >
+      <button className="absolute top-4 right-7 sm:right-10 text-white hover:text-red-500 sm:py-3"  onClick={toggleMenu}>
         <FaTimes size={28} />
       </button>
       <ul className=" mt-8 space-y-8 p-4 text-sm font-semibold sm:text-xl flex flex-col items-center justify-center">

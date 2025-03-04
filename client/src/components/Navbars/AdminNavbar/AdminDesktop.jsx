@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // Optional for default styling
-import { BsHouseAddFill } from "react-icons/bs";
+import { BsBuildingFillAdd } from "react-icons/bs";
 import { useUser } from "../../userContext/userContext";
 import { AiFillFileAdd } from "react-icons/ai";
 import { FaPowerOff } from "react-icons/fa";
@@ -20,7 +20,7 @@ const AdminDesktop = () => {
   return (
     <>
       {/* Desktop Menu */}
-      <ul className="hidden capitalize lg:flex gap-6 items-center">
+      <ul className="hidden capitalize lg:flex gap-6 items-center" data-aos="fade-down">
         {/* Admin Panel Link */}
         {user?.role === "admin" && (
           <li className="hover:scale-110 hover:font-semibold hover:text-yellow-500 transition-all duration-100">
@@ -45,7 +45,7 @@ const AdminDesktop = () => {
             onClick={() => navigate("new-hotel")}
             className=" bg-purple-600 bg-opacity-50 p-2.5 text-sm rounded-lg hover:shadow-md hover:bg-opacity-80 text-white flex justify-end items-center gap-2"
           >
-            Add Hotels <BsHouseAddFill className="w-5 h-5" />
+            Add Hotels <BsBuildingFillAdd className="w-5 h-5" />
           </button>
 
           <button
