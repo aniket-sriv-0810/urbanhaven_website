@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import LoadingSkeleton from "../../../components/Blogs/Show-Blog/LoadingSkeleton";
+
 const DeleteBlog = () => {
       const { id } = useParams();
       const navigate = useNavigate();
@@ -25,7 +25,7 @@ const DeleteBlog = () => {
         } ,[])
   return (
    <>
-   <LoadingSkeleton type="blog"/>
+   <h1>hotel deleted !</h1>
    </>
   )
 }

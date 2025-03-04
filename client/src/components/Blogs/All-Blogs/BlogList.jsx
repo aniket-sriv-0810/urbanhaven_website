@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import BlogCard from "./BlogCard";
-import LoadingSkeleton from "../Show-Blog/LoadingSkeleton";
 
 const BlogList = () => {
   const [blogData, setBlogData] = useState([]);
@@ -29,7 +28,7 @@ const BlogList = () => {
     fetchData();
   }, []);
 
-  if (loading) return  <LoadingSkeleton type="list" count={3}/>
+  if (loading) return  <h1>blogs loading...</h1>
   if (error) return <p className="text-red-500 text-center mt-10">{error}</p>;
 
   return (

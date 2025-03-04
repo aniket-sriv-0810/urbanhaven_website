@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import BlogForm from "../../../components/Blogs/Edit-Blog/BlogForm";
-import LoadingSkeleton from "../../../components/Blogs/Show-Blog/LoadingSkeleton";
 import AdminNavbar from "../../../components/Navbars/AdminNavbar/AdminNavbar";
 const EditBlog = () => {
   const [loading, setLoading] = useState(false);
@@ -65,7 +64,7 @@ const EditBlog = () => {
     {
       pageLoading ?
       (
-        <LoadingSkeleton type="form"/>
+        <h1>loading...</h1>
       )
       :
       (

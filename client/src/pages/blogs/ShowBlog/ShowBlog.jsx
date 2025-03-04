@@ -4,7 +4,7 @@ import axios from "axios";
 import Navbar from "../../../components/Navbars/Navbar/Navbar";
 import Footer from "../../../components/Footer/Footer";
 import BlogCard from "../../../components/Blogs/Show-Blog/BlogCard";
-import LoadingSkeleton from "../../../components/Blogs/Show-Blog/LoadingSkeleton";
+
 
 const ShowBlog = () => {
   const [blog, setBlog] = useState(null);
@@ -40,7 +40,7 @@ const ShowBlog = () => {
 
       <div className="flex flex-col justify-center items-center min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 px-4 py-10">
         {loading ? (
-          <LoadingSkeleton type="blog" />
+          <h1>loading...</h1>
         ) : blog ? (
           <BlogCard blog={blog} navigate={navigate} />
         ) : (
