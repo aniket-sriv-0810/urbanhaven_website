@@ -142,7 +142,25 @@ const UserForm = () => {
         error={formErrors.password}
         inputRef={inputRefs.password}
       />
-<div className="flex gap-2  justify-evenly"><input type="checkbox" id="checkbox" className="accent-green-500 w-5 hover:cursor-pointer" required/><label htmlFor="checkbox" className="text-gray-400"> I agree to all the <span onClick={() => navigate('/terms-and-conditions')} className=" text-cyan-300 hover:cursor-pointer hover:text-blue-600 "> terms and conditions </span> </label></div>
+      <div className="flex gap-2  justify-evenly">
+        <input
+          type="checkbox"
+          id="checkbox"
+          className="accent-green-500 w-5 hover:cursor-pointer"
+          required
+        />
+        <label htmlFor="checkbox" className="text-gray-400">
+          {" "}
+          I agree to all the{" "}
+          <span
+            onClick={() => navigate("/terms-and-conditions")}
+            className=" text-cyan-300 hover:cursor-pointer hover:text-blue-600 "
+          >
+            {" "}
+            terms and conditions{" "}
+          </span>{" "}
+        </label>
+      </div>
       <button
         type="submit"
         disabled={isLoading}
