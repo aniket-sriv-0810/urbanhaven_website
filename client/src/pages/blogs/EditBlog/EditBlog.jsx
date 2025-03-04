@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import BlogForm from "../../../components/Blogs/Edit-Blog/BlogForm";
 import AdminNavbar from "../../../components/Navbars/AdminNavbar/AdminNavbar";
+import SkeletonForm from "../../../components/LoadingSkeleton/SkeletonForm";
 const EditBlog = () => {
   const [loading, setLoading] = useState(false);
   const [blogData, setBlogData] = useState(null);
@@ -48,8 +49,7 @@ const EditBlog = () => {
       );
 
       if (response.status === 200) {
-        alert("Blog Updated Successfully!");
-        navigate(`/blog/${id}`); // Redirect to blog page
+       navigate('/edit/successfully')
       }
     } catch (error) {
       console.error(error);
@@ -61,15 +61,15 @@ const EditBlog = () => {
 
   return (
     <>
+        <AdminNavbar/>
     {
       pageLoading ?
       (
-        <h1>loading...</h1>
+        <div className="flex items-center justify-center"><SkeletonForm/></div>
       )
       :
       (
         <>
-        <AdminNavbar/>
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-200 to-gray-200 px-4 py-10">
       <div className="bg-gray-100 shadow-xl shadow-gray-400 rounded-2xl p-8 w-full max-w-lg">
         {/* Back Button */}

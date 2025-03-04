@@ -41,6 +41,8 @@ import ShowBlog from './pages/blogs/ShowBlog/ShowBlog';
 import AdminContact from './layout/AdminContact';
 import DeleteBlog from './pages/blogs/DeleteBlog/DeleteBlog';
 import AuthSuccessPopup from './pages/loaders/AuthSuccessPopup';
+import DeleteLoader from './pages/loaders/DeleteLoader';
+import SuccessLoader from './pages/loaders/SuccessLoader';
 
 export default function App() {
   const { setUser } = useUser();
@@ -80,9 +82,9 @@ export default function App() {
       src="https://lottie.host/e32980de-2d5a-4f0c-96ae-853d398fecab/qJq4lBxhtz.lottie"
       loop
       autoplay
-      className='w-60 h-60'
+      className='w-40 h-40'
     />
-    <p className='uppercase text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 animate-pulse py-2'>
+    <p className='uppercase text-lg font-bold text-gray-900 animate-pulse py-2'>
       Loading...
     </p>
         </div>
@@ -142,6 +144,9 @@ export default function App() {
           <Route path="/user/register" element={<RegisterUser />} />
           <Route path="/user/register/successfully" element={<AuthSuccessPopup />} />
           <Route path="/user/login/confirmed" element={<LoginLoader />} />
+          <Route path="/blog/delete/successfully" element={<DeleteLoader />} />
+          <Route path="/create/successfully" element={<SuccessLoader />} />
+          <Route path="/edit/successfully" element={<SuccessLoader />} />
           <Route path="/user/login" element={<LoginUser />} />
           <Route path="/user/logout" element={<Logout />} />
           <Route

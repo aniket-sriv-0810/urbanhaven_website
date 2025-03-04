@@ -17,7 +17,6 @@ const BlogCard = ({ blog, navigate }) => {
           />
         </h1>
         <p className="text-gray-600 text-base leading-relaxed">{blog.description}</p>
-        <p className="text-gray-400 text-sm mt-2">Blog ID: {blog._id}</p>
       </div>
     </div>
   );

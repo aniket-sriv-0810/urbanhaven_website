@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { GrArticle } from "react-icons/gr";
+import { FaHome } from "react-icons/fa";
 import Navbar from "../../../components/Navbars/Navbar/Navbar";
 import Footer from "../../../components/Footer/Footer";
 import BlogCard from "../../../components/Blogs/Show-Blog/BlogCard";
+import SkeletonCard from "../../../components/LoadingSkeleton/SkeletonCard";
 
 
 const ShowBlog = () => {
@@ -38,25 +41,28 @@ const ShowBlog = () => {
         <Navbar />
       </div>
 
-      <div className="flex flex-col justify-center items-center min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 px-4 py-10">
+      <div className=" min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 px-4 py-10">
         {loading ? (
-          <h1>loading...</h1>
+          <div className="flex flex-col justify-center items-center"><SkeletonCard/></div>
         ) : blog ? (
+          <div className="flex flex-col justify-center items-center">
           <BlogCard blog={blog} navigate={navigate} />
+          </div>
         ) : (
           <p className="text-red-500 text-xl">Blog not found!</p>
+          
         )}
 
         {/* Navigation Buttons */}
-        <div className="flex flex-col xs:flex-row mt-8 gap-5 md:gap-10">
+        <div className="flex flex-col justify-center items-center xs:flex-row mt-8 gap-5 md:gap-10">
           <Link to="/all-blogs">
-            <button className="flex items-center gap-2 px-6 py-3 text-lg font-semibold text-white bg-green-600 rounded-lg shadow-md transition-all duration-300 hover:bg-green-700 active:scale-95">
-              All Blogs
+            <button className="flex items-center gap-3 px-6 py-3 text-lg font-semibold text-white bg-gradient-to-t from-green-500 to-emerald-900 rounded-lg shadow-md transition-all duration-300 hover:scale-110 active:scale-95">
+             <GrArticle/> All Blogs
             </button>
           </Link>
           <Link to="/">
-            <button className="flex items-center gap-2 px-9 py-3 text-lg font-semibold text-white bg-blue-600 rounded-lg shadow-md transition-all duration-300 hover:bg-blue-700 active:scale-95">
-              Home
+            <button className="flex items-center gap-3 px-9 py-3 text-lg font-semibold text-white bg-gradient-to-t from-purple-600 to-blue-600 rounded-lg shadow-md transition-all duration-300 hover:scale-110 active:scale-95">
+             <FaHome/> Home
             </button>
           </Link>
         </div>
