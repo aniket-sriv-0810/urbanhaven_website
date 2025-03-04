@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import {  useNavigate } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useUser } from "../../userContext/userContext";
@@ -8,6 +10,14 @@ import UserDesktop from "./UserDesktop";
 import UserMobile from "./UserMobile";
 
 const UserNavbar = () => {
+   useEffect(() => {
+      AOS.init({
+        duration: 1500, // Animation duration
+        easing: "ease-in-out", // Smooth effect
+        mirror: true,
+        once: false, // Animation repeats on scroll
+      });
+    }, []);
   const { user } = useUser();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,7 +28,7 @@ const UserNavbar = () => {
   return (
     <nav className="bg-gradient-to-r from-slate-600 to-slate-800 text-white">
       <div className="flex justify-center items-center px-6 sm:justify-between lg:px-8">
-        <div className="flex items-center xs:-ml-5 space-x-5" data-aos="fade-down">
+        <div className="flex items-center xs:-ml-5 space-x-5" >
           <UserNavLogo />
           <UserNavHeading user={user} />
         </div>

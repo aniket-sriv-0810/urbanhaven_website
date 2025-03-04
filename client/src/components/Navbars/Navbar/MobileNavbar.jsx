@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { IoHomeSharp } from "react-icons/io5";
-import { FaUserCircle, FaBars, FaTimes, FaPaperPlane } from "react-icons/fa";
+import { FaUserCircle, FaBars, FaTimes, FaPaperPlane , FaPowerOff} from "react-icons/fa";
 import { RiQuestionAnswerFill, RiShieldUserLine, RiArticleFill } from "react-icons/ri";
-import { MdAdminPanelSettings, MdOutlineLogout } from "react-icons/md";
+import { MdAdminPanelSettings } from "react-icons/md";
 import { PiUserCirclePlusBold } from "react-icons/pi";
 import { useUser } from "../../userContext/userContext";
 import "tippy.js/dist/tippy.css";
@@ -27,7 +27,7 @@ const MobileNavbar = () => {
     <>
       {/* Hamburger Icon */}
       <button
-        className="absolute right-3 sm:right-8 lg:hidden text-white focus:outline-none mr-2"
+        className="absolute right-4 sm:right-8 lg:hidden text-white focus:outline-none "
         onClick={toggleMenu}
         data-aos="fade-left"
       >
@@ -62,7 +62,7 @@ const MobileNavbar = () => {
 
             <li className="opacity-80 flex items-center justify-center p-2.5 gap-2 bg-gray-800 rounded-2xl w-60 hover:text-yellow-400">
               {user ? (
-                <img src={user.image} alt={user.name} className="w-8 h-8 rounded-full border-2 border-white" />
+                <img src={user.image} alt={user.name} className="w-8 h-8 rounded-full border border-white" />
               ) : (
                 <FaUserCircle className="text-xl" />
               )}
@@ -76,7 +76,7 @@ const MobileNavbar = () => {
                 onClick={() => navigate("/user/logout")}
                 className="bg-red-500 px-4 py-2 rounded-lg w-48 hover:bg-red-600 flex justify-center items-center gap-2 sm:w-60"
               >
-                Logout <MdOutlineLogout className="text-white w-5 h-5" />
+                Logout <FaPowerOff className="text-white w-5 h-5" />
               </button>
             ) : (
               <div className="flex flex-col space-y-6">

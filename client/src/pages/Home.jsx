@@ -38,7 +38,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/", { withCredentials: true });
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}`, { withCredentials: true });
         setAllHotels(response.data.data.allHotel);
       setLoading(false);
       } catch (error) {
@@ -179,7 +179,7 @@ const Home = () => {
 <div className="pagination" data-aos="fade-up">
       <Pagination totalPages={totalPages} currentPage={currentPage} handlePageChange={setCurrentPage} />
       </div>
-      
+
 <div className="     my-80" data-aos="fade-down">
       <ScrollComponent/>
 </div>

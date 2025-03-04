@@ -2,13 +2,12 @@ import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { IoHomeSharp } from "react-icons/io5";
 import { FaHotel , FaPaperPlane } from "react-icons/fa";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes , FaPowerOff } from "react-icons/fa";
 import {  RiShieldUserLine } from "react-icons/ri";
 import { MdAdminPanelSettings, MdOutlineLogout , MdEditCalendar , MdOutlinePostAdd   } from "react-icons/md";
 import { BsFillHouseAddFill } from "react-icons/bs";
 import { PiUserCirclePlusBold } from "react-icons/pi";
 import { useUser } from "../../userContext/userContext";
-
 const AdminMobile = ({ isMenuOpen, toggleMenu }) => {
   const { user } = useUser();
   const navigate = useNavigate();
@@ -55,9 +54,9 @@ const AdminMobile = ({ isMenuOpen, toggleMenu }) => {
         {user ? (
           <button
             onClick={() => navigate("/user/logout")}
-            className="bg-red-500 px-4 py-2 rounded-full w-48 hover:bg-red-600 flex justify-center items-center gap-2"
+            className="bg-red-500 px-4 py-2 rounded-full w-48 hover:bg-red-600 flex  justify-center items-center gap-3"
           >
-            Logout <MdOutlineLogout className="text-white w-5 h-5" />
+            Logout <FaPowerOff className="text-white w-5 h-5" />
           </button>
         ) : (
           <div className="flex flex-col space-y-4">

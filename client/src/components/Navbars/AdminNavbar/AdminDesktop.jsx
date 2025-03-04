@@ -2,9 +2,10 @@ import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // Optional for default styling
-import { MdOutlineLogout } from "react-icons/md";
+import { BsHouseAddFill } from "react-icons/bs";
 import { useUser } from "../../userContext/userContext";
-
+import { AiFillFileAdd } from "react-icons/ai";
+import { FaPowerOff } from "react-icons/fa";
 const AdminDesktop = () => {
   const { user } = useUser();
   const navigate = useNavigate();
@@ -42,23 +43,23 @@ const AdminDesktop = () => {
 
           <button
             onClick={() => navigate("new-hotel")}
-            className=" bg-purple-600 bg-opacity-60 p-2.5 text-sm rounded-lg hover:shadow-md hover:bg-opacity-80 text-white flex justify-end items-center gap-2"
+            className=" bg-purple-600 bg-opacity-50 p-2.5 text-sm rounded-lg hover:shadow-md hover:bg-opacity-80 text-white flex justify-end items-center gap-2"
           >
-            Add Hotels <MdOutlineLogout className="w-5 h-5" />
+            Add Hotels <BsHouseAddFill className="w-5 h-5" />
           </button>
 
           <button
             onClick={() => navigate("new-blog")}
-            className="bg-orange-600 bg-opacity-60 p-2.5 rounded-lg text-sm hover:shadow-md hover:bg-opacity-80 text-white flex items-center gap-2"
+            className="bg-orange-600 bg-opacity-50 p-2.5 rounded-lg text-sm hover:shadow-md hover:bg-opacity-80 text-white flex items-center gap-2"
           >
-            Add Blogs <MdOutlineLogout className="w-5 h-5" />
+            Add Blogs <AiFillFileAdd className="w-5 h-5" />
           </button>
 
           <button
             onClick={() => navigate('/user/logout')}
-            className="bg-red-600 bg-opacity-60 p-2.5 rounded-lg text-sm hover:shadow-md hover:bg-opacity-80 text-white flex items-center gap-2"
+            className="bg-red-600 bg-opacity-50 p-2.5 rounded-lg text-sm hover:shadow-md hover:bg-opacity-80 text-white flex items-center gap-2"
           >
-            Log Out <MdOutlineLogout className="w-5 h-5" />
+            Logout <FaPowerOff className="w-5 h-5" />
           </button>
         
       </ul>

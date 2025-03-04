@@ -8,7 +8,7 @@ const UserNavLogo = () => {
   return (
     <Tippy content="Urbanhaven" className="bg-red-400">
       <NavLink to="/">
-        <img src={WebsiteLogo} alt="UrbanHaven" className="w-16 sm:w-20 lg:w-24" />
+        <img src={WebsiteLogo} alt="UrbanHaven" className="w-16 sm:w-20 lg:w-24" data-aos="fade-down" />
       </NavLink>
     </Tippy>
   );

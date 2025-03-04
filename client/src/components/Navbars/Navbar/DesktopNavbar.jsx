@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
-import { MdOutlineLogout } from "react-icons/md";
+import { FaPowerOff } from "react-icons/fa6";
 import { RiShieldUserLine } from "react-icons/ri";
 import { PiUserCirclePlusBold } from "react-icons/pi";
 import { useUser } from "../../userContext/userContext";
@@ -62,7 +62,7 @@ const DesktopNavbar = () => {
           onClick={() => navigate("/user/logout")}
           className="bg-transparent px-4 py-3 rounded-lg hover:shadow-md hover:bg-red-600 hover:bg-opacity-60 flex items-center gap-2"
         >
-          Logout <MdOutlineLogout className="text-white w-5 h-5" />
+          Logout <FaPowerOff className="text-white w-5 h-5" />
         </button>
       ) : (
         <div className="flex gap-4">

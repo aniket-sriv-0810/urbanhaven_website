@@ -3,9 +3,8 @@ import { NavLink } from "react-router-dom";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { RiShieldUserLine } from "react-icons/ri";
 import { PiUserCirclePlusBold } from "react-icons/pi";
-import { MdOutlineLogout } from "react-icons/md";
 import { TbListDetails } from "react-icons/tb";
-import { FaTimes , FaCalendarCheck } from "react-icons/fa";
+import { FaTimes , FaCalendarCheck , FaPowerOff , FaHotel } from "react-icons/fa";
 import { IoHeartCircleOutline } from "react-icons/io5";
 
 const UserMobile = ({ user, navigate, isMenuOpen, toggleMenu }) => {
@@ -28,6 +27,10 @@ const UserMobile = ({ user, navigate, isMenuOpen, toggleMenu }) => {
           </li>
         )}
         <li className="opacity-80 flex items-center justify-center p-2.5 gap-3 bg-gray-800 rounded-2xl w-60 hover:text-yellow-400">
+          <FaHotel  className="text-xl" />
+          <NavLink to={`/`}>All Hotels</NavLink>
+        </li>
+        <li className="opacity-80 flex items-center justify-center p-2.5 gap-3 bg-gray-800 rounded-2xl w-60 hover:text-yellow-400">
           <TbListDetails className="text-xl" />
           <NavLink to={`/user/${user?._id}/account`}>My Account</NavLink>
         </li>
@@ -42,7 +45,7 @@ const UserMobile = ({ user, navigate, isMenuOpen, toggleMenu }) => {
          {user ? (
                 <button onClick={() => navigate("/user/logout")} className="bg-red-500 px-4 py-2 rounded-full w-48 hover:bg-red-600 flex justify-center items-center gap-2">
                   <span className="flex gap-2">
-                    Logout <MdOutlineLogout className="text-white w-5 h-5" />
+                    Logout <FaPowerOff className="text-white w-5 h-5" />
                   </span>
                 </button>
               ) : (

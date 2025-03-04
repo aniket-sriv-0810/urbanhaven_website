@@ -1,13 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Tippy from "@tippyjs/react";
-import { MdOutlineLogout } from "react-icons/md";
+import { FaPowerOff } from "react-icons/fa6";
 import { RiShieldUserLine } from "react-icons/ri";
 import { PiUserCirclePlusBold } from "react-icons/pi";
 
 const UserDesktop = ({ user, navigate }) => {
   return (
-    <ul className="hidden capitalize lg:flex absolute right-7 gap-9 items-center" data-aos="fade-up">
+    <ul className="hidden capitalize lg:flex absolute right-7 gap-9 items-center" data-aos="fade-down">
       {user?.role === "admin" && (
         <li className="hover:text-yellow-400 hover:scale-110 transition-all duration-100 hover:font-semibold">
           <Tippy content="Admin Panel">
@@ -33,7 +33,7 @@ const UserDesktop = ({ user, navigate }) => {
       {user ? (
         <button onClick={() => navigate("/user/logout")} className="flex items-center justify-center bg-transparent px-4 py-3 rounded-lg hover:bg-red-600 hover:bg-opacity-80">
           <span className="flex gap-2">
-            Logout <MdOutlineLogout className="text-white w-5 h-5 mt-0.5 " />
+            Logout <FaPowerOff className="text-white w-5 h-5 mt-0.5 " />
           </span>
         </button>
       ) : (
