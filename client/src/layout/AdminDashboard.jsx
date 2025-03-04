@@ -14,6 +14,7 @@ import {
   FaClipboardList,
   FaComments,
 } from "react-icons/fa";
+import { IoMdHelpCircle } from "react-icons/io";
 import { IoHome } from "react-icons/io5";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -31,45 +32,48 @@ const AdminDashboard = () => {
   const driverRef = useRef(
     new driver({
       showProgress: true,
+      overlayColor: "rgba(0, 0, 0, 0.7)", // Dark background for focus effect
+      popoverClass: "custom-driver-popover", // Custom styling class
+      animate: true,
       steps: [
         {
           element: "#welcome-message",
           popover: {
-            title: "Welcome, Admin!",
+            title: "Welcome, Admin! 🚀",
             description:
-              "This is your admin dashboard where you can manage everything.",
+              "Manage your dashboard, view users, hotels, and bookings easily.",
             side: "bottom",
           },
         },
         {
           element: "#users-btn",
           popover: {
-            title: "Users Details",
-            description: "Click here to view and manage user details.",
+            title: "Users Section 👥",
+            description: "View and manage all registered users here.",
             side: "top",
           },
         },
         {
           element: "#hotels-btn",
           popover: {
-            title: "Hotels Details",
-            description: "Click here to view and manage hotel details.",
+            title: "Hotels Section 🏨",
+            description: "Manage hotel listings and create new ones.",
             side: "top",
           },
         },
         {
-          element: "#new-hotel-btn",
+          element: "#bookings-btn",
           popover: {
-            title: "Create New Hotel",
-            description: "Click here to create a new hotel listing.",
+            title: "Bookings 📋",
+            description: "Check all confirmed hotel bookings here.",
             side: "top",
           },
         },
         {
           element: "#contacts-btn",
           popover: {
-            title: "Contacts",
-            description: "View contact details here (disabled for now).",
+            title: "Feedbacks & Contacts 💬",
+            description: "View user feedback and contact requests.",
             side: "top",
           },
         },
@@ -116,7 +120,7 @@ const AdminDashboard = () => {
           data-aos="fade-up"
         >
           <div className="flex items-center justify-center gap-4 mb-6">
-            <FaUserShield className="text-blue-600 text-3xl" />
+            <FaUserShield className="text-blue-600 text-4xl" />
             <h2 className="text-3xl  font-bold text-gray-900">
               Admin Credentials
             </h2>
@@ -132,14 +136,14 @@ const AdminDashboard = () => {
             <div className="flex items-center gap-3 text-lg text-gray-800">
               <FaIdBadge className="text-blue-500" />
               <span>
-                <strong>Admin ID:</strong> {user._id}
+                <strong>Admin ID:</strong> <span>{user._id}</span>
               </span>
             </div>
 
             <div className="flex items-center gap-3 text-lg text-gray-800">
               <FaUserShield className="text-green-500" />
               <span>
-                <strong>Admin Name:</strong> {user.name}
+                <strong>Admin:</strong> {user.name}
               </span>
             </div>
 
@@ -232,7 +236,7 @@ const AdminDashboard = () => {
               <FaComments className="text-orange-500 text-5xl" />
             </div>
             <h2 className="text-4xl font-extrabold text-gray-900 mt-4">
-              {adminData.totalBookings}
+              {adminData.totalContacts}
             </h2>
             <p className="text-gray-600 text-lg font-medium">
               Feedbacks Received
@@ -244,7 +248,15 @@ const AdminDashboard = () => {
             </NavLink>
           </div>
         </div>
-      </div>
+       {/* Tour Help Button */}
+        <button
+          onClick={startTour}
+          className="fixed bottom-6 right-6 md:bottom-10 md:right-10 bg-white hover:to-blue-500 text-white p-2 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-110 flex items-center justify-center"
+        >
+          <IoMdHelpCircle className="w-8 h-8 text-blue-500 md:w-10 md:h-10" />
+        </button>
+
+        </div>
     </>
   );
 };

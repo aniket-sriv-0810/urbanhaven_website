@@ -1,33 +1,66 @@
-driver-popover {
-    background-color: rgb(160, 100, 26);
+/* Custom Styling for Tour */
+.custom-driver-popover {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    font-family: "Poppins", sans-serif;
 }
 
+/* Popover Arrow */
 .driver-popover-arrow {
     font-size: large;
 }
 
+/* Title */
 .driver-popover-title {
-    color:green;
+    font-weight: bold;
+    color: #2d89ff;
+    font-size: 18px;
 }
+
+/* Description */
 .driver-popover-description {
-    color:purple
+    color: #333;
+    font-size: 14px;
+    line-height: 1.6;
 }
+
+/* Close Button */
 .driver-popover-close-btn {
-    color: red !important;
-
+    color: white !important;
+    background-color: red !important;
+    padding: 6px;
+    border-radius: 50%;
+    margin: 2px;
+    font-weight: bold;
 }
+
+/* Footer Buttons */
 .driver-popover-footer {
-    color:blue
-}
-.driver-popover-progress-text {
-    color:maroon
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.driver-popover-prev-btn {
-    background-color: chocolate !important;
-    color:white !important;
+/* Progress Text */
+.driver-popover-progress-text {
+    color: #ff5733;
+    font-weight: bold;
 }
+
+/* Previous Button */
+.driver-popover-prev-btn {
+    background-color: #ff9800 !important;
+    color: white !important;
+    padding: 6px 12px;
+    border-radius: 5px;
+}
+
+/* Next Button */
 .driver-popover-next-btn {
-background-color: rgb(136, 0, 255) !important;
-color:white !important;
+    background-color: #007bff !important;
+    color: white !important;
+    padding: 6px 12px;
+    border-radius: 5px;
 }
