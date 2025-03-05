@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import UserTable from "../components/Admin/AdminUser/UserTable";
-
+import SkeletonTable from "../components/LoadingSkeleton/SkeletonTable";
 const AdminUser = () => {
   const [userDetails, setUserDetails] = useState();
 
@@ -29,7 +29,7 @@ const AdminUser = () => {
         User Details
       </h1>
       {userDetails ? <UserTable users={userDetails} /> : (
-        <p className="text-center text-red-500 mt-6">No User Found!</p>
+        <p className="text-center text-red-500 mt-6"><SkeletonTable/></p>
       )}
     </div>
   );

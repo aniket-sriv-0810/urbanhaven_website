@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ContactTable from "../components/Admin/AdminContact/ContactTable";
-
+import SkeletonTable from "../components/LoadingSkeleton/SkeletonTable";
 const AdminContact = () => {
   const [contactDetails, setContactDetails] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -33,7 +33,7 @@ const AdminContact = () => {
       </h1>
 
       {loading ? (
-        <p className="text-center text-gray-700">Loading...</p>
+        <p className="text-center text-gray-700"><SkeletonTable/></p>
       ) : contactDetails.length > 0 ? (
         <ContactTable contacts={contactDetails} />
       ) : (

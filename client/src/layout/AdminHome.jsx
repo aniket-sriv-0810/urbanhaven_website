@@ -23,12 +23,12 @@ const AdminHome = () => {
         {/* Welcome Section */}
         <div className="bg-white shadow-lg rounded-xl p-6 md:p-10 text-center max-w-4xl mx-auto" data-aos="fade-up">
         <span className="flex items-center justify-center gap-2 xs:gap-5 md:gap-5">
-          <h1 className="text-2xl md:text-4xl font-bold text-blue-700 mb-4">
+          <h1 className="text-2xl md:text-3xl font-bold text-blue-500 mb-4">
             Welcome to the Admin Panel 
           </h1>
           <IoStatsChartSharp className="text-4xl mb-4  text-blue-700 "/>
         </span>
-          <p className="text-gray-700 text-lg">
+          <p className="text-gray-600 text-lg">
             Manage users, hotels, bookings, and more with full control over the platform.  
             Keep an eye on statistics, review performance, and ensure a smooth experience  
             for your users.  

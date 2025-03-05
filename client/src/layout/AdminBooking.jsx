@@ -1,8 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import BookingTable from "../components/Admin/AdminBooking/BookingTable";
-
+import SkeletonTable from "../components/LoadingSkeleton/SkeletonTable";
 const AdminBooking = () => {
   const [adminBookingData, setAdminBookingData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -19,9 +18,7 @@ const AdminBooking = () => {
     } catch (error) {
       console.error("Failed to get booking information:", error);
     } finally {
-      setTimeout(() => {
-        setLoading(false);
-      }, 2000);
+      setLoading(false);
     }
   };
 
@@ -35,12 +32,7 @@ const AdminBooking = () => {
         Booking Details
       </h1>
       {loading ? (
-        <DotLottieReact
-          src="https://lottie.host/470391a4-12cf-4fbc-bf5a-a6513c48cb55/h8hQRAkbcn.lottie"
-          loop
-          autoplay
-          className="m-auto w-40 h-40"
-        />
+        <SkeletonTable/>
       ) : adminBookingData && adminBookingData.length > 0 ? (
         <BookingTable bookings={adminBookingData} />
       ) : (
