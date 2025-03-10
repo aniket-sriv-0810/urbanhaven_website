@@ -41,7 +41,7 @@ const ShowBlog = () => {
         <Navbar />
       </div>
 
-      <div className=" min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 px-4 py-10">
+      <div className=" min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 px-4 py-20">
         {loading ? (
           <div className="flex flex-col justify-center items-center"><SkeletonCard/></div>
         ) : blog ? (
@@ -54,7 +54,7 @@ const ShowBlog = () => {
         )}
 
         {/* Navigation Buttons */}
-        <div className="flex flex-col justify-center items-center xs:flex-row mt-8 gap-5 md:gap-10">
+        <div className="flex flex-col justify-center gap-6 items-center xs:flex-row mt-8 xs:gap-8 md:gap-10">
           <Link to="/all-blogs">
             <button className="flex items-center gap-3 px-6 py-3 text-lg font-semibold text-white bg-gradient-to-t from-green-500 to-emerald-900 rounded-lg shadow-md transition-all duration-300 hover:scale-110 active:scale-95">
              <GrArticle/> All Blogs

@@ -10,9 +10,10 @@ const AllBlogs = () => {
       <div className="bg-gradient-to-r from-slate-600 to-slate-800">
         <Navbar />
       </div>
-      
+
       {/* Blog List */}
       <BlogList />
+
 
       {/* Footer Section */}
       <div className="bg-gradient-to-r from-slate-600 to-slate-800">

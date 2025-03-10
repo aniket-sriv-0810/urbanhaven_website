@@ -3,7 +3,7 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { useNavigate } from "react-router-dom";
 
 
-const SuccessLoader = ({ message = "Saved Successfully !", redirectPath = "/" }) =>  {
+const SuccessLoader = ({ message = "Saved Successfully !", redirectPath = "/admin" }) =>  {
 
   const [isVisible, setIsVisible] = useState(true);
   const navigate = useNavigate();

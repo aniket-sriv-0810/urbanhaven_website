@@ -43,7 +43,7 @@ const EditBlog = () => {
 
     try {
       const response = await axios.put(
-        `${import.meta.env.VITE_API_URL}/v1/navigate/blog/${id}/edit`,
+        `${import.meta.env.VITE_API_URL}/v1/admin/blog/${id}/edit`,
         blogData,
         { withCredentials: true }
       );

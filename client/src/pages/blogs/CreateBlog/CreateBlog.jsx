@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import BlogForm from "../../../components/Blogs/Create-Blog/BlogForm";
-
+import {useNavigate} from 'react-router-dom';
 const CreateBlog = () => {
   const [loading, setLoading] = useState(false);
-
+const navigate = useNavigate();
   // Handle Form Submission
   const handleSubmit = async (formData, setFormData, setPreview) => {
     if (!formData.title || !formData.description || !formData.image) {
@@ -18,15 +18,15 @@ const CreateBlog = () => {
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/v1/navigate/add-blog`,
+        `${import.meta.env.VITE_API_URL}/v1/admin/add-blog`,
         blogData,
         { withCredentials: true }
       );
-
+      navigate('/create/successfully')
       console.log(response.data);
-      alert("Blog Created Successfully!");
       setFormData({ title: "", description: "", image: "" });
       setPreview(null);
+      
     } catch (error) {
       console.error(error);
       alert("Error creating blog.");

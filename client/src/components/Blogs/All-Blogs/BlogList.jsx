@@ -33,7 +33,7 @@ const BlogList = () => {
   if (error) return <p className="text-red-500 text-center mt-10">{error}</p>;
 
   return (
-    <div className="m-auto  p-6 bg-gray-200">
+    <div className="m-auto  py-20 px-8 bg-gray-100">
       <h1 className="text-2xl sm:text-4xl font-extrabold text-center text-gray-800 mb-10 tracking-wide">
         Tour & Travel Blogs
       </h1>
@@ -41,7 +41,7 @@ const BlogList = () => {
       {blogData.length === 0 ? (
         <p className="text-center text-gray-500 text-lg">No blogs available.</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {blogData.map((blog) => (
             <BlogCard key={blog._id} blog={blog} />
           ))}
