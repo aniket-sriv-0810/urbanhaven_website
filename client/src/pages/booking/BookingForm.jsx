@@ -9,6 +9,7 @@ import { FaCircleRight, FaSquarePhone } from "react-icons/fa6";
 import { BiLogoGmail } from "react-icons/bi";
 import ShowErrorToast from "../../components/ShowErrorToast";
 const customId = "custom-id-yes";
+
 const BookingForm = ({ bookingData, setBookingData, handleNext, value, styling }) => {
   const { user } = useUser();
   const [errorMessage, setErrorMessage] = useState(""); // Error state
