@@ -6,7 +6,6 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import mongoose from "mongoose";
-import { logOutUser } from "./user-authentication.controller.js";
 
 
 
@@ -86,7 +85,6 @@ const userBookingDetails = asyncHandler ( async ( req , res) => {
   }
 })
 
-// CANCEL the particular booking  of the user Controller Code
 const cancelBooking = asyncHandler(async (req, res) => {
   try {
     const { userId, bookingId } = req.params;
@@ -99,34 +97,24 @@ const cancelBooking = asyncHandler(async (req, res) => {
       return res.status(400).json(new ApiError(400, "Invalid Booking ID", "Invalid Booking ID!"));
     }
 
-    // Find the booking and check ownership
+    // Find the booking
     const booking = await Booking.findOne({ _id: bookingId, userDetails: userId });
     if (!booking) {
       return res.status(404).json(new ApiError(404, "Booking not found", "No booking found for this user!"));
     }
 
-    // Remove booking from User's bookings array
-    const user = await User.findByIdAndUpdate(
-      userId,
-      { $pull: { bookings: bookingId } },
-      { new: true }
-    );
+    // Remove booking from User's `bookings` array
+    await User.findByIdAndUpdate(userId, { $pull: { bookings: bookingId } });
 
-    if (!user) {
-      return res.status(404).json(new ApiError(404, "User not found", "User not found!"));
-    }
-
-    // Delete the booking
+    // Delete the booking from the `Booking` model
     await Booking.findByIdAndDelete(bookingId);
 
-    console.log("Booking successfully cancelled!");
+    console.log("Booking successfully cancelled and removed!");
 
-    return res.status(200).json(new ApiResponse(200, "Booking cancelled successfully!"));
+    return res.status(200).json(new ApiResponse(200, "Booking cancelled successfully and removed!", {}));
   } catch (error) {
     console.error("Failed to cancel booking!", error);
-    return res.status(500).json(
-      new ApiError(500, "Server Error", "Failed to cancel the booking", error)
-    );
+    return res.status(500).json(new ApiError(500, "Server Error", "Failed to cancel the booking", error));
   }
 });
 

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate} from 'react-router-dom';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import SkeletonCard from "../../../components/LoadingSkeleton/SkeletonCard";
 const DeleteHotel = () => {
     const navigate = useNavigate();
     const {id} = useParams();
@@ -13,7 +14,7 @@ const DeleteHotel = () => {
                 withCredentials: true,
               });
               console.log(response.data.message);
-              navigate('/admin/hotels');
+              navigate('/delete/successfully');
             } catch (error) {
               console.log("Error in deleting hotel" , error);
             }
@@ -22,7 +23,7 @@ const DeleteHotel = () => {
     }, []);
 
   return (
-    <h1>Deleting the hotel...</h1>
+    <h1 className='flex justify-center items-center mt-10'><SkeletonCard/></h1>
   )
 }
 

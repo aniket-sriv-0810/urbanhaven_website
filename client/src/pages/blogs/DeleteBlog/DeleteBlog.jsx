@@ -14,7 +14,7 @@ const DeleteBlog = () => {
             });
       
             if (response.status === 200) {
-                navigate("/blog/delete/successfully");
+                navigate("/delete/successfully");
             }
           } catch (error) {
             console.error("Failed to delete Blog ", error);

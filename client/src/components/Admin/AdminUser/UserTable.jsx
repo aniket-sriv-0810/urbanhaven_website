@@ -1,7 +1,7 @@
 import React from "react";
 import UserRow from "./UserRow";
 
-const UserTable = ({ users }) => {
+const UserTable = ({ users, loggedInUser, deleteUser  }) => {
   return (
     <div className="overflow-x-auto bg-white shadow-lg rounded-lg">
       <table className="min-w-full border-collapse border border-gray-200">
@@ -12,12 +12,12 @@ const UserTable = ({ users }) => {
             <th className="border border-gray-200 px-4 py-3 font-medium text-center">Username</th>
             <th className="border border-gray-200 px-4 py-3 font-medium text-center">Phone Number</th>
             <th className="border border-gray-200 px-4 py-3 font-medium text-center">Email ID</th>
-            <th className="border border-gray-200 px-4 py-3 font-medium text-center">Edit Details</th>
+            <th className="border border-gray-200 px-4 py-3 font-medium text-center">Delete Account</th>
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
-            <UserRow key={user._id} user={user} />
+        {users.map((user) => (
+            <UserRow key={user._id} user={user} loggedInUser={loggedInUser} deleteUser={deleteUser} />
           ))}
         </tbody>
       </table>

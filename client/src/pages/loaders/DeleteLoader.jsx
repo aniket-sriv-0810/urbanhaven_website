@@ -2,7 +2,7 @@ import React ,{useState , useEffect}from 'react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { useNavigate } from "react-router-dom";
 
-const DeleteLoader = ({ message = "Successfully Deleted !", redirectPath = "/" }) =>  {
+const DeleteLoader = ({ message = "Successfully Deleted !", redirectPath = "/admin" }) =>  {
 
   const [isVisible, setIsVisible] = useState(true);
   const navigate = useNavigate();

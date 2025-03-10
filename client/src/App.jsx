@@ -144,7 +144,7 @@ export default function App() {
           <Route path="/user/register" element={<RegisterUser />} />
           <Route path="/user/register/successfully" element={<AuthSuccessPopup />} />
           <Route path="/user/login/confirmed" element={<LoginLoader />} />
-          <Route path="/blog/delete/successfully" element={<DeleteLoader />} />
+          <Route path="/delete/successfully" element={<DeleteLoader />} />
           <Route path="/create/successfully" element={<SuccessLoader />} />
           <Route path="/edit/successfully" element={<SuccessLoader />} />
           <Route path="/user/login" element={<LoginUser />} />

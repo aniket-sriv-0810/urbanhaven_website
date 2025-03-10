@@ -3,7 +3,7 @@ import { validate } from '../middleware/validator.js';
 import {  upload } from '../multer.js';
 import { hotelSchemaValidation } from '../test/hotel.validator.js';
 import { blogSchemaValidation } from '../test/blog.validator.js';
-import { adminHotelData, adminUserData , adminBookingData, adminContactData, adminDashboardData } from '../controller/admin.controller.js';
+import { adminHotelData, deleteBookingByAdmin, adminUserData , adminBookingData, adminContactData, adminDashboardData, deleteFeedbackByAdmin } from '../controller/admin.controller.js';
 import {newHotelCreation ,  editMyHotel ,  deleteMyHotel} from '../controller/hotel.controller.js';
 import { isLoggedIn } from '../middleware/authentication.js';
 import { createBlog , editBlog , deleteBlog } from '../controller/blog.controller.js';
@@ -74,6 +74,14 @@ router
 router
      .route('/blog/:id/delete')
      .delete(isLoggedIn , deleteBlog)
+
+// DELETE: Admin deletes a booking
+router
+     .delete("/booking/:bookingId", deleteBookingByAdmin);
+
+// DELETE: Admin deletes a booking
+router
+     .delete("/contact/:contactId", deleteFeedbackByAdmin);
 
 
 export default router;

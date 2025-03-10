@@ -33,7 +33,10 @@ const AdminContact = () => {
       </h1>
 
       {loading ? (
-        <p className="text-center text-gray-700"><SkeletonTable/></p>
+        <div className="text-center text-gray-700">
+  <SkeletonTable />
+</div>
+
       ) : contactDetails.length > 0 ? (
         <ContactTable contacts={contactDetails} />
       ) : (
