@@ -2,8 +2,8 @@ import React from "react";
 
 const UserProfile = ({ user }) => {
   return (
-    <div className="bg-gradient-to-r from-slate-900 to-slate-700 md:w-1/3 w-full p-6 flex items-center justify-center text-white">
-      <div className="text-center space-y-6">
+    <div className="bg-gradient-to-t from-zinc-900 to-zinc-700 md:w-1/3 w-full p-6 flex items-center justify-center text-white">
+      <div className="text-center space-y-6" data-aos="fade-right">
         {user && (
           <img
             src={user.image}

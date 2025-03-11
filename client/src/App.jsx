@@ -43,6 +43,7 @@ import DeleteBlog from './pages/blogs/DeleteBlog/DeleteBlog';
 import AuthSuccessPopup from './pages/loaders/AuthSuccessPopup';
 import DeleteLoader from './pages/loaders/DeleteLoader';
 import SuccessLoader from './pages/loaders/SuccessLoader';
+import AccountDelete from './pages/loaders/AccountDelete';
 
 export default function App() {
   const { setUser } = useUser();
@@ -145,6 +146,7 @@ export default function App() {
           <Route path="/user/register/successfully" element={<AuthSuccessPopup />} />
           <Route path="/user/login/confirmed" element={<LoginLoader />} />
           <Route path="/delete/successfully" element={<DeleteLoader />} />
+          <Route path="/account/deleted/successfully" element={<AccountDelete />} />
           <Route path="/create/successfully" element={<SuccessLoader />} />
           <Route path="/edit/successfully" element={<SuccessLoader />} />
           <Route path="/user/login" element={<LoginUser />} />

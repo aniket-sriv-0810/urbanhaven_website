@@ -1,5 +1,5 @@
 import React from "react";
-
+import { FaCheckCircle } from "react-icons/fa";
 const UserAccountForm = ({ userData, handleChange, handleSubmit }) => {
   return (
     <form onSubmit={handleSubmit} className="p-6 space-y-6">
@@ -22,9 +22,11 @@ const UserAccountForm = ({ userData, handleChange, handleSubmit }) => {
 
       <button
         type="submit"
-        className="w-full py-3 px-6 text-white bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg shadow-md text-lg font-medium hover:from-purple-600 hover:to-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        className="flex justify-center items-center gap-3 w-full py-3 px-6 text-white bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg shadow-md text-lg font-medium hover:from-purple-600 hover:to-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
       >
+      <FaCheckCircle/>
         Save Changes
+
       </button>
     </form>
   );

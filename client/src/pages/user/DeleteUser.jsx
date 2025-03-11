@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate} from 'react-router-dom';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import SkeletonCard from '../../components/LoadingSkeleton/SkeletonCard';
 const DeleteUser = () => {
     const navigate = useNavigate();
     const {id} = useParams();
@@ -13,7 +14,7 @@ const DeleteUser = () => {
                 withCredentials: true,
               });
               console.log(response.data.message);
-              navigate('/');
+              navigate('/account/deleted/successfully');
             } catch (error) {
               console.log("Error in deleting User" , error);
             }
@@ -22,7 +23,7 @@ const DeleteUser = () => {
     }, []);
 
   return (
-    <h1>Deleting the user...</h1>
+    <div className='flex justify-center items-center mt-10'><SkeletonCard/></div>
   )
 }
 

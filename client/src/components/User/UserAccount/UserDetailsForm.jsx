@@ -2,7 +2,7 @@ import React from "react";
 
 const UserDetailsForm = ({ user }) => {
   return (
-    <form className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <form className="grid grid-cols-1 lg:grid-cols-2 gap-6 " data-aos="fade-down">
       {/* User ID */}
       <div>
         <label htmlFor="id" className="block text-sm font-medium text-gray-600">
@@ -13,7 +13,7 @@ const UserDetailsForm = ({ user }) => {
           id="id"
           value={user._id}
           readOnly
-          className="w-full border border-gray-300 rounded-xl px-4 py-2 focus:ring-2 focus:ring-blue-500"
+          className="w-full text-gray-800 border border-gray-300 rounded-xl px-4 py-2 focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
@@ -27,7 +27,7 @@ const UserDetailsForm = ({ user }) => {
           id="name"
           value={user.name}
           readOnly
-          className="w-full border border-gray-300 rounded-xl px-4 py-2 focus:ring-2 focus:ring-blue-500"
+          className="w-full text-gray-800 border border-gray-300 rounded-xl px-4 py-2 focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
@@ -41,7 +41,7 @@ const UserDetailsForm = ({ user }) => {
           id="username"
           value={user.username}
           readOnly
-          className="w-full border border-gray-300 rounded-xl px-4 py-2 focus:ring-2 focus:ring-blue-500"
+          className="w-full text-gray-800 border border-gray-300 rounded-xl px-4 py-2 focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
@@ -55,7 +55,7 @@ const UserDetailsForm = ({ user }) => {
           id="phone"
           value={user.phone}
           readOnly
-          className="w-full border border-gray-300 rounded-xl px-4 py-2 focus:ring-2 focus:ring-blue-500"
+          className="w-full text-gray-800 border border-gray-300 rounded-xl px-4 py-2 focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
@@ -69,7 +69,7 @@ const UserDetailsForm = ({ user }) => {
           id="email"
           value={user.email}
           readOnly
-          className="w-full border border-gray-300 rounded-xl px-4 py-2 focus:ring-2 focus:ring-blue-500"
+          className="w-full text-gray-800 border border-gray-300 rounded-xl px-4 py-2 focus:ring-2 focus:ring-blue-500"
         />
       </div>
     </form>
