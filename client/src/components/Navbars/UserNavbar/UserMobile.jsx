@@ -10,7 +10,7 @@ import { IoHeartCircleOutline } from "react-icons/io5";
 const UserMobile = ({ user, navigate, isMenuOpen, toggleMenu }) => {
   return (
     <div
-      className={`absolute top-0 right-0 w-full  z-50 transform bg-gradient-to-r from-slate-600 to-slate-800 text-white p-6 shadow-lg ${
+      className={`absolute top-0 right-0 w-full  z-50 transform bg-gradient-to-r from-zinc-600 to-slate-800 text-white p-6 shadow-lg ${
         isMenuOpen ? "translate-x-0 sm:translate-y-0" : "translate-x-full hidden"
       } transition-transform duration-300`}
      >

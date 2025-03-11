@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";;
 import {  FaUsers, FaCity, FaComments } from "react-icons/fa";
-import axios, { all } from "axios";
+import axios from "axios";
 import { FaHotel } from "react-icons/fa6";
 import {driver} from "driver.js"; // Import driver.js
 import "driver.js/dist/driver.css"; // Import driver.js styles

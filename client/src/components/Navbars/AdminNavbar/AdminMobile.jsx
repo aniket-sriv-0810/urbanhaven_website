@@ -27,12 +27,9 @@ const AdminMobile = ({ isMenuOpen, toggleMenu }) => {
         <button className="absolute  right-3 lg:hidden focus:outline-none z-50 sm:absolute sm:right-5 " data-aos="fade-left" onClick={toggleMenu}>
           {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
         </button>
-    
-    <div
-      className={`fixed top-0 right-0 w-full  bg-gradient-to-t from-zinc-800 to-gray-900 text-white z-50 p-8 shadow-lg transition-transform duration-300 ease-in-out ${
-        isMenuOpen ? "translate-x-0 opacity-100 visible" : "translate-x-full opacity-0 invisible"
-      }`}
-    >
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+    <div className ="absolute top-0 right-0 w-full h-max text-white z-50 bg-gradient-to-t from-zinc-800 to-gray-900 p-6 shadow-lg transition-all duration-300">
       {/* Close Button */}
       <button className="absolute  top-5 right-7 hover:text-red-500 text-white" onClick={toggleMenu}>
         <FaTimes size={28} />
@@ -75,7 +72,8 @@ const AdminMobile = ({ isMenuOpen, toggleMenu }) => {
           </div>
         )}
       </ul>
-    </div>
+      </div>
+    )}
     </>
   );
 };

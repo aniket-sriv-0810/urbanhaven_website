@@ -6,7 +6,7 @@ import { RiQuestionAnswerFill, RiShieldUserLine, RiArticleFill } from "react-ico
 import { MdAdminPanelSettings } from "react-icons/md";
 import { PiUserCirclePlusBold } from "react-icons/pi";
 import { useUser } from "../../userContext/userContext";
-import "tippy.js/dist/tippy.css";
+
 
 const MobileNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
