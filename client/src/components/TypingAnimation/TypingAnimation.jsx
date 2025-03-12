@@ -25,7 +25,7 @@ const TypingAnimation = () => {
     },
   ];
   return (
-    <div className="w-full flex flex-col items-center justify-center text-center py-20 px-4 bg-gradient-to-r from-purple-500 to-purple-900 text-white shadow-lg">
+    <div className="w-full flex flex-col items-center justify-center text-center py-20 px-4 bg-[url('/assets/home.jpg')]  bg-cover  bg-no-repeat text-white shadow-lg">
   {/* Main Heading */}
   <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold mb-5 leading-tight">
     Welcome to <span className="text-yellow-300 drop-shadow-lg">Urbanhaven</span>
