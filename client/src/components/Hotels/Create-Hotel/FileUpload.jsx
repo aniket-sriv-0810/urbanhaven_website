@@ -33,9 +33,11 @@ const FileUpload = ({ image, setImage, preview, setPreview }) => {
         <input
           id="fileInput"
           type="file"
-          accept="image/*"
+          accept="image"
           className="hidden"
           onChange={handleFileChange}
+          required
+          name="image"
         />
       </div>
       {image && (

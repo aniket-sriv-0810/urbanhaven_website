@@ -45,13 +45,7 @@ const HotelForm = () => {
         setImage(null);
         setPreview(null);
         setLoading(false); // Stop loading after successful submission
-        navigate("/admin");
-        setSuccess(true); // Show the success popup
-        setTimeout(() => {
-          setSuccess(false);
-          navigate("/admin");
-        }, 3000);
-
+        navigate("/create/successfully");
       }
     } catch (error) {
       console.error("Hotel Creation Error:", error);
@@ -116,8 +110,8 @@ const HotelForm = () => {
       <button
         type="submit"
         disabled={loading}
-        className={`w-full border-gray-500 border-2 font-semibold px-4 py-2 text-white rounded-xl mt-4 ${
-          loading ? "bg-gradient-to-r from-blue-600 to-purple-600 cursor-not-allowed" : "bg-gradient-to-r from-blue-600 to-purple-600"
+        className={`w-full hover:scale-105 border-gray-500 border-2 font-semibold px-4 py-2 text-white rounded-xl mt-4 ${
+          loading ? "bg-gradient-to-r from-blue-600 to-purple-600 cursor-not-allowed" : "bg-gradient-to-t from-blue-600 to-purple-600"
         } flex items-center justify-center gap-2`}
       >
         {loading ? (
