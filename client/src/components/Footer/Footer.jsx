@@ -4,10 +4,11 @@ import { Link, NavLink } from "react-router-dom";
 import { FaLinkedin, FaGithub } from "react-icons/fa6";
 import { CgMail } from "react-icons/cg";
 import { GrInstagram } from "react-icons/gr";
-
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-gray-900 to-gray-800 text-gray-300 py-12">
+    <footer className="bg-gradient-to-r from-black to-gray-800 text-gray-300 py-12">
       <div className="container mx-auto px-5 md:px-10 lg:px-16">
         {/* Top Section */}
         <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start lg:space-x-12">
@@ -38,20 +39,22 @@ const Footer = () => {
           {/* Social Media Icons */}
           <div className="flex justify-center space-x-6 mt-8 sm:mt-0">
             {[
-              { icon: FaLinkedin, link: "https://www.linkedin.com/in/aniket-srivastava-0141b22b8/", color: "bg-blue-600" },
-              { icon: CgMail, link: "mailto:aniket08official@gmail.com", color: "bg-red-600" },
-              { icon: GrInstagram, link: "https://www.instagram.com/aniket_sriv_0810/", color: "bg-purple-600" },
-              { icon: FaGithub, link: "https://github.com/aniket-sriv-0810", color: "bg-gray-600" },
-            ].map(({ icon: Icon, link, color }, index) => (
+              { social: "linkedin" ,icon: FaLinkedin, link: "https://www.linkedin.com/in/aniket-srivastava-0141b22b8/", color: "bg-blue-600" },
+              { social: "gmail" ,icon: CgMail, link: "mailto:aniket08official@gmail.com", color: "bg-red-600" },
+              { social:"instagram" ,icon: GrInstagram, link: "https://www.instagram.com/aniket_sriv_0810/", color: "bg-purple-600" },
+              { social: "github",icon: FaGithub, link: "https://github.com/aniket-sriv-0810", color: "bg-gray-600" },
+            ].map(({ social ,icon: Icon, link, color }, index) => (
+              <Tippy content={social}>
               <NavLink
                 key={index}
                 to={link}
                 target="_blank"
                 aria-label="Social Link"
-                className={`p-2 bg-gray-700 rounded-full hover:${color} transition duration-300 shadow-lg transform hover:-translate-y-1`}
+                className={`p-2 bg-zinc-700 rounded-full hover:${color} transition duration-300 shadow-lg transform hover:-translate-y-1`}
               >
                 <Icon className="w-6 h-6 text-white" />
               </NavLink>
+              </Tippy>
             ))}
           </div>
         </div>
