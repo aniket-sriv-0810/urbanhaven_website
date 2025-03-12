@@ -14,7 +14,7 @@ const SearchBar = ({ setHotels }) => {
         return;
       }
   
-      const response = await axios.get(`http://localhost:8000/search?q=${q}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/search?q=${q}`);
   
       if (!response.data.data.hotels || response.data.data.hotels.length === 0) {
         setStatus("No Hotel Found!");

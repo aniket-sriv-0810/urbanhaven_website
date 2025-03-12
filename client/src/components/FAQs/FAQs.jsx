@@ -14,7 +14,7 @@ const FAQs = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/v1/navigate/faqs", {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/v1/navigate/faqs`, {
         withCredentials: true,
       });
 
@@ -33,7 +33,7 @@ const FAQs = () => {
   }, []);
 
   return (
-    <section className="faq-section bg-gradient-to-r from-teal-100 to-blue-200 py-16 px-5 sm:px-20">
+    <section className="faq-section bg-gradient-to-b from-gray-200 to-cyan-200 py-16 px-5 sm:px-20">
       {/* Title */}
       <div className="text-center mb-12">
         <h2 className="text-lg xs:text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-800 drop-shadow-lg flex items-center justify-center gap-2">
