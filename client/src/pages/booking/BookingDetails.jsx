@@ -80,8 +80,8 @@ const BookingDetails = ({
             className="w-full sm:w-1/3 rounded-lg shadow-md object-cover"
           />
           <div className="space-y-4 m-auto flex-1 text-white">
-            <h2 className="text-2xl font-semibold">{hotelData.title}</h2>
-            <p className="text-gray-300 text-sm">{hotelData.city}, {hotelData.state}</p>
+            <h2 className="text-2xl font-semibold">{hotelData ?  hotelData.title : <div className="mt-4 h-6 w-3/4 bg-gray-300 rounded"></div>}</h2>
+            <p className="text-gray-300 text-sm">{ hotelData ? hotelData.city : <div className="mt-4 h-6 w-3/4 bg-gray-300 rounded"></div>}, { hotelData ? hotelData.state : <div className="mt-4 h-6 w-3/4 bg-gray-300 rounded"></div>}</p>
             <p className="text-sm">
               <span className="font-normal">Price per Night:</span> <span className="text-green-300">₹{ hotelData.price ? (hotelData.price).toLocaleString("INR") : null}</span>
             </p>

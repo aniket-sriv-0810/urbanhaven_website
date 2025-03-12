@@ -73,7 +73,7 @@ const BookingForm = ({ bookingData, setBookingData, handleNext, value, styling }
       <div className="w-full sm:w-[80%]">
         <div className="flex justify-center items-center">
           <FaUserAlt className="relative left-8 top-1 w-5 h-5 text-gray-800" />
-          <input type="text" className={`${styling}`} value={user.name} disabled placeholder="Name" />
+          <input type="text" className={`${styling}`} value={user? user.name :  <div className="mt-4 h-6 w-3/4 bg-gray-300 rounded"></div>} disabled placeholder="Name" />
         </div>
         <div className="flex justify-center items-center">
           <FaSquarePhone className="relative left-8 top-1 w-5 h-5 text-gray-800 " />
