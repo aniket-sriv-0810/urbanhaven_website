@@ -10,7 +10,7 @@ const AboutHeader = () => {
       <img
         src={Logo}
         alt="Our Logo"
-        className="w-28 h-28 mt-4 sm:ml-5 bg-gray-100 rounded-full shadow-lg object-cover hover:scale-105 transition-transform duration-300"
+        className="w-28 h-28 mt-4 sm:ml-5 bg-gray-100 rounded-full shadow-lg xs:rounded-none xs:shadow-none object-cover hover:scale-105 transition-transform duration-300"
       />
     </div>
   );

@@ -23,7 +23,7 @@ const Footer = () => {
 
           {/* Navigation Links */}
           <ul className="flex flex-wrap justify-center items-center sm:mb-8 space-x-6  md:space-x-8 text-xs lg:text-base  lg:relative lg:left-14 lg:top-5">
-            {["Home", "About", "Contact", "Policies", "Show"].map((item, index) => (
+            {["Home", "About", "Contact", "Policies", "Blogs"].map((item, index) => (
               <li key={index} className="relative">
                 <NavLink
                   to={`/${item.toLowerCase()}`}
