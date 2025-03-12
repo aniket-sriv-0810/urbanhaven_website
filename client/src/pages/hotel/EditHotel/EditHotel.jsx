@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import EditForm from "../../../components/Hotels/Edit-Hotel/EditForm";
+import SkeletonForm from "../../../components/LoadingSkeleton/SkeletonForm";
 const EditHotel = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -60,9 +61,7 @@ const EditHotel = () => {
   return (
     <>
 
-    
-   
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 to-indigo-100 p-6">
+    <div className="sm:p-4 min-h-screen flex items-center justify-center rounded-lg bg-gradient-to-r from-slate-300 to-gray-300">
       <div className="w-full max-w-3xl bg-white shadow-lg shadow-gray-700 rounded-2xl p-8">
         <h1 className="text-xl xs:text-3xl font-semibold text-gray-700 mb-6 text-center">
           Edit Hotel Details
@@ -86,6 +85,7 @@ const EditHotel = () => {
         />
       </div>
     </div>
+
     </>
   );
 };
