@@ -147,11 +147,6 @@ const Home = () => {
     </div>
 
     <Header />
-    <div className="bg-gray-100 p-4">
-    {/* Pass both allHotels & setFilteredHotels */}
-    <SearchBar className="search-bar" setHotels={setAllHotels}  />
-
-  </div>
       <div className="flex flex-col-reverse gap-y-5 sm:flex-row justify-between items-center mx-2 my-10 sm:mx-8" data-aos="fade-up">
 
         <SortHotels sortOrder={sortOrder} setSortOrder={setSortOrder} sortHotels={sortHotels} />
@@ -161,6 +156,11 @@ const Home = () => {
           setSelectedCurrency={setSelectedCurrency}
         />
       </div>
+    <div className=" p-4">
+    {/* Pass both allHotels & setFilteredHotels */}
+    <SearchBar className="search-bar" setHotels={setAllHotels}  />
+
+  </div>
 
 <HotelHeading/>
 

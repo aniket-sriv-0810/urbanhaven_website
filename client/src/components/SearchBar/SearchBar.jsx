@@ -53,14 +53,14 @@ const SearchBar = ({ setHotels }) => {
           value={q}
           onChange={(e) => setQ(e.target.value.trimStart())}
 
-          className="w-full pl-14 pr-4 py-3 text-lg bg-white/70 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-all duration-300 placeholder-gray-500 hover:border-gray-400 outline-none placeholder:text-sm"
+          className="w-full pl-14 pr-4 py-3 text-lg bg-white/70 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 placeholder-gray-500 hover:border-gray-400 outline-none placeholder:text-sm"
         />
       </div>
 
       {/* Search Button with 3D Effect */}
       <button
         onClick={() => handleSearch()}
-        className="px-6 py-3 flex items-center justify-center text-lg font-semibold text-white bg-gradient-to-r from-emerald-500 to-emerald-900 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 focus:ring-4 focus:ring-yellow-300"
+        className="px-6 py-3 flex items-center justify-center text-lg font-semibold text-white bg-gradient-to-t from-green-500 to-emerald-900 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 "
       >
         <FaSearch className="mr-2 text-xl" />
         Search
