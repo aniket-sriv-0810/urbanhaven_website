@@ -1,11 +1,11 @@
 import React from "react";
 import Navbar from "../../components/Navbars/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
-import AboutHeader from "../../components/About/AboutHeader";
-import AboutSection from "../../components/About/AboutSection";
-import WhyChooseUs from "../../components/About/WhyChooseUs";
-import Testimonial from "../../components/About/Testimonial";
-import CallToAction from "../../components/About/CallToAction";
+import AboutHeader from "../../components/Navigation/About/AboutHeader";
+import AboutSection from "../../components/Navigation/About/AboutSection";
+import WhyChooseUs from "../../components/Navigation/About/WhyChooseUs";
+import Testimonial from "../../components/Navigation/About/Testimonial";
+import CallToAction from "../../components/Navigation/About/CallToAction";
 
 const About = () => {
   return (

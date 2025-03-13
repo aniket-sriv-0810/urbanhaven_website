@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../assets/webiste_full_logo.png";
+import Logo from "../../../assets/webiste_full_logo.png";
 
 const AboutHeader = () => {
   return (

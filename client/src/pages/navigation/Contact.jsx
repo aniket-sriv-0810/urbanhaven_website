@@ -4,10 +4,10 @@ import { useUser } from '../../components/userContext/userContext';
 import axios from 'axios';
 import Navbar from '../../components/Navbars/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
-import ContactHeader from '../../components/Contact/ContactHeader';
-import ContactInfo from '../../components/Contact/ContactInfo';
-import ContactForm from '../../components/Contact/ContactForm';
-import ContactFooter from '../../components/Contact/ContactFooter';
+import ContactHeader from '../../components/Navigation/Contact/ContactHeader';
+import ContactInfo from '../../components/Navigation/Contact/ContactInfo';
+import ContactForm from '../../components/Navigation/Contact/ContactForm';
+import ContactFooter from '../../components/Navigation/Contact/ContactFooter';
 
 const Contact = () => {
   const { user } = useUser();

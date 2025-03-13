@@ -1,5 +1,5 @@
 import React from 'react';
-import WebsiteLogo from '../../assets/main-logo.png';
+import WebsiteLogo from '../../../assets/main-logo.png';
 
 const ContactHeader = () => {
   return (
