@@ -14,7 +14,7 @@ const ConfirmationPage = () => {
     const fetchBookingDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/v1/booking/${bookingId}`,
+          `${import.meta.env.VITE_API_URL}/v1/booking/${bookingId}`,
           { withCredentials: true }
         );
         setBookingDetails(response.data.data.booking);

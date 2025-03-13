@@ -19,7 +19,7 @@ const MapLocation = ({ hotel }) => {
       if (hotel) {
         const locationQuery = `${hotel.city}, ${hotel.state}, ${hotel.country}`;
         try {
-          const response = await axios.get('https://nominatim.openstreetmap.org/search', {
+          const response = await axios.get(`${import.meta.env.VITE_MAP_URL}`, {
             params: {
               q: locationQuery,
               format: 'json',

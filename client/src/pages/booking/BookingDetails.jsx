@@ -20,7 +20,7 @@ const BookingDetails = ({
   const {user} = useUser();
   const fetchHotelDetails = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/v1/hotel/${id}`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/v1/hotel/${id}`, {
         withCredentials: true,
       });
       if (response.status === 200) {
