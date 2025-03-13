@@ -165,7 +165,11 @@ const Home = () => {
       </div>
 
       <div className="pagination" data-aos="fade-up">
-        <Pagination totalPages={totalPages} currentPage={currentPage} handlePageChange={setCurrentPage} />
+      <Pagination
+  totalPages={totalPages}
+  currentPage={currentPage}
+  handlePageChange={setCurrentPage}
+/>
       </div>
 
       <div className="my-80" data-aos="fade-down">
