@@ -41,7 +41,7 @@ const Contact = () => {
         <Navbar />
       </div>
 
-      <section className="bg-gradient-to-r from-emerald-500 to-green-600 text-gray-900 py-16 px-6 md:px-12 lg:px-24 xl:px-32">
+      <section className="bg-gradient-to-b from-green-500 to-gray-600 text-gray-900 py-16 px-6 md:px-12 lg:px-24 xl:px-32">
         <div className="max-w-7xl mx-auto">
           <ContactHeader />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">

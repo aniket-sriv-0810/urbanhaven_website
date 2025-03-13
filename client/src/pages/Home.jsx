@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { FaUsers, FaCity, FaComments } from "react-icons/fa";
 import axios from "axios";
 import { FaHotel } from "react-icons/fa6";
 import Shepherd from "shepherd.js"; // Import Shepherd.js
@@ -13,14 +12,13 @@ import ScrollComponent from "../components/ScollComponent/ScrollComponent";
 import FAQs from "../components/FAQs/FAQs";
 import SortHotels from "../components/SortHotels/SortHotels";
 import SearchBar from "../components/SearchBar/SearchBar";
-import HotelCard from "../components/HotelDetails/HotelDetails";
 import TypingAnimation from "../components/TypingAnimation/TypingAnimation";
 import HotelHeading from "../components/HotelHeading/HotelHeading";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import HotelDetails from "../components/HotelDetails/HotelDetails";
 import Pagination from "../components/Pagination/Pagination";
-
+import BlogList from "../components/Blogs/All-Blogs/BlogList";
 const Home = () => {
   const [conversionRate, setConversionRate] = useState(1);
   const [selectedCurrency, setSelectedCurrency] = useState("INR");
@@ -151,7 +149,7 @@ const Home = () => {
 
       <Header />
 
-      <div className="flex flex-col-reverse gap-y-5 sm:flex-row justify-between items-center mx-2 my-10 sm:mx-8" data-aos="fade-up">
+      <div className="flex flex-col-reverse gap-y-5 sm:flex-row justify-between items-center mx-2 my-16 sm:mx-8" data-aos="fade-up">
         <SortHotels sortOrder={sortOrder} setSortOrder={setSortOrder} sortHotels={sortHotels} />
         <CurrencyExchange setCurrencyRates={setConversionRate} selectedCurrency={selectedCurrency} setSelectedCurrency={setSelectedCurrency} />
       </div>
@@ -178,14 +176,20 @@ const Home = () => {
         <FAQs />
       </div>
 
-      <div data-aos="fade-up">
+      <div className="my-60"  data-aos="fade-up">
         <TypingAnimation />
       </div>
 
-      <div className="my-20 bg-gradient-to-b from-gray-50 to-gray-100 flex flex-col flex-wrap justify-evenly items-center sm:flex-row gap-6 xs:gap-3 py-10 px-5 sm:px-5">
+      <div className="my-20 bg-gray-100 flex flex-col flex-wrap justify-evenly items-center sm:flex-row gap-6 xs:gap-3 py-10 px-5 sm:px-5" data-aos="fade-down">
+        <Counter start={0} end={1000} duration={2000} value="Hotels Listed" color="blue" icon={<FaHotel className="text-blue-500 text-2xl md:text-3xl lg:text-5xl" />} />
+        <Counter start={0} end={1000} duration={2000} value="Hotels Listed" color="blue" icon={<FaHotel className="text-blue-500 text-2xl md:text-3xl lg:text-5xl" />} />
+        <Counter start={0} end={1000} duration={2000} value="Hotels Listed" color="blue" icon={<FaHotel className="text-blue-500 text-2xl md:text-3xl lg:text-5xl" />} />
         <Counter start={0} end={1000} duration={2000} value="Hotels Listed" color="blue" icon={<FaHotel className="text-blue-500 text-2xl md:text-3xl lg:text-5xl" />} />
       </div>
-
+{/*Blogs*/}
+<div>
+  <BlogList/>
+</div>
       <div data-aos="fade-up">
         <Footer />
       </div>
