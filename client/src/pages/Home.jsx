@@ -132,7 +132,7 @@ const Home = () => {
   const sortHotels = (order) => {
     const sortedHotels = [...allHotels];
 
-    if (order === "lowToHigh") {
+    if (order === "lowToHigh" || order === "default") {
       sortedHotels.sort((a, b) => a.price - b.price);
     } else if (order === "highToLow") {
       sortedHotels.sort((a, b) => b.price - a.price);
@@ -149,18 +149,18 @@ const Home = () => {
 
       <Header />
 
-      <div className="flex flex-col-reverse gap-y-5 sm:flex-row justify-between items-center mx-2 my-16 sm:mx-8" data-aos="fade-up">
+      <div className="flex flex-col-reverse gap-y-5 sm:flex-row justify-between items-center mx-2 my-20 sm:mx-8" data-aos="fade-up">
         <SortHotels sortOrder={sortOrder} setSortOrder={setSortOrder} sortHotels={sortHotels} />
         <CurrencyExchange setCurrencyRates={setConversionRate} selectedCurrency={selectedCurrency} setSelectedCurrency={setSelectedCurrency} />
       </div>
 
-      <div className="p-4">
+      <div className="p-4 my-32">
         <SearchBar className="search-bar" setHotels={setAllHotels} />
       </div>
 
       <HotelHeading />
 
-      <div className="hotel-cards mt-20 mb-10 flex justify-evenly flex-wrap gap-8 px-4" data-aos="fade-up">
+      <div className="hotel-cards mt-20 mb-40 flex justify-evenly flex-wrap gap-8 px-4" data-aos="fade-up">
         {loading ? <p className="text-lg text-gray-600">Hotels Loading...</p> : currentHotels.map((hotel) => <HotelDetails key={hotel._id} hotel={hotel} conversionRate={conversionRate} selectedCurrency={selectedCurrency} />)}
       </div>
 
