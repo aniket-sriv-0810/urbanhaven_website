@@ -1,8 +1,9 @@
 import React from 'react';
 import { FaMapMarkerAlt } from "react-icons/fa";
-import { MdOutlineStar } from "react-icons/md";
-
+import { MdOutlineStar , MdHotel } from "react-icons/md";
+import {useNavigate} from "react-router-dom";
 const ShowHotelDetails = ({ hotel, avgRating, reviewCount }) => {
+  const navigate = useNavigate();
   return (
     <div className="max-w-5xl mx-auto my-20 px-4 py-8" data-aos="fade-up">
       <h2 className="text-3xl uppercase font-bold text-center mt-4">{hotel? hotel.title : null}</h2>
@@ -19,7 +20,10 @@ const ShowHotelDetails = ({ hotel, avgRating, reviewCount }) => {
         <p className="text-lg text-gray-600 mb-4 flex items-center gap-x-2">
           <FaMapMarkerAlt className='text-red-500 w-5 h-5 ' /> { hotel ? hotel.city : null }, { hotel ? hotel.state : null}, { hotel ? hotel.country : null}
         </p>
+        <div className='flex justify-center items-center'>
+          <button className='flex items-center justify-center gap-5 w-60 py-3 text-lg font-bold text-white bg-gradient-to-t from-red-500 to-purple-600 rounded-full shadow-lg hover:from-purple-600 hover:to-red-700 hover:shadow-gray-600 hover:scale-105 transition-all' >Book Now </button>
       </div>
+        </div>
     </div>
   );
 };

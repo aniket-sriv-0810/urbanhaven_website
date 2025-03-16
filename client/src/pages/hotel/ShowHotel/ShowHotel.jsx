@@ -6,17 +6,17 @@ import "aos/dist/aos.css";
 
 import Navbar from '../../../components/Navbars/Navbar/Navbar';
 import Footer from '../../../components/Footer/Footer';
-import ShowHotelHeading from '../../../components/HotelHeading/ShowHotelHeading';
-import HotelImage from '../../../components/HotelImage/HotelImage';
-import HotelDetails from '../../../components/ShowHotelDetails/ShowHotelDetails';
-import ImageGallery from '../../../components/ImageGallery/ImageGallery';
-import Amenities from '../../../components/Amenities/Ammenties';
-import MapLocation from '../../../components/MapLocation/MapLocation';
-import Policies from '../../../components/Policies/Policies';
+import ShowHotelHeading from '../../../components/Hotels/Show-Hotel/ShowHotelHeading';
+import HotelImage from '../../../components/Hotels/Show-Hotel/HotelImage';
+import ShowHotelDetails from '../../../components/Hotels/Show-Hotel/ShowHotelDetails/ShowHotelDetails';
+import ImageGallery from '../../../components/Hotels/Show-Hotel/ImageGallery/ImageGallery';
+import Amenities from '../../../components/Hotels/Show-Hotel/Amenities/Ammenties';
+import MapLocation from '../../../components/Hotels/Show-Hotel/MapLocation/MapLocation';
+import Policies from '../../../components/Hotels/Show-Hotel/Policies/Policies';
 import FAQs from '../../../components/FAQs/FAQs';
 import HotelReviews from '../../../components/HotelReviews/HotelReviews';
 import Review from '../../../components/Review/Review';
-
+import SkeletonCard from "../../../components/LoadingSkeleton/SkeletonCard";
 const ShowHotel = () => {
   const { id } = useParams();
   const [showMyHotel, setShowMyHotel] = useState(null);
@@ -56,8 +56,8 @@ const ShowHotel = () => {
     fetchHotelDetails();
   }, []);
 
-  if (loading) return <p>Loading hotel details...</p>;
-  
+  if (loading) return <div><SkeletonCard/></div>
+
 
   return (
     <>
@@ -65,24 +65,41 @@ const ShowHotel = () => {
         <Navbar />
       </div>
       <div className=" overflow-hidden">
+      <div className='my-20'>
         <ShowHotelHeading />
-        {showMyHotel ? <HotelImage image={showMyHotel.image} title={showMyHotel.title} /> : <p>Hotel Image not available</p>}
+      </div>
+      <div className='my-40'>
+        {showMyHotel ? <HotelImage image={showMyHotel.image} title={showMyHotel.title} /> : <div><SkeletonCard/></div>}
+      </div>
 
+<div className='my-20'>
         <ImageGallery />
-        <HotelDetails hotel={showMyHotel} avgRating={avgRating} reviewCount={reviewCount} />
+</div>
+<div className='my-40'>
+        <ShowHotelDetails hotel={showMyHotel} avgRating={avgRating} reviewCount={reviewCount} />
+</div>
+<div className='my-60'>
         <Amenities />
-        <div className='w-[85%] l m-auto'>
+</div>
+        <div className='w-[85%]  m-auto my-60'>
         <MapLocation hotel={showMyHotel} />
         </div>
+        <div className='my-60'>
         <Policies />
+        </div>
+        <div className='my-40'>
         <FAQs />
+        </div>
+        <div className='my-40'>
         <Review/>
-        <div className='w-full'>
+        </div>
+        <div className='w-full my-60'>
         <HotelReviews reviews={reviews} />
         </div>
-
       </div>
+      <div>
       <Footer />
+      </div>
     </>
   );
 };
