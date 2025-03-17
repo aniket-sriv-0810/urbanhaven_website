@@ -17,6 +17,7 @@ import FAQs from '../../../components/FAQs/FAQs';
 import HotelReviews from '../../../components/HotelReviews/HotelReviews';
 import Review from '../../../components/Review/Review';
 import SkeletonCard from "../../../components/LoadingSkeleton/SkeletonCard";
+import BookingBtn from '../../../components/Hotels/Show-Hotel/BookingBtn/BookingBtn';
 const ShowHotel = () => {
   const { id } = useParams();
   const [showMyHotel, setShowMyHotel] = useState(null);
@@ -56,7 +57,7 @@ const ShowHotel = () => {
     fetchHotelDetails();
   }, []);
 
-  if (loading) return <div><SkeletonCard/></div>
+  if (loading) return <div className='flex justify-center items-center mt-20'><SkeletonCard/></div>
 
 
   return (
@@ -84,6 +85,7 @@ const ShowHotel = () => {
         <div className='w-[85%]  m-auto my-60'>
         <MapLocation hotel={showMyHotel} />
         </div>
+        <BookingBtn hotel={showMyHotel}/>
         <div className='my-60'>
         <Policies />
         </div>

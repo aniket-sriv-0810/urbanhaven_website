@@ -147,6 +147,9 @@ const Home = () => {
         <Navbar className="navbar" />
       </div>
 
+<div className="bg-gray-50">
+
+
       <Header />
 
       <div className="flex flex-col-reverse gap-y-5 sm:flex-row justify-between items-center mx-2 my-20 sm:mx-8" data-aos="fade-up">
@@ -193,6 +196,7 @@ const Home = () => {
 {/*Blogs*/}
 <div>
   <BlogList/>
+</div>
 </div>
       <div data-aos="fade-up">
         <Footer />
