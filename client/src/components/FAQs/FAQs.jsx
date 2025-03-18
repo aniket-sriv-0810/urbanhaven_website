@@ -33,8 +33,7 @@ const FAQs = () => {
   }, []);
 
   return (
-    <section className="w-full flex flex-col items-center justify-center text-center py-36  bg-[url('/assets/faq_bg.jpg')]  bg-cover bg-bottom
-      bg-no-repeat text-white shadow-lg px-5 sm:px-20">
+    <section className="w-full flex flex-col items-center justify-center text-center py-36  bg-[url('/assets/faq_bg.jpg')]  bg-cover  bg-left-top      bg-no-repeat text-white shadow-lg px-5 sm:px-20">
       {/* Title */}
       <div className=" text-center mb-12">
         <h2 className="text-lg xs:text-2xl sm:text-3xl md:text-4xl font-extrabold text-white drop-shadow-lg flex items-center justify-center gap-2">

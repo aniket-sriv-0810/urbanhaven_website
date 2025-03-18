@@ -25,7 +25,7 @@ const TypingAnimation = () => {
     },
   ];
   return (
-    <div className="w-full flex flex-col items-center justify-center text-center py-36 px-4 bg-[url('/assets/type.jpg')]  bg-cover bg-bottom
+    <div className="w-full flex flex-col items-center justify-center text-center py-36 px-4 bg-[url('/assets/type.jpg')]   bg-cover  bg-right-top lg:bg-center
       bg-no-repeat text-white shadow-lg">
   {/* Main Heading */}
   <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold mb-5 leading-tight">

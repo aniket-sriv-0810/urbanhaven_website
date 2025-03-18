@@ -5,7 +5,7 @@ const ScrollComponent = () => {
     <div className="relative h-screen w-full mt-5 mb-5">
   {/* Background Image with Parallax Effect */}
   <div
-    className="bg-[url('/assets/home-banner.jpg')]  absolute inset-0 bg-fixed bg-center bg-cover bg-no-repeat"
+    className="bg-[url('/assets/home-banner.jpg')]  absolute inset-0 bg-fixed bg-cover  bg-center bg-no-repeat"
   ></div>
 
   {/* Dark Overlay with Glass Effect */}
@@ -19,7 +19,7 @@ const ScrollComponent = () => {
     <p className="text-base sm:text-xl max-w-2xl mt-4 leading-relaxed opacity-90">
     Welcome to Urban Haven Hotels – Where Luxury Meets Tranquility
 
-Experience a harmonious blend of elegance and sophistication at Urban Haven Hotels. Nestled in the heart of the city, we offer a serene retreat with world-class comfort, impeccable hospitality, and modern amenities. Whether you're here for business, leisure, or a weekend escape, every moment is crafted to perfection where indulgence, relaxation, and style come together effortlessly.
+Experience elegance and comfort in the heart of the city. With world-class hospitality, modern amenities, and a serene retreat, every stay—whether for business or leisure—is crafted for indulgence, relaxation, and sophistication.
 </p>
 
   </div>
