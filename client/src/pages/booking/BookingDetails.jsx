@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { differenceInDays } from "date-fns";
@@ -6,6 +6,7 @@ import { useUser } from "../../components/userContext/userContext";
 import { MdOutlinePayments } from "react-icons/md";
 import { TiArrowBack } from "react-icons/ti";
 import { FaUser, FaPhoneAlt, FaEnvelope, FaBed, FaCalendarAlt, FaUserFriends, FaBaby } from "react-icons/fa";
+import SkeletonForm from "../../components/LoadingSkeleton/SkeletonForm";
 
 
 const BookingDetails = ({
@@ -18,8 +19,10 @@ const BookingDetails = ({
 }) => {
   const { id } = useParams();
   const {user} = useUser();
+  const [loading ,setLoading] = useState(true);
   const fetchHotelDetails = async () => {
     try {
+      setLoading(true); // Set loading before making the request
       const response = await axios.get(`${import.meta.env.VITE_API_URL}/v1/hotel/${id}`, {
         withCredentials: true,
       });
@@ -28,9 +31,10 @@ const BookingDetails = ({
       }
     } catch (error) {
       console.error("Failed to fetch data", error);
+    } finally {
+      setLoading(false); // Ensure loading is set to false after fetching
     }
   };
-
   const calculateStayDuration = () => {
     if (bookingData.checkInDate && bookingData.checkOutDate) {
       return differenceInDays(bookingData.checkOutDate, bookingData.checkInDate);
@@ -41,7 +45,7 @@ const BookingDetails = ({
   const calculateTotal = () => {
     const duration = calculateStayDuration();
     if (duration > 0) {
-      const total = duration * hotelData.price + hotelData.price * 0.18; // Includes 18% tax
+      const total = duration * hotelData.price + hotelData.price * 0.18 * bookingData.room; // Includes 18% tax
       setBookingData((prevData) => ({
         ...prevData,
         totalAmount: total,
@@ -61,6 +65,7 @@ const BookingDetails = ({
     }
   }, [hotelData, bookingData.checkInDate, bookingData.checkOutDate]);
 
+  if(loading) return <><SkeletonForm/></>
   return (
     <div className="relative flex justify-center items-center min-h-screen  bg-gradient-to-r from-indigo-800 to-purple-900">
       

@@ -5,7 +5,6 @@ import axios from "axios";
 import { BsCreditCardFill } from "react-icons/bs";
 import { MdQrCodeScanner, MdPayments } from "react-icons/md";
 import { TiArrowBack } from "react-icons/ti";
-import { BsCashCoin } from "react-icons/bs";
 import { FaCcVisa, FaCcMastercard, FaCcAmazonPay } from "react-icons/fa";
 import { SiPaytm, SiGooglepay, SiPhonepe } from "react-icons/si";
 import { MdOutlinePayments } from "react-icons/md";  // Payment icon
@@ -13,12 +12,13 @@ import { FaCalendarCheck, FaCreditCard , FaAddressCard , FaShieldAlt } from "rea
 import { LuCalendarCheck } from "react-icons/lu";
 import { RiSecurePaymentFill } from "react-icons/ri";
 import QRCode from '../../assets/qr.jpg';
-
+import BookingLoader from "../loaders/BookingLoader";
 const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
   const { id } = useParams();
   const { user } = useUser();
   const navigate = useNavigate();
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("card");
+  const [bookingId, setBookingId] = useState(null); // Store booking ID
 
   const handlePayment = async () => {
     console.log("Payment successful!");
@@ -36,16 +36,9 @@ const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
         { withCredentials: true }
       );
       if (response.status === 200) {
-        const bookingId = response.data.data.newBooking._id;
-        const emailSent = response.data.data.emailSent; // Check if email was sent
-  
-        if (emailSent) {
-          alert("Booking confirmed! A confirmation email has been sent to your inbox.");
-        } else {
-          alert("Booking confirmed, but the confirmation email could not be sent.");
-        }
-  
-        navigate(`/booking/${bookingId}`);
+        const newBookingId = response.data.data.newBooking._id;
+        setBookingId(newBookingId); // Store booking ID
+        // navigate(`/booking/done`);
       }
     } catch (error) {
       console.error("Failed to send data", error);
@@ -70,7 +63,7 @@ const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
 
       {/* Payment Methods */}
       <h2 className="text-sm font-bold text-white text-center">Choose Payment Method</h2>
-      <div className="grid grid-cols-1 gap-6">
+      <div className="grid grid-cols-1 gap-6" >
         {/* Card Payment */}
         <button
           className={`p-6 flex flex-col  sm:flex-row sm:justify-evenly items-center justify-center rounded-xl shadow-lg transition-all ${selectedPaymentMethod === "card" ? "border-2 border-green-400 bg-white/10" : "border border-white/30"} hover:scale-105`}
@@ -93,7 +86,7 @@ const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
           <form className="space-y-4 ">
           <span className="flex items-center justify-center">
             <FaAddressCard  className=" hidden xs:block relative left-10 text-white text-2xl " />
-            <input type="text" placeholder="Cardholder Name" className="w-full p-2 border rounded-xl bg-white/20 text-white text-center placeholder:text-xs placeholder-gray-300  md:p-3" />
+            <input type="text" placeholder="Cardholder Name" className="w-full p-2 border rounded-xl bg-white/20 text-white text-center placeholder:text-xs placeholder-gray-300  md:p-3"  />
           </span>
           <span className="flex items-center justify-center">
           <FaCreditCard  className=" hidden xs:block relative left-10 text-white text-2xl " />
@@ -125,7 +118,7 @@ const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
           <h3 className="font-semibold text-white">UPI Payments</h3>
         </span>
           <div className="flex gap-4 mt-2 sm:mt-0 sm:ml-2">
-            <SiGooglepay className="text-blue-400 text-3xl" />
+            <SiGooglepay className="text-green-600  text-3xl" />
             <SiPaytm className="text-blue-300 text-3xl" />
             <SiPhonepe className="text-purple-400 text-3xl" />
           </div>
@@ -194,6 +187,11 @@ const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
           <TiArrowBack className="w-5 h-5" />
           Back
         </button>
+        <div>
+      {bookingId ? (
+        <BookingLoader bookingId={bookingId} />
+      ) : (
+
         <button
           onClick={handlePayment}
           className="flex text-xs justify-center items-center gap-x-3 px-5 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg font-medium hover:scale-105 transition-all"
@@ -201,6 +199,8 @@ const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
           Confirm Booking
           <MdOutlinePayments className="w-5 h-5" />
         </button>
+      )}
+      </div>
       </div>
     </div>
   </div>

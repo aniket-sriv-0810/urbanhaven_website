@@ -56,7 +56,7 @@ const generatePDF = () => {
   doc.setFont("helvetica", "normal");
   doc.text(`Hotel: ${hotelDetails.title}`, 20, 50);
   doc.text(`City: ${hotelDetails.city}`, 20, 60);
-  doc.text(`Bill: ₹${totalAmount}`, 20, 70);
+  doc.text(`Total Amount: Rs ${(totalAmount).toLocaleString("INR")}`, 20, 70);
   doc.text(`Total Rooms: ${room}`, 20, 80);
   doc.text(`Adults: ${adultCount}`, 20, 90);
   doc.text(

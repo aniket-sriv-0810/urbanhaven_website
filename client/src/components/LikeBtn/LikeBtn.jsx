@@ -54,7 +54,7 @@ const LikeBtn = ({ hotelId, id }) => {
         }
     };
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <FaRegHeart className="w-7 h-10" />
 
     return (
         <p
