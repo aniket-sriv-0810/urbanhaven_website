@@ -21,7 +21,7 @@ const RegisterUser = () => {
         <h2 className="text-white text-center font-bold text-xl mb-5 break-all">Enter Your Credentials</h2>
 
         <UserForm  />
-        <div className="text-center text-gray-400 mt-2">
+        <div className="text-center text-gray-400 mt-4">
           Already have an account? <NavLink to="/user/login" className="text-sky-500 hover:underline">Login</NavLink>
         </div>
       </div>

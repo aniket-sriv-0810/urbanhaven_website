@@ -153,7 +153,7 @@ const UserForm = () => {
           {" "}
           I agree to all the{" "}
           <span
-            onClick={() => navigate("/terms-and-conditions")}
+            onClick={() => window.open("/terms-and-conditions", "_blank")}
             className=" text-cyan-300 hover:cursor-pointer hover:text-blue-600 "
           >
             {" "}
