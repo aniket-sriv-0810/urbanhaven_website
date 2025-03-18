@@ -27,7 +27,7 @@ const HotelDetails = ({ hotel, conversionRate = 1 , selectedCurrency = "INR" }) 
     <div className="bg-white border border-gray-200 shadow-lg rounded-2xl w-full sm:w-96 md:w-80 hover:shadow-lg transition-transform transform hover:-translate-y-3 hover:scale-105 hover:shadow-gray-600">
     <div className="relative">
       <div className="absolute top-3 left-3 z-20 hover:cursor-pointer">
-        <ShareBtn hotelName={hotel.title} hotelLink={`https://localhost:5173/hotel/${hotel.id}`} />
+        <ShareBtn hotelName={hotel.title} hotelLink={`${import.meta.env.VITE_API_URL}/hotel/${hotel.id}`} />
       </div>
       <div className="absolute top-1 right-3 z-20 text-white hover:cursor-pointer">
         <LikeBtn id={user ? user._id : null} hotelId={hotel ? hotel._id : null} />

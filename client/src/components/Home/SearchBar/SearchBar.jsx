@@ -39,7 +39,7 @@ const SearchBar = ({ setHotels }) => {
     });
   }, []);
   return (
-<div className={`flex flex-wrap items-center justify-center gap-4 w-full max-w-3xl mx-auto p-6 rounded-2xl bg-white/20 backdrop-blur-xl shadow-xl border border-gray-400 transition-all duration-300 hover:shadow-2xl hover:shadow-gray-600 ${status.length > 0 ? " border-red-500" : null}`} data-aos="fade-down">
+<div className={`flex flex-wrap items-center justify-center gap-4 w-full max-w-3xl mx-auto p-6 rounded-2xl bg-white/20 backdrop-blur-xl shadow-xl border border-gray-200 transition-all duration-300 hover:shadow-2xl hover:shadow-gray-600 ${status.length > 0 ? " border-red-500" : null}`} data-aos="fade-down">
 <h1 className="text-base sm:text-3xl font-extrabold text-center my-6 bg-gradient-to-r from-slate-600 to-cyan-800 text-transparent bg-clip-text drop-shadow-lg">
   Discover Your Dream Destination
 </h1>

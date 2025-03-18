@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { FaHotel } from "react-icons/fa6";
+import { FaHotel , FaUsers , FaComments } from "react-icons/fa6";
+import { GiStarsStack } from "react-icons/gi";
 import Shepherd from "shepherd.js"; // Import Shepherd.js
 import "shepherd.js/dist/css/shepherd.css"; // Import Shepherd.js styles
-import CurrencyExchange from "../components/CurrencyExchange/CurrencyExchange";
+import CurrencyExchange from "../components/Home/CurrencyExchange/CurrencyExchange";
 import Navbar from "../components/Navbars/Navbar/Navbar";
-import Counter from "../components/Counter/Counter";
+import Counter from "../components/Home/Counter/Counter";
 import Footer from "../components/Footer/Footer";
-import Header from "../components/Header/Header";
-import ScrollComponent from "../components/ScollComponent/ScrollComponent";
+import Header from "../components/Home/Header/Header";
+import ScrollComponent from "../components/Home/ScollComponent/ScrollComponent";
 import FAQs from "../components/FAQs/FAQs";
-import SortHotels from "../components/SortHotels/SortHotels";
-import SearchBar from "../components/SearchBar/SearchBar";
-import TypingAnimation from "../components/TypingAnimation/TypingAnimation";
-import HotelHeading from "../components/HotelHeading/HotelHeading";
+import SortHotels from "../components/Home/SortHotels/SortHotels";
+import SearchBar from "../components/Home/SearchBar/SearchBar";
+import TypingAnimation from "../components/Home/TypingAnimation/TypingAnimation";
+import HotelHeading from "../components/Home/HotelHeading/HotelHeading";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import HotelDetails from "../components/HotelDetails/HotelDetails";
@@ -105,7 +106,7 @@ const Home = () => {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      setItemsPerPage(width > 1024 ? 4 : width > 768 ? 3 : width > 480 ? 2 : 2);
+      setItemsPerPage(width > 1024 ? 12 : width > 768 ? 8 : width > 480 ? 6 : 4);
     };
 
     handleResize();
@@ -163,7 +164,7 @@ const Home = () => {
 
       <HotelHeading />
 
-      <div className="hotel-cards mt-20 mb-40 flex justify-evenly flex-wrap gap-8 px-4" data-aos="fade-up">
+      <div className="hotel-cards mt-20 mb-40 flex justify-evenly flex-wrap gap-12 px-4" data-aos="fade-up">
         {loading ? <p className="text-lg text-gray-600">Hotels Loading...</p> : currentHotels.map((hotel) => <HotelDetails key={hotel._id} hotel={hotel} conversionRate={conversionRate} selectedCurrency={selectedCurrency} />)}
       </div>
 
@@ -187,11 +188,11 @@ const Home = () => {
         <TypingAnimation />
       </div>
 
-      <div className="my-20 bg-gray-100 flex flex-col flex-wrap justify-evenly items-center sm:flex-row gap-6 xs:gap-3 py-10 px-5 sm:px-5" data-aos="fade-down">
-        <Counter start={0} end={1000} duration={2000} value="Hotels Listed" color="blue" icon={<FaHotel className="text-blue-500 text-2xl md:text-3xl lg:text-5xl" />} />
-        <Counter start={0} end={1000} duration={2000} value="Hotels Listed" color="blue" icon={<FaHotel className="text-blue-500 text-2xl md:text-3xl lg:text-5xl" />} />
-        <Counter start={0} end={1000} duration={2000} value="Hotels Listed" color="blue" icon={<FaHotel className="text-blue-500 text-2xl md:text-3xl lg:text-5xl" />} />
-        <Counter start={0} end={1000} duration={2000} value="Hotels Listed" color="blue" icon={<FaHotel className="text-blue-500 text-2xl md:text-3xl lg:text-5xl" />} />
+      <div className="my-20  flex flex-col flex-wrap justify-evenly items-center xs:flex-row gap-6 xs:gap-3 py-10 px-5 sm:px-5" data-aos="fade-down">
+        <Counter start={0} end={300} duration={2000} value="Hotels Listed" color="blue" icon={<FaHotel className="text-blue-500 text-2xl md:text-3xl lg:text-5xl" />} />
+        <Counter start={0} end={5000} duration={2000} value="Users Registered" color="green" icon={<FaUsers className="text-green-500 text-2xl md:text-3xl lg:text-5xl" />} />
+        <Counter start={0} end={4} duration={2000} value="Average Rating" color="yellow" icon={<GiStarsStack className="text-yellow-500 text-2xl md:text-3xl lg:text-5xl" />} />
+        <Counter start={0} end={500} duration={2000} value="Feedbacks Received" color="red" icon={<FaComments  className="text-red-500 text-2xl md:text-3xl lg:text-5xl" />} />
       </div>
 {/*Blogs*/}
 <div>

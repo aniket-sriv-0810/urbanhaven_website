@@ -12,7 +12,7 @@ const ShowHotelDetails = ({ hotel, avgRating, reviewCount }) => {
         {avgRating} <MdOutlineStar className='text-3xl mx-2 text-yellow-400' /> ({reviewCount} reviews)
       </p>
       <div className="bg-white shadow-md rounded-lg p-6 mb-8">
-        <h1 className="text-2xl font-bold text-gray-800 mb-4">About Our Place:</h1>
+        <h1 className="text-2xl font-bold text-gray-800 mb-4">About our Place</h1>
         <p className="text-gray-700 text-justify text-lg mb-6">{ hotel ? hotel.description : null}</p>
         <p className="text-xl font-medium text-gray-800 mb-6">
           For <span className="text-green-600 font-bold">Rs { hotel ? (hotel.price).toLocaleString("INR") : null} </span>
