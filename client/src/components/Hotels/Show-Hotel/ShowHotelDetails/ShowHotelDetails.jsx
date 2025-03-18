@@ -21,7 +21,9 @@ const ShowHotelDetails = ({ hotel, avgRating, reviewCount }) => {
         <p className="text-lg text-gray-600 mb-4 flex items-center gap-x-2">
           <FaMapMarkerAlt className='text-red-500 w-5 h-5 ' /> { hotel ? hotel.city : null }, { hotel ? hotel.state : null}, { hotel ? hotel.country : null}
         </p>
+        <div className='my-12'>
       <BookingBtn hotel={hotel}/>
+        </div>
         </div>
     </div>
   );
