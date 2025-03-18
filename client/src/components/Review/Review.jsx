@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useUser } from "../userContext/userContext";
 import axios from "axios";
 
-
 const Review = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -12,6 +11,7 @@ const Review = () => {
     rating: "5",
     comment: "",
   });
+  const [loading, setLoading] = useState(false); // Fixed loading state
 
   const handleInputChange = (e) => {
     setReview({ ...review, [e.target.name]: e.target.value });
@@ -19,8 +19,10 @@ const Review = () => {
 
   const handleSubmitForm = async (e) => {
     e.preventDefault();
+    setLoading(true); // Start loading
+
     const dataSent = {
-      user: user._id,
+      userDetails: user._id,
       rating: review.rating,
       comment: review.comment,
     };
@@ -37,30 +39,35 @@ const Review = () => {
           rating: "",
           comment: "",
         });
-        navigate(`/review/done`);
+
+        // Navigate to Review Success Page
+        navigate("/review/done", { state: { returnTo: `/hotel/${id}` } });
       }
     } catch (error) {
       console.error("Failed to create review", error);
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
   return (
     <div className="bg-gradient-to-b from-blue-50 to-white py-10 px-5 sm:px-20 min-h-screen flex justify-center items-center rounded-xl">
       <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-8">
-        <h1 className=" text-center xs:text-lg text-base font-bold text-gray-700 mb-6">
+        <h1 className="text-center text-base font-bold text-gray-700 mb-6">
           Kindly Provide Your Feedback
         </h1>
+
         <form onSubmit={handleSubmitForm} className="space-y-6">
           {/* User Information */}
           <div className="flex items-center justify-center gap-4">
             <img
-              src={user ? user.image : null}
+              src={user?.image || ""}
               alt="User"
               className="w-10 h-10 xs:w-14 xs:h-14 rounded-full shadow-md"
             />
             <div>
               <h2 className="text-base font-semibold text-gray-700">
-                {user ? user.name.toUpperCase() : ""}
+                {user?.name?.toUpperCase() || ""}
               </h2>
               <p className="text-sm text-gray-500">
                 {user ? `@${user.username.toLowerCase()}` : ""}
@@ -69,21 +76,20 @@ const Review = () => {
           </div>
 
           {/* Star Rating */}
-          <fieldset className="starability-slot m-auto ">
-         
-         {[1, 2, 3, 4, 5].map((rate) => (
-           <React.Fragment key={rate}>
-             <input
-               type="radio"
-               id={`rate${rate}`}
-               name="rating"
-               value={rate}
-               onChange={handleInputChange}
-             />
-             <label htmlFor={`rate${rate}`}>{rate} star{rate > 1 && "s"}</label>
-           </React.Fragment>
-         ))}
-         </fieldset>
+          <fieldset className="starability-slot m-auto">
+            {[1, 2, 3, 4, 5].map((rate) => (
+              <React.Fragment key={rate}>
+                <input
+                  type="radio"
+                  id={`rate${rate}`}
+                  name="rating"
+                  value={rate}
+                  onChange={handleInputChange}
+                />
+                <label htmlFor={`rate${rate}`}>{rate} star{rate > 1 && "s"}</label>
+              </React.Fragment>
+            ))}
+          </fieldset>
 
           {/* Comment Box */}
           <textarea
@@ -98,9 +104,21 @@ const Review = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-3 text-lg font-bold text-white bg-gradient-to-r from-green-500 to-emerald-600 rounded-full shadow-lg hover:from-green-600 hover:to-emerald-700 hover:scale-105 transition-all"
+            disabled={loading}
+            className={`w-full border-gray-500 border-2 font-semibold px-4 py-2 text-white rounded-xl mt-4 ${
+              loading
+                ? "bg-gray-800 cursor-not-allowed"
+                : "bg-green-600 hover:bg-green-700"
+            } flex items-center justify-center gap-2`}
           >
-            Submit Review
+            {loading ? (
+              <>
+                <div className="w-5 h-5 border-2 border-green-400 border-t-transparent rounded-full animate-spin"></div>
+                <span className="animate-pulse text-green-400">Saving Review...</span>
+              </>
+            ) : (
+              "Submit Review"
+            )}
           </button>
         </form>
       </div>
@@ -109,6 +127,3 @@ const Review = () => {
 };
 
 export default Review;
-
-
-

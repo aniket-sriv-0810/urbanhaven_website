@@ -1,43 +1,50 @@
-import React, { useEffect, useState } from 'react';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
-const ReviewLoader = () => {
-  const [isLoading, setIsLoading] = useState(false);
+const ReviewLoader = ({ message = "Successfully Submitted!" }) => {
+  const [isVisible, setIsVisible] = useState(true);
   const navigate = useNavigate();
-  const location = useLocation(); // ✅ Fix: Get location to access state
+  const location = useLocation();
+  const returnTo = location.state?.returnTo || "/"; // Get return path
 
   useEffect(() => {
-    setIsLoading(true);
     const timer = setTimeout(() => {
-      setIsLoading(false);
-      const redirectPath = location.state?.from?.pathname || "/"; // ✅ Fix: Proper access
-      navigate(redirectPath);
+      setIsVisible(false);
+      setTimeout(() => navigate(returnTo), 500); // Redirect after fade-out
     }, 4000);
 
     return () => clearTimeout(timer);
-  }, [navigate, location]); // ✅ Fix: Added location to dependencies
+  }, [navigate, returnTo]);
 
   return (
-    <>
-      {isLoading && ( // ✅ Fix: Proper conditional rendering
-        <div className="flex flex-col justify-center items-center h-screen bg-gradient-to-t from-gray-200 to-yellow-300 px-6 overflow-hidden">
-        <div className='shadow-sm shadow-gray-200 rounded-full'>
-          <DotLottieReact
-            src="https://lottie.host/e080215c-f7c9-4975-89d8-8827b20e8374/lILbnOFwId.lottie"
-            autoplay
-            className="w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80"
-          />
-        </div>
-          <div className="relative -top-10 sm:top-0 text-center -mt-4">
-            <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-700 animate-pulse py-2">
-              Review Created Successfully 
-            </h1>
-            
-          </div>
-        </div>
-      )}
-    </>
+    <div
+      className={`fixed inset-0 flex items-center justify-center bg-gradient-to-t from-gray-800 to-teal-600 bg-opacity-40 backdrop-blur-lg transition-opacity duration-500 ${
+        isVisible ? "opacity-100" : "opacity-0"
+      }`}
+    >
+      <div
+        className={`bg-white p-5 sm:p-7 rounded-2xl shadow-xl text-center w-80 md:w-96 transition-transform transform ${
+          isVisible ? "translate-y-0 scale-100" : "translate-y-10 scale-95 opacity-0"
+        }`}
+      >
+        <DotLottieReact
+          src="https://lottie.host/e080215c-f7c9-4975-89d8-8827b20e8374/lILbnOFwId.lottie"
+          autoplay
+          className="w-66 h-40 mb-10"
+        />
+
+        <h2 className="text-lg font-semibold text-black -mt-4">{message}</h2>
+        <p className="text-sm text-gray-500">Redirecting you shortly...</p>
+
+        <button
+          className="mt-5 bg-gradient-to-t from-teal-600 to-gray-500 text-white font-medium px-5 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+          onClick={() => navigate(returnTo)}
+        >
+          Back to Hotel →
+        </button>
+      </div>
+    </div>
   );
 };
 

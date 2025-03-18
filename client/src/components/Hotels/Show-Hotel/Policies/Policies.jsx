@@ -8,7 +8,7 @@ const Policies = () => {
     {
       title: "Check-In and Check-Out",
       description:
-        "Check-in time is 2:00 PM and check-out time is 11:00 AM. Early check-in and late check-out are subject to availability and may incur additional charges.",
+        "Check-in time is 12:00 PM and check-out time is 11:00 AM. Early check-in and late check-out are subject to availability and may incur additional charges.",
     },
     {
       title: "Cancellation Policy",
