@@ -11,7 +11,7 @@ const BlogList = () => {
 
   // Pagination States
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 1; // Change this as needed
+  const itemsPerPage = 3; // Change this as needed
 
   useEffect(() => {
     const fetchData = async () => {

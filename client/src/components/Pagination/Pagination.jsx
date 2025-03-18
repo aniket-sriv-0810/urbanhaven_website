@@ -4,7 +4,7 @@ const Pagination = ({ totalPages, currentPage, handlePageChange }) => {
   if (totalPages <= 1) return null; // Hide pagination if only one page
 
   return (
-    <div className="flex justify-center items-center space-x-2 my-10">
+    <div className="flex justify-center items-center flex-wrap gap-4 space-x-2 my-10">
 
 
       {/* Page Numbers */}

@@ -33,14 +33,15 @@ const FAQs = () => {
   }, []);
 
   return (
-    <section className="faq-section bg-gradient-to-b from-gray-200 to-cyan-200 py-16 px-5 sm:px-20">
+    <section className="w-full flex flex-col items-center justify-center text-center py-36  bg-[url('/assets/faq_bg.jpg')]  bg-cover bg-bottom
+      bg-no-repeat text-white shadow-lg px-5 sm:px-20">
       {/* Title */}
-      <div className="text-center mb-12">
-        <h2 className="text-lg xs:text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-800 drop-shadow-lg flex items-center justify-center gap-2">
-          <IoMdHelpCircleOutline className="text-blue-600 text-2xl sm:text-5xl animate-pulse" />
+      <div className=" text-center mb-12">
+        <h2 className="text-lg xs:text-2xl sm:text-3xl md:text-4xl font-extrabold text-white drop-shadow-lg flex items-center justify-center gap-2">
+          <IoMdHelpCircleOutline className="text-blue-400 text-2xl sm:text-5xl animate-pulse" />
           Frequently Asked Questions
         </h2>
-        <p className="text-base sm:text-xl text-gray-600 mt-2">
+        <p className="text-base sm:text-xl text-white mt-2">
           Get answers to the most common queries.
         </p>
       </div>

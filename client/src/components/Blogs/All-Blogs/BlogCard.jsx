@@ -8,7 +8,7 @@ const BlogCard = ({ blog }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-white w-full sm:w-68 xl:w-[80%] shadow-lg rounded-xl overflow-hidden transition-transform duration-300 transform hover:scale-105 hover:shadow-2xl border border-gray-200">
+    <div className="bg-white w-full h-full sm:w-68 xl:w-[80%] shadow-lg rounded-xl overflow-hidden transition-transform duration-300 transform hover:scale-105 hover:shadow-2xl border border-gray-200">
       {/* Blog Image */}
       <img
         src={blog.image}

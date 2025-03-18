@@ -25,7 +25,8 @@ const TypingAnimation = () => {
     },
   ];
   return (
-    <div className="w-full flex flex-col items-center justify-center text-center py-20 px-4 bg-[url('/assets/home.jpg')]  bg-cover  bg-no-repeat text-white shadow-lg">
+    <div className="w-full flex flex-col items-center justify-center text-center py-36 px-4 bg-[url('/assets/type.jpg')]  bg-cover bg-bottom
+      bg-no-repeat text-white shadow-lg">
   {/* Main Heading */}
   <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold mb-5 leading-tight">
     Welcome to <span className="text-yellow-300 drop-shadow-lg">Urbanhaven</span>
@@ -36,23 +37,7 @@ const TypingAnimation = () => {
     Discover Unmatched Stays
   </h2>
 
-  {/* Typing Animation */}
-  <h3 className="text-lg sm:text-3xl lg:text-4xl font-bold text-yellow-300 mt-4 drop-shadow-xl animate-pulse">
-    <Typewriter
-      words={[
-        " Luxurious & Affordable Stays",
-        " 24/7 Secure & Hassle-Free Booking",
-        " Top-Rated & Verified Properties",
-      ]}
-      loop={true}
-      cursor
-      cursorStyle="|"
-      typeSpeed={70}
-      deleteSpeed={40}
-      delaySpeed={1800}
-    />
-  </h3>
-
+ 
 
 
     <div className="flex flex-col sm:flex-row items-center justify-center mt-12 space-y-8 sm:space-y-0 sm:space-x-8">
@@ -69,6 +54,22 @@ const TypingAnimation = () => {
         </div>
       ))}
     </div>
+ {/* Typing Animation */}
+ <h3 className="text-lg sm:text-3xl lg:text-4xl font-bold text-yellow-300 py-10 drop-shadow-xl animate-pulse">
+    <Typewriter
+      words={[
+        " Luxurious & Affordable Stays",
+        " 24/7 Secure & Hassle-Free Booking",
+        " Top-Rated & Verified Properties",
+      ]}
+      loop={true}
+      cursor
+      cursorStyle="|"
+      typeSpeed={70}
+      deleteSpeed={40}
+      delaySpeed={1800}
+    />
+  </h3>
 
   </div>
   );
