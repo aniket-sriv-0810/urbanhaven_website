@@ -2,8 +2,8 @@ import React from "react";
 
 const AboutSection = ({ title, text, imageUrl, reverse }) => {
   return (
-    <div className={`grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-12 ${reverse ? "md:flex-row-reverse" : ""}`}>
-      <div className="overflow-hidden rounded-2xl shadow-lg">
+    <div className={`grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-12 ${reverse ? "md:flex-row-reverse" : ""} `}>
+      <div className="overflow-hidden rounded-2xl shadow-lg my-20" data-aso="fade-up">
         <img
           src={imageUrl}
           alt={title}
@@ -11,7 +11,7 @@ const AboutSection = ({ title, text, imageUrl, reverse }) => {
         />
       </div>
       <div className="text-center md:text-left">
-        <h2 className="text-2xl lg:text-3xl font-bold text-orange-700 mb-4">
+        <h2 className="text-2xl lg:text-3xl font-bold text-red-700 mb-4">
           {title}
         </h2>
         <p className="text-base sm:text-lg text-gray-600 leading-relaxed">

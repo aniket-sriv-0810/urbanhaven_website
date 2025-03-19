@@ -3,7 +3,7 @@ import React from "react";
 const WhyChooseUs = () => {
   return (
     <div className="text-center md:text-left">
-      <h2 className="text-2xl lg:text-3xl font-bold text-orange-700 mb-4">
+      <h2 className="text-2xl lg:text-3xl font-bold text-red-700 mb-4">
         Why Choose Us?
       </h2>
       <ul className="text-base sm:text-lg space-y-3 text-gray-600">
