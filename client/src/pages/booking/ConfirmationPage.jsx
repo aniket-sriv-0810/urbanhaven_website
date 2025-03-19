@@ -3,16 +3,18 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { jsPDF } from "jspdf"; // Import jsPDF for creating the PDF
 import { FaHotel, FaMapMarkerAlt, FaRupeeSign, FaBed, FaUserFriends, FaCalendarCheck, FaCalendarTimes, FaUser, FaEnvelope, FaPhoneAlt, FaFileDownload, FaHome } from "react-icons/fa";
+import SkeletonCard from "../../components/LoadingSkeleton/SkeletonCard";
 
 
 const ConfirmationPage = () => {
   const { bookingId } = useParams();
   const [bookingDetails, setBookingDetails] = useState(null);
   const navigate = useNavigate();
-  
+  const [loading , setLoading] = useState(false);
   useEffect(() => {
     const fetchBookingDetails = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(
           `${import.meta.env.VITE_API_URL}/v1/booking/${bookingId}`,
           { withCredentials: true }
@@ -20,6 +22,8 @@ const ConfirmationPage = () => {
         setBookingDetails(response.data.data.booking);
       } catch (error) {
         console.error("Error fetching booking details:", error);
+      }finally{
+        setLoading(false);
       }
     };
 
@@ -28,9 +32,7 @@ const ConfirmationPage = () => {
 
   if (!bookingDetails) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <p className="text-lg text-gray-500">Loading booking details...</p>
-      </div>
+       <div className="flex justify-center items-center mt-10 "> <SkeletonCard/></div>
     );
   }
 
@@ -101,6 +103,7 @@ const generatePDF = () => {
   doc.save("booking_confirmation.pdf"); // Trigger the download
 };
 
+if(loading) return <div className="flex justify-center items-center mt-10 "> <SkeletonCard/></div>
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-700 p-3 xs:p-3 flex items-center justify-center text-white">

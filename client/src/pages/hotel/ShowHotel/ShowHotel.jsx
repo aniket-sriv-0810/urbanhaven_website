@@ -8,7 +8,7 @@ import Navbar from '../../../components/Navbars/Navbar/Navbar';
 import Footer from '../../../components/Footer/Footer';
 import ShowHotelHeading from '../../../components/Hotels/Show-Hotel/ShowHotelHeading';
 import HotelImage from '../../../components/Hotels/Show-Hotel/HotelImage';
-import ShowHotelDetails from '../../../components/ShowHotelDetails/ShowHotelDetails';
+import ShowHotelDetails from '../../../components/Hotels/Show-Hotel/ShowHotelDetails/ShowHotelDetails';
 import ImageGallery from '../../../components/Hotels/Show-Hotel/ImageGallery/ImageGallery';
 import Amenities from '../../../components/Hotels/Show-Hotel/Amenities/Ammenties';
 import MapLocation from '../../../components/Hotels/Show-Hotel/MapLocation/MapLocation';

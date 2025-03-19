@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const AdminStat = ({ adminData }) => {
   const stats = [
-    { id: "hotel-details", count: adminData.totalHotels, label: "Hotels Listed", icon: <FaHotel className="text-blue-600 text-5xl" />, link: "/admin/hotels" },
+    { id: "hotel-details", count: adminData.totalHotels, label: "Hotels Listed", icon: <FaHotel className="text-cyan-600 text-5xl" />, link: "/admin/hotels" },
     { id: "users-btn", count: adminData.totalUsers, label: "Users Registered", icon: <FaUsers className="text-green-500 text-5xl" />, link: "/admin/users" },
     { id: "bookings-btn", count: adminData.totalBookings, label: "Bookings Confirmed", icon: <FaClipboardList className="text-red-500 text-5xl" />, link: "/admin/bookings" },
     { id: "contacts-btn", count: adminData.totalContacts, label: "Feedbacks Received", icon: <FaComments className="text-orange-500 text-5xl" />, link: "/admin/contacts" },

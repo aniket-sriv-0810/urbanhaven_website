@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useRef } from "react";
 import axios from "axios";
 import { FaHotel , FaUsers , FaComments , FaMountainCity  } from "react-icons/fa6";
 import { GiStarsStack } from "react-icons/gi";
 import { GrArticle } from "react-icons/gr";
-import Shepherd from "shepherd.js"; // Import Shepherd.js
-import "shepherd.js/dist/css/shepherd.css"; // Import Shepherd.js styles
+import { IoMdHelpCircle } from "react-icons/io";
+import { driver } from "driver.js";
+import "driver.js/dist/driver.css";
 import {Link } from "react-router-dom";
 import CurrencyExchange from "../components/Home/CurrencyExchange/CurrencyExchange";
 import Navbar from "../components/Navbars/Navbar/Navbar";
@@ -23,6 +24,7 @@ import HotelDetails from "../components/HotelDetails/HotelDetails";
 import Pagination from "../components/Pagination/Pagination";
 import BlogList from "../components/Blogs/All-Blogs/BlogList";
 const Home = () => {
+  const driverRef = useRef(null);
   const [conversionRate, setConversionRate] = useState(1);
   const [selectedCurrency, setSelectedCurrency] = useState("INR");
   const [sortOrder, setSortOrder] = useState("default");
@@ -30,6 +32,8 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(4);
   const [allHotels, setAllHotels] = useState([]);
+
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,66 +48,83 @@ const Home = () => {
     };
     fetchData();
 
-    // Start tour if needed
-    if (localStorage.getItem("startTour") === "true") {
-      startTour();
-      localStorage.removeItem("startTour");
-    }
   }, []);
 
-  const startTour = () => {
-    const tour = new Shepherd.Tour({
-      useModalOverlay: true,
-      defaultStepOptions: {
-        classes: "shadow-md bg-purple-100 text-gray-900",
-        scrollTo: { behavior: "smooth", block: "center" },
-        cancelIcon: { enabled: true },
-      },
-    });
-
-    tour.addStep({
-      id: "navbar",
-      title: "Welcome!",
-      text: "This is the navigation bar where you can explore the website.",
-      attachTo: { element: ".navbar", on: "bottom" },
-      buttons: [{ text: "Next", action: tour.next }],
-    });
-
-    tour.addStep({
-      id: "search-bar",
-      title: "Search Hotels",
-      text: "Use this bar to search for hotels based on location, price, and other filters.",
-      attachTo: { element: ".search-bar", on: "bottom" },
-      buttons: [
-        { text: "Back", action: tour.back },
-        { text: "Next", action: tour.next },
+  useEffect(() => {
+    driverRef.current = new driver({
+      showProgress: true,
+      overlayColor: "rgba(0, 0, 0, 0.7)",
+      popoverClass: "custom-driver-popover",
+      animate: true,
+      steps: [
+        {
+          element: "#header",
+          popover: {
+            title: "Welcome to UrbanHaven Hotels! 🚀",
+            description: "Manage users, hotels, bookings & more!",
+            side: "bottom",
+          },
+        },
+        {
+          element: "#hotel-details",
+          popover: {
+            title: "Hotels 🏨",
+            description: "Manage hotel listings",
+            side: "top",
+          },
+        },
+        {
+          element: "#search-btn",
+          popover: {
+            title: "Users Section 👥",
+            description: "Manage registered users",
+            side: "top",
+          },
+        },
+        {
+          element: "#filter-btn",
+          popover: {
+            title: "Bookings 📋",
+            description: "View confirmed bookings",
+            side: "top",
+          },
+        },
+        {
+          element: "#pagination-btn",
+          popover: {
+            title: "Feedback 💬",
+            description: "View user feedback",
+            side: "top",
+          },
+        },
+        {
+          element: "#navbar",
+          popover: {
+            title: "Feedback 💬",
+            description: "View user feedback",
+            side: "top",
+          },
+        },
+        {
+          element: "#faqs",
+          popover: {
+            title: "Feedback 💬",
+            description: "View user feedback",
+            side: "top",
+          },
+        },
       ],
     });
 
-    tour.addStep({
-      id: "hotel-cards",
-      title: "Hotel Listings",
-      text: "These are the available hotels. Click on a card to view details.",
-      attachTo: { element: ".hotel-cards", on: "top" },
-      buttons: [
-        { text: "Back", action: tour.back },
-        { text: "Next", action: tour.next },
-      ],
-    });
+    if (localStorage.getItem("startTour") === "true") {
+      driverRef.current.drive();
+      localStorage.removeItem("startTour");
+    }
 
-    tour.addStep({
-      id: "pagination",
-      title: "Pagination",
-      text: "Use these buttons to navigate through different hotel listings.",
-      attachTo: { element: ".pagination", on: "top" },
-      buttons: [
-        { text: "Back", action: tour.back },
-        { text: "Finish", action: tour.complete },
-      ],
-    });
-
-    tour.start();
-  };
+    return () => {
+      driverRef.current = null;
+    };
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -146,31 +167,36 @@ const Home = () => {
 
   return (
     <>
-      <div className="bg-[url('/assets/home.jpg')] bg-cover h-72 bg-no-repeat sm:bg-cover md:h-[40rem] ">
-        <Navbar className="navbar" />
+      <div className="bg-[url('/assets/home.jpg')] bg-cover h-72 bg-no-repeat sm:bg-cover md:h-[40rem] " id="navbar">
+        <Navbar   />
       </div>
 
 <div className="bg-gray-50">
-
-
       <Header />
+       {/* Help / Tour Button */}
+       <button
+        onClick={() => driverRef.current?.drive()}
+        className="fixed bottom-6 right-6 md:bottom-10 md:right-5 bg-white p-2 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 flex items-center justify-center"
+      >
+        <IoMdHelpCircle className="w-8 h-8 text-blue-500 md:w-10 md:h-10" />
+      </button>
 
       <div className="flex flex-col-reverse gap-y-5 sm:flex-row justify-between items-center mx-2 my-20 sm:mx-8" data-aos="fade-up">
-        <SortHotels sortOrder={sortOrder} setSortOrder={setSortOrder} sortHotels={sortHotels} />
-        <CurrencyExchange setCurrencyRates={setConversionRate} selectedCurrency={selectedCurrency} setSelectedCurrency={setSelectedCurrency} />
+        <SortHotels sortOrder={sortOrder} setSortOrder={setSortOrder} sortHotels={sortHotels} id="filter-btn" />
+        <CurrencyExchange setCurrencyRates={setConversionRate} selectedCurrency={selectedCurrency} setSelectedCurrency={setSelectedCurrency}  />
       </div>
 
-      <div className="p-4 my-32">
-        <SearchBar className="search-bar" setHotels={setAllHotels} />
+      <div className="p-4 my-32" id="search-btn">
+        <SearchBar className="search-bar" setHotels={setAllHotels}  />
       </div>
 
       <HotelHeading />
 
-      <div className="hotel-cards mt-20 mb-40 flex justify-evenly flex-wrap gap-12 px-4" data-aos="fade-up">
+      <div className="hotel-cards mt-20 mb-40 flex justify-evenly flex-wrap gap-12 px-4" data-aos="fade-up" id="hotel-details">
         {loading ? <p className="text-lg text-gray-600">Hotels Loading...</p> : currentHotels.map((hotel) => <HotelDetails key={hotel._id} hotel={hotel} conversionRate={conversionRate} selectedCurrency={selectedCurrency} />)}
       </div>
 
-      <div className="pagination" data-aos="fade-up">
+      <div className="pagination" data-aos="fade-up" id="pagination-btn">
       <Pagination
   totalPages={totalPages}
   currentPage={currentPage}
@@ -182,7 +208,7 @@ const Home = () => {
         <ScrollComponent />
       </div>
 
-      <div className="my-80" data-aos="fade-down">
+      <div className="my-80" data-aos="fade-down"  id="faqs">
         <FAQs />
       </div>
 

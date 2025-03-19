@@ -6,9 +6,16 @@ import ShowHotel from './pages/hotel/ShowHotel/ShowHotel';
 import EditHotel from './pages/hotel/EditHotel/EditHotel';
 import About from './pages/navigation/About';
 import Contact from './pages/navigation/Contact';
+
+//Authentication Pages
 import RegisterUser from './pages/authentication/register/RegisterUser';
 import LoginUser from './pages/authentication/login/LoginUser';
 import Logout from './components/Logout/Logout';
+
+//Authentication Loaders Pages
+import AuthSuccessPopup from './pages/loaders/AuthSuccessPopup';
+import LoginLoader from './pages/loaders/LoginLoader';
+
 import Review from './components/Review/Review';
 import PrivateRoute from './components/userContext/PrivateRoute';
 import AdminDashboard from './layout/AdminDashboard';
@@ -24,7 +31,6 @@ import AdminBooking from './layout/AdminBooking';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import './App.css';
 import ConfirmationPage from './pages/booking/ConfirmationPage';
-import LoginLoader from './pages/loaders/LoginLoader';
 import PageNotFound from './pages/loaders/PageNotFound';
 import ContactUsLoader from './pages/loaders/ContactUsLoader';
 import ReviewLoader from './pages/loaders/ReviewLoader';
@@ -40,7 +46,6 @@ import EditBlog from './pages/blogs/EditBlog/EditBlog';
 import ShowBlog from './pages/blogs/ShowBlog/ShowBlog';
 import AdminContact from './layout/AdminContact';
 import DeleteBlog from './pages/blogs/DeleteBlog/DeleteBlog';
-import AuthSuccessPopup from './pages/loaders/AuthSuccessPopup';
 import DeleteLoader from './pages/loaders/DeleteLoader';
 import SuccessLoader from './pages/loaders/SuccessLoader';
 import AccountDelete from './pages/loaders/AccountDelete';
@@ -140,17 +145,24 @@ export default function App() {
           <Route path="/user/:id/wishlists" element={<UserWishLists />} />
           <Route path="/user/:id/bookings" element={<UserBookings />} />
 
-          <Route path="/user/:id/account/edit" element={<UserAccountEdit />} />
-          <Route path="/user/:id/account/delete" element={<DeleteUser />} />
+          {/* Authentication Pages Routes */}
           <Route path="/user/register" element={<RegisterUser />} />
+          <Route path="/user/login" element={<LoginUser />} />
+          <Route path="/user/logout" element={<Logout />} />
+
+          {/* Authentication Success loaders Routes */}
           <Route path="/user/register/successfully" element={<AuthSuccessPopup />} />
           <Route path="/user/login/confirmed" element={<LoginLoader />} />
+
+
+          <Route path="/user/:id/account/edit" element={<UserAccountEdit />} />
+          <Route path="/user/:id/account/delete" element={<DeleteUser />} />
+
           <Route path="/delete/successfully" element={<DeleteLoader />} />
           <Route path="/account/deleted/successfully" element={<AccountDelete />} />
           <Route path="/create/successfully" element={<SuccessLoader />} />
           <Route path="/edit/successfully" element={<SuccessLoader />} />
-          <Route path="/user/login" element={<LoginUser />} />
-          <Route path="/user/logout" element={<Logout />} />
+          
           <Route
             path="/admin/dashboard"
             element={

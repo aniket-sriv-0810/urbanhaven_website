@@ -41,10 +41,10 @@ const Footer = () => {
             {[
               { social: "linkedin" ,icon: FaLinkedin, link: "https://www.linkedin.com/in/aniket-srivastava-0141b22b8/", color: "bg-blue-600" },
               { social: "gmail" ,icon: CgMail, link: "mailto:aniket08official@gmail.com", color: "bg-red-600" },
-              { social:"instagram" ,icon: GrInstagram, link: "https://www.instagram.com/aniket_sriv_0810/", color: "bg-purple-600" },
-              { social: "github",icon: FaGithub, link: "https://github.com/aniket-sriv-0810", color: "bg-gray-600" },
+              { social:"instagram" ,icon: GrInstagram, link: "https://www.instagram.com/aniket_sriv_0810/", color: "bg-purple-600"  },
+              { social: "github",icon: FaGithub, link: "https://github.com/aniket-sriv-0810", color: "bg-gray-600"  },
             ].map(({ social ,icon: Icon, link, color }, index) => (
-              <Tippy content={social}>
+              <Tippy content={social} key={index}>
               <NavLink
                 key={index}
                 to={link}

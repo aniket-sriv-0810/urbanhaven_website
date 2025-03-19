@@ -21,7 +21,7 @@ const UserAccountEdit = () => {
   const [image, setImage] = useState(null);
   const [orgImage, setOrgImg] = useState("");
   const [loading, setLoading] = useState(true); // Start with loading
-
+  const [isLoading , setIsLoading] = useState(false);
   // Fetch user details
   useEffect(() => {
     const fetchUser = async () => {
@@ -39,6 +39,7 @@ const UserAccountEdit = () => {
           username: fetchedUser.username,
           phone: fetchedUser.phone,
           email: fetchedUser.email,
+          password : fetchedUser.password,
         });
         setOrgImg(fetchedUser.image);
       } catch (error) {
@@ -77,6 +78,7 @@ const UserAccountEdit = () => {
     if (image) formData.append("image", image);
 
     try {
+      setIsLoading(true);
       await axios.put(`${import.meta.env.VITE_API_URL}/v1/user/${id}/account/edit`, formData, {
         withCredentials: true,
       });
@@ -104,7 +106,7 @@ const UserAccountEdit = () => {
             </div>
 
             <UserProfileImage orgImage={orgImage} handleImageChange={handleImageChange} />
-            <UserAccountForm userData={userData} handleChange={handleChange} handleSubmit={handleSubmit} />
+            <UserAccountForm userData={userData} handleChange={handleChange} handleSubmit={handleSubmit} isLoading={isLoading} />
           </div>
         </div>
       )}

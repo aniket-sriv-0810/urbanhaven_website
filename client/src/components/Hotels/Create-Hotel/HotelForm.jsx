@@ -117,11 +117,11 @@ const HotelForm = () => {
         {loading ? (
           <>
             <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-            Creating Hotel...  
+            Registering Hotel...  
           </>
         ) : (
           <>
-            Create Hotel
+            Register Hotel
             <IoIosHome className="text-xl" />
           </>
         )}

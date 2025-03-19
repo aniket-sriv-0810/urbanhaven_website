@@ -58,7 +58,7 @@ const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
 
       {/* Amount Section */}
       <div className="text-center text-white text-lg font-semibold">
-        Total Amount <span className="text-green-400 text-3xl font-bold">₹{bookingData.totalAmount?.toLocaleString("INR")}</span>
+        Total Amount <span className="text-green-400 ml-3 text-3xl font-bold">₹{bookingData.totalAmount?.toLocaleString("INR")}</span>
       </div>
 
       {/* Payment Methods */}
@@ -114,13 +114,13 @@ const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
           onClick={() => setSelectedPaymentMethod("upi")}
         >
         <span className="flex gap-3">
-          <MdQrCodeScanner className="text-blue-300 text-2xl mb-2" />
+          <MdQrCodeScanner className="text-cyan-500 text-2xl mb-2" />
           <h3 className="font-semibold text-white">UPI Payments</h3>
         </span>
           <div className="flex gap-4 mt-2 sm:mt-0 sm:ml-2">
-            <SiGooglepay className="text-green-600  text-3xl" />
-            <SiPaytm className="text-blue-300 text-3xl" />
-            <SiPhonepe className="text-purple-400 text-3xl" />
+            <SiGooglepay className="text-green-500  text-3xl" />
+            <SiPaytm className="text-blue-400 text-3xl" />
+            <SiPhonepe className="text-purple-500 text-3xl" />
           </div>
         </button>
         {selectedPaymentMethod === "upi" && (
@@ -146,7 +146,7 @@ const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
           <MdPayments className="text-green-300 text-2xl " />
           <h3 className="font-semibold text-xs  sm:text-sm text-white">Book Now & Pay Later</h3>
         </span>
-          <p className="text-xs text-gray-300 text-center">Pay at the time of hotel check-in.</p>
+          <p className="text-xs mt-3 text-gray-300 text-center">Pay at the time of hotel check-in.</p>
         </button>
       </div>
 
@@ -167,11 +167,11 @@ const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
 
     {/* Benefits Section */}
     <div className="mt-4 flex flex-col items-center space-y-3">
-      <div className="flex items-center flex-row space-x-2">
+      <div className="flex items-center flex-row space-x-2 gap-3">
         <FaCalendarCheck className="text-green-400 text-sm" />
         <p className="text-gray-200 text-sm">Guaranteed Reservation</p>
       </div>
-      <div className="flex items-center flex-row space-x-2">
+      <div className="flex items-center flex-row space-x-2 gap-3">
         <FaShieldAlt className="text-yellow-400 text-sm" />
         <p className="text-gray-200 text-sm">Safe & Secure Booking</p>
       </div>
@@ -194,7 +194,7 @@ const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
 
         <button
           onClick={handlePayment}
-          className="flex text-xs justify-center items-center gap-x-3 px-5 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg font-medium hover:scale-105 transition-all"
+          className="w-full flex text-xs justify-center items-center gap-x-3 px-8 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg font-medium hover:scale-105 transition-all"
         >
           Confirm Booking
           <MdOutlinePayments className="w-5 h-5" />
