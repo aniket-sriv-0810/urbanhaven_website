@@ -45,8 +45,8 @@ const BlogList = () => {
 
   return (
     <div className="m-auto py-20 px-8 bg-gray-100">
-      <h1 className="text-2xl sm:text-4xl font-extrabold text-center text-gray-800 mb-10 tracking-wide">
-        Tour & Travel Blogs
+      <h1 className="text-2xl mb-12 sm:text-4xl font-extrabold text-center text-gray-800  tracking-wide">
+        Our Blogs
       </h1>
 
       {blogData.length === 0 ? (

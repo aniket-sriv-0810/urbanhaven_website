@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { MdOutlineStar  } from "react-icons/md";
-import BookingBtn from '../BookingBtn/BookingBtn';
+import BookingBtn from '../Hotels/Show-Hotel/BookingBtn/BookingBtn';
 
 const ShowHotelDetails = ({ hotel, avgRating, reviewCount }) => {
  

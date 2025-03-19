@@ -3,7 +3,7 @@ import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 
 const ContactInfo = () => {
   return (
-    <div className="flex flex-col justify-center bg-white shadow-xl rounded-2xl p-8 border-t-4 border-green-500">
+    <div className="flex flex-col justify-center bg-white shadow-xl rounded-2xl p-8 border-t-4 border-green-500" data-aos="fade-up">
       <h2 className="text-2xl font-bold text-teal-700 mb-6 text-center">Contact Information</h2>
       <ul className="space-y-6 text-lg text-gray-800">
         <li className="flex items-center gap-4">
@@ -16,14 +16,14 @@ const ContactInfo = () => {
           <FaEnvelope className="text-blue-500 text-xl" />
           <a href="mailto:support@urbanhaven.com" className="hover:text-teal-700 transition">
             <strong className="hidden md:block">Email:</strong> 
-            <span className="text-base"> support@urbanhaven.com</span>
+            <span className="text-base"> aniket08official@gmail.com</span>
           </a>
         </li>
         <li className="flex items-center gap-4">
           <FaMapMarkerAlt className="text-red-500 text-xl" />
           <span>
             <strong className="hidden md:block">Address:</strong>
-            <span className="text-sm"> 123 UrbanHaven Lane, Comfort City, Anywhere 56789</span>
+            <span className="text-sm"> Sant Longowal Institute of Engineering & Technology , Sangrur , Punjab , India</span>
           </span>
         </li>
       </ul>

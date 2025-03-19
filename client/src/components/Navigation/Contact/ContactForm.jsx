@@ -1,9 +1,9 @@
 import React from 'react';
 import { BiSolidPaperPlane } from "react-icons/bi";
 
-const ContactForm = ({ handleInput, handleSubmit, contact, user }) => {
+const ContactForm = ({ handleInput, handleSubmit, contact, user , loading }) => {
   return (
-    <div className="bg-white shadow-xl rounded-xl p-8 border-t-4 border-green-500">
+    <div className="bg-white shadow-xl rounded-xl p-8 border-t-4 border-green-500" data-aos="fade-down">
       <h2 className="text-2xl font-bold text-teal-700 mb-6 text-center">Send Us a Message</h2>
       <form className="space-y-5" onSubmit={handleSubmit}>
         <div>
@@ -19,10 +19,29 @@ const ContactForm = ({ handleInput, handleSubmit, contact, user }) => {
           <textarea onChange={handleInput} name="message" id="message" rows="4" className="w-full mt-1 px-4 py-2 border rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500" placeholder="Write your message..." value={contact.message} required></textarea>
         </div>
         <span className="ml-5 flex items-center justify-center gap-2">
-          <button type="submit" className="w-full mr-5 flex justify-center items-center sm:w-[70%] bg-green-600 text-white p-2 sm:p-3 rounded-xl shadow-md hover:bg-teal-500 transition duration-300">
-            Send Message
-            <BiSolidPaperPlane className="relative left-5 text-xl text-white" />
-          </button>
+        <button
+        type="submit"
+        disabled={loading}
+        className={`w-full border-gray-500 border-2 font-semibold px-4 py-2 text-white rounded-xl mt-4 ${
+          loading
+            ? "bg-gray-800 cursor-not-allowed"
+            : "bg-green-600 hover:bg-green-700"
+        } flex items-center justify-center gap-2`}
+      >
+        {loading ? (
+          <>
+            <span className="animate-pulse font-semibold text-green-400 flex items-center gap-3">
+              <div className="w-5 h-5 border-2 border-green-400 border-t-transparent rounded-full animate-spin"></div>
+              Sending Feedback...
+            </span>
+          </>
+        ) : (
+          <p className='flex justify-center items-center gap-4'>
+          Send Message
+          <BiSolidPaperPlane className=" text-xl text-white" />
+          </p>
+        )}
+      </button>
         </span>
       </form>
     </div>

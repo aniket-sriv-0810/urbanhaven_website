@@ -1,42 +1,58 @@
-import React, { useEffect, useState } from 'react'
+
+import React ,{useState , useEffect}from 'react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import { useNavigate } from 'react-router-dom';
-const ContactUsLoader = () => {
-    const [isLoading , setIsLoading] = useState(false);
-    const navigate = useNavigate();
-    useEffect(()=>{
-        setIsLoading(true);
-        const timer = setTimeout( () => {
-            setIsLoading(false);
-            navigate('/');
-        }, 3000)
-        return () => {
-            clearTimeout(timer)
-        }
-    } , [navigate])
+import { useNavigate } from "react-router-dom";
+
+const ContactUsLoader = ({ message = "Sent Successfully !", redirectPath = "/contact" }) =>  {
+
+  const [isVisible, setIsVisible] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(false);
+      setTimeout(() => navigate(redirectPath), 500); // Redirect after fade-out
+    }, 3000); // Show for 4 seconds
+
+    return () => clearTimeout(timer);
+  }, [navigate, redirectPath]);
+
   return (
-    <>
-    {isLoading ?
-    <div className="flex flex-col justify-center items-center h-screen bg-gradient-to-r from-indigo-300 to-cyan-200">
-  <DotLottieReact
+    <div
+      className={`fixed inset-0 flex items-center justify-center bg-gradient-to-t from-gray-800 to-teal-600 bg-opacity-40 backdrop-blur-lg transition-opacity duration-500 ${
+        isVisible ? "opacity-100" : "opacity-0"
+      }`}
+    >
+      <div
+        className={`bg-white p-5 sm:p-7 rounded-2xl shadow-xl text-center w-80 md:w-96 transition-transform transform ${
+          isVisible ? "translate-y-0 scale-100" : "translate-y-10 scale-95 opacity-0"
+        }`}
+      >
+        {/* Animated Success GIF */}
+        <DotLottieReact
     src="https://lottie.host/b2772656-e5ee-40a9-bc44-d8a6805808dd/tcsx0R6elb.lottie"
     autoplay
-    className="w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80"
+      className='w-66 h-40 mb-10'
   />
-  <span className="text-center text-2xl font-bold text-blue-600 animate-pulse sm:text-4xl ">
-    Contact Sent Successfully
-  </span>
-</div>
 
-  : null
-}
-    
-    </>
-  )
-}
+        {/* Success Message - Ensuring visibility */}
+        <h2 className="text-lg font-semibold text-black -mt-4">{message}</h2>
+        <p className="text-sm text-gray-500">Redirecting you shortly...</p>
 
+        {/* Animated Button */}
+        <button
+          className="mt-5 bg-gradient-to-t from-teal-600 to-gray-500 text-white font-medium px-5 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+          onClick={() => navigate(redirectPath)}
+        >
+          Go to Home →
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export default ContactUsLoader;
+
 
 
 

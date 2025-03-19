@@ -3,7 +3,7 @@ import React from "react";
 const AboutSection = ({ title, text, imageUrl, reverse }) => {
   return (
     <div className={`grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-12 ${reverse ? "md:flex-row-reverse" : ""} `}>
-      <div className="overflow-hidden rounded-2xl shadow-lg my-20" data-aso="fade-up">
+      <div className="overflow-hidden rounded-2xl shadow-lg my-20" >
         <img
           src={imageUrl}
           alt={title}

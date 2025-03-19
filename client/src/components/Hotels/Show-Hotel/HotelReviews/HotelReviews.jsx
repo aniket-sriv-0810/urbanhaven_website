@@ -1,6 +1,6 @@
 import React from 'react';
-import ReviewCard from '../ReviewCard/ReviewCard';
-import NotAvailable from '../../pages/loaders/NotAvailable';
+import ReviewCard from '../../../ReviewCard/ReviewCard';
+
 const HotelReviews = ({ reviews }) => {
   return (
     <div 
