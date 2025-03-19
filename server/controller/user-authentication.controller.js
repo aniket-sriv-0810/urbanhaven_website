@@ -3,7 +3,6 @@ import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
-import mongoose from "mongoose";
 import passport from "passport";
 
 
@@ -11,11 +10,12 @@ import passport from "passport";
 const createNewUser = asyncHandler(async (req, res) => {
   try {
     const { name, username, phone, email, password } = req.body;
-    console.log("req.file =>" + req.file);
 
     const existingUsername = await User.findOne({ username });
     const existingPhone = await User.findOne({ phone });
     const existingEmail = await User.findOne({ email : email.toLowerCase() });
+
+
     // If any of the checks return a result, throw an error
     if (existingUsername) {
       return res.status(400).json({
@@ -47,7 +47,7 @@ const createNewUser = asyncHandler(async (req, res) => {
       email,
       image: imageUrl
         ? imageUrl.url
-        : "https://e7.pngegg.com/pngimages/81/570/png-clipart-profile-logo-computer-icons-user-user-blue-heroes-thumbnail.png"
+        : "https://media-hosting.imagekit.io//8450b6563e51411a/person.jpg?Expires=1837021220&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=d5ybsGf9x9CF2tndNXZPaEE2D7Jv6oM0woujqPnvZEo1tRIolVKCBmBJKz0Ze5Iaf7HFEIz-193BtXERHHp28s6Rooexh2-ttsIhsp5b1z-90TqIBieJGtrs-aNNawTGDM5KKL48F3jh5UBYb0CW~7WP6OOLyGUnXScY3fW4vBUeSK8ygoDc4KP~BIzOSAPuNor-x-G9a71thKwFOjpYnE-Q9hMcW8W-tEGAWA8gWB1IK613rfrs6yWDL192ayv-~2EOr6P9em7ds5NmF1SGaLU6Zeb3RW5rlp17CyT37ift7mbALGLYxkRCGh~JKUxO7jibxhPojdjudtKOAp53Pg__"
     });
     const registerNewUser = await User.register(newUser, password);
     if( !registerNewUser){
@@ -88,6 +88,7 @@ const createNewUser = asyncHandler(async (req, res) => {
 const loginUser = asyncHandler(async (req, res) => {
   try {
     const { username , password } = req.body;
+console.log(" Value = " , username , password);
 
       if (!username || !password) {
         return res.status(400).json({
@@ -146,26 +147,20 @@ const logOutUser = asyncHandler(async (req, res, next) => {
   try {
     req.logout((err) => {
       if (err) {
-        return res.status(400).json(
-          new ApiError(400, err, "Failed to logout !")
-        )
+        return res.status(400).json(new ApiError(400, err, "Failed to logout!"));
       }
+
       req.session.destroy((err) => {
         if (err) {
-          return res.status(500).json(
-            new ApiError(500, err, "Failed to logout !")
-          )
+          return res.status(500).json(new ApiError(500, err, "Failed to logout!"));
         }
+
+        res.clearCookie("connect.sid"); // Clear the session cookie
+        return res.status(200).json(new ApiResponse(200, null, "Logged out successfully"));
       });
-      return res
-        .status(200)
-        .json(new ApiResponse(200, null, "Logged out successfully"));
     });
-  }
-  catch (error) {
-    return res.status(400).json(
-      new ApiError(400, error, "Logout  failed !")
-    )
+  } catch (error) {
+    return res.status(500).json(new ApiError(500, error, "Logout failed!"));
   }
 });
 

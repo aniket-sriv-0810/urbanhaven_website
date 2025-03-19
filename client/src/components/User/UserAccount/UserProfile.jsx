@@ -8,7 +8,7 @@ const UserProfile = ({ user }) => {
           <img
             src={user.image}
             alt={user.name}
-            className="w-28 h-28 rounded-full border-4 border-white shadow-lg mx-auto"
+            className="w-28 h-28 rounded-full bg-gray-100 border-4 border-white shadow-lg mx-auto"
           />
         )}
         <h1 className="text-3xl font-bold">{user ? user.name.toUpperCase() : "User Name"}</h1>

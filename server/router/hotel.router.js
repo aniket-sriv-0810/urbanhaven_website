@@ -2,7 +2,7 @@ import express from 'express';
 import { isLoggedIn } from '../middleware/authentication.js';
 import { validate } from '../middleware/validator.js';
 import { createReview } from '../controller/review.controller.js';
-import { allHotel , showMyHotel, searchHotels  } from '../controller/hotel.controller.js';
+import { allHotel , showMyHotel, searchHotels , getHotelReviewStats  } from '../controller/hotel.controller.js';
 import { contactLogic } from '../controller/pages.controller.js';
 import { bookingHotel, confirmationDetails } from '../controller/booking.controller.js';
 import { reviewSchemaValidation } from '../test/review.validator.js';
@@ -30,6 +30,12 @@ router
 router
      .route('/v1/hotel/:id')
      .get( isLoggedIn, showMyHotel)
+
+
+// Show a Particular Hotel Review Count Route
+router
+     .route('/v1/hotel/:id/review-stats')
+     .get(  getHotelReviewStats)
 
 
  // Create a new Review for a particular hotel Route

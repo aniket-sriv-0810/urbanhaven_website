@@ -235,14 +235,9 @@ const userAccountEditDetails = asyncHandler(async (req, res) => {
     existingUser.username = username || existingUser.username;
     existingUser.email = email || existingUser.email;
     existingUser.phone = phone || existingUser.phone;
-
+    existingUser.password = password || existingUser.password;
     if (cloudinaryResult && cloudinaryResult.url) {
       existingUser.image = cloudinaryResult.url;
-    }
-
-    // **Update Password Safely with Passport-Local-Mongoose**
-    if (password) {
-      await existingUser.setPassword(password); // Passport will hash it automatically
     }
 
     await existingUser.save();
@@ -262,34 +257,48 @@ const userAccountEditDetails = asyncHandler(async (req, res) => {
   }
 });
 
-
 // User Account Deletion Controller Code
 const userAccountDelete = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
     console.log("Id=", id);
+
     if (!id || !mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json(new ApiError(400, "Invalid ID", "Invalid User ID!"));
     }
+
     console.log("User Id Deleted", id);
     const userExists = await User.findById(id);
-    if(!userExists) {
-      return res.status(404).json(
-        new ApiError(404 , "User not found" , "User Does Not Exist !")
-      )
-    }
-     await User.findByIdAndDelete(id);
 
-    return res
-      .status(200)
-      .json(new ApiResponse(200, " Deleted Successfully !"));
-  } 
-  catch (error) {
-    console.log("Failed to delete the user " + error);
-    return res.status(400).json(new ApiError(400, "Invalid ID", "FAILED to delete the account"));
-   
+    if (!userExists) {
+      return res.status(404).json(new ApiError(404, "User not found", "User Does Not Exist!"));
+    }
+
+    // Delete user account
+    await User.findByIdAndDelete(id);
+
+    // Logout the user by destroying the session
+    req.logout((err) => {
+      if (err) {
+        return res.status(500).json(new ApiError(500, err, "Failed to log out user after deletion!"));
+      }
+
+      req.session.destroy((err) => {
+        if (err) {
+          return res.status(500).json(new ApiError(500, err, "Failed to destroy session after user deletion!"));
+        }
+
+        res.clearCookie("connect.sid"); // Clear session cookie
+        return res.status(200).json(new ApiResponse(200, null, "User deleted and logged out successfully!"));
+      });
+    });
+
+  } catch (error) {
+    console.log("Failed to delete the user", error);
+    return res.status(500).json(new ApiError(500, "Server Error", "FAILED to delete the account"));
   }
 });
+
 
 export {
   userAccountDetails,

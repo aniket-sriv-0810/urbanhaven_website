@@ -23,9 +23,8 @@ const AdminDashboard = () => {
   useEffect(() => {
     // Fetch Admin Data
     axios
-      .get(`${import.meta.env.VITE_API_URL}/v1/admin/`, {
-        withCredentials: true,
-      })
+      .get(`${import.meta.env.VITE_API_URL}/v1/admin`, 
+        {withCredentials: true})
       .then((response) => setAdminData(response.data.data))
       .catch((error) => console.error("Error fetching data:", error));
   }, []);

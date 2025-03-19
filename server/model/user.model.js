@@ -40,7 +40,7 @@ const userSchema = new Schema ({
     },
     image:{
         type:String,
-        default:"https://e7.pngegg.com/pngimages/81/570/png-clipart-profile-logo-computer-icons-user-user-blue-heroes-thumbnail.png",
+        default:"https://media-hosting.imagekit.io//8450b6563e51411a/person.jpg?Expires=1837021220&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=d5ybsGf9x9CF2tndNXZPaEE2D7Jv6oM0woujqPnvZEo1tRIolVKCBmBJKz0Ze5Iaf7HFEIz-193BtXERHHp28s6Rooexh2-ttsIhsp5b1z-90TqIBieJGtrs-aNNawTGDM5KKL48F3jh5UBYb0CW~7WP6OOLyGUnXScY3fW4vBUeSK8ygoDc4KP~BIzOSAPuNor-x-G9a71thKwFOjpYnE-Q9hMcW8W-tEGAWA8gWB1IK613rfrs6yWDL192ayv-~2EOr6P9em7ds5NmF1SGaLU6Zeb3RW5rlp17CyT37ift7mbALGLYxkRCGh~JKUxO7jibxhPojdjudtKOAp53Pg__",
     },
     role: {
         type: String,

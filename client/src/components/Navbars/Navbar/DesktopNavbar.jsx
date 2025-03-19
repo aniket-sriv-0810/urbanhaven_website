@@ -49,7 +49,7 @@ const DesktopNavbar = () => {
         <Tippy content="View Profile">
           <NavLink to={user ? `/user/${user._id}/account` : "/user/login"}>
             {user ? (
-              <img src={user.image} alt={user.name} className="w-10 h-10 rounded-full hover:scale-110" />
+              <img src={user.image} alt={user.name} className="w-10 h-10 bg-gray-100 border-2 rounded-full hover:scale-110" />
             ) : (
               <FaUserCircle className="text-2xl text-white" />
             )}

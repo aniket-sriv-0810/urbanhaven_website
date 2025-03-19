@@ -55,7 +55,6 @@ const LoginForm = () => {
         navigate("/user/register/successfully");
       }
     } catch (error) {
-      console.error("Login error:", error);
       if (error.response?.data?.details) {
         const backendErrors = error.response.data.details.reduce((acc, msg) => {
           if (msg.toLowerCase().includes("username")) acc.username = msg;

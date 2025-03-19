@@ -174,6 +174,47 @@ const showMyHotel = async(req , res ) => {
    }
 };
 
+// Review Stat Code 
+const getHotelReviewStats = async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log("Fetching review stats for Hotel ID:", id);
+
+    // Validate the ID
+    if (!id) {
+      return res.status(400).json(new ApiError(400, "Hotel ID is required!"));
+    }
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json(new ApiError(400, "Invalid ID", "Invalid Hotel ID!"));
+    }
+
+    // Find the hotel and populate only the reviews field
+    const hotel = await Hotel.findById(id).populate("review");
+
+    if (!hotel) {
+      return res.status(404).json(new ApiError(404, "Hotel not found", "No details available!"));
+    }
+
+    // Calculate total reviews and average rating
+    const totalReviews = hotel.review.length;
+    const totalRatings = hotel.review.reduce((acc, review) => acc + review.rating, 0);
+    const avgRating = totalReviews > 0 ? (totalRatings / totalReviews).toFixed(2) : 0;
+
+    console.log("Total Reviews:", totalReviews);
+    console.log("Average Rating:", avgRating);
+
+    return res.status(200).json(
+      new ApiResponse(200, { totalReviews, avgRating }, "Hotel review stats retrieved successfully!")
+    );
+  } catch (error) {
+    console.error("Error fetching review stats:", error);
+    return res.status(500).json(
+      new ApiError(500, "Server Error", "Failed to retrieve review stats!")
+    );
+  }
+};
+
 // Edit a particular hotel Controller Code
 const editMyHotel =  asyncHandler(async (req , res) => {
     try {
@@ -272,4 +313,4 @@ const deleteMyHotel =  asyncHandler(async (req, res) => {
 
 
 
-export { allHotel , newHotelCreation , showMyHotel , editMyHotel , deleteMyHotel , searchHotels } ;
+export { allHotel , newHotelCreation , showMyHotel , editMyHotel , deleteMyHotel , searchHotels , getHotelReviewStats } ;

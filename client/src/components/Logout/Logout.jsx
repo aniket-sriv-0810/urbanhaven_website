@@ -4,28 +4,31 @@ import { useNavigate } from 'react-router-dom';
 import { useUser } from '../userContext/userContext';
 
 const Logout = () => {
-  const {setUser} = useUser();
+  const { setUser } = useUser();
   const navigate = useNavigate();
 
   useEffect(() => {
     const logoutUser = async () => {
       try {
-        const response = await axios.post(`${import.meta.env.VITE_API_URL}/v1/user/logout` , {withCredentials: true});
-        console.log(response.data.message);  // Handle success message or user info
-        setUser(null); // Reset user state
-        localStorage.removeItem("user"); // Remove user data from localStorage
-        navigate('/');  // Redirect to home page after successful logout
+        const response = await axios.post(
+          `${import.meta.env.VITE_API_URL}/v1/user/logout`,
+          {}, // Empty body
+          { withCredentials: true } // Proper placement
+        );
+
+        console.log(response.data.message);
+        setUser(null);
+        localStorage.removeItem("user"); 
+        navigate('/'); 
       } catch (error) {
         console.error('Logout failed', error);
       }
     };
 
     logoutUser();
-  }, [setUser]);
+  }, [setUser, navigate]);
 
-  return (
-    <></>
-  );
+  return null;
 };
 
 export default Logout;
