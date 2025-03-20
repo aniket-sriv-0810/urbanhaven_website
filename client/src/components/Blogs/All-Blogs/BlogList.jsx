@@ -34,8 +34,8 @@ const BlogList = () => {
     fetchData();
   }, []);
 
-  if (loading) return <h1><SkeletonList /></h1>;
-  if (error) return <p className="text-red-500 text-center mt-10">{error}</p>;
+  if (loading) return <h1 className="flex flex-row justify-center items-center mt-10"><SkeletonList /></h1>;
+  if (error) return <p className=" text-red-500 text-center mt-10">{error}</p>;
 
   // Pagination Logic
   const indexOfLastItem = currentPage * itemsPerPage;

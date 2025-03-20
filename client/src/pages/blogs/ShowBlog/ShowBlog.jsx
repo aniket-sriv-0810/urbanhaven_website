@@ -7,14 +7,14 @@ import Navbar from "../../../components/Navbars/Navbar/Navbar";
 import Footer from "../../../components/Footer/Footer";
 import BlogCard from "../../../components/Blogs/Show-Blog/BlogCard";
 import SkeletonCard from "../../../components/LoadingSkeleton/SkeletonCard";
-
+import ErrorPopup from "../../../components/PopUps/ErrorPopup/ErrorPopup";
 
 const ShowBlog = () => {
   const [blog, setBlog] = useState(null);
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-
+  const [error , setError ] = useState("");
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -27,6 +27,7 @@ const ShowBlog = () => {
         }
       } catch (error) {
         console.error("Blog data FAILED to fetch: ", error);
+        setError(error.response?.data?.message || "Failed to display blog details.");
       } finally {
         setLoading(false);
       }
@@ -40,7 +41,7 @@ const ShowBlog = () => {
       <div className="bg-gradient-to-r from-slate-600 to-slate-800">
         <Navbar />
       </div>
-
+      {error && <ErrorPopup message={error} onClose={() => setError("")} />}
       <div className=" min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 px-4 py-20">
         {loading ? (
           <div className="flex flex-col justify-center items-center"><SkeletonCard/></div>
@@ -49,7 +50,7 @@ const ShowBlog = () => {
           <BlogCard blog={blog} navigate={navigate} />
           </div>
         ) : (
-          <p className="text-red-500 text-xl">Blog not found!</p>
+          <p className="text-red-500 text-xl text-center">Blog not found!</p>
           
         )}
 
