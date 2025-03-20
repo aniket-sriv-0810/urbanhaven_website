@@ -21,6 +21,17 @@ const createReview = asyncHandler(async (req, res) => {
                new ApiError(404 ,"Hotel ID is required!")
             )
          }
+          if(!rating){
+            return res.status(404).json(
+               new ApiError(404 ,"Rating is required!")
+            )
+         }
+         const userExits = await User.findById(userDetails);
+         if(!userExits){
+          return res.status(404).json(
+            new ApiError(404 ,"unable to Find the Use " ,"User Not Found !")
+         )
+         }
          if (!mongoose.Types.ObjectId.isValid(id)) {
           return res.status(400).json(
              new ApiError(400, "Invalid ID", "Invalid ID ! Failed to Show the Review!")

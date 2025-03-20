@@ -1,7 +1,12 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+
+// Hotels Pages
 import Home from "./pages/Home";
 import ShowHotel from "./pages/hotel/ShowHotel/ShowHotel";
+import Booking from "./pages/booking/Booking";
+import ConfirmationPage from "./pages/booking/ConfirmationPage";
+
 
 import About from "./pages/navigation/About";
 import Contact from "./pages/navigation/Contact";
@@ -41,10 +46,9 @@ import UserAccount from "./pages/user/UserAccount";
 import UserAccountEdit from "./pages/user/UserAccountEdit";
 import DeleteUser from "./pages/user/DeleteUser";
 import { useUser } from "./components/userContext/userContext";
-import Booking from "./pages/booking/Booking";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import "./App.css";
-import ConfirmationPage from "./pages/booking/ConfirmationPage";
+
 import PageNotFound from "./pages/loaders/PageNotFound";
 import ContactUsLoader from "./pages/loaders/ContactUsLoader";
 import ReviewLoader from "./pages/loaders/ReviewLoader";
@@ -102,11 +106,13 @@ export default function App() {
           </p>
         </div>
       ) : (
-        // Render the actual app content
+        
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
+
+           {/* Hotel Pages Routes */}
           <Route
             path="/hotel/:id"
             element={
