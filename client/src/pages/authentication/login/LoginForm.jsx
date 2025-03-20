@@ -14,8 +14,8 @@ const LoginForm = () => {
   const [formErrors, setFormErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false); 
   const inputRefs = { username: useRef(), password: useRef() };
-
   const validateForm = () => {
+
     let errors = {};
     if (!loginUser.username) errors.username = "Username is required!";
     if (!loginUser.password) errors.password = "Password is required!";
@@ -64,7 +64,7 @@ const LoginForm = () => {
         }, {});
         setFormErrors(backendErrors);
       } else {
-        setFormErrors({ global: error.response?.data?.message || "An error occurred" });
+        setFormErrors({ global: error.response?.data?.message || "Failed to login user ! Please try again later" });
       }
     } finally {
       setIsLoading(false);
@@ -72,6 +72,7 @@ const LoginForm = () => {
   };
 
   return (
+    <>
     <form className="flex flex-col gap-y-4 lg:p-5" onSubmit={handleSubmitForm}>
       {formErrors.global && <ErrorMessage message={formErrors.global} />}
       
@@ -124,6 +125,7 @@ const LoginForm = () => {
         )}
       </button>
     </form>
+    </>
   );
 };
 
