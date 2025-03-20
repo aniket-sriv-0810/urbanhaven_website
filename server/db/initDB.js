@@ -26,30 +26,35 @@ import Faq from "../model/faq.model.js";
 
 const faqData = [
     {
-        title: "How do I book a hotel or home on Urbanhaven?",
-        solution: "To book a stay, simply enter your destination and travel dates in the search bar. Browse through the available listings, select your preferred property, and proceed with the booking by following the checkout steps."
+        title: "How do I book a stay on Urbanhaven?",
+        solution: "Booking with Urbanhaven is simple. Enter your destination, travel dates, and preferences in the search bar. Browse through verified accommodations, select your ideal stay, and proceed with secure checkout."
     },
     {
-        title: "What payment methods does Urbanhaven accept?",
-        solution: "We accept major credit/debit cards, PayPal, UPI, net banking, and digital wallets. All transactions are securely processed to ensure a safe booking experience."
+        title: "What payment options are available?",
+        solution: "We support multiple payment methods, including major credit/debit cards, net banking, UPI, PayPal, and digital wallets. Transactions are encrypted for a seamless and secure payment experience."
     },
     {
-        title: "What is the cancellation and refund policy?",
-        solution: "Our cancellation policy depends on the host's terms. Some properties offer free cancellation up to a certain period before check-in, while others may have non-refundable policies. Refunds are processed within 5-7 business days if applicable."
+        title: "Can I modify or cancel my booking?",
+        solution: "Yes, cancellation and modification policies vary by property. Some stays allow free cancellation within a specified timeframe, while others may have stricter terms. Check the cancellation policy before booking for details."
     },
     {
-        title: "How can I contact the host before booking?",
-        solution: "Once you select a listing, you will see an option to message the host. You can ask about amenities, location details, or any specific requirements before confirming your booking."
+        title: "Is my personal and payment information secure?",
+        solution: "Absolutely. Urbanhaven employs advanced security protocols, encrypted payments, and data protection measures to ensure your personal and financial details remain confidential and secure."
     },
     {
-        title: "Is Urbanhaven safe for both guests and hosts?",
-        solution: "Yes, we ensure safety through verified listings, secure payments, and 24/7 customer support. We also encourage hosts and guests to review each other after each stay to maintain trust and transparency."
+        title: "What if I need assistance during my stay?",
+        solution: "Our 24/7 customer support team is always available to assist you. If you face any issues, reach out through our helpline, live chat, or email for immediate support."
     },
     {
-        title: "What should I do if I face issues during my stay?",
-        solution: "If you encounter any problems during your stay, contact your host first for immediate assistance. If the issue remains unresolved, reach out to Urbanhaven's support team for further help."
+        title: "Are the accommodations verified for quality and safety?",
+        solution: "Yes, every listing on Urbanhaven goes through a thorough verification process. We ensure all accommodations meet high standards of safety, comfort, and authenticity."
+    },
+    {
+        title: "How do I leave a review after my stay?",
+        solution: "After your stay, you’ll receive an email invitation to rate and review your experience. Your feedback helps us maintain quality and assists future travelers in making informed decisions."
     }
 ];
+
 
 // Storing sample dataset in database
 const initDB = async() => {
@@ -57,9 +62,10 @@ const initDB = async() => {
     // await User.deleteMany({});
     // await Booking.deleteMany({});
     // await Review.deleteMany({});
+    // await Faq.deleteMany({});
     // await Hotel.insertMany(sampleData);
-    // await Faq.insertMany(faqData);
-    await Blog.deleteMany({});
+    await Faq.insertMany(faqData);
+    // await Blog.deleteMany({});
     console.log("Data inserted successfully !");
 }
 

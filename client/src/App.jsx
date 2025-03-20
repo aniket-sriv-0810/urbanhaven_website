@@ -174,7 +174,7 @@ export default function App() {
 
 
              {/* loaders Routes */}
-          <Route 
+          <Route
           path="/delete/successfully"
           element={
             <PrivateRoute>
@@ -237,6 +237,8 @@ export default function App() {
             </PrivateRoute>
           } />
 
+
+
           {/* Admin Pages Routes */}
           <Route
             path="/admin/dashboard"
@@ -268,6 +270,7 @@ export default function App() {
             <Route path="new-blog" element={<CreateBlog />} />
           </Route>
 
+
           {/* Blogs Pages Routes */}
           <Route path="/all-blogs" element={<AllBlogs />} />
           <Route path="/blog/:id" element={<ShowBlog />} />
@@ -292,13 +295,15 @@ export default function App() {
             }
           />
 
+
+            {/* Terms & Condition Page Route */}
           <Route
-            path="/terms-and-conditions"
+            path="/policies"
             element={<TermsAndConditions />}
           />
-        
 
 
+            {/* 404 Page Not Found Route */}
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       )}
