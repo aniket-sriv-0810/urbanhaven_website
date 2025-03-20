@@ -4,12 +4,14 @@ import { useParams, useNavigate } from "react-router-dom";
 import BlogForm from "../../../components/Blogs/Edit-Blog/BlogForm";
 import AdminNavbar from "../../../components/Navbars/AdminNavbar/AdminNavbar";
 import SkeletonForm from "../../../components/LoadingSkeleton/SkeletonForm";
+import ErrorPopup from "../../../components/PopUps/ErrorPopup/ErrorPopup";
 const EditBlog = () => {
   const [loading, setLoading] = useState(false);
   const [blogData, setBlogData] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
   const [pageLoading, setPageLoading] = useState(true);
+  const [error, setError] = useState("");
   // Fetch Blog Data
   useEffect(() => {
     const fetchBlogData = async () => {
@@ -24,6 +26,7 @@ const EditBlog = () => {
         }
       } catch (error) {
         console.error("Failed to fetch data!", error);
+        setError("Unable to fetch blog details");
       }
     };
 
@@ -33,7 +36,7 @@ const EditBlog = () => {
   // Handle Form Submission
   const handleSubmit = async (formData) => {
     if (!formData.title || !formData.description || !formData.image) {
-      alert("Please fill all fields and upload an image.");
+      setError("Please fill all fields and upload an image.");
       return;
     }
 
@@ -52,8 +55,8 @@ const EditBlog = () => {
        navigate('/edit/successfully')
       }
     } catch (error) {
-      console.error(error);
-      alert("Error updating blog.");
+      console.error("Error updating blog:", error);
+      setError(error.response?.data?.message || "Failed to update blog details.");
     }
 
     setLoading(false);
@@ -62,6 +65,8 @@ const EditBlog = () => {
   return (
     <>
         <AdminNavbar/>
+        {error && <ErrorPopup message={error} onClose={() => setError("")} />}
+
     {
       pageLoading ?
       (

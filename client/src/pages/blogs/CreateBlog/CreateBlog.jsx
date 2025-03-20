@@ -2,17 +2,20 @@ import React, { useState } from "react";
 import axios from "axios";
 import BlogForm from "../../../components/Blogs/Create-Blog/BlogForm";
 import {useNavigate} from 'react-router-dom';
+import ErrorPopup from "../../../components/PopUps/ErrorPopup/ErrorPopup";
 const CreateBlog = () => {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(""); // State for error message
 const navigate = useNavigate();
   // Handle Form Submission
   const handleSubmit = async (formData, setFormData, setPreview) => {
     if (!formData.title || !formData.description || !formData.image) {
-      alert("Please fill all fields and upload an image.");
+      setError("Please fill all fields and upload an image.");
       return;
     }
 
     setLoading(true);
+    setError(""); // Reset error state
     const blogData = new FormData();
     Object.entries(formData).forEach(([key, value]) => blogData.append(key, value));
 
@@ -29,12 +32,15 @@ const navigate = useNavigate();
       
     } catch (error) {
       console.error(error);
-      alert("Error creating blog.");
+      setPreview(null);
+      setError("Error creating blog. Please try again.");
     }
     setLoading(false);
   };
 
   return (
+    <>
+    {error && <ErrorPopup message={error} onClose={() => setError("")} />}
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-200 to-gray-200 px-4 py-10">
     <>
 
@@ -46,6 +52,7 @@ const navigate = useNavigate();
       </div>
     </>
     </div>
+    </>
   );
 };
 

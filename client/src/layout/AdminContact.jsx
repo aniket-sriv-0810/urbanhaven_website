@@ -2,9 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ContactTable from "../components/Admin/AdminContact/ContactTable";
 import SkeletonTable from "../components/LoadingSkeleton/SkeletonTable";
+
 const AdminContact = () => {
   const [contactDetails, setContactDetails] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null); // State to store error message
 
   const fetchData = async () => {
     try {
@@ -16,7 +18,10 @@ const AdminContact = () => {
         setContactDetails(response.data.data.contactData);
       }
     } catch (error) {
-      console.error("Failed to get contact details", error);
+      console.error("Failed to get contact details:", error);
+
+      // Set a user-friendly error message
+      setError(error.response?.data?.message || "Failed to fetch contact details. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -34,13 +39,14 @@ const AdminContact = () => {
 
       {loading ? (
         <div className="text-center text-gray-700">
-  <SkeletonTable />
-</div>
-
+          <SkeletonTable />
+        </div>
+      ) : error ? (
+        <p className="text-center text-red-500 mt-6">{error}</p> 
       ) : contactDetails.length > 0 ? (
         <ContactTable contacts={contactDetails} />
       ) : (
-        <p className="text-center text-red-500 mt-6">No Contact Details Found!</p>
+        <p className="text-center text-red-500 font-semibold mt-10">No Contact Details Found!</p>
       )}
     </div>
   );

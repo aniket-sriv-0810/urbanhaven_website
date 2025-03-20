@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { IoHomeSharp } from "react-icons/io5";
-import { FaHotel , FaPaperPlane } from "react-icons/fa";
+import { FaHotel , FaUser, FaPaperPlane } from "react-icons/fa";
 import { FaBars, FaTimes , FaPowerOff } from "react-icons/fa";
 import {  RiShieldUserLine } from "react-icons/ri";
 import { MdAdminPanelSettings, MdEditCalendar , MdOutlinePostAdd   } from "react-icons/md";
@@ -14,7 +13,7 @@ const AdminMobile = ({ isMenuOpen, toggleMenu }) => {
 
   const menuItems = [
     { to: "/admin", label: "Admin Dashboard", icon: <MdAdminPanelSettings />, role: "admin" },
-    { to: "users", label: "All User Details", icon: <IoHomeSharp /> },
+    { to: "users", label: "All User Details", icon: <FaUser /> },
     { to: "hotels", label: "All Hotel Details", icon: <FaHotel /> },
     { to: "bookings", label: "Booking Details", icon: <MdEditCalendar /> },
     { to: "contacts", label: "Feedback Details", icon: <FaPaperPlane /> },

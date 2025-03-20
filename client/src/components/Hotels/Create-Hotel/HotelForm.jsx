@@ -4,12 +4,14 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import FileUpload from "./FileUpload";
 import SuccessPopup from "../../PopUps/SuccessPopup/SuccessPopup";
+import ErrorPopup from "../../PopUps/ErrorPopup/ErrorPopup"; // Import ErrorPopup
 const HotelForm = () => {
   const navigate = useNavigate();
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(""); // State for error message
   const [hotelData, setHotelData] = useState({
     title: "",
     description: "",
@@ -49,8 +51,10 @@ const HotelForm = () => {
       }
     } catch (error) {
       console.error("Hotel Creation Error:", error);
-      setLoading(false); // Stop loading even if there is an error
+      setPreview(null);
+      setError("Failed to create hotel. Please try again.");
     }
+    setLoading(false); // Stop loading even if there is an error
   };
 
   return (
@@ -58,7 +62,7 @@ const HotelForm = () => {
 
     
     {success && <SuccessPopup message="Hotel Successfully Created!" onClose={() => setSuccess(false)} />}
-      
+    {error && <ErrorPopup message={error} onClose={() => setError("")} />} {/* Show ErrorPopup */}
     <form onSubmit={handleSubmit} className="space-y-6">
       <input
         type="text"

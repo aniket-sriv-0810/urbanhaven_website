@@ -1,9 +1,8 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Home from './pages/Home';
-import CreateHotel from './pages/hotel/CreateHotel/CreateHotel';
 import ShowHotel from './pages/hotel/ShowHotel/ShowHotel';
-import EditHotel from './pages/hotel/EditHotel/EditHotel';
+
 import About from './pages/navigation/About';
 import Contact from './pages/navigation/Contact';
 
@@ -18,16 +17,28 @@ import LoginLoader from './pages/loaders/LoginLoader';
 
 import Review from './components/Review/Review';
 import PrivateRoute from './components/userContext/PrivateRoute';
+
+ // Admin Pages Routes
+import AdminRoute from "./components/userContext/AdminRoute";
 import AdminDashboard from './layout/AdminDashboard';
+import AdminHome from './layout/AdminHome';
 import AdminUser from './layout/AdminUser';
 import AdminHotel from './layout/AdminHotel';
+import AdminBooking from './layout/AdminBooking';
+import AdminContact from './layout/AdminContact';
+import CreateHotel from './pages/hotel/CreateHotel/CreateHotel';
+import EditHotel from './pages/hotel/EditHotel/EditHotel';
 import DeleteHotel from './pages/hotel/DeleteHotel/DeleteHotel';
+import CreateBlog from './pages/blogs/CreateBlog/CreateBlog';
+import EditBlog from './pages/blogs/EditBlog/EditBlog';
+import DeleteBlog from './pages/blogs/DeleteBlog/DeleteBlog';
+
+
 import UserAccount from './pages/user/UserAccount';
 import UserAccountEdit from './pages/user/UserAccountEdit';
 import DeleteUser from './pages/user/DeleteUser';
 import { useUser } from './components/userContext/userContext';
 import Booking from './pages/booking/Booking';
-import AdminBooking from './layout/AdminBooking';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import './App.css';
 import ConfirmationPage from './pages/booking/ConfirmationPage';
@@ -36,19 +47,16 @@ import ContactUsLoader from './pages/loaders/ContactUsLoader';
 import ReviewLoader from './pages/loaders/ReviewLoader';
 import BookingLoader from './pages/loaders/BookingLoader';
 import TermsAndConditions from './pages/navigation/TermsAndConditions';
-import CreateBlog from './pages/blogs/CreateBlog/CreateBlog';
-import AdminHome from './layout/AdminHome';
 import UserWishLists from './pages/user/UserWishLists';
 import UserBookings from './pages/user/UserBookings';
 import UserHome from './pages/user/UserHome';
 import AllBlogs from './pages/blogs/AllBlogs/AllBlogs';
-import EditBlog from './pages/blogs/EditBlog/EditBlog';
 import ShowBlog from './pages/blogs/ShowBlog/ShowBlog';
-import AdminContact from './layout/AdminContact';
-import DeleteBlog from './pages/blogs/DeleteBlog/DeleteBlog';
+
 import DeleteLoader from './pages/loaders/DeleteLoader';
 import SuccessLoader from './pages/loaders/SuccessLoader';
 import AccountDelete from './pages/loaders/AccountDelete';
+import Admin from './components/userContext/Admin';
 
 export default function App() {
   const { setUser } = useUser();
@@ -162,12 +170,15 @@ export default function App() {
           <Route path="/account/deleted/successfully" element={<AccountDelete />} />
           <Route path="/create/successfully" element={<SuccessLoader />} />
           <Route path="/edit/successfully" element={<SuccessLoader />} />
-          
-          <Route
+
+             {/* Admin Pages Routes */}
+             <Route
             path="/admin/dashboard"
             element={
               <PrivateRoute>
+              <AdminRoute>
                 <AdminDashboard />
+              </AdminRoute>
               </PrivateRoute>
             }
           />
@@ -175,7 +186,9 @@ export default function App() {
             path="/admin"
             element={
               <PrivateRoute>
+              <Admin>
                 <AdminHome />
+              </Admin>
               </PrivateRoute>
             }
           >
@@ -188,6 +201,8 @@ export default function App() {
             <Route path="hotel/:id/delete" element={<DeleteHotel />} />
             <Route path="new-blog" element={<CreateBlog />} />
           </Route>
+
+
           <Route path="/terms-and-conditions" element={<TermsAndConditions/>}/>
           <Route path="/contact/confirmed" element={<ContactUsLoader/>}/>
           <Route path="/review/done" element={<ReviewLoader/>}/>

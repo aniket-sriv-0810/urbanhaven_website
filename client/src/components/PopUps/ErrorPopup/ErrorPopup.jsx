@@ -40,7 +40,7 @@ const ErrorPopup = ({ message, onClose }) => {
           className="mt-5 bg-gradient-to-r from-red-500 to-orange-500 text-white font-medium px-5 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
           onClick={() => setIsVisible(false)}
         >
-          ❌ Try Again
+           Try Again
         </button>
       </div>
     </div>

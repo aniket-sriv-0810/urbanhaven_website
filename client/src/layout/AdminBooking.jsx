@@ -2,9 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import BookingTable from "../components/Admin/AdminBooking/BookingTable";
 import SkeletonTable from "../components/LoadingSkeleton/SkeletonTable";
+
 const AdminBooking = () => {
   const [adminBookingData, setAdminBookingData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null); // State to store error message
 
   const fetchData = async () => {
     try {
@@ -17,6 +19,9 @@ const AdminBooking = () => {
       }
     } catch (error) {
       console.error("Failed to get booking information:", error);
+
+      // Set a user-friendly error message
+      setError(error.response?.data?.message || "Something went wrong! Please try again.");
     } finally {
       setLoading(false);
     }
@@ -31,8 +36,13 @@ const AdminBooking = () => {
       <h1 className="text-3xl font-semibold text-center mb-6 text-gray-800">
         Booking Details
       </h1>
+
       {loading ? (
-        <SkeletonTable/>
+        <div className="flex justify-normal items-center mt-10">
+        <SkeletonTable />
+        </div>
+      ) : error ? (
+        <p className="text-center text-red-500 font-semibold mt-10">{error}</p>
       ) : adminBookingData && adminBookingData.length > 0 ? (
         <BookingTable bookings={adminBookingData} />
       ) : (

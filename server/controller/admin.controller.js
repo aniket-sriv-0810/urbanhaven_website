@@ -21,7 +21,13 @@ const adminDashboardData = asyncHandler(async (req, res) => {
         // Count total contact messages
         const totalContacts = await Contact.countDocuments();
 
-        if( !totalHotels || !totalContacts || !totalBookings || !totalUsers){
+        if(
+            totalHotels === undefined ||
+            totalContacts === undefined ||
+            totalBookings === undefined ||
+            totalUsers === undefined
+        ) {
+        
             return res.status(404).json({
                 status:400,
                 message: "Data Not Found",

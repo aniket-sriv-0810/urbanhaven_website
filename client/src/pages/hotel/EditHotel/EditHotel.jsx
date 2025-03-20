@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import EditForm from "../../../components/Hotels/Edit-Hotel/EditForm";
-import SkeletonForm from "../../../components/LoadingSkeleton/SkeletonForm";
+import ErrorPopup from "../../../components/PopUps/ErrorPopup/ErrorPopup";
 const EditHotel = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -17,6 +17,8 @@ const EditHotel = () => {
   });
   const [image, setImage] = useState(null);
   const [orgImage, setOrgImg] = useState(null);
+  const [error, setError] = useState("");
+
 
   useEffect(() => {
     const fetchHotel = async () => {
@@ -28,7 +30,9 @@ const EditHotel = () => {
         setOrgImg(response.data.data.showHotel.image);
         setHotelData(response.data.data.showHotel);
       } catch (error) {
-        console.error("Error fetching hotel data:", error);
+        console.error("Error updating hotel:", error);
+    setError(error.response?.data?.message || "Failed to fetch hotel details");
+    setLoading(false);
       }
     };
     fetchHotel();
@@ -53,13 +57,16 @@ const EditHotel = () => {
       
     } catch (error) {
       console.error("Error updating hotel:", error);
+      setError(error.response?.data?.message || "Failed to update hotel details");
       setLoading(false);
       setSuccess(false);
+
     }
   };
 
   return (
     <>
+{error && <ErrorPopup message={error} onClose={() => setError("")} />}
 
     <div className="sm:p-4 min-h-screen flex items-center justify-center rounded-lg bg-gradient-to-r from-slate-300 to-gray-300">
       <div className="w-full max-w-3xl bg-white shadow-lg shadow-gray-700 rounded-2xl p-8">

@@ -6,6 +6,7 @@ import { blogSchemaValidation } from '../test/blog.validator.js';
 import { adminHotelData, deleteBookingByAdmin, adminUserData , adminBookingData, adminContactData, adminDashboardData, deleteFeedbackByAdmin } from '../controller/admin.controller.js';
 import {newHotelCreation ,  editMyHotel ,  deleteMyHotel} from '../controller/hotel.controller.js';
 import { isLoggedIn } from '../middleware/authentication.js';
+import { isAdmin } from '../middleware/admin.middleware.js';
 import { createBlog , editBlog , deleteBlog } from '../controller/blog.controller.js';
 const router = express.Router();
 
@@ -14,74 +15,77 @@ const router = express.Router();
 // Admin Dashboard Data Route
 router
      .route('/')
-     .get(isLoggedIn , adminDashboardData)
+     .get(isLoggedIn , isAdmin, adminDashboardData)
+
 
 
 // All Registered Users details Route
 router
      .route('/users')
-     .get( isLoggedIn,adminUserData)
+     .get( isLoggedIn, isAdmin , adminUserData)
 
 
 // All Listed Hotels details Route
 router
      .route('/hotels')
-     .get( isLoggedIn,adminHotelData)
+     .get( isLoggedIn, isAdmin , adminHotelData)
 
 
 // All Booking Details Route
 router
      .route('/bookings')
-     .get( isLoggedIn,adminBookingData)
+     .get( isLoggedIn, isAdmin , adminBookingData)
 
 
 // All Contact & Feedbacks details Route
 router
      .route('/contacts')
-     .get( isLoggedIn,adminContactData)
+     .get( isLoggedIn, isAdmin , adminContactData)
 
 
 // Register a new Hotel in the website Route
 router
      .route('/new-hotel')
-     .post( isLoggedIn , upload.single('image') ,validate(hotelSchemaValidation) ,newHotelCreation )
+     .post( isLoggedIn , isAdmin , upload.single('image') ,validate(hotelSchemaValidation) ,newHotelCreation )
 
 // Create a new Blog Route
 router
     .route('/add-blog')
-    .post(isLoggedIn , upload.single('image') ,validate(blogSchemaValidation) , createBlog)
+    .post(isLoggedIn , isAdmin , upload.single('image') ,validate(blogSchemaValidation) , createBlog)
 
 
 // Edit the Hotel details in the website Route
 router
      .route('/hotel-details/:id/edit')
-     .put(isLoggedIn ,upload.single('image') ,editMyHotel)
+     .put(isLoggedIn , isAdmin , upload.single('image') ,editMyHotel)
 
 
 // Edit a particular Blog Route
 router
      .route('/blog/:id/edit')
-     .put(isLoggedIn , upload.single('image') , validate(blogSchemaValidation) , editBlog)
+     .put(isLoggedIn , isAdmin , upload.single('image') , validate(blogSchemaValidation) , editBlog)
 
 
 
 // Delete a Particular Hotel Route
 router
      .route('/hotel/:id/delete')
-     .delete( isLoggedIn ,deleteMyHotel)
+     .delete( isLoggedIn , isAdmin , deleteMyHotel)
 
 // Delete a particular Blog Route
 router
      .route('/blog/:id/delete')
-     .delete(isLoggedIn , deleteBlog)
+     .delete(isLoggedIn , isAdmin , deleteBlog)
 
 // DELETE: Admin deletes a booking
 router
-     .delete("/booking/:bookingId", deleteBookingByAdmin);
+     .route("/booking/:bookingId")
+     .delete(isLoggedIn , isAdmin , deleteBookingByAdmin);
 
 // DELETE: Admin deletes a booking
 router
-     .delete("/contact/:contactId", deleteFeedbackByAdmin);
+     .route("/contact/:contactId")
+     .delete(isLoggedIn , isAdmin , deleteFeedbackByAdmin);
 
 
 export default router;
