@@ -117,11 +117,11 @@ if(loading) return <div className="flex justify-center items-center mt-10 "> <Sk
           <div className="flex flex-col md:flex-row gap-6 mt-4 items-center ">
             <img src={hotelDetails.image} alt={hotelDetails.title} className="h-56 w-full md:w-1/2 object-cover rounded-xl shadow-md" />
             <div className="w-full md:w-1/2 space-y-3 text-lg font-semibold">
-              <p className="flex items-center gap-2"><FaHotel /><p>Hotel</p> {hotelDetails.title}</p>
-              <p className="flex items-center gap-2"><FaMapMarkerAlt /><p>City:</p> {hotelDetails.city}</p>
-              <p className="flex items-center gap-2"><FaRupeeSign /><p>Bill:</p> ₹ {(totalAmount).toLocaleString("INR")}</p>
-              <p className="flex items-center gap-2"><FaBed /><p>Rooms:</p> {room}</p>
-              <p className="flex items-center gap-2"><FaUserFriends /><p>Adults:</p> {adultCount}</p>
+              <p className="flex items-center gap-2"><FaHotel /><span>Hotel</span> {hotelDetails.title}</p>
+              <p className="flex items-center gap-2"><FaMapMarkerAlt /><span>City:</span> {hotelDetails.city}</p>
+              <p className="flex items-center gap-2"><FaRupeeSign /><span>Bill:</span> ₹ {(totalAmount).toLocaleString("INR")}</p>
+              <p className="flex items-center gap-2"><FaBed /><span>Rooms:</span> {room}</p>
+              <p className="flex items-center gap-2"><FaUserFriends /><span>Adults:</span> {adultCount}</p>
             </div>
           </div>
         </div>
