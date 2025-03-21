@@ -23,11 +23,12 @@ const LikeBtn = ({ hotelId, id }) => {
                     `${import.meta.env.VITE_API_URL}/v1/user/${id}/account`,
                     { withCredentials: true }
                 );
-                
+                console.log("User Wishlist:", res.data.data.userInfo.wishlists); // Debugging
+
                 // Check if hotel is in user's wishlist
                 setIsLiked(res.data.data.userInfo.wishlists.includes(hotelId));
             } catch (error) {
-                console.error("Error fetching wishlist:", error);
+                console.error("Error fetching wishlist:", error.response?.data || error);
             } finally {
                 setLoading(false);
             }
