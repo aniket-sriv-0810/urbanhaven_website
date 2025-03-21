@@ -53,7 +53,7 @@ const UserForm = () => {
     try {
       const response = await axios.post(
         `https://urbanhaven-website-backend.onrender.com/v1/user/register`,
-        {newUser},
+        newUser,
         {withCredentials: true},
       );
 
