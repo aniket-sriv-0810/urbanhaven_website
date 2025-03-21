@@ -102,14 +102,6 @@ const Home = () => {
           },
         },
         {
-          element: "#navbar",
-          popover: {
-            title: "🧭 Effortless Navigation",
-            description: "Quickly access key sections like bookings, user management, and hotel listings from one place.",
-            side: "top",
-          },
-        },
-        {
           element: "#faqs",
           popover: {
             title: "❓ Need Help? We've Got You!",
@@ -117,6 +109,15 @@ const Home = () => {
             side: "top",
           },
         },
+        {
+          element: "#navbar",
+          popover: {
+            title: "🧭 Effortless Navigation",
+            description: "Quickly access key sections like bookings, user management, and hotel listings from one place.",
+            side: "top",
+          },
+        },
+
       ],
     });
 
