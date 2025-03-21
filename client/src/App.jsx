@@ -81,12 +81,12 @@ export default function App() {
 
   // Simulate a loading state only for Home and Admin Dashboard pages
   useEffect(() => {
-    const targetPaths = ["/", "/admin", "/contact", "/about"];
+    const targetPaths = ["/", "/admin"];
     if (targetPaths.includes(location.pathname)) {
       setIsLoading(true);
       const timer = setTimeout(() => {
         setIsLoading(false);
-      }, 1000);
+      }, 2000);
 
       return () => clearTimeout(timer); // Cleanup the timer on unmount
     } else {
@@ -105,7 +105,7 @@ export default function App() {
     <>
       {isLoading ? (
         // Display loading animation while isLoading is true
-        <div className="loading-page flex flex-col justify-center gap-6 items-center h-screen bg-gradient-to-t from-blue-200 to-purple-400">
+        <div className="loading-page flex flex-col justify-center gap-6 items-center h-screen">
           <DotLottieReact
             src="https://lottie.host/e32980de-2d5a-4f0c-96ae-853d398fecab/qJq4lBxhtz.lottie"
             loop
@@ -120,8 +120,7 @@ export default function App() {
         
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/about" element={<About />} />
+          
 
            {/* Hotel Pages Routes */}
           <Route
@@ -179,7 +178,6 @@ export default function App() {
             element={<AuthSuccessPopup />}
           />
           <Route path="/user/login/confirmed" element={<LoginLoader />} />
-
           <Route path="/user/:id/account/edit" element={<UserAccountEdit />} />
           <Route path="/user/:id/account/delete" element={<DeleteUser />} />
 
@@ -307,12 +305,24 @@ export default function App() {
           />
 
 
-            {/* Terms & Condition Page Route */}
+            {/* Footer Page Route */}
           <Route
             path="/policies"
             element={<TermsAndConditions />}
           />
-
+          <Route
+            path="/home"
+            element={<Home />}
+          />
+          <Route
+          path="/contact" 
+          element={
+            <PrivateRoute>
+          <Contact />
+            </PrivateRoute>
+          } />
+          <Route path="/about" element={<About />} />
+          <Route path="/blogs" element={<AllBlogs />} />
 
             {/* 404 Page Not Found Route */}
           <Route path="*" element={<PageNotFound />} />

@@ -28,6 +28,7 @@ const Footer = () => {
                 <NavLink
                   to={`/${item.toLowerCase()}`}
                   className="hover:text-blue-400 transition duration-300 relative group"
+                  target="_blank"
                 >
                   {item}
                   <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
@@ -41,7 +42,7 @@ const Footer = () => {
             {[
               { social: "Linkedin" ,icon: FaLinkedin, link: "https://www.linkedin.com/in/aniket-srivastava-0141b22b8/", color: "bg-blue-600" },
               { social: "Gmail" ,icon: CgMail, link: "mailto:aniket08official@gmail.com", color: "bg-red-600" },
-              { social:"Instagram" ,icon: GrInstagram, link: "https://www.instagram.com/aniket_sriv_0810/", color: "bg-purple-600"  },
+              { social:"Instagram" ,icon: GrInstagram, link: "https://www.instagram.com/aniket_sriv_0810/", color: "bg-teal-500"  },
               { social: "Github",icon: FaGithub, link: "https://github.com/aniket-sriv-0810", color: "bg-gray-600"  },
             ].map(({ social ,icon: Icon, link, color }, index) => (
               <Tippy content={social} key={index}>
