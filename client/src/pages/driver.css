@@ -38,6 +38,7 @@
     background: #facc15; /* Vibrant yellow button */
     color: #1e3a8a;
     font-weight: 600;
+    margin: 6px;
     border-radius: 6px;
     padding: 8px 14px;
     transition: all 0.3s ease-in-out;
