@@ -7,21 +7,34 @@ input::-webkit-inner-spin-button , ::-webkit-outer-spin-button{
 display: none;
 }
 
-/* Apply to the whole webpage */
+/* 📜 Global Scrollbar Styling - Professional & Aesthetic */
+
+/* Scrollbar width */
 ::-webkit-scrollbar {
-    width: 10px; /* Width of the scrollbar */
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: #d9d9d9; /* Track background */
-    border-radius: 2px; /* Rounded corners */
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #6dc4ba, #07655d); /* Gradient effect */
-    border-radius: 10px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: #0d9488; /* Darker on hover */
-  }
+  width: 12px; /* Slightly wider for a premium look */
+}
+
+/* Scrollbar Track */
+::-webkit-scrollbar-track {
+  background: #f0f0f0; /* Light, elegant background */
+  border-radius: 10px; /* Smooth rounded corners */
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1); /* Subtle inner shadow for depth */
+}
+
+/* Scrollbar Thumb */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #3b82f6, #9333ea); /* Blue-to-purple gradient for a stylish effect */
+  border-radius: 12px; /* More rounded corners for smoothness */
+  transition: all 0.3s ease-in-out; /* Smooth transitions */
+}
+
+/* Hover effect on Scrollbar Thumb */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #2563eb, #7e22ce); /* Slightly darker on hover */
+  transform: scale(1.1); /* Gentle scaling effect */
+}
+
+/* Scrollbar Corner (where vertical & horizontal bars meet) */
+::-webkit-scrollbar-corner {
+  background: #f0f0f0; /* Blends seamlessly with the track */
+}

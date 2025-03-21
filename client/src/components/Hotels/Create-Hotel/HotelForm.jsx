@@ -46,8 +46,8 @@ const HotelForm = () => {
         setHotelData({ title: "", description: "", price: "", city: "", state: "", country: "" });
         setImage(null);
         setPreview(null);
-        setLoading(false); // Stop loading after successful submission
         navigate("/create/successfully");
+        setLoading(false); // Stop loading after successful submission
       }
     } catch (error) {
       console.error("Hotel Creation Error:", error);

@@ -29,11 +29,12 @@ const DeleteLoader = ({ message = "Successfully Deleted !", redirectPath = "/adm
       >
         {/* Animated Success GIF */}
         <DotLottieReact
-      src="https://lottie.host/181b3bd3-e95a-40f4-b156-1326b9d0a5e4/0P4Fh3UCbl.lottie"
+      src="https://lottie.host/5beffdab-dcf8-4d21-ae06-bef08ce2bb89/mIsL7qVlFe.lottie"
       loop
       autoplay
       className='w-66 h-40 mb-10'
     />
+    
 
         {/* Success Message - Ensuring visibility */}
         <h2 className="text-lg font-semibold text-black -mt-4">{message}</h2>

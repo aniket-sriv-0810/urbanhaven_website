@@ -23,6 +23,7 @@ import "aos/dist/aos.css";
 import HotelDetails from "../components/HotelDetails/HotelDetails";
 import Pagination from "../components/Pagination/Pagination";
 import BlogList from "../components/Blogs/All-Blogs/BlogList";
+import "./driver.css";
 const Home = () => {
   const driverRef = useRef(null);
   const [conversionRate, setConversionRate] = useState(1);
@@ -53,68 +54,72 @@ const Home = () => {
   useEffect(() => {
     driverRef.current = new driver({
       showProgress: true,
-      overlayColor: "rgba(0, 0, 0, 0.7)",
+      overlayColor: "rgba(0, 0, 0, 0.8)", // Darker overlay for a premium look
       popoverClass: "custom-driver-popover",
+      allowClose: false, // Ensures users go through the tour
       animate: true,
+      keyboardControl: true, // Enables keyboard navigation
+      opacity: 0.85, // Slight transparency for a sleek effect
       steps: [
         {
           element: "#header",
           popover: {
-            title: "Welcome to UrbanHaven Hotels! 🚀",
-            description: "Manage users, hotels, bookings & more!",
+            title: "🌟 Welcome to UrbanHaven Hotels!",
+            description: "Your gateway to luxury and comfort. Explore top-rated hotels and book your dream stay effortlessly.",
             side: "bottom",
           },
         },
         {
           element: "#hotel-details",
           popover: {
-            title: "Hotels 🏨",
-            description: "Manage hotel listings",
+            title: "🏨 Exclusive Hotel Listings",
+            description: "Access and manage premium hotel details. Ensure every guest experiences the best hospitality.",
             side: "top",
           },
         },
         {
           element: "#search-btn",
           popover: {
-            title: "Users Section 👥",
-            description: "Manage registered users",
+            title: "🔍 Find Your Perfect Stay",
+            description: "Use our advanced search to explore top-rated hotels in your dream destination with ease.",
             side: "top",
           },
         },
         {
           element: "#filter-btn",
           popover: {
-            title: "Bookings 📋",
-            description: "View confirmed bookings",
+            title: "🎯 Tailor Your Search",
+            description: "Apply smart filters to sort hotels based on location, price, ratings, and amenities for a perfect match.",
             side: "top",
           },
         },
         {
           element: "#pagination-btn",
           popover: {
-            title: "Feedback 💬",
-            description: "View user feedback",
+            title: "📜 Explore More Hotels",
+            description: "Navigate through an extensive collection of premium hotels with seamless pagination.",
             side: "top",
           },
         },
         {
           element: "#navbar",
           popover: {
-            title: "Feedback 💬",
-            description: "View user feedback",
+            title: "🧭 Effortless Navigation",
+            description: "Quickly access key sections like bookings, user management, and hotel listings from one place.",
             side: "top",
           },
         },
         {
           element: "#faqs",
           popover: {
-            title: "Feedback 💬",
-            description: "View user feedback",
+            title: "❓ Need Help? We've Got You!",
+            description: "Browse our FAQs and support section for instant solutions to all your queries.",
             side: "top",
           },
         },
       ],
     });
+
 
     if (localStorage.getItem("startTour") === "true") {
       driverRef.current.drive();
@@ -182,7 +187,9 @@ const Home = () => {
       </button>
 
       <div className="flex flex-col-reverse gap-y-5 sm:flex-row justify-between items-center mx-2 my-20 sm:mx-8" data-aos="fade-up">
-        <SortHotels sortOrder={sortOrder} setSortOrder={setSortOrder} sortHotels={sortHotels} id="filter-btn" />
+      <span id="filter-btn">
+        <SortHotels sortOrder={sortOrder} setSortOrder={setSortOrder} sortHotels={sortHotels}  />
+      </span>
         <CurrencyExchange setCurrencyRates={setConversionRate} selectedCurrency={selectedCurrency} setSelectedCurrency={setSelectedCurrency}  />
       </div>
 

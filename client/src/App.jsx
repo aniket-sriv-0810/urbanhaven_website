@@ -1,27 +1,33 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import "./App.css";
 
-// Hotels Pages
+
+// Hotels Pages Routes
 import Home from "./pages/Home";
 import ShowHotel from "./pages/hotel/ShowHotel/ShowHotel";
+import Review from "./components/Review/Review";
 import Booking from "./pages/booking/Booking";
 import ConfirmationPage from "./pages/booking/ConfirmationPage";
 
 
+//Navigation Pages Routes
 import About from "./pages/navigation/About";
 import Contact from "./pages/navigation/Contact";
+import PageNotFound from "./pages/loaders/PageNotFound";
+import TermsAndConditions from "./pages/navigation/TermsAndConditions";
 
-//Authentication Pages
+
+//Authentication Pages Routes
 import RegisterUser from "./pages/authentication/register/RegisterUser";
 import LoginUser from "./pages/authentication/login/LoginUser";
 import Logout from "./components/Logout/Logout";
 
-//Authentication Loaders Pages
+//Authentication Loaders Pages Routes
 import AuthSuccessPopup from "./pages/loaders/AuthSuccessPopup";
 import LoginLoader from "./pages/loaders/LoginLoader";
 
-import Review from "./components/Review/Review";
-import PrivateRoute from "./components/userContext/PrivateRoute";
 
 // Admin Pages Routes
 import AdminRoute from "./components/userContext/AdminRoute";
@@ -38,30 +44,35 @@ import CreateBlog from "./pages/blogs/CreateBlog/CreateBlog";
 import EditBlog from "./pages/blogs/EditBlog/EditBlog";
 import DeleteBlog from "./pages/blogs/DeleteBlog/DeleteBlog";
 
-//Blog Pages Route
+//Blog Pages Routes
 import AllBlogs from "./pages/blogs/AllBlogs/AllBlogs";
 import ShowBlog from "./pages/blogs/ShowBlog/ShowBlog";
 
+
+// User Account Pages Routes
+import UserHome from "./pages/user/UserHome";
 import UserAccount from "./pages/user/UserAccount";
+import UserWishLists from "./pages/user/UserWishLists";
+import UserBookings from "./pages/user/UserBookings";
 import UserAccountEdit from "./pages/user/UserAccountEdit";
 import DeleteUser from "./pages/user/DeleteUser";
-import { useUser } from "./components/userContext/userContext";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import "./App.css";
 
-import PageNotFound from "./pages/loaders/PageNotFound";
+
+// Loaders Pages Routes
+import SuccessLoader from "./pages/loaders/SuccessLoader";
 import ContactUsLoader from "./pages/loaders/ContactUsLoader";
 import ReviewLoader from "./pages/loaders/ReviewLoader";
 import BookingLoader from "./pages/loaders/BookingLoader";
-import TermsAndConditions from "./pages/navigation/TermsAndConditions";
-import UserWishLists from "./pages/user/UserWishLists";
-import UserBookings from "./pages/user/UserBookings";
-import UserHome from "./pages/user/UserHome";
-
 import DeleteLoader from "./pages/loaders/DeleteLoader";
-import SuccessLoader from "./pages/loaders/SuccessLoader";
 import AccountDelete from "./pages/loaders/AccountDelete";
+
+
+
+// UserContext Pages
 import Admin from "./components/userContext/Admin";
+import PrivateRoute from "./components/userContext/PrivateRoute";
+import { useUser } from "./components/userContext/userContext";
+
 
 export default function App() {
   const { setUser } = useUser();

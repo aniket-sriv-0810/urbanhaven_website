@@ -2,15 +2,20 @@ import React, { useEffect, useState } from "react";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import axios from "axios";
 import { useUser } from "../userContext/userContext";
+import { useNavigate } from "react-router-dom";
 
 const LikeBtn = ({ hotelId, id }) => {
     const { user } = useUser();
     const [isLiked, setIsLiked] = useState(false);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     // Fetch user's wishlist status on mount
     useEffect(() => {
-        if (!id || !user) return;
+        if (!id || !user) {
+            setLoading(false);
+            return;
+        }
 
         const checkIfLiked = async () => {
             try {
@@ -33,9 +38,9 @@ const LikeBtn = ({ hotelId, id }) => {
 
     // Toggle wishlist
     const toggleWishlist = async () => {
-        if (!id) {
-            alert("Please login to add to wishlist!");
-            return;
+        if (!id || !user) {
+            navigate('/user/login'); 
+            return; // Prevent further execution
         }
 
         try {
@@ -54,7 +59,7 @@ const LikeBtn = ({ hotelId, id }) => {
         }
     };
 
-    if (loading) return <FaRegHeart className="w-7 h-10" />
+    if (loading) return <FaRegHeart className="w-7 h-10" />;
 
     return (
         <p

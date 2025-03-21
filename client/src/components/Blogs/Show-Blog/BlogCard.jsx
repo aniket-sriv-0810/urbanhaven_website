@@ -12,11 +12,13 @@ const BlogCard = ({ blog, navigate }) => {
       <div className="p-6">
         <h1 className="text-xl xs:text-3xl font-bold text-gray-800 mb-4 flex justify-between items-center">
           {blog.title}
-          { user.role === "admin" ?
+          { user ? user.role === "admin" ?
           <MdDeleteForever
             className="w-6 h-6 text-gray-500 hover:text-red-600 cursor-pointer transition-transform transform hover:scale-110"
             onClick={() => navigate(`/blog/${blog._id}/delete`)}
           /> :
+          null
+          :
           null
           }
         </h1>

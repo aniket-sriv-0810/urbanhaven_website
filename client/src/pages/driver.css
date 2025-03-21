@@ -1,0 +1,66 @@
+/* Custom styling for the Driver.js popover */
+.custom-driver-popover {
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6); /* Elegant blue gradient */
+    color: #ffffff; /* White text for contrast */
+    border-radius: 12px; /* Smooth rounded corners */
+    padding: 18px; /* Proper spacing */
+    font-family: "Poppins", sans-serif; /* Clean and professional font */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+  }
+  
+  /* Popover title styling */
+  .custom-driver-popover .driver-popover-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+  
+  /* Popover description styling */
+  .custom-driver-popover .driver-popover-description {
+    font-size: 15px;
+    line-height: 1.5;
+    opacity: 0.9;
+  }
+  
+  /* Styling for progress bar */
+  .driver-progress-bar {
+    height: 6px;
+    background: #facc15; /* Yellow for a dynamic feel */
+    border-radius: 5px;
+    transition: width 0.4s ease-in-out;
+  }
+  
+  /* Styling for the navigation buttons */
+  .driver-next-btn,
+  .driver-prev-btn {
+    background: #facc15; /* Vibrant yellow button */
+    color: #1e3a8a;
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 8px 14px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .driver-next-btn:hover,
+  .driver-prev-btn:hover {
+    background: #fbbf24;
+    transform: scale(1.05);
+  }
+  
+  /* Close button styling */
+  .driver-close-btn {
+    background: #ef4444; /* Red for closing */
+    color: white;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .driver-close-btn:hover {
+    background: #dc2626;
+    transform: scale(1.05);
+  }
+  

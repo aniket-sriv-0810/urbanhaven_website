@@ -3,7 +3,7 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { useNavigate } from "react-router-dom";
 
 
-const SuccessLoader = ({ message = "Saved Successfully !", redirectPath = "/admin" }) =>  {
+const SuccessLoader = ({ message = "Saved Successfully  !", redirectPath = "/admin" }) =>  {
 
   const [isVisible, setIsVisible] = useState(true);
   const navigate = useNavigate();
@@ -30,11 +30,13 @@ const SuccessLoader = ({ message = "Saved Successfully !", redirectPath = "/admi
       >
         {/* Animated Success GIF */}
         <DotLottieReact
-      src="https://lottie.host/2033f7b1-8610-4569-932e-cf28a9bf95d0/ZCGt9adQoH.lottie"
+      src="https://lottie.host/2033f7b1-8610-4569-932e-cf28a9bf95d0/ZCGt9adQoH.lotte"
       loop
       autoplay
       className='w-66 h-40 mb-10'
     />
+
+
 
         {/* Success Message - Ensuring visibility */}
         <h2 className="text-lg font-semibold text-black -mt-4">{message}</h2>
