@@ -14,6 +14,8 @@ const connectDB = () =>{
         console.log("Server Connection Established !");
         app.listen(PORT , () => {
             console.log(`Backend Running at : ${process.env.BACKEND_URL}`);
+            console.log("Allowed Frontend URL:", process.env.FRONTEND_URL);
+
         })
     })
     .catch((err) => {

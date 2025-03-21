@@ -27,9 +27,11 @@ const UserAccountEdit = () => {
     const fetchUser = async () => {
       setLoading(true); // Start loading before fetching data
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/v1/user/${id}/account`, {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/v1/user/${id}/account`,
+           {
           withCredentials: true,
-        });
+        }
+      );
 
         const fetchedUser = response.data.data.userInfo;
         

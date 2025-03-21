@@ -18,12 +18,12 @@ const expressSessionOption = {
     secret: process.env.EXPRESS_SESSION_SECRET,
     resave: false,
     saveUninitialized: false, // Prevents creating empty sessions
-    cookie: {
-        httpOnly: true,
-        maxAge: 24 * 60 * 60 * 1000, // 1 day expiry time
-        secure: true, // Required for HTTPS
-        sameSite: 'none', // Fix session sharing issue
-    },
+  cookie: {
+    httpOnly: true,
+    maxAge: 24 * 60 * 60 * 1000, // 1 day expiry time
+    secure: process.env.NODE_ENV === "production", // Enable only in production
+    sameSite: 'none',
+},
 };
 
 
