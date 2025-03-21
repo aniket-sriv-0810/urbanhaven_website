@@ -42,7 +42,7 @@ const LoginForm = () => {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        `https://urbanhaven-website-backend.onrender.com/v1/user/login`,
+        `${import.meta.env.VITE_API_URL}/v1/user/login`,
         { withCredentials: true },
         loginUser,
       );
