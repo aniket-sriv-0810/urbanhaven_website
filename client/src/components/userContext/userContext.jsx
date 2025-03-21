@@ -13,9 +13,11 @@ export const UserProvider = ({ children }) => {
   const fetchAuthStatus = async () => {
     try {
       // Fetch authentication status from the server
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/v1/user/auth`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/v1/user/auth`, 
+        {
         withCredentials: true,
-      });
+      }
+    );
 
       if (response.data.isAuthenticated) {
         setUser(response.data.user);

@@ -22,7 +22,7 @@ const expressSessionOption = {
     httpOnly: true,
     maxAge: 24 * 60 * 60 * 1000, // 1 day expiry time
     secure: process.env.NODE_ENV === "production", // Enable only in production
-    sameSite: 'none',
+    sameSite: 'lax',
 },
 };
 
