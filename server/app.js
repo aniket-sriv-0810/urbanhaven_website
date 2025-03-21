@@ -15,16 +15,17 @@ const corsSessionOption = {
 };
 
 const expressSessionOption = {
-    secret:process.env.EXPRESS_SESSION_SECRET,
-    resave:false,
-    saveUninitialized:true,
-    cookie:{
+    secret: process.env.EXPRESS_SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false, // Prevents creating empty sessions
+    cookie: {
         httpOnly: true,
-        maxAge :24*60*60*1000 ,// 1 day expiry time,
-        secure : false,
-        samSite:'none',
-    }
+        maxAge: 24 * 60 * 60 * 1000, // 1 day expiry time
+        secure: true, // Required for HTTPS
+        sameSite: 'none', // Fix session sharing issue
+    },
 };
+
 
 app.use(cors(corsSessionOption));
 app.use(session(expressSessionOption));
