@@ -53,10 +53,8 @@ const UserForm = () => {
     try {
       const response = await axios.post(
         `https://urbanhaven-website-backend.onrender.com/v1/user/register`,
+        {withCredentials: true},
         newUser,
-        {
-          withCredentials: true,
-        }
       );
 
       if (response.status === 200) {

@@ -43,8 +43,8 @@ const LoginForm = () => {
     try {
       const response = await axios.post(
         `https://urbanhaven-website-backend.onrender.com/v1/user/login`,
+        { withCredentials: true },
         loginUser,
-        { withCredentials: true }
       );
 
       if (response.status === 200) {
