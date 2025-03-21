@@ -54,7 +54,7 @@ const UserForm = () => {
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/v1/user/register`,
         newUser,
-        {withCredentials: true},
+        {withCredentials:true}
       );
 
       if (response.status === 200) {
