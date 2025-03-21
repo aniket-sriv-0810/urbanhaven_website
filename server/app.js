@@ -22,22 +22,23 @@ const expressSessionOption = {
     store: MongoStore.create({ 
         mongoUrl: process.env.MONGODB_URI,  // Use your MongoDB connection URL
         collectionName: 'sessions', // Optional: Specify collection name
+        autoRemove: 'disabled',
     }),
     cookie: {
         httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000, // 1 day expiry time
-        secure: process.env.NODE_ENV === "production", // Enable only in production
+        secure: false, // Enable only in production
         sameSite: 'lax',
     },
 };
 
 
 app.use(cors(corsSessionOption));
-app.use(session(expressSessionOption));
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
 app.use(express.static("public"));
+app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
+app.use(session(expressSessionOption));
 app.use(passport.initialize());
 app.use(passport.session());
 
