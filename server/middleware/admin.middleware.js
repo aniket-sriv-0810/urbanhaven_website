@@ -12,7 +12,7 @@ const isAdmin = async (req, res, next) => {
     }
 
     if (user.role !== "admin") {
-      return res.status(403).json({ message: "Access denied ! Can only be accessed by Admin !." });
+      return res.status(403).json({ message: "Access denied ! Can only be accessed by Admins only." });
     }
 
     next();
