@@ -8,13 +8,16 @@ import passport from './middleware/passport.middleware.js';
 const app = express();
 const isProduction = process.env.NODE_ENV === 'production';
 
-// middleware setup
+// 🔥 Set trust proxy before session middleware
+app.set("trust proxy", 1);  // Required for Render & secure cookies
+
+// Middleware setup
 const corsSessionOption = {
-    origin:process.env.FRONTEND_URL,
+    origin: process.env.FRONTEND_URL,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials:true,
+    credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'],
-    optionsSuccessStatus:200,
+    optionsSuccessStatus: 200,
 };
 
 const expressSessionOption = {
@@ -34,15 +37,16 @@ const expressSessionOption = {
     },
 };
 
-
 app.use(cors(corsSessionOption));
 app.use(express.json());
 app.use(express.static("public"));
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(session(expressSessionOption));
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Debugging Middleware
 app.use((req, res, next) => {
     console.log("Cookies Received:", req.cookies);
     console.log("Session ID:", req.sessionID);
@@ -50,28 +54,20 @@ app.use((req, res, next) => {
     next();
 });
 
-
-
-
 // Routes
 import hotelRouter from './router/hotel.router.js';
 import userRouter from './router/user.router.js';
 import adminRouter from './router/admin.router.js';
 import navigateRouter from './router/navigation.router.js';
-// For hotel Routes
 
-//Router for - Hotels ,Reviews and Booking
-app.use('/' , hotelRouter);
-app.use('/v1/user' , userRouter);
+// Router for - Hotels, Reviews, and Booking
+app.use('/', hotelRouter);
+app.use('/v1/user', userRouter);
 
-
-//Router for - Admin details routes and adding new listings & blogs
+// Router for - Admin details, adding new listings & blogs
 app.use('/v1/admin', adminRouter);
 
-//Router for - Blogs , Faqs and Contact
-app.use('/v1/navigate' , navigateRouter);
+// Router for - Blogs, FAQs, and Contact
+app.use('/v1/navigate', navigateRouter);
 
-
-
-
-export {app};
+export { app };
