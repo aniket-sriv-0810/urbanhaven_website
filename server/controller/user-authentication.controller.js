@@ -58,7 +58,7 @@ const createNewUser = asyncHandler(async (req, res) => {
 
     console.log("User Registered Successfully");
     //Auto Login after registration
-    req.login(registerNewUser, (err) => {
+    req.login(registerNewUser,  { session: true } , (err) => {
       if (err) {
         return res.status(500).json(
           new ApiError(500, err, "Auto-login after registration failed!")

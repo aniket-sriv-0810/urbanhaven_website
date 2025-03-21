@@ -32,6 +32,7 @@ export const UserProvider = ({ children }) => {
 
 
   useEffect(() => {
+    console.log("Current user state:", user); // Debugging Log
       // Fetch only if user is not already in local state
       if (!user) {
         fetchAuthStatus();
@@ -49,9 +50,10 @@ export const UserProvider = ({ children }) => {
       console.log("User api changed =>" , user.phone);
       console.log("User api changed =>" , user.role);
       console.log("User api changed =>" , user.createdAt);
-      
+      console.log("User logged in:", user);
       localStorage.setItem("user", JSON.stringify(user));
     } else {
+      console.log("User logged out");
       localStorage.removeItem("user");
     }
   }, [user]);

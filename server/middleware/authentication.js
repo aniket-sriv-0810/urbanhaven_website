@@ -1,7 +1,8 @@
 
 
 const isLoggedIn = (req, res, next) => {
-  console.log("Session data:", req.session);
+  console.log("Session:", req.session);
+  console.log("Cookies:", req.cookies);
   console.log("Is Authenticated:", req.isAuthenticated());
   
   if (req.isAuthenticated()) {

@@ -6,6 +6,7 @@ import MongoStore from 'connect-mongo';
 import passport from './middleware/passport.middleware.js';
 
 const app = express();
+const isProduction = process.env.NODE_ENV === 'production';
 
 // middleware setup
 const corsSessionOption = {
@@ -28,8 +29,8 @@ const expressSessionOption = {
     cookie: {
         httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000, // 1 day expiry time
-        secure: true, // Enable only in production
-        sameSite: 'none',
+        secure: isProduction, // Secure only in production
+        sameSite: isProduction ? 'none' : 'lax',
     },
 };
 
