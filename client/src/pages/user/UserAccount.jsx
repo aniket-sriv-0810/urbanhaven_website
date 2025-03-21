@@ -8,13 +8,13 @@ import UserProfile from "../../components/User/UserAccount/UserProfile";
 import UserDetailsForm from "../../components/User/UserAccount/UserDetailsForm";
 import UserActions from "../../components/User/UserAccount/UserActions";
 import SkeletonForm from "../../components/LoadingSkeleton/SkeletonForm";
-
+import ErrorPopup from "../../components/PopUps/ErrorPopup/ErrorPopup";
 const UserAccount = () => {
   const [showUser, setShowUser] = useState(null);
   const { id } = useParams();
   const [loading, setLoading] = useState(true); // Initially set loading to true
   const navigate = useNavigate();
-
+  const [error , setError] = useState("");
   const userDetails = async () => {
     setLoading(true); // Set loading to true before fetching data
     try {
@@ -24,7 +24,7 @@ const UserAccount = () => {
       );
       setShowUser(response.data.data.userInfo);
     } catch (error) {
-      console.error("Failed to get user", error);
+      setError("Error in fetching user details");
     } finally {
       setLoading(false); // Ensure loading is set to false after request is complete
     }
@@ -47,6 +47,9 @@ const UserAccount = () => {
   return (
     <>
       <UserNavbar />
+   <div className="text-center ">
+    {error && <ErrorPopup message={error} onClose={() => setError("")} />} 
+   </div>  
       {loading ? (
         <div className="flex justify-center items-center mt-10">
         <SkeletonForm />

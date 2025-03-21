@@ -7,6 +7,7 @@ import UserNavbar from "../../components/Navbars/UserNavbar/UserNavbar";
 import HotelDetails from "../../components/HotelDetails/HotelDetails";
 import NotAvailable from "../loaders/NotAvailable";
 import SkeletonList from "../../components/LoadingSkeleton/SkeletonList";
+import ErrorPopup from "../../components/PopUps/ErrorPopup/ErrorPopup";
 const UserWishlists = () => {
     const [wishlists, setWishlists] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -51,14 +52,16 @@ const UserWishlists = () => {
             once: false, // Animation repeats on scroll
           });
         }, []);
-    if (error) return <p className="text-center text-lg text-red-500">{error}</p>;
+    if (error) return <div className="text-center ">
+    {error && <ErrorPopup message={error} onClose={() => setError("")} />} 
+   </div>
 
     return (
         <div className=" bg-gray-100">
             <UserNavbar />
 {
     loading ?
-     <p className="text-center text-lg font-semibold text-gray-700"> <SkeletonList/> </p> 
+     <div className="text-center text-lg font-semibold text-gray-700"> <SkeletonList/> </div> 
      :
             <div className=" overflow-x-hidden">
                 <h2 className="w-max text-3xl font-bold text-gray-900 m-auto mt-10 mb-6">My Wishlists</h2>

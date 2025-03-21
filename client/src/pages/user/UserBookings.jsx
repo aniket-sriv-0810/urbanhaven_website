@@ -5,10 +5,10 @@ import "aos/dist/aos.css"; // Import AOS styles
 import { useParams } from "react-router-dom";
 import UserNavbar from "../../components/Navbars/UserNavbar/UserNavbar";
 import UserBookingCard from "../../components/User/UserBooking/UserBookingCard";
-import LoadingMessage from "../../components/User/UserBooking/LoadingMessage";
 import ErrorMessage from "../../components/User/UserBooking/ErrorMessage";
 import NotAvailable from "../loaders/NotAvailable";
 import SkeletonList from "../../components/LoadingSkeleton/SkeletonList";
+import ErrorPopup from "../../components/PopUps/ErrorPopup/ErrorPopup";
 const UserBookings = () => {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -67,7 +67,9 @@ const UserBookings = () => {
       once: false, // Animation repeats on scroll
     });
   }, []);
-  if (error) return <ErrorMessage message={error} />;
+  if (error) return <div className="text-center ">
+  {error && <ErrorPopup message={error} onClose={() => setError("")} />} 
+ </div>
 
   return (
     <>
