@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
+import MongoStore from 'connect-mongo';
 import passport from './middleware/passport.middleware.js';
 
 const app = express();
@@ -17,13 +18,17 @@ const corsSessionOption = {
 const expressSessionOption = {
     secret: process.env.EXPRESS_SESSION_SECRET,
     resave: false,
-    saveUninitialized: false, // Prevents creating empty sessions
-  cookie: {
-    httpOnly: true,
-    maxAge: 24 * 60 * 60 * 1000, // 1 day expiry time
-    secure: process.env.NODE_ENV === "production", // Enable only in production
-    sameSite: 'lax',
-},
+    saveUninitialized: false,
+    store: MongoStore.create({ 
+        mongoUrl: process.env.MONGODB_URI,  // Use your MongoDB connection URL
+        collectionName: 'sessions', // Optional: Specify collection name
+    }),
+    cookie: {
+        httpOnly: true,
+        maxAge: 24 * 60 * 60 * 1000, // 1 day expiry time
+        secure: process.env.NODE_ENV === "production", // Enable only in production
+        sameSite: 'lax',
+    },
 };
 
 
