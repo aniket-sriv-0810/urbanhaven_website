@@ -12,6 +12,7 @@ const corsSessionOption = {
     origin:process.env.FRONTEND_URL,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials:true,
+    allowedHeaders: ['Content-Type', 'Authorization'],
     optionsSuccessStatus:200,
 };
 
@@ -27,8 +28,8 @@ const expressSessionOption = {
     cookie: {
         httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000, // 1 day expiry time
-        secure: false, // Enable only in production
-        sameSite: 'lax',
+        secure: true, // Enable only in production
+        sameSite: 'none',
     },
 };
 
@@ -41,6 +42,11 @@ app.use(cookieParser());
 app.use(session(expressSessionOption));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use((req, res, next) => {
+    console.log("Session:", req.session);
+    console.log("User:", req.user);
+    next();
+});
 
 
 
