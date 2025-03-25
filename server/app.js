@@ -6,8 +6,13 @@ import MongoStore from 'connect-mongo';
 import passport from './middleware/passport.middleware.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
+
+
 const app = express();
 const isProduction = process.env.NODE_ENV === 'production';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // 🔥 Set trust proxy before session middleware
 app.set("trust proxy", 1);  // Required for Render & secure cookies
@@ -47,13 +52,9 @@ app.use(session(expressSessionOption));
 app.use(passport.initialize());
 app.use(passport.session());
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-// Serve React frontend for all unhandled routes
+// ✅ Serve React UI from "public" folder
 const clientBuildPath = path.join(__dirname, 'public');
-
 app.use(express.static(clientBuildPath));
-
 
 // Debugging Middleware
 app.use((req, res, next) => {
@@ -81,8 +82,7 @@ app.use('/v1/navigate', navigateRouter);
 
 
 
-
-// Serve React frontend for any unhandled route
+// ✅ React Router Fix - Serves index.html for unhandled routes
 app.get('*', (req, res) => {
     res.sendFile(path.join(clientBuildPath, 'index.html'));
 });
