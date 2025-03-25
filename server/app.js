@@ -71,7 +71,7 @@ import adminRouter from './router/admin.router.js';
 import navigateRouter from './router/navigation.router.js';
 
 // Router for - Hotels, Reviews, and Booking
-app.use('/', hotelRouter);
+app.use('/api/hotels', hotelRouter);
 app.use('/v1/user', userRouter);
 
 // Router for - Admin details, adding new listings & blogs
@@ -83,7 +83,10 @@ app.use('/v1/navigate', navigateRouter);
 
 
 // ✅ React Router Fix - Serves index.html for unhandled routes
-app.get('*', (req, res) => {
-    res.sendFile(path.join(clientBuildPath, 'index.html'));
+app.use((req, res, next) => {
+    if (req.path.startsWith("/api/")) {
+        return next(); // Let API routes handle requests
+    }
+    res.sendFile(path.join(clientBuildPath, "index.html"));
 });
 export { app };
