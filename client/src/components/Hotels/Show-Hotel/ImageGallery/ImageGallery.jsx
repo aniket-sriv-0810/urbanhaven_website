@@ -29,7 +29,13 @@ const ImageGallery = () => {
   ];
 
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+  const [loadingStates, setLoadingStates] = useState(
+    images.reduce((acc, img) => ({ ...acc, [img.id]: true }), {})
+  );
 
+  const handleImageLoad = (id) => {
+    setLoadingStates((prev) => ({ ...prev, [id]: false }));
+  };
   const handlePrevious = () => {
     setSelectedImageIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
@@ -46,63 +52,83 @@ const ImageGallery = () => {
 
   return (
     <div className="bg-gray-50 py-12 px-4 md:px-8 lg:px-16">
-      {/* Gallery Title */}
-      <h1 className="text-2xl sm:text-4xl font-bold text-center text-gray-900 mb-10">
+    {/* Gallery Title */}
+    <h1 className="text-2xl sm:text-4xl font-bold text-center text-gray-900 mb-10">
       A Glimpse Inside UrbanHaven
-      </h1>
-
-      {/* Thumbnails with Horizontal Scrolling for Mobile */}
-      <div className="flex gap-8 overflow-x-auto p-1 no-scrollbar sm:flex-wrap justify-center">
-        {images.map((image, index) => (
+    </h1>
+  
+    {/* Thumbnails with Horizontal Scrolling for Mobile */}
+    <div className="flex gap-8 overflow-x-auto p-1 no-scrollbar sm:flex-wrap justify-center">
+      {images.map((image, index) => (
+        <img
+          key={image.id}
+          src={image.src}
+          alt={image.alt}
+          className="w-48 h-32 sm:w-64 sm:h-40 lg:w-80 lg:h-56 object-cover rounded-lg shadow-md cursor-pointer hover:scale-105 hover:shadow-lg transition-transform duration-300"
+          onClick={() => setSelectedImageIndex(index)}
+        />
+      ))}
+    </div>
+  
+    {/* Image Grid */}
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-4">
+      {images.map((image) => (
+        <div key={image.id} className="relative w-full h-64">
+          {loadingStates[image.id] && (
+            <div className="absolute inset-0 bg-gray-300 animate-pulse"></div>
+          )}
           <img
-            key={image.id}
             src={image.src}
             alt={image.alt}
-            className="w-48 h-32 sm:w-64 sm:h-40 lg:w-80 lg:h-56 object-cover rounded-lg shadow-md cursor-pointer hover:scale-105 hover:shadow-lg transition-transform duration-300"
-            onClick={() => setSelectedImageIndex(index)}
+            className={`w-full h-full object-cover rounded-lg transition-opacity duration-500 ${
+              loadingStates[image.id] ? "opacity-0" : "opacity-100"
+            }`}
+            onLoad={() => handleImageLoad(image.id)}
           />
-        ))}
-      </div>
-
-      {/* Lightbox */}
-      {selectedImageIndex !== null && (
-        <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center">
-          {/* Lightbox Container */}
-          <div className="relative max-w-4xl w-full p-4">
-            {/* Close Button */}
-            <button
-              className="absolute top-4 right-4 p-1 md:top-7 md:right-7 border-white border-2 md:p-2 rounded-full text-white text-2xl hover:text-red-500 hover:border-red-500 transition duration-300"
-              onClick={closeLightbox}
-            >
-              <FaTimes />
-            </button>
-
-            {/* Previous Button */}
-            <button
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-gray-800 bg-opacity-60 rounded-full p-3 hover:bg-gray-700 transition duration-300"
-              onClick={handlePrevious}
-            >
-              <FaArrowLeft />
-            </button>
-
-            {/* Selected Image */}
-            <img
-              src={images[selectedImageIndex]?.src}
-              alt={images[selectedImageIndex]?.alt}
-              className="w-full max-h-[80vh] object-contain rounded-lg shadow-lg transition-transform duration-500"
-            />
-
-            {/* Next Button */}
-            <button
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-gray-800 bg-opacity-60 rounded-full p-3 hover:bg-gray-700 transition duration-300"
-              onClick={handleNext}
-            >
-              <FaArrowRight />
-            </button>
-          </div>
         </div>
-      )}
+      ))}
     </div>
+  
+    {/* Lightbox */}
+    {selectedImageIndex !== null && (
+      <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center">
+        {/* Lightbox Container */}
+        <div className="relative max-w-4xl w-full p-4">
+          {/* Close Button */}
+          <button
+            className="absolute top-4 right-4 p-1 md:top-7 md:right-7 border-white border-2 md:p-2 rounded-full text-white text-2xl hover:text-red-500 hover:border-red-500 transition duration-300"
+            onClick={closeLightbox}
+          >
+            <FaTimes />
+          </button>
+  
+          {/* Previous Button */}
+          <button
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-gray-800 bg-opacity-60 rounded-full p-3 hover:bg-gray-700 transition duration-300"
+            onClick={handlePrevious}
+          >
+            <FaArrowLeft />
+          </button>
+  
+          {/* Selected Image */}
+          <img
+            src={images[selectedImageIndex]?.src}
+            alt={images[selectedImageIndex]?.alt}
+            className="w-full max-h-[80vh] object-contain rounded-lg shadow-lg transition-transform duration-500"
+          />
+  
+          {/* Next Button */}
+          <button
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-gray-800 bg-opacity-60 rounded-full p-3 hover:bg-gray-700 transition duration-300"
+            onClick={handleNext}
+          >
+            <FaArrowRight />
+          </button>
+        </div>
+      </div>
+    )}
+  </div>
+  
   );
 };
 

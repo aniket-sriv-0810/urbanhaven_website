@@ -24,7 +24,7 @@ const HotelDetails = ({ hotel, conversionRate = 1 , selectedCurrency = "INR" }) 
   const taxDisplay = `${currencySymbols[selectedCurrency]} ${convertedTax}`;
 
   return (
-    <div className="bg-white border border-gray-200 shadow-lg rounded-2xl w-full sm:w-96 md:w-80 hover:shadow-lg transition-transform transform hover:-translate-y-3 hover:scale-105 hover:shadow-gray-600">
+    <div className="bg-white border border-gray-200 shadow-lg rounded-2xl w-full sm:w-96 md:w-80 hover:shadow-lg transition-transform transform ">
     <div className="relative">
       <div className="absolute top-3 left-3 z-20 hover:cursor-pointer">
         <ShareBtn hotelName={hotel.title} hotelLink={`${import.meta.env.VITE_API_URL}/hotel/${hotel.id}`} />
