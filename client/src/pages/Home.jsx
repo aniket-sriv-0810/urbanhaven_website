@@ -40,6 +40,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${import.meta.env.VITE_API_URL}`, { withCredentials: true });
+        console.log("Fetched Data:", response.data); // Debugging step
         setAllHotels(response.data.data.allHotel);
         setLoading(false);
       } catch (error) {
@@ -167,9 +168,11 @@ const Home = () => {
     } else if (order === "highToLow") {
       sortedHotels.sort((a, b) => b.price - a.price);
     }
-
-    setAllHotels(sortedHotels);
+    setAllHotels(sortedHotels); // Directly update the state
   };
+
+  console.log("Current Hotels:", currentHotels);
+
 
   return (
     <>
@@ -201,7 +204,9 @@ const Home = () => {
       <HotelHeading />
 
       <div className="hotel-cards mt-20 mb-40 flex justify-evenly flex-wrap gap-12 px-4" data-aos="fade-up" id="hotel-details">
-        {loading ? <p className="text-lg text-gray-600">Hotels Loading...</p> : currentHotels.map((hotel) => <HotelDetails key={hotel._id} hotel={hotel} conversionRate={conversionRate} selectedCurrency={selectedCurrency} />)}
+        {loading ? <p className="text-lg text-gray-600">Hotels Loading...</p> : currentHotels.map((hotel) => 
+        
+        <HotelDetails key={hotel._id} hotel={hotel} conversionRate={conversionRate} selectedCurrency={selectedCurrency} />)}
       </div>
 
       <div className="pagination" data-aos="fade-up" id="pagination-btn">
