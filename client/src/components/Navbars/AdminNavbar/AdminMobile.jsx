@@ -23,7 +23,7 @@ const AdminMobile = ({ isMenuOpen, toggleMenu }) => {
 
   return (
     <>
-        <button className="absolute  right-3 lg:hidden focus:outline-none z-50 sm:absolute sm:right-5 " data-aos="fade-left" onClick={toggleMenu}>
+        <button className="absolute  right-3 lg:hidden focus:outline-none z-50 sm:absolute sm:right-5 " data-aos="fade-up" onClick={toggleMenu}>
           {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
         </button>
       {/* Mobile Menu */}

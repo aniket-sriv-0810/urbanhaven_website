@@ -15,7 +15,7 @@ src="https://lottie.host/daef6ef4-3dd8-4c0e-8506-37b5d17fff5d/iaLY4K914e.lottie"
 autoplay
 /> 
 </div>
-<div className='flex flex-col w-80 overflow-hidden md:mt-5 md:w-[28rem]' data-aos="fade-right">
+<div className='flex flex-col w-80 overflow-hidden md:mt-5 md:w-[28rem]' data-aos="fade-down">
 <h1 className="text-2xl text-center sm:text-3xl md:text-4xl font-semibold text-gray-700  animate-pulse py-2 ">
     {content}
 </h1>

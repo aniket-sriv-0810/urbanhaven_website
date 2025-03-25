@@ -71,7 +71,7 @@ const ImageGallery = () => {
     </div>
   
     {/* Image Grid */}
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-4">
+    <div className="hidden sm:grid grid-cols-2 md:grid-cols-3 gap-4 p-4">
       {images.map((image) => (
         <div key={image.id} className="relative w-full h-64">
           {loadingStates[image.id] && (

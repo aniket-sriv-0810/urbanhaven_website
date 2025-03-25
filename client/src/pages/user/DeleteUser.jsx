@@ -16,8 +16,6 @@ const DeleteUser = () => {
           `${import.meta.env.VITE_API_URL}/v1/user/${id}/account/delete`,
           { withCredentials: true }
         );
-        console.log(response.data.message);
-
         // Clear user session from frontend
         setUser(null);
         localStorage.removeItem("user");

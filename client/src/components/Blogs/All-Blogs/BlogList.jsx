@@ -24,7 +24,6 @@ const BlogList = () => {
           setBlogData(response.data.data.allBlogs);
         }
       } catch (err) {
-        console.error("Error fetching blogs:", err);
         setError("Failed to load blogs. Please try again later.");
       } finally {
         setLoading(false);
@@ -34,7 +33,7 @@ const BlogList = () => {
     fetchData();
   }, []);
 
-  if (loading) return <h1 className="flex flex-row justify-center items-center mt-10"><SkeletonList /></h1>;
+  if (loading) return <h1 className="flex flex-col lg:flex-row justify-center items-center mt-10"><SkeletonList /></h1>;
   if (error) return <p className=" text-red-500 text-center mt-10">{error}</p>;
 
   // Pagination Logic

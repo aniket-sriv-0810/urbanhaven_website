@@ -29,7 +29,7 @@ const MobileNavbar = () => {
       <button
         className="absolute right-4 sm:right-8 lg:hidden text-white focus:outline-none "
         onClick={toggleMenu}
-        data-aos="fade-left"
+        data-aos="fade-up"
       >
         {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
       </button>

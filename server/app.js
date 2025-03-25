@@ -49,6 +49,10 @@ app.use(passport.session());
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+// Serve React frontend for all unhandled routes
+const clientBuildPath = path.join(__dirname, 'public');
+
+app.use(express.static(clientBuildPath));
 
 
 // Debugging Middleware
@@ -79,7 +83,7 @@ app.use('/v1/navigate', navigateRouter);
 
 
 // Serve React frontend for any unhandled route
-app.use((req, res, next) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(clientBuildPath, 'index.html'));
 });
 export { app };

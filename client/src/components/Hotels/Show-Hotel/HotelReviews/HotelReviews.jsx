@@ -14,7 +14,7 @@ const HotelReviews = ({ reviews }) => {
       </div>
     ))
   ) : (
-   <p className='text-center flex justify-center items-center text-gray-600 font-normal'>No Reviews Available at this moment for this hotel . <br/> Be this first one to share your experience with us !</p>
+   <p className='text-center flex justify-center items-center text-gray-600 font-normal'>No Reviews Available at this moment for this hotel. Be this first one to share your experience with us !</p>
   )}
 </div>
 

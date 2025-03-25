@@ -19,7 +19,7 @@ const LoginUser = () => {
         <h1 className="text-white text-2xl sm:text-3xl lg:text-5xl shadow-md font-semibold text-center mb-7 mt-2 md:-mt-4 md:mb-9" data-aos="fade-down">
           Log in to your Account
         </h1>
-        <div className="flex flex-col border-2 border-white rounded-xl p-10 bg-[#212521] max-w-md md:w-[65%]" data-aos="fade-left">
+        <div className="flex flex-col border-2 border-white rounded-xl p-10 bg-[#212521] max-w-md md:w-[65%]" data-aos="fade-down">
           <h2 className="text-white text-center font-bold text-lg mb-5">
             Verify Your Credentials
           </h2>

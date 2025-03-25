@@ -36,7 +36,7 @@ const UserNavbar = () => {
         <UserDesktop user={user} navigate={navigate} />
  
         {/* Hamburger Icon */}
-        <button className="absolute right-3 sm:right-8 lg:hidden text-white focus:outline-none mr-2" data-aos="fade-left" onClick={toggleMenu}>
+        <button className="absolute right-3 sm:right-8 lg:hidden text-white focus:outline-none mr-2" data-aos="fade-up" onClick={toggleMenu}>
           {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
         </button>
       </div>
