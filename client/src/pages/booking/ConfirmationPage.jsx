@@ -16,7 +16,7 @@ const ConfirmationPage = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/v1/booking/${bookingId}`,
+          `${import.meta.env.VITE_API_URL}/api/hotels/v1/booking/${bookingId}`,
           { withCredentials: true }
         );
         setBookingDetails(response.data.data.booking);

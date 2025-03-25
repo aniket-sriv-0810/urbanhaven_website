@@ -29,7 +29,7 @@ const Review = () => {
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/v1/hotel/${id}/review`,
+        `${import.meta.env.VITE_API_URL}/api/hotels/v1/hotel/${id}/review`,
         dataSent,
         { withCredentials: true }
       );

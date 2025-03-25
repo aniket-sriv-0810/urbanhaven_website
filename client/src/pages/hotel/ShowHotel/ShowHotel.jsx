@@ -34,7 +34,7 @@ const ShowHotel = () => {
   const fetchHotelDetails = async () => {
     
     try {
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/v1/hotel/${id}`,
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/hotels/v1/hotel/${id}`,
        { withCredentials: true });
       console.log(response.data);
       

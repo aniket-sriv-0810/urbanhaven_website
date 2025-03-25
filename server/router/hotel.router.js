@@ -13,7 +13,7 @@ import {bookingSchemaValidation } from '../test/booking.validator.js';
 
 const router =  express.Router();
 
-//CORE Route - '/'
+//CORE Route - '/api/hotels'
 
 // Home Route Page
 router

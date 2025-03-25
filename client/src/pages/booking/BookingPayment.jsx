@@ -31,7 +31,7 @@ const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/v1/hotel/${id}/booking`,
+        `${import.meta.env.VITE_API_URL}/api/hotels/v1/hotel/${id}/booking`,
         dataSent,
         { withCredentials: true }
       );

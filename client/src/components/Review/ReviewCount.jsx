@@ -10,7 +10,7 @@ const ReviewCount = ({ id }) => {
   useEffect(() => {
     const fetchReviewStats = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/v1/hotel/${id}/review-stats`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/hotels/v1/hotel/${id}/review-stats`);
         console.log("Review Stats:", response.data);
 
         if (response.status === 200) {
