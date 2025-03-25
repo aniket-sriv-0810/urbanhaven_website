@@ -39,7 +39,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}`, { withCredentials: true });
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/hotels`, { withCredentials: true });
         console.log("Fetched Data:", response.data); // Debugging step
         setAllHotels(response.data.data.allHotel);
         setLoading(false);
