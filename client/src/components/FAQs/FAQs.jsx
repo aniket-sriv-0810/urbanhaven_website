@@ -17,14 +17,11 @@ const FAQs = () => {
       const response = await axios.get(`${import.meta.env.VITE_API_URL}/v1/navigate/faqs`, {
         withCredentials: true,
       });
-
-      console.log("FAQS => ", response.data.data.faq);
-
       if (response.status === 200) {
         setFaqs(response.data.data.faq);
       }
     } catch (error) {
-      console.error("Error fetching FAQs:", error);
+
     }
   };
 

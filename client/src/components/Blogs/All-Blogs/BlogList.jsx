@@ -24,7 +24,7 @@ const BlogList = () => {
           setBlogData(response.data.data.allBlogs);
         }
       } catch (err) {
-        setError("Failed to load blogs. Please try again later.");
+        setLoading(false);
       } finally {
         setLoading(false);
       }

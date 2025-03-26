@@ -1,6 +1,6 @@
 import React, { useEffect, useState , useRef } from "react";
 import axios from "axios";
-import { FaHotel , FaUsers , FaComments , FaMountainCity  } from "react-icons/fa6";
+import { FaHotel , FaUsers  , FaMountainCity  } from "react-icons/fa6";
 import { GiStarsStack } from "react-icons/gi";
 import { GrArticle } from "react-icons/gr";
 import { IoMdHelpCircle } from "react-icons/io";
@@ -40,11 +40,9 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/hotels`, { withCredentials: true });
-        console.log("Fetched Data:", response.data); // Debugging step
         setAllHotels(response.data.data.allHotel);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching data:", error);
         setLoading(false);
       }
     };
@@ -99,7 +97,7 @@ const Home = () => {
           popover: {
             title: "📜 Explore More Hotels",
             description: "Navigate through an extensive collection of premium hotels with seamless pagination.",
-            side: "top",
+            side: "bottom",
           },
         },
         {
@@ -171,7 +169,6 @@ const Home = () => {
     setAllHotels(sortedHotels); // Directly update the state
   };
 
-  console.log("Current Hotels:", currentHotels);
 
 
   return (
@@ -203,13 +200,13 @@ const Home = () => {
 
       <HotelHeading />
 
-      <div className="hotel-cards mt-20 mb-40 flex justify-evenly flex-wrap gap-12 px-4" data-aos="fade-up" id="hotel-details">
+      <div className="hotel-cards mt-20 mb-40 flex justify-evenly flex-wrap gap-12 px-4"  id="hotel-details">
         {loading ? <p className="text-lg text-gray-600">Hotels Loading...</p> : currentHotels.map((hotel) => 
         
         <HotelDetails key={hotel._id} hotel={hotel} conversionRate={conversionRate} selectedCurrency={selectedCurrency} />)}
       </div>
 
-      <div className="pagination" data-aos="fade-up" id="pagination-btn">
+      <div className="pagination"  id="pagination-btn">
       <Pagination
   totalPages={totalPages}
   currentPage={currentPage}
@@ -217,19 +214,19 @@ const Home = () => {
 />
       </div>
 
-      <div className="my-80" data-aos="fade-down">
+      <div className="my-80" >
         <ScrollComponent />
       </div>
 
-      <div className="my-80" data-aos="fade-down"  id="faqs">
+      <div className="my-80"   id="faqs">
         <FAQs />
       </div>
 
-      <div className="my-60"  data-aos="fade-up">
+      <div className="my-60" >
         <TypingAnimation />
       </div>
 
-      <div className="my-20  flex flex-col flex-wrap justify-evenly items-center xs:flex-row gap-6 xs:gap-3 py-10 px-5 sm:px-5" data-aos="fade-down">
+      <div className="my-20  flex flex-col flex-wrap justify-evenly items-center xs:flex-row gap-6 xs:gap-3 py-10 px-5 sm:px-5" >
         <Counter start={0} end={300} duration={2000} value="Hotels Listed" color="red" icon={<FaHotel className="text-red-500 text-2xl md:text-3xl lg:text-5xl" />} />
         <Counter start={0} end={5000} duration={2000} value="Users Registered" color="green" icon={<FaUsers className="text-green-500 text-2xl md:text-3xl lg:text-5xl" />} />
         <Counter start={0} end={4} duration={2000} value="Average Rating" color="yellow" icon={<GiStarsStack className="text-yellow-500 text-2xl md:text-3xl lg:text-5xl" />} />
@@ -247,7 +244,7 @@ const Home = () => {
   </div>
 </div>
 </div>
-      <div data-aos="fade-up">
+      <div >
         <Footer />
       </div>
     </>

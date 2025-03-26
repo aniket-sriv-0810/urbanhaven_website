@@ -5,7 +5,6 @@ import "aos/dist/aos.css"; // Import AOS styles
 import { useParams } from "react-router-dom";
 import UserNavbar from "../../components/Navbars/UserNavbar/UserNavbar";
 import UserBookingCard from "../../components/User/UserBooking/UserBookingCard";
-import ErrorMessage from "../../components/User/UserBooking/ErrorMessage";
 import NotAvailable from "../loaders/NotAvailable";
 import SkeletonList from "../../components/LoadingSkeleton/SkeletonList";
 import ErrorPopup from "../../components/PopUps/ErrorPopup/ErrorPopup";
@@ -29,8 +28,6 @@ const UserBookings = () => {
           { withCredentials: true }
         );
 
-        console.log("Fetched Bookings:", response.data);
-
         if (response.data && Array.isArray(response.data.data.showBookings)) {
           // Filter out cancelled bookings on initial fetch
           setBookings(
@@ -42,7 +39,6 @@ const UserBookings = () => {
           setBookings([]);
         }
       } catch (error) {
-        console.error("Error fetching bookings:", error);
         setError("Failed to fetch bookings.");
       } finally {
         setLoading(false);

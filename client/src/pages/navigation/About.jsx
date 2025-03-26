@@ -17,7 +17,7 @@ const About = () => {
 
       {/* Main Section */}
       <section className="bg-gradient-to-b from-gray-100 to-gray-50 text-gray-900 py-10">
-        <div className=" mx-auto px-5" data-aos="fade-down">
+        <div className=" mx-auto px-5" >
           {/* Header Section */}
           <AboutHeader />
 
@@ -32,7 +32,7 @@ const About = () => {
 
 
           {/* Why Choose Us */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-16" data-aos="fade-up">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-16" >
             <div className="order-2 md:order-1" >
               <WhyChooseUs />
             </div>

@@ -33,9 +33,9 @@ const Contact = () => {
         navigate('/contact/confirmed');
       }
     } catch (error) {
-      console.error("Failed to send feedback", error);
+      setLoading(false);
     }finally{
-      setLoading(false)
+      setLoading(false);
     }
   };
 
@@ -55,13 +55,13 @@ const Contact = () => {
       </div>
 
       <section className="bg-gradient-to-b from-teal-700 to-gray-600 text-gray-900 py-16 px-6 md:px-12 lg:px-24 xl:px-32">
-        <div className="max-w-7xl mx-auto" data-aos="fade-up">
+        <div className="max-w-7xl mx-auto" >
           <ContactHeader />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-24" >
             <ContactInfo />
             <ContactForm handleInput={handleInput} handleSubmit={handleSubmit} contact={contact} user={user} loading={loading}/>
           </div>
-          <div data-aos="fade-up" className='my-32'>
+          <div  className='my-32'>
           <ContactFooter />
           </div>
         </div>

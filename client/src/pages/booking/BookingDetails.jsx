@@ -23,14 +23,14 @@ const BookingDetails = ({
   const fetchHotelDetails = async () => {
     try {
       setLoading(true); // Set loading before making the request
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/v1/hotel/${id}`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/hotels/v1/hotel/${id}`, {
         withCredentials: true,
       });
       if (response.status === 200) {
         setHotelData(response.data.data.showHotel);
       }
     } catch (error) {
-      console.error("Failed to fetch data", error);
+      setLoading(false); // Ensure loading is set to false after fetching
     } finally {
       setLoading(false); // Ensure loading is set to false after fetching
     }
@@ -50,8 +50,6 @@ const BookingDetails = ({
         ...prevData,
         totalAmount: total,
       }));
-    } else {
-      alert("Check-out date must be after check-in date.");
     }
   };
 

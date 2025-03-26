@@ -45,7 +45,7 @@ const UserAccountEdit = () => {
         });
         setOrgImg(fetchedUser.image);
       } catch (error) {
-        console.error("Error fetching user data:", error);
+        setLoading(false);
       } finally {
         setLoading(false); // Stop loading after fetching
       }
@@ -87,7 +87,7 @@ const UserAccountEdit = () => {
 
       navigate(`/user/${id}/account`);
     } catch (error) {
-      console.error("Error updating user:", error);
+      setIsLoading(false);
     }
   };
 

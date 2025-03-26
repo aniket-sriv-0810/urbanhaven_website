@@ -18,7 +18,7 @@ const DeleteBlog = () => {
                 navigate("/delete/successfully");
             }
           } catch (error) {
-            console.error("Failed to delete Blog ", error);
+            
             setError(error.response?.data?.message || "Failed to delete the blog.");
           }
         };

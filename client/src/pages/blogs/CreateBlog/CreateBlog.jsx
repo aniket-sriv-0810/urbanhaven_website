@@ -26,12 +26,10 @@ const navigate = useNavigate();
         { withCredentials: true }
       );
       navigate('/create/successfully')
-      console.log(response.data);
       setFormData({ title: "", description: "", image: "" });
       setPreview(null);
       
     } catch (error) {
-      console.error(error);
       setPreview(null);
       setError("Error creating blog. Please try again.");
     }

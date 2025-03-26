@@ -22,7 +22,6 @@ const AdminUser = () => {
         setUserDetails(response.data.data.allUserDetails);
       }
     } catch (error) {
-      console.error("Failed to get user details:", error);
       setError(error.response?.data?.message || "Failed to fetch user details. Please try again.");
     } finally {
       setLoading(false);
@@ -41,7 +40,6 @@ const AdminUser = () => {
       setUserDetails((prevUsers) => prevUsers.filter((u) => u._id !== userId)); // Update state after deletion
       navigate('/delete/successfully');
     } catch (error) {
-      console.error("Error in deleting user:", error);
       setError(error.response?.data?.message || "Failed to delete user. Please try again.");
     }
   };

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { jsPDF } from "jspdf"; // Import jsPDF for creating the PDF
-import { FaHotel, FaMapMarkerAlt, FaRupeeSign, FaBed, FaUserFriends, FaCalendarCheck, FaCalendarTimes, FaUser, FaEnvelope, FaPhoneAlt, FaFileDownload, FaHome } from "react-icons/fa";
+import { FaHotel, FaMapMarkerAlt, FaRupeeSign, FaBed, FaUserFriends, FaCalendarCheck, FaUser, FaEnvelope, FaPhoneAlt, FaFileDownload, FaHome } from "react-icons/fa";
 import SkeletonCard from "../../components/LoadingSkeleton/SkeletonCard";
 
 
@@ -21,7 +21,7 @@ const ConfirmationPage = () => {
         );
         setBookingDetails(response.data.data.booking);
       } catch (error) {
-        console.error("Error fetching booking details:", error);
+        setLoading(false);
       }finally{
         setLoading(false);
       }

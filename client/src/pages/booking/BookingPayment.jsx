@@ -21,7 +21,6 @@ const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
   const [bookingId, setBookingId] = useState(null); // Store booking ID
 
   const handlePayment = async () => {
-    console.log("Payment successful!");
     const dataSent = {
       userDetails: user._id,
       hotelDetails: hotelData._id,
@@ -41,7 +40,7 @@ const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
         // navigate(`/booking/done`);
       }
     } catch (error) {
-      console.error("Failed to send data", error);
+     
     }
   };
 

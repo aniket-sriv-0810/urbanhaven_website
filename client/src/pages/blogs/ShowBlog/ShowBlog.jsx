@@ -26,7 +26,6 @@ const ShowBlog = () => {
           setBlog(response.data.data.blogDetails);
         }
       } catch (error) {
-        console.error("Blog data FAILED to fetch: ", error);
         setError(error.response?.data?.message || "Failed to display blog details.");
       } finally {
         setLoading(false);

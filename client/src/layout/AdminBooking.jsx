@@ -18,8 +18,6 @@ const AdminBooking = () => {
         setAdminBookingData(response.data.data.bookingDetails);
       }
     } catch (error) {
-      console.error("Failed to get booking information:", error);
-
       // Set a user-friendly error message
       setError(error.response?.data?.message || "Something went wrong! Please try again.");
     } finally {

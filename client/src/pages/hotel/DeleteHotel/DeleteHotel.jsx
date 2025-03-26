@@ -15,10 +15,10 @@ const DeleteHotel = () => {
               let response = await axios.delete(`${import.meta.env.VITE_API_URL}/v1/admin/hotel/${id}/delete` ,{
                 withCredentials: true,
               });
-              console.log(response.data.message);
+             
               navigate('/delete/successfully');
             } catch (error) {
-              console.log("Error in deleting hotel" , error);
+             
               setError(error.response?.data?.message || "Failed to delete the Hotel.");
             }
           }

@@ -18,7 +18,6 @@ const AdminHotel = () => {
         setHotelDetails(response.data.data.allHotelDetails);
       }
     } catch (error) {
-      console.error("Failed to get hotel details:", error);
       setError(error.response?.data?.message || "Failed to fetch hotel details. Please try again.");
     } finally {
       setLoading(false);

@@ -18,7 +18,7 @@ const ContactRow = ({ contact , onDelete }) => {
         }
         onDelete(contact._id); // Notify parent component
       } catch (error) {
-        console.error("Error deleting feedback:", error);
+        setDeleting(false);
       } finally {
         setDeleting(false);
       }

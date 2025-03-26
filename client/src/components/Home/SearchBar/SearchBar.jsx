@@ -21,12 +21,9 @@ const SearchBar = ({ setHotels }) => {
         setHotels([]); // Clear the existing list if no results
         return;
       }
-  
-      console.log("API Response:", response.data.data.hotels);
       setHotels(response.data.data.hotels);
       setStatus(""); // Clear status if search is successful
     } catch (error) {
-      console.error("Error fetching hotels:", error);
       setStatus("No hotel found...");
     }
   };

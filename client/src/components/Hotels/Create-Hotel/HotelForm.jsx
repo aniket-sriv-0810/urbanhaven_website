@@ -50,7 +50,6 @@ const HotelForm = () => {
         setLoading(false); // Stop loading after successful submission
       }
     } catch (error) {
-      console.error("Hotel Creation Error:", error);
       setPreview(null);
       setError("Failed to create hotel. Please try again.");
     }

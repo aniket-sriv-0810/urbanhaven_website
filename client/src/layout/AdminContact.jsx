@@ -18,8 +18,6 @@ const AdminContact = () => {
         setContactDetails(response.data.data.contactData);
       }
     } catch (error) {
-      console.error("Failed to get contact details:", error);
-
       // Set a user-friendly error message
       setError(error.response?.data?.message || "Failed to fetch contact details. Please try again.");
     } finally {

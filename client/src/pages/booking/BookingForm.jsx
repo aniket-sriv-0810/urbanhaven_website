@@ -26,7 +26,6 @@ const BookingForm = ({ bookingData, setBookingData, handleNext, value, styling }
   };
 
   useEffect(() => {
-    console.log("Stay Duration: " + calculateStayDuration());
   }, [bookingData.checkInDate, bookingData.checkOutDate]);
 
   // Validation & Toast Logic

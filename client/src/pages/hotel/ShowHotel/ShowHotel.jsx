@@ -30,24 +30,22 @@ const ShowHotel = () => {
     AOS.init({ duration: 1500, easing: "ease-in-out", mirror: true, once: false });
   }, []);
 
-  console.log("Hotel ID : " , id);
   const fetchHotelDetails = async () => {
-    
+
     try {
       const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/hotels/v1/hotel/${id}`,
        { withCredentials: true });
-      console.log(response.data);
-      
       if(response.status == 200){
 
         setShowMyHotel(response.data.data.showHotel);
         setReviews(response.data.data.allReviews);
         setReviewCount(response.data.data.totalReviews);
         setAvgRating(response.data.data.avgRating);
-        
+
       }
     } catch (error) {
-      console.error("Error fetching hotel details:", error);
+
+      setLoading(false);
     }finally{
       setLoading(false);
     }

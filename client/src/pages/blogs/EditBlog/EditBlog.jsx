@@ -25,7 +25,7 @@ const EditBlog = () => {
           setPageLoading(false);
         }
       } catch (error) {
-        console.error("Failed to fetch data!", error);
+        
         setError("Unable to fetch blog details");
       }
     };
@@ -55,7 +55,7 @@ const EditBlog = () => {
        navigate('/edit/successfully')
       }
     } catch (error) {
-      console.error("Error updating blog:", error);
+      
       setError(error.response?.data?.message || "Failed to update blog details.");
     }
 

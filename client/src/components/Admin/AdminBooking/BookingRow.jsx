@@ -18,7 +18,7 @@ const BookingRow = ({ booking, onDelete }) => {
       }
       onDelete(booking._id); // Notify parent component
     } catch (error) {
-      console.error("Error deleting booking:", error);
+      setDeleting(false);
     } finally {
       setDeleting(false);
     }

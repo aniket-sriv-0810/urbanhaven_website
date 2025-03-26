@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import EditForm from "../../../components/Hotels/Edit-Hotel/EditForm";
 import ErrorPopup from "../../../components/PopUps/ErrorPopup/ErrorPopup";
+import SkeletonForm from "../../../components/LoadingSkeleton/SkeletonForm";
 const EditHotel = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -24,13 +25,13 @@ const EditHotel = () => {
     const fetchHotel = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/v1/hotel/${id}`,
+          `${import.meta.env.VITE_API_URL}/api/hotels/v1/hotel/${id}`,
           { withCredentials: true }
         );
         setOrgImg(response.data.data.showHotel.image);
         setHotelData(response.data.data.showHotel);
       } catch (error) {
-        console.error("Error updating hotel:", error);
+        
     setError(error.response?.data?.message || "Failed to fetch hotel details");
     setLoading(false);
       }
@@ -56,7 +57,7 @@ const EditHotel = () => {
       navigate("/edit/successfully");
       
     } catch (error) {
-      console.error("Error updating hotel:", error);
+      
       setError(error.response?.data?.message || "Failed to update hotel details");
       setLoading(false);
       setSuccess(false);
@@ -67,7 +68,10 @@ const EditHotel = () => {
   return (
     <>
 {error && <ErrorPopup message={error} onClose={() => setError("")} />}
-
+    {
+      loading ?
+      <SkeletonForm/>
+      :
     <div className="sm:p-4 min-h-screen flex items-center justify-center rounded-lg bg-gradient-to-r from-slate-300 to-gray-300">
       <div className="w-full max-w-3xl bg-white shadow-lg shadow-gray-700 rounded-2xl p-8">
         <h1 className="text-xl xs:text-3xl font-semibold text-gray-700 mb-6 text-center">
@@ -92,7 +96,7 @@ const EditHotel = () => {
         />
       </div>
     </div>
-
+    }
     </>
   );
 };
