@@ -64,4 +64,20 @@
     background: #dc2626;
     transform: scale(1.05);
   }
-  
+  /* Styling for custom close button */
+.custom-driver-popover .driver-close-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 18px;
+  background: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.custom-driver-popover .driver-close-btn:hover {
+  transform: scale(1.2);
+  color: #facc15; /* Yellow for visibility */
+}

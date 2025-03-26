@@ -1,6 +1,6 @@
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
-import { NavLink, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 const Policies = () => {
   const navigate = useNavigate();

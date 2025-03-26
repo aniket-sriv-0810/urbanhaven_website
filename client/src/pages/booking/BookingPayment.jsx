@@ -40,7 +40,7 @@ const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
         // navigate(`/booking/done`);
       }
     } catch (error) {
-     
+
     }
   };
 

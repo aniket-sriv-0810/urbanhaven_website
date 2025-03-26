@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 import Navbar from '../../../components/Navbars/Navbar/Navbar';
 import Footer from '../../../components/Footer/Footer';
@@ -26,9 +24,6 @@ const ShowHotel = () => {
   const [avgRating, setAvgRating] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    AOS.init({ duration: 1500, easing: "ease-in-out", mirror: true, once: false });
-  }, []);
 
   const fetchHotelDetails = async () => {
 

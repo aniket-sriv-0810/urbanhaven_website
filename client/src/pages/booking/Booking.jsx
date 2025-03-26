@@ -2,8 +2,7 @@ import React, { useState , useEffect } from "react";
 import BookingForm from "./BookingForm";
 import BookingDetails from "./BookingDetails";
 import BookingPayment from "./BookingPayment";
-import AOS from "aos";
-import "aos/dist/aos.css"; // Import AOS styles
+
 
 const Booking = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,15 +16,7 @@ const Booking = () => {
     totalAmount: 0,
     status: "Pending",
   });
-useEffect(() => {
-    AOS.init({
-       // Start animation after scrolling 100px
-      duration: 1500, // Animation duration
-      easing: "ease-in-out", // Smooth effect
-      mirror:true,
-      once: false, // Animation repeats on scroll
-    });
-  }, []);
+
   const handleNext = () => setCurrentPage((prev) => prev + 1);
   const handlePrevious = () => setCurrentPage((prev) => prev - 1);
 

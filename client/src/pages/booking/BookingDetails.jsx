@@ -26,6 +26,10 @@ const BookingDetails = ({
       const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/hotels/v1/hotel/${id}`, {
         withCredentials: true,
       });
+      console.log("Response 1 = ", response);
+      console.log("Response 2 = ", response.data);
+      console.log("Response 3 = ", response.data.data.showHotel);
+
       if (response.status === 200) {
         setHotelData(response.data.data.showHotel);
       }

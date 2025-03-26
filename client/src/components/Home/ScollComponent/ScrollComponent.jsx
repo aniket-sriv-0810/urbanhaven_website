@@ -12,7 +12,7 @@ const ScrollComponent = () => {
   <div className="absolute inset-0 bg-black/50  "></div>
 
   {/* Content Section */}
-  <div className="relative z-10 flex flex-col justify-center items-center h-full px-6 text-center text-white" data-aos="fade-down">
+  <div className="relative z-10 flex flex-col justify-center items-center h-full px-6 text-center text-white" >
     <h1 className="text-xl sm:text-4xl lg:text-6xl font-extrabold leading-tight drop-shadow-md">
       Welcome to <span className="text-yellow-400">Urbanhaven</span>
     </h1>

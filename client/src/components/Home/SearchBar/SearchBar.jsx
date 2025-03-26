@@ -1,8 +1,6 @@
 import { useState ,useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import axios from "axios";
-import AOS from "aos";
-import "aos/dist/aos.css"; // Import AOS styles
 
 const SearchBar = ({ setHotels }) => {
   const [q, setQ] = useState("");
@@ -27,16 +25,9 @@ const SearchBar = ({ setHotels }) => {
       setStatus("No hotel found...");
     }
   };
- useEffect(() => {
-    AOS.init({
-      duration: 1500, // Animation duration
-      easing: "ease-in-out", // Smooth effect
-      mirror:true,
-      once: false, // Animation repeats on scroll
-    });
-  }, []);
+
   return (
-<div className={`flex flex-wrap items-center justify-center gap-4 w-full max-w-3xl mx-auto p-6 rounded-2xl bg-white/20 backdrop-blur-xl shadow-xl border border-gray-200 transition-all duration-300 hover:shadow-2xl hover:shadow-gray-600 ${status.length > 0 ? " border-red-500" : null}`} data-aos="fade-down">
+<div className={`flex flex-wrap items-center justify-center gap-4 w-full max-w-3xl mx-auto p-6 rounded-2xl bg-white/20 backdrop-blur-xl shadow-xl border border-gray-200 transition-all duration-300 hover:shadow-2xl hover:shadow-gray-600 ${status.length > 0 ? " border-red-500" : null}`} >
 <h1 className="text-base sm:text-3xl font-extrabold text-center my-6 bg-gradient-to-r from-slate-600 to-cyan-800 text-transparent bg-clip-text drop-shadow-lg">
   Discover Your Dream Destination
 </h1>

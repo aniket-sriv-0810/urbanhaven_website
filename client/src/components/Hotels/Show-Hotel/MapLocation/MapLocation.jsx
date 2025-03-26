@@ -45,11 +45,11 @@ const MapLocation = ({ hotel }) => {
             const { lat, lon } = response.data[0];
             setCoordinates([parseFloat(lat), parseFloat(lon)]);
           } else {
-            console.error("No coordinates found for the location.");
+
             setError(true);
           }
         } catch (error) {
-          console.error("Error fetching coordinates:", error);
+
           setError(true);
         } finally {
           setLoading(false);

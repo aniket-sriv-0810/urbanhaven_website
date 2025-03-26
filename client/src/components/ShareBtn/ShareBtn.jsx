@@ -13,15 +13,11 @@ const ShareBtn = ({ hotelName, hotelLink }) => {
       if (navigator.share) {
         // Use the Web Share API if available
         await navigator.share(shareData);
-        alert("Hotel shared successfully!");
       } else {
         // Fallback for browsers without Web Share API
         navigator.clipboard.writeText(`${shareData.text} ${shareData.url}`);
-        alert("Link copied to clipboard!");
       }
     } catch (error) {
-      console.error("Error sharing hotel:", error);
-      alert("Failed to share the hotel. Please try again.");
     }
   };
 

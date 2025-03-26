@@ -44,7 +44,7 @@ const Review = () => {
         navigate("/review/done", { state: { returnTo: `/hotel/${id}` } });
       }
     } catch (error) {
-      console.error("Failed to create review", error);
+      setLoading(false); // Stop loading
     } finally {
       setLoading(false); // Stop loading
     }
