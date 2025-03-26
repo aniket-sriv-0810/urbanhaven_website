@@ -1,9 +1,9 @@
 import React from "react";
 import { useUser } from "./userContext";
 import PageNotFound from "../../pages/loaders/PageNotFound";
-import AdminHome from "../../layout/AdminHome";
 
-const Admin = () => {
+
+const Admin = ({ children }) => {
   const { user } = useUser();
 
   // Check if user is not logged in or not an admin
@@ -11,7 +11,7 @@ const Admin = () => {
     return <PageNotFound />; // Redirect to 404 page
   }
 
-  return <AdminHome />; // Render the admin panel if user is an admin
+  return children;
 };
 
 export default Admin;
