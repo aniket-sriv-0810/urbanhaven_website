@@ -21,7 +21,7 @@ const DeleteUser = () => {
         localStorage.removeItem("user");
 
         // Navigate to success page
-        navigate("/account/deleted/successfully");
+        navigate("/");
       } catch (error) {
         console.error("Error in deleting user:", error);
       }
