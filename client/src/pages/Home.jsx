@@ -57,27 +57,6 @@ const Home = () => {
       animate: true,
       keyboardControl: true, // Enables keyboard navigation
       opacity: 0.85, // Slight transparency for a sleek effect
-      onPopoverRender: (popover, step) => {
-        // Create a close button
-        const closeButton = document.createElement("button");
-        closeButton.innerHTML = "✖"; // Unicode X symbol
-        closeButton.classList.add("driver-close-btn");
-        closeButton.style.position = "absolute";
-        closeButton.style.top = "10px";
-        closeButton.style.right = "10px";
-        closeButton.style.background = "transparent";
-        closeButton.style.color = "#fff";
-        closeButton.style.border = "none";
-        closeButton.style.fontSize = "16px";
-        closeButton.style.cursor = "pointer";
-  
-        closeButton.onclick = () => {
-          driverRef.current?.destroy(); // Close the guide
-        };
-  
-        // Append close button to the popover
-        popover.appendChild(closeButton);
-      },
       steps: [
         {
           element: "#header",
@@ -135,6 +114,7 @@ const Home = () => {
             side: "top",
           },
         },
+
       ],
     });
 
@@ -143,7 +123,7 @@ const Home = () => {
       driverRef.current.drive();
       localStorage.removeItem("startTour");
     }
-  
+
     return () => {
       driverRef.current = null;
     };
