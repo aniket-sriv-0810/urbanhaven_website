@@ -27,7 +27,7 @@ console.log("booking status => " , booking.status);
   };
 
   return (
-    <div className="bg-white w-full max-w-md sm:w-96 shadow-lg rounded-xl p-5 hover:shadow-xl transition-all border border-gray-200 shadow-gray-600 hover:shadow-gray-500 hover:scale-105">
+    <div className="bg-white w-full max-w-md sm:w-96 shadow-lg rounded-xl p-1 hover:shadow-xl transition-all border border-gray-200 shadow-gray-600 hover:shadow-gray-500 hover:scale-105">
   {/* Hotel Image */}
   <div className="relative">
     <img

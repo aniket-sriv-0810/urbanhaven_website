@@ -4,10 +4,10 @@ import { useParams } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
 import UserNavbar from "../../components/Navbars/UserNavbar/UserNavbar";
-import HotelDetails from "../../components/HotelDetails/HotelDetails";
 import NotAvailable from "../loaders/NotAvailable";
 import SkeletonList from "../../components/LoadingSkeleton/SkeletonList";
 import ErrorPopup from "../../components/PopUps/ErrorPopup/ErrorPopup";
+import UserWishlist from "../../components/User/UserWishlist/UserWishlist";
 const UserWishlists = () => {
     const [wishlists, setWishlists] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -69,7 +69,7 @@ const UserWishlists = () => {
                     {wishlists.length > 0 ? (
                         wishlists.map((hotel) => (
                             <div key={hotel._id} className="m-auto w-[90%]  xs:w-full " >
-                                <HotelDetails hotel={hotel} />
+                                <UserWishlist hotel={hotel} />
                             </div>
                         ))
                     ) : (
