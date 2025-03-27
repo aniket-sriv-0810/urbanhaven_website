@@ -1,10 +1,25 @@
-*{
-    margin: 0;
-    padding: 0;
+/* 🌍 Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-input::-webkit-inner-spin-button , ::-webkit-outer-spin-button{
-display: none;
+/* 🚀 Smooth Scrolling */
+html {
+  scroll-behavior: smooth; /* Enables smooth scrolling */
+}
+
+/* Prevent scroll bounce on touch devices */
+body {
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 🖊️ Remove number spinner from input fields */
+input::-webkit-inner-spin-button, 
+input::-webkit-outer-spin-button {
+  display: none;
 }
 
 /* 📜 Global Scrollbar Styling - Professional & Aesthetic */
@@ -23,7 +38,7 @@ display: none;
 
 /* Scrollbar Thumb */
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #3b82f6, #9333ea); /* Blue-to-purple gradient for a stylish effect */
+  background: linear-gradient(135deg, #3b82f6, #9333ea); /* Blue-to-purple gradient */
   border-radius: 12px; /* More rounded corners for smoothness */
   transition: all 0.3s ease-in-out; /* Smooth transitions */
 }
@@ -37,4 +52,9 @@ display: none;
 /* Scrollbar Corner (where vertical & horizontal bars meet) */
 ::-webkit-scrollbar-corner {
   background: #f0f0f0; /* Blends seamlessly with the track */
+}
+
+/* 🎯 Fix for anchor links scrolling too far due to fixed navbar */
+html, body {
+  scroll-padding-top: 80px; /* Adjust based on navbar height */
 }
