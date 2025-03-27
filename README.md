@@ -1,97 +1,81 @@
-# 🏨 Urbanhaven Hotels – Room & Hotel Booking Platform
+# 🏨 Urbanhaven – Hotel & Room Booking Platform  
 
-A modern, feature-rich hotel and room booking platform built using the MERN Stack. Urbanhaven Hotels offers a seamless user experience, smooth animations, and a fully responsive design for all devices.
+A **modern, feature-rich** hotel and room booking platform built with the **MERN Stack**.  
+Urbanhaven offers a **seamless user experience**, dynamic animations, **secure authentication**, and an elegant, **fully responsive UI**.  
 
-# 🚀 Features
-✅ User Authentication – Secure login & signup with Passport.js & JWT
-✅ Dynamic Room Listings – Users can browse, filter, and book hotels easily
-✅ Booking Management – View, confirm, and cancel bookings with real-time updates
-✅ Smooth Animations – Built with Framer Motion & AOS for a stunning UI
-✅ Cloud Image Storage – Upload & manage images via Cloudinary
-✅ Admin Dashboard – Manage hotels, rooms, bookings, and users
-✅ Fully Responsive – Optimized for mobile, tablet, and desktop
-✅ Secure Data Handling – Backend validation with Joi & Mongoose Schema
-✅ Fast & Optimized – Backend API with Node.js, Express.js & MongoDB
+---
 
-# 🛠️ Tech Stack
-Frontend – React.js
-🔹 React Router DOM – For seamless navigation
-🔹 Framer Motion & AOS – Smooth animations & scroll effects
-🔹 Tailwind CSS – Modern, responsive UI
-🔹 Axios – Efficient API requests
+## 🚀 Key Features  
 
-Backend – Node.js & Express.js
-🔹 MongoDB & Mongoose – Database & ORM for seamless data handling
-🔹 Passport.js – Secure authentication
-🔹 Joi – Input validation
-🔹 Cloudinary – Image storage
-🔹 CORS – Secure API access
+✅ **User Authentication & Authorization** – Secure login & signup with **Passport.js** & session-based authentication  
+✅ **Dynamic Room Listings** – Browse, filter, and book hotels effortlessly  
+✅ **Booking Management** – Users can view, confirm, and cancel bookings in real-time  
+✅ **Admin Dashboard** – Manage hotels, rooms, users, and bookings with ease  
+✅ **Cloud Image Storage** – Upload & manage hotel images via **Cloudinary**  
+✅ **Smooth Animations** – Powered by **AOS** for scroll effects & transitions  
+✅ **Fully Responsive UI** – Optimized for **mobile, tablet, and desktop**  
+✅ **Secure Data Handling** – Backend validation using **Joi & Mongoose Schema**  
+✅ **Fast & Optimized** – RESTful API with **Node.js, Express.js & MongoDB**  
 
-# 📸 Screenshots
-🚀 Add some images of your project UI here!
-Example: Home page, Booking page, Admin panel, etc.
+---
 
-# 🏗️ Installation & Setup
-🔥 Clone the Repository
-sh
-Copy
-Edit
-git clone https://github.com/yourusername/urbanhaven-hotels.git
-cd urbanhaven-hotels
+## 🛠 Tech Stack  
 
-# 🏡 Frontend Setup
-sh
-Copy
-Edit
+### 🔹 Frontend – React.js (Vite)  
+- **React Router DOM** – Seamless navigation  
+- **Tailwind CSS** – Modern, responsive UI design  
+- **AOS** – Smooth scrolling animations  
+- **Axios** – Efficient API communication  
+- **Leaflet & React-Leaflet** – Interactive maps for hotel locations  
+- **Styled Components** – Custom styling for UI elements  
+
+### 🔹 Backend – Node.js & Express.js  
+- **MongoDB & Mongoose** – Database & ORM for structured data handling  
+- **Passport.js** – Secure session-based authentication  
+- **Joi** – Input validation for security  
+- **Cloudinary** – Image upload & storage solution  
+- **Express-session & Connect-mongo** – Persistent user sessions  
+- **Multer** – Handling file uploads  
+- **Nodemailer** – Sending email notifications  
+
+
+## 🏗️ Installation & Setup  
+
+### 🔥 1. Clone the Repository  
+```sh
+git clone https://github.com/yourusername/urbanhaven.git
+cd urbanhaven
+
+🏡 2. Frontend Setup
+
 cd client
 npm install
 npm run dev
-Runs the React app on localhost:5173
 
-# 🔧 Backend Setup
-sh
-Copy
-Edit
+🔹 Runs on: http://localhost:5173/
+
+🔧 3. Backend Setup
+
 cd server
 npm install
 npm start
-Runs the Node.js backend on localhost:5000
+🔹 Runs on: http://localhost:5000/
 
-# 🌍 Environment Variables (.env)
-Create a .env file in the server directory and add:
+🌍 Environment Variables (.env)
+Create a .env file in the server/ directory and add the following:
 
-env
-Copy
-Edit
 PORT=5000
 MONGODB_URL=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
+SESSION_SECRET=your_secret_key
 CLOUDINARY_CLOUD_NAME=your_cloudinary_name
 CLOUDINARY_API_KEY=your_cloudinary_key
 CLOUDINARY_API_SECRET=your_cloudinary_secret
 
-# 📡 Deployment
-
-# 🚀 Frontend Deployment
-Deploy the frontend on Vercel / Netlify / Render
-
-sh
-Copy
-Edit
-npm run build
-
-# 🛠 Backend Deployment
-Deploy the backend on Render / Railway / VPS
-
-# 🤝 Contributing
-Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
-
-# 📄 License
+📄 License
 This project is open-source and available under the MIT License.
 
 ⭐ Like the project? Give it a star on GitHub! ⭐
-🔗 Live Demo: Urbanhaven Hotels
+🔗 Live Website URL: `https://urbanhaven-hotels.onrender.com/`
 
 💻 Developed by Aniket Srivastava 🚀
 
-This README is detailed, professional, and structured, ensuring clarity for developers, contributors, and users. 🚀 Let me know if you want any modifications! 😊
