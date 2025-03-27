@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import ErrorPopup from "../../PopUps/ErrorPopup/ErrorPopup";
 const BookingRow = ({ booking, onDelete }) => {
   const [deleting, setDeleting] = useState(false);
+  const [error , setError] = useState("");
  const navigate = useNavigate();
   const handleDelete = async () => {
     if (deleting) return;
@@ -14,10 +16,11 @@ const BookingRow = ({ booking, onDelete }) => {
         withCredentials: true,
       });
       if (resp.status === 200) {
-        navigate('/delete/successfully')
+        navigate('/admin')
       }
       onDelete(booking._id); // Notify parent component
     } catch (error) {
+      setError("Error in deleting booking details");
       setDeleting(false);
     } finally {
       setDeleting(false);
@@ -25,6 +28,10 @@ const BookingRow = ({ booking, onDelete }) => {
   };
 
   return (
+    <>
+       <div className="text-center ">
+          {error && <ErrorPopup message={error} onClose={() => setError("")} />} 
+         </div>
     <tr className="hover:bg-zinc-600 hover:text-white text-gray-800">
       <td className="border border-gray-300 px-4 py-2 text-center">{booking.userDetails?.name || "N/A"}</td>
       <td className="border border-gray-300 px-4 py-2 text-center">{booking.userDetails?.phone || "N/A"}</td>
@@ -76,6 +83,7 @@ const BookingRow = ({ booking, onDelete }) => {
         </button>
       </td>
     </tr>
+    </>
   );
 };
 

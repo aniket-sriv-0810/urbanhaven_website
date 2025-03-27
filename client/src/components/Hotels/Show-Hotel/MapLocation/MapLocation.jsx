@@ -49,7 +49,6 @@ const MapLocation = ({ hotel }) => {
             setError(true);
           }
         } catch (error) {
-
           setError(true);
         } finally {
           setLoading(false);

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const UserBookingCard = ({ booking, onCancel }) => {
   const [loading, setLoading] = useState(false);
-console.log("booking status => " , booking.status);
+  const [error , setError] = useState("");
 
   const handleCancelBooking = async () => {
     if (booking.status === "Cancelled") return;
@@ -20,7 +20,7 @@ console.log("booking status => " , booking.status);
 
       onCancel(booking._id); // Notify parent component
     } catch (error) {
-      console.error("Error cancelling booking:", error);
+      setError("Failed to cancel your booking ! Please try again later");
     } finally {
       setLoading(false);
     }

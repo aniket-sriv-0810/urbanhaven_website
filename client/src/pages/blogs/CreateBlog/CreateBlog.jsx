@@ -25,7 +25,7 @@ const navigate = useNavigate();
         blogData,
         { withCredentials: true }
       );
-      navigate('/create/successfully')
+      navigate('/admin')
       setFormData({ title: "", description: "", image: "" });
       setPreview(null);
       

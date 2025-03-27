@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import { FaChevronDown, FaChevronUp, FaQuestionCircle } from "react-icons/fa";
 import { IoMdHelpCircleOutline } from "react-icons/io"; // Fancy question icon
 import { MdOutlineQuestionAnswer } from "react-icons/md"; // Answer icon
-
+import ErrorPopup from "../PopUps/ErrorPopup/ErrorPopup";
 const FAQs = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [faqs, setFaqs] = useState([]);
-
+  const [error , setError] = useState("");
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
@@ -21,7 +21,7 @@ const FAQs = () => {
         setFaqs(response.data.data.faq);
       }
     } catch (error) {
-
+      setError("Error in displaying FAQs");
     }
   };
 
@@ -30,6 +30,10 @@ const FAQs = () => {
   }, []);
 
   return (
+    <>
+<div className="text-center ">
+          {error && <ErrorPopup message={error} onClose={() => setError("")} />} 
+         </div>
     <section className="w-full flex flex-col items-center justify-center text-center py-36  bg-[url('/assets/faq_bg.jpg')]  bg-cover  bg-left-top      bg-no-repeat text-white shadow-lg px-5 sm:px-20">
       {/* Title */}
       <div className=" text-center mb-12">
@@ -87,6 +91,7 @@ const FAQs = () => {
         )}
       </div>
     </section>
+    </>
   );
 };
 

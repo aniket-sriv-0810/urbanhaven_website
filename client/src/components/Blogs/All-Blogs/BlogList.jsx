@@ -3,11 +3,11 @@ import axios from "axios";
 import BlogCard from "./BlogCard";
 import SkeletonList from "../../LoadingSkeleton/SkeletonList";
 import Pagination from "../../Pagination/Pagination"; // Import Pagination Component
-
+import ErrorPopup from "../../PopUps/ErrorPopup/ErrorPopup";
 const BlogList = () => {
   const [blogData, setBlogData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
 
   // Pagination States
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,6 +24,7 @@ const BlogList = () => {
           setBlogData(response.data.data.allBlogs);
         }
       } catch (err) {
+        setError("Error in fetching blog details");
         setLoading(false);
       } finally {
         setLoading(false);
@@ -33,8 +34,7 @@ const BlogList = () => {
     fetchData();
   }, []);
 
-  if (loading) return <h1 className="flex flex-col lg:flex-row justify-center items-center mt-10"><SkeletonList /></h1>;
-  if (error) return <p className=" text-red-500 text-center mt-10">{error}</p>;
+  if (loading) return <h1 className="flex flex-col lg:flex-row justify-center items-center mt-10"><SkeletonList /></h1>
 
   // Pagination Logic
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -43,6 +43,10 @@ const BlogList = () => {
   const totalPages = Math.ceil(blogData.length / itemsPerPage);
 
   return (
+    <>
+  <div className="text-center ">
+          {error && <ErrorPopup message={error} onClose={() => setError("")} />} 
+         </div>
     <div className="m-auto py-20 px-8 bg-gray-100">
       <h1 className="text-2xl mb-12 sm:text-4xl font-extrabold text-center text-gray-800  tracking-wide">
         Our Blogs
@@ -67,6 +71,7 @@ const BlogList = () => {
         </>
       )}
     </div>
+    </>
   );
 };
 

@@ -9,6 +9,7 @@ const LikeBtn = ({ hotelId, id }) => {
     const [isLiked, setIsLiked] = useState(false);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
+    
 
     // Fetch user's wishlist status on mount
     useEffect(() => {

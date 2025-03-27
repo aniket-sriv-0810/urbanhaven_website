@@ -16,7 +16,7 @@ const DeleteHotel = () => {
                 withCredentials: true,
               });
              
-              navigate('/delete/successfully');
+              navigate('/admin');
             } catch (error) {
              
               setError(error.response?.data?.message || "Failed to delete the Hotel.");

@@ -46,7 +46,7 @@ const HotelForm = () => {
         setHotelData({ title: "", description: "", price: "", city: "", state: "", country: "" });
         setImage(null);
         setPreview(null);
-        navigate("/create/successfully");
+        navigate("/admin");
         setLoading(false); // Stop loading after successful submission
       }
     } catch (error) {

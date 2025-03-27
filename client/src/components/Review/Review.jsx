@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useUser } from "../userContext/userContext";
 import axios from "axios";
-
+import ErrorPopup from "../PopUps/ErrorPopup/ErrorPopup";
 const Review = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -12,7 +12,7 @@ const Review = () => {
     comment: "",
   });
   const [loading, setLoading] = useState(false); // Fixed loading state
-
+  const [error , setError] = useState("");
   const handleInputChange = (e) => {
     setReview({ ...review, [e.target.name]: e.target.value });
   };
@@ -44,6 +44,7 @@ const Review = () => {
         navigate("/review/done", { state: { returnTo: `/hotel/${id}` } });
       }
     } catch (error) {
+      setError("Failed to add your review ! Please try again later")
       setLoading(false); // Stop loading
     } finally {
       setLoading(false); // Stop loading
@@ -51,6 +52,10 @@ const Review = () => {
   };
 
   return (
+    <>
+<div className="text-center ">
+          {error && <ErrorPopup message={error} onClose={() => setError("")} />} 
+         </div>
     <div className="bg-gradient-to-b from-blue-50 to-white py-10 px-5 sm:px-20 min-h-screen flex justify-center items-center rounded-xl">
       <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-8">
         <h1 className="text-center text-base font-bold text-gray-700 mb-6">
@@ -123,6 +128,7 @@ const Review = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

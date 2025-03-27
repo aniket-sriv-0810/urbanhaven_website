@@ -5,6 +5,7 @@ import axios from "axios";
 const SearchBar = ({ setHotels }) => {
   const [q, setQ] = useState("");
   const [status , setStatus] = useState("");
+
   const handleSearch = async () => {
     try {
       if (!q) {

@@ -5,12 +5,12 @@ import { useUser } from "../../components/userContext/userContext";
 import UserProfileImage from "../../components/User/UserAccountEdit/UserProfileImage";
 import UserAccountForm from "../../components/User/UserAccountEdit/UserAccountForm";
 import SkeletonForm from "../../components/LoadingSkeleton/SkeletonForm";
-
+import ErrorPopup from "../../components/PopUps/ErrorPopup/ErrorPopup";
 const UserAccountEdit = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useUser();
-
+  const [error , setError] = useState("");
   const [userData, setUserData] = useState({
     name: "",
     username: "",
@@ -22,6 +22,7 @@ const UserAccountEdit = () => {
   const [orgImage, setOrgImg] = useState("");
   const [loading, setLoading] = useState(true); // Start with loading
   const [isLoading , setIsLoading] = useState(false);
+  const [editError , setEditError] = useState("");
   // Fetch user details
   useEffect(() => {
     const fetchUser = async () => {
@@ -45,6 +46,7 @@ const UserAccountEdit = () => {
         });
         setOrgImg(fetchedUser.image);
       } catch (error) {
+        setEditError("Failed to display user details ! Please try again later");
         setLoading(false);
       } finally {
         setLoading(false); // Stop loading after fetching
@@ -87,12 +89,16 @@ const UserAccountEdit = () => {
 
       navigate(`/user/${id}/account`);
     } catch (error) {
+      setEditError("Failed to Edit details ! Please try again later")
       setIsLoading(false);
     }
   };
 
   return (
     <>
+    <div className="text-center">
+    {editError && <ErrorPopup message={editError} onClose={() => editError("")} />}
+    </div>
       {loading ? (
         <div className="mt-10 flex justify-center items-center">
         <SkeletonForm />

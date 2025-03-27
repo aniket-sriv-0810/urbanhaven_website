@@ -2,9 +2,11 @@ import React ,{useState} from "react";
 import { MdDeleteForever, MdDone, MdOutlinePendingActions } from "react-icons/md";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import ErrorPopup from "../../PopUps/ErrorPopup/ErrorPopup";
 const ContactRow = ({ contact , onDelete }) => {
    const [deleting, setDeleting] = useState(false);
    const navigate = useNavigate();
+   const [error , setError] = useState("");
     const handleDelete = async () => {
       if (deleting) return;
       setDeleting(true);
@@ -14,10 +16,11 @@ const ContactRow = ({ contact , onDelete }) => {
           withCredentials: true,
         });
         if (resp.status === 200) {
-          navigate('/delete/successfully')
+          navigate('/admin')
         }
         onDelete(contact._id); // Notify parent component
       } catch (error) {
+        setError("Error in deleting contact details");
         setDeleting(false);
       } finally {
         setDeleting(false);
@@ -25,6 +28,10 @@ const ContactRow = ({ contact , onDelete }) => {
     };
   
   return (
+    <>
+   <div className="text-center ">
+          {error && <ErrorPopup message={error} onClose={() => setError("")} />} 
+         </div>
     <tr className="hover:bg-gray-200 text-gray-800 text-center">
       <td className="border border-gray-300 px-4 py-2">{contact.user?.name || "N/A"}</td>
       <td className="border border-gray-300 px-4 py-2">{contact.user?.email || "N/A"}</td>
@@ -54,6 +61,7 @@ const ContactRow = ({ contact , onDelete }) => {
               </button>
             </td>
     </tr>
+    </>
   );
 };
 

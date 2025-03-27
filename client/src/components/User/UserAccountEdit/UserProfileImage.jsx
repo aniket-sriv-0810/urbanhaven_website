@@ -14,7 +14,7 @@ const UserProfileImage = ({ orgImage, handleImageChange }) => {
       <input
         type="file"
         name="image"
-        accept="image/*"
+        accept="image"
         onChange={handleImageChange}
         className="mt-2 text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-indigo-100 file:text-indigo-700 hover:file:bg-indigo-200"
       />

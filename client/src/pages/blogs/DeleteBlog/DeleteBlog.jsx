@@ -15,7 +15,7 @@ const DeleteBlog = () => {
             });
       
             if (response.status === 200) {
-                navigate("/delete/successfully");
+                navigate("/admin");
             }
           } catch (error) {
             

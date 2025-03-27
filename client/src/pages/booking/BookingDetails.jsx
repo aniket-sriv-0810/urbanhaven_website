@@ -7,7 +7,7 @@ import { MdOutlinePayments } from "react-icons/md";
 import { TiArrowBack } from "react-icons/ti";
 import { FaUser, FaPhoneAlt, FaEnvelope, FaBed, FaCalendarAlt, FaUserFriends, FaBaby } from "react-icons/fa";
 import SkeletonForm from "../../components/LoadingSkeleton/SkeletonForm";
-
+import ErrorPopup from "../../components/PopUps/ErrorPopup/ErrorPopup";
 
 const BookingDetails = ({
   bookingData,
@@ -20,21 +20,20 @@ const BookingDetails = ({
   const { id } = useParams();
   const {user} = useUser();
   const [loading ,setLoading] = useState(true);
+  const [error , setError] = useState("");
   const fetchHotelDetails = async () => {
     try {
       setLoading(true); // Set loading before making the request
       const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/hotels/v1/hotel/${id}`, {
         withCredentials: true,
       });
-      console.log("Response 1 = ", response);
-      console.log("Response 2 = ", response.data);
-      console.log("Response 3 = ", response.data.data.showHotel);
 
       if (response.status === 200) {
         setHotelData(response.data.data.showHotel);
       }
     } catch (error) {
-      setLoading(false); // Ensure loading is set to false after fetching
+      setError("Failed to load booking details ! Please try again later ")
+      setLoading(false); 
     } finally {
       setLoading(false); // Ensure loading is set to false after fetching
     }
@@ -70,7 +69,9 @@ const BookingDetails = ({
   if(loading) return <><SkeletonForm/></>
   return (
     <div className="relative flex justify-center items-center min-h-screen  bg-gradient-to-r from-indigo-800 to-purple-900">
-      
+      <div className="text-center">
+      {error && <ErrorPopup message={error} onClose={() => setError("")} />}
+      </div>
     {/* Background Blur Overlay */}
     <div className="absolute inset-0 bg-black/40 backdrop-blur-md"></div>
 

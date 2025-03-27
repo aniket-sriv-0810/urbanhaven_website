@@ -10,6 +10,7 @@ import ContactForm from '../../components/Navigation/Contact/ContactForm';
 import ContactFooter from '../../components/Navigation/Contact/ContactFooter';
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
+import ErrorPopup from '../../components/PopUps/ErrorPopup/ErrorPopup';
 const Contact = () => {
   const { user } = useUser();
   const [contact, setContact] = useState({ message: "" });
@@ -18,6 +19,7 @@ const Contact = () => {
   const handleInput = (e) => {
     setContact({ ...contact, [e.target.name]: e.target.value });
   };
+  const [error , setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,6 +35,7 @@ const Contact = () => {
         navigate('/contact/confirmed');
       }
     } catch (error) {
+      setError("Failed to send feedback ! Please try again later")
       setLoading(false);
     }finally{
       setLoading(false);
@@ -53,7 +56,9 @@ const Contact = () => {
       <div className="bg-gradient-to-r from-slate-600 to-slate-800">
         <Navbar />
       </div>
-
+    <div className='text-center'>
+    {error && <ErrorPopup message={error} onClose={() => setError("")} />}
+    </div>
       <section className="bg-gradient-to-b from-teal-700 to-gray-600 text-gray-900 py-16 px-6 md:px-12 lg:px-24 xl:px-32">
         <div className="max-w-7xl mx-auto" >
           <ContactHeader />

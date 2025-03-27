@@ -52,7 +52,7 @@ const EditBlog = () => {
       );
 
       if (response.status === 200) {
-       navigate('/edit/successfully')
+       navigate('/admin')
       }
     } catch (error) {
       

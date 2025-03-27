@@ -54,7 +54,7 @@ const EditHotel = () => {
         withCredentials: true,
       });
       setLoading(false);
-      navigate("/edit/successfully");
+      navigate("/admin");
       
     } catch (error) {
       
