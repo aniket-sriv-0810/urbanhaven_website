@@ -90,6 +90,7 @@ const UserAccountEdit = () => {
       navigate(`/user/${id}/account`);
     } catch (error) {
       setEditError("Failed to Edit details ! Please try again later")
+      navigate(`/user/${id}/account`);
       setIsLoading(false);
     }
   };

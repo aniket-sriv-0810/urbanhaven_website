@@ -20,7 +20,6 @@ const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
   const navigate = useNavigate();
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("card");
   const [bookingId, setBookingId] = useState(null); // Store booking ID
-  const [loading , setLoading] = useState(false);
   const [error , setError] = useState("");
   const handlePayment = async () => {
     const dataSent = {
@@ -31,7 +30,6 @@ const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
     };
 
     try {
-      setLoading(true);
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/hotels/v1/hotel/${id}/booking`,
         dataSent,
@@ -43,21 +41,17 @@ const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
         // navigate(`/booking/done`);
       }
     } catch (error) {
-      setError("Failed to book hotel ! Please try again later");
+     setError("Failed to book hotel ! Please try again later ");
     }
   };
-  setLoading(false);
 
   return (
-    <>
-      <div className="text-center ">
-          {error && <ErrorPopup message={error} onClose={() => setError("")} />} 
-         </div>
-    
     <div className="relative flex justify-center items-center min-h-screen bg-white/20 backdrop-blur-lg">
     {/* Background Overlay */}
     <div className="absolute inset-0 bg-black/40 backdrop-blur-md"></div>
-    
+    <div className="text-center">
+      {error && <ErrorPopup message={error} onClose={() => setError("")} />}
+      </div>
     {/* Payment Container */}
     <div className="relative w-full max-w-4xl bg-black/60  shadow-xl rounded-xl p-8 sm:p-10 border border-white/30 space-y-8">
       <h1 className="text-xl font-bold text-white text-center drop-shadow-md">
@@ -199,35 +193,19 @@ const BookingPayment = ({ hotelData, bookingData, handlePrevious }) => {
       {bookingId ? (
         <BookingLoader bookingId={bookingId} />
       ) : (
-        <button
-            type="submit"
-            disabled={loading}
-            onClick={handlePayment}
-            className={`w-full flex text-xs justify-center items-center gap-x-3 px-8 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg font-medium hover:scale-105 transition-all ${
-              loading
-                ? "bg-gray-800 cursor-not-allowed"
-                : "bg-green-600 hover:bg-green-700"
-            } flex items-center justify-center gap-2`}
-          >
-            {loading ? (
-              <>
-                <div className="w-5 h-5 border-2 border-green-400 border-t-transparent rounded-full animate-spin"></div>
-                <span className="animate-pulse text-green-400">Confirming...</span>
-              </>
-            ) : (
-              <div className="flex items-center gap-x-3">
-              "Confirm Booking"
-              <MdOutlinePayments className="w-5 h-5" />
-              </div>
-            )}
-          </button>
 
+        <button
+          onClick={handlePayment}
+          className="w-full flex text-xs justify-center items-center gap-x-3 px-8 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg font-medium hover:scale-105 transition-all"
+        >
+          Confirm Booking
+          <MdOutlinePayments className="w-5 h-5" />
+        </button>
       )}
       </div>
       </div>
     </div>
   </div>
-  </>
   );
 };
 
