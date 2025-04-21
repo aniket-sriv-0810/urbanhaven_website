@@ -41,21 +41,21 @@ Urbanhaven offers a **seamless user experience**, dynamic animations, **secure a
 
 ## 🏗️ Installation & Setup  
 
-### 🔥 1. Clone the Repository  
+### 🔥1. Clone the Repository  
 ```sh
 git clone https://github.com/yourusername/urbanhaven.git
 cd urbanhaven
-
-🏡 2. Frontend Setup
-
+```
+# 🏡 2. Frontend Setup
+```sh
 cd client
 npm install
 npm run dev
 
 🔹 Runs on: http://localhost:5173/
-
-🔧 3. Backend Setup
-
+```
+# 🔧 3. Backend Setup
+```sh
 cd server
 npm install
 npm start
@@ -70,12 +70,12 @@ SESSION_SECRET=your_secret_key
 CLOUDINARY_CLOUD_NAME=your_cloudinary_name
 CLOUDINARY_API_KEY=your_cloudinary_key
 CLOUDINARY_API_SECRET=your_cloudinary_secret
-
-📄 License
+```
+### 📄 License
 This project is open-source and available under the MIT License.
 
-⭐ Like the project? Give it a star on GitHub! ⭐
-🔗 Live Website URL: `https://urbanhaven-hotels.onrender.com/`
+## ⭐ Like the project? Give it a star on GitHub! ⭐
+## 🔗 Live Website URL: `https://urbanhaven-hotels.onrender.com/`
 
-💻 Developed by Aniket Srivastava 🚀
+## 💻 Developed by Aniket Srivastava 🚀
 
